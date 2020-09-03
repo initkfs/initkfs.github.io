@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'/>
+    <meta name="yandex-verification" content="7021eeb9c07b5c09"/>
+    <meta name="google-site-verification" content="PztbVe6Ru8ggM2n_tWUYwy0bEVHtJNvzIr-nsVCvBCA"/>
+    
+    
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://initkfs.github.io/assets/stab/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="https://initkfs.github.io/assets/stab/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://initkfs.github.io/assets/stab/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="https://initkfs.github.io/assets/stab/img/favicons/safari-pinned-tab.svg" color="#004245">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://initkfs.github.io/assets/stab/img/favicons/apple-touch-icon.png">
+    <meta name="msapplication-config" content="https://initkfs.github.io/assets/stab/img/favicons/browserconfig.xml">
+    <!-- end favicons -->
+    <link type="text/plain" rel="author" href="https://initkfs.github.io/humans.txt"/>
+    <link crossorigin='anonymous' href='https://cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css'
+          integrity='sha384-Ls5zBitvvQ/wdeZDuTUevSY5Tb/she50BeMPrco2ok6xDC8modj6/JPwdL0gNxmP' rel='stylesheet'/>
+    
+    <link crossorigin='anonymous' integrity='sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=='
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/themes/prism.min.css" rel="stylesheet"/>
+    
+    <link href="https://initkfs.github.io/assets/dev/css/main.css" rel='stylesheet'/>
+    
+    <title>Особенности выделения интерфейсов. Аналитический блог разработчика. Заметки, идеи, мысли</title>
+    <meta name="description" content="Анализ выделения интерфейсов с помощью отношений понятий в формальной логике">
+    <meta content='Особенности выделения интерфейсов. Аналитический блог разработчика. Заметки, идеи, мысли' property='og:title'/>
+    
+    <meta name="keywords" content="архитектура,интерфейс,ооп">
+    
+    <meta content='https://initkfs.github.io/index.html' property='og:url'/>
+    <meta content='website' property='og:type'/>
+    <meta content='ru_RU' property='og:locale'/>
+</head>
+<body>
+<div class='container mb-3'>
+    <div class='row'>
+        <div class='col-lg-12'>
+           <div class='card w-100 site-header-container'>
+    <div class='row align-items-center'>
+        <div class="col-lg-9">
+            <div class='card-header site-header'>
+                <div class='card-title site-header-title mb-3'>
+                    <h5 class='site-header-title-text'>
+                        <a href='https://initkfs.github.io/index.html' class='blog-title-text-link link-decoration-none'>Аналитический блог разработчика. Заметки, идеи, мысли.</a>
+                    </h5>
+                </div>
+                <div class='card-subtitle site-header-subtitle mb-2'>
+                     <a href="https://initkfs.github.io/pages/about.html" class="badge">О сайте и его пользе</a>  <a href="https://initkfs.github.io/pages/site-implementation.html" class="badge">Реализация (Groovy-генератор)</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            
+            <div class='site-map w-100 d-flex justify-content-center pr-lg-2'>
+                <a class='site-map-link btn w-100' href='https://initkfs.github.io/site-map.html' role='button'><span
+                        class='site-map-link-icon mdi mdi-sitemap'></span>
+                    Карта сайта (все статьи)</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-9 blog-posts'>
+            <article class='card post'>
+    <h5 class='card-header post-header font-weight-bold'>
+        Особенности выделения интерфейсов
+    </h5>
+    <div class='card-body post-body'>
+        <div class="card-title mb3">
+            <div class="post-body-header">
+
+<div class='date-header'><span class='mdi mdi-calendar-clock'></span>
+    <span>1 марта 2020</span>
+</div>
+
+
+
+<div class='post-labels'>
+    <span class='post-header-labels-icon mdi mdi-tag-outline'></span>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='https://initkfs.github.io/tags/arhitektura.html' rel='tag'>Архитектура
+    </a>
+    
+</div>
+</div>
+        </div>
+        <div class='post-content'><p>После опытов с <a href="/pages/traits-and-architect.html">трейтами</a> мне захотелось вспомнить об основных способах выделения интерфейсов из-за их частого конфликта с абстрактными классами. Я не буду ворошить иерархии геометрических фигур, концентрируясь лишь на анализе проектной модели.</p>
+<p>Обычно под классическим интерфейсом подразумевают разделение описания функциональности от её реализации. Для наследования основной семантикой будет отношение &quot;является&quot;, когда как для интерфейса - &quot;реализует какой-то контракт&quot;. Интерфейс, как и наследование, может использоваться в полиморфизме, поэтому обычной практикой бывает замена по обстоятельствам их одно на другое с получением относительно равнозначного результата. Преимущество в меньшем количестве классов в иерархии при интерфейсном способе моделирования обычно сходит на нет из-за необходимости постоянного сбрасывания дублирующего кода в какой-либо класс и интерфейс начинает плавно перетекать в наследование.</p>
+<p>Проанализируем различие наследования и интерфейса с помощью инструментов формальной логики. Отношение &quot;является&quot; может определять родо-видовое подчинение - отношение двух совместимых понятий, полный объем одного из которых составляет часть объема другого в случае отсутствия множественного наследования. Под совместимостью здесь понимается частичное или полное совпадение объемов - совокупности предметов, охватываемых понятием.</p>
+<p>Вспомним, что <a href="https://ru.wikipedia.org/wiki/Полиморфизм_(информатика)">полиморфизм</a> — способность функции обрабатывать данные разных типов, при этом характер отношений между такими типами не конкретизируется. Кроме подчинения существуют и другие виды отношений, которые невозможно смоделировать наследованием. Можно рассмотреть отношения между интерфейсом и реализующим его типом, а также отношения между разными типами, реализующими интерфейс.</p>
+<p>Пересечение - отношение различных по содержанию совместимых понятий, объемы которых имеют общее подмножество элементов. Если часть прямоугольников реализует Exportable, то между Exportable и Rectangle улавливается отношение пересечения, поскольку часть прямоугольников могут экспортироваться в какой-либо формат через реализацию интерфейса, но Exportable реализуют и другие классы.</p>
+<p>С другой стороны, отношение между членами интерфейса, например, между экспортируемым прямоугольниками и каким-нибудь экспортируемым отчетом можно рассмотреть как соподчинение - они подчинены интерфейсу Exportable, но между собой несовместимы из-за отсутствия общих элементов в объемах: отчет не прямоугольник, а прямоугольник не отчет. Данные отношения нельзя описать наследованием и если бы полиморфизм опирался бы только на наследование, то был бы конфуз. Наверное, частным случаем соподчинения можно рассмотреть тестирование, для которого интерфейсы чрезвычайно удобны.</p>
+<p>Отношение соподчинения может продемонстрировать и неочевидную зависимость: если A и B реализуют интерфейс C, то A зависит от B, как и B зависит от A через зависимость от интерфейса. Если на устоявшемся коде окажется, что экспортируемый отчет при экспорте требует дополнительных данных, то в случае  изменения интерфейса произойдет изменение экспорта и всего остального, в т.ч. прямоугольников. Конечно же, маловероятно, что кто-то пойдет на поломку интерфейса и будет попытка выкрутиться через ассоциацию, но тем не менее. Тоже самое работает и для пересечения, вводя некий предел полиморфизма, поскольку чем более универсален функционал, тем больше рисков он должен нести на своих плечах, подстраиваясь под постоянно изменяющиеся требования, все как в реальности.</p>
+<p>Из анализа отношений можно вывести основной недостаток интерфейса: в отношениях соподчинения и пересечения интерфейс распространяет свое влияние на множество самых разных типов и любое изменение может быть очень болезненным. Классический труд по проектированию в .NET &quot;Инфраструктура программных проектов&quot; (Цвалина, Абрамс) содержит похожий пример этой проблемы уменьшения гибкости и вообще рекомендует использовать определения абстрактных классов вместо интерфейсов (раздел &quot;Выбор между классом и интерфейсом&quot;), используя последние лишь в некоторых случаях: для эмуляции множественного наследования или в целях полиморфизма. В Effective Java (Блох), наоборот, интерфейс предпочитается абстрактному классу, хотя опять же есть упоминание о болезненности изменений публичного интерфейса.</p>
+<p>По сугубо личным наблюдениям, недостаток раздутой иерархии заменяется на когнитивную сложность со множеством интерфейсов. При изучении класса оказывается, что он реализует интерфейсы A, B, C, D, E... до бесконечности, которые нужно дополнительно изучать, понимание логики его работы становится задачей нетривиальной. Для отношения подчинения выделение интерфейса может вообще закончиться его удалением. Во-первых, если IDE не поддерживает рефакторинг методов из класса в интерфейс, то при любом изменении класса нужно править и его интерфейс. Во-вторых, если интерфейс разрастается, то его реализация напрямую часто становится невозможной и заменяется наследованием от ближайшего члена или использованием ассоциации с проксированием методов.</p>
+<p>При разработке достаточно проблематично выявить отношения между понятиями. Определение объема и содержания - задача сложная в малознакомой предметной области и сопряжена с многочисленными граблями и ошибками, часто используются более упрощенный поиск целей для интерфейса. Так, на предмет универсальности рассматриваются:</p>
+<ul>
+<li>Ассоциации.</li>
+<li>Сообщения.</li>
+<li>Операции\методы.</li>
+<li>Роли классов и сами классы.</li>
+<li>Соединения слоев приложения или boundary-классы, располагающиеся на границах систем.</li>
+</ul>
+<p>Если вспомнить совет из архитектурного мануала, то универсальность тут скорее нужно рассматривать как полиморфизм, который повлечет за собой неприятности в случае изменений. Вероятно, правило с трейтами и их служебной логикой вполне можно притянуть и к интерфейсам: чем дальше контракт интерфейса располагается от бизнес-логики конкретных классов, тем безопаснее его реализация, хотя это не точно.</p>
+<p>Принимая риск проблем в случаях изменений, сразу вспоминается модульность Мейера, где можно встретить правило минимума интерфейсов (Few Interfaces). Если провести аналогию концептуального интерфейса с контрактным, то его можно рассмотреть, например, как попытку предотвратить массивные изменения в системе и соблюдения принципа модульной непрерывности. Или даже модульной понятности, поскольку унификация интерфейсом обычно приводит к очень сжатым или малоинформативным методам, не отражающим все побочные эффекты.</p>
+<p>С другой стороны, минимум это уже количественная характеристика, а тут в игру вступает один из принципов SOLID - The Interface Segregation Principle, для прямой реализации которого может практиковаться создание большого количества мелких интерфейсов. Он тесно связан с GRASP: уменьшение ненужных зависимостей понижает связь с другими модулями, а также позволяет создать высокую специализацию, не занимаясь ничем лишним. С другой стороны, SOLID оставляет за кадром решение проблем из-за возможной смены наследования на другое отношение, а также когнитивные проблемы, например, ограничения &quot;оперативной&quot; памяти человека или сложности восприятия запутанных иерархий с многочисленными реализациями интерфейсов. Кроме того, в случае реализации из разных пакетов или мук выбора из большого разнообразия интерфейсов могут появиться другие проблемы.</p>
+<p>Думается, что выделение интерфейсов наиболее критично для библиотеки, где наличие абстрактного класса ограничивает наследование, с другой стороны, большое количество интерфейсов может понизить её гибкость. Логично, что риски с интерфейсами выше для предметной области, трудно поддающейся анализу, например графический интерфейс, отношения между элементами которого часто бывают спорными если подходить с разных сторон, оценивая поведение и отображение по-разному.</p>
+<p>Любопытно, насколько теряется польза интерфейсов в случае наличия в языке трейтов. В спорах о предпочтении трейта или интерфейса обычно упоминается более контрактный характер последнего, но, как упоминалось выше, описание интерфейсом контракта тоже можно поставить под вопрос. Трейт вполне может выглядеть как интерфейс, не имея никаких реализаций. По аналогии может быть и NVI-трейт, который будет стараться дополнительно разделить контракт и реализацию. Да и функционал трейта становится очень похожим на обычный класс.</p>
+<p>Предположим, что в языке отсутствуют трейты, интерфейсы и допускается множественное наследование. Отношения между понятиями все так же можно описать и при одиночном наследовании рождается подчинение с родо-видовой структурой, а контракты теперь описывают абстрактные классы. В таком случае, проблемы множественного наследования исходят от опасностей некорректной замены подчинения на пересечение\соподчинение и отличаются от проблем с интерфейсами наличием реализации (если она есть, конечно же). С учетом того, что повсеместно в интерфейсах начали появляться дефолтные методы, появились на свет трейты, а также возможности добавления реализации в каждом классе банальным дублированием кода или переносом его в классы-утилитки, то ограничение наследования уже не выглядит удачной идеей вне технических ограничений или особенностей устройства компилятора.</p>
+<p>Ввод дополнительных средств для обхода костылей создает новый комплекс проблем, усложняет понимание кода и порождает понятийный аппарат, который искажает принятие решений. В выборе интерфейса или абстрактного класса нет единых мнений, а значит эти средства неудобны и чреваты многочисленными архитектурными проблемами, в т.ч. отложенными.</p>
+<p>Таким образом, для себя сделаю несколько выводов:</p>
+<ul>
+<li>Мнения об использовании интерфейсов несколько расходятся.</li>
+<li>Публичный интерфейс для пересечения или соподчинения может доставить проблем в случае изменений, предсказать которые трудно.</li>
+<li>Только для отношения подчинения интерфейс может быть избыточным. С другой стороны, если при эволюции кода отношение может измениться на другое, то отсутствие интерфейса также может доставить проблем.</li>
+<li>Для интерфейсов, вероятно, может выполняться подход для трейтов - чем менее логика пересекается с бизнес-логикой и уходит от подчинения, тем риски меньше.</li>
+</ul>
+<p>Если вспомнить проблему с самыми простыми классами на самом нижнем уровне приложения - логируемый компонент, конфигурируемый компонент и т.п. где ограничение одиночного наследования ведет к дублированию кода, то кроме явно служебных целей вроде интерфейсов Cloneable, Comparable и т.п., отношение пересечения можно расширить до инфраструктурной сквозной логики приложения, не связанной с предметной областью, хотя это достаточно смелое обобщение. Например, в случае лингвистического приложения или приложения-логгера пакеты интернационализации или логирования могут пересекаться с предметной областью. С другой стороны, эта сквозная логика может относиться лишь к интерфейсу самого приложения... кгм... На это может влиять также односложный характер компонентов, их всех объединяет то, что над ними нельзя выделить надкласс.</p>
+<p>Интерфейсы не так просты, как кажется на первый взгляд и требуют аккуратности в обращении. Подходы по их выделению не отличаются универсальностью, а значит вероятность архитектурной ошибки очень высока. Считать ли их костылем на фоне фундаментальной ошибки в дизайне языка или очередным инструментом объектной парадигмы - вопрос очень холиварный, а вывод будет субъективным. Так или иначе, но буду поаккуратнее с ними... на всякий случай.</p>
+</div>
+        <div class='post-tools'>
+    <div class='d-flex flex-wrap align-items-center h-100'>
+        <div class='share-group mr-1 mr-sm-3 mb-1 mb-md-0'>
+            <div>
+    <div>
+        <small><span class='text-muted'>Поделиться ссылкой:</span></small>
+    </div>
+    <div class='clearfix'>
+        <a class='share-group-item' data-sharer='vk' data-title='Особенности выделения интерфейсов'
+           data-url='https://initkfs.github.io/pages/interface-separation.html' href='#'><i
+                class='share-icon-vk mdi mdi-vk'></i></a>
+        <a class='share-group-item' data-sharer='twitter' data-title='Особенности выделения интерфейсов' data-url='https://initkfs.github.io/pages/interface-separation.html' href='#'><i
+                class='share-icon-twitter mdi mdi-twitter'></i></a>
+        <a class='share-group-item' data-sharer='telegram'
+           data-title='Особенности выделения интерфейсов'
+           data-url='https://initkfs.github.io/pages/interface-separation.html' href='#'><i
+                class='share-icon-tg mdi mdi-telegram'></i></a>
+        <a class='share-group-item' data-sharer='facebook'
+           data-url='https://initkfs.github.io/pages/interface-separation.html' href='#'><i
+                class='share-icon-facebook mdi mdi-facebook-box'></i></a>
+        <a class='share-group-item' data-sharer='okru'
+           data-title='Особенности выделения интерфейсов'
+           data-url='https://initkfs.github.io/pages/interface-separation.html' href='#'><i
+                class='share-icon-ok mdi mdi-odnoklassniki'></i></a>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+    </div>
+</article>
+<div class='navigation-pages btn-toolbar justify-content-center mb-2' role='navigation'>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='https://initkfs.github.io/pages/simple-database-mapper.html' role='button' rel="prev"> <span
+            class='navigation-pages-link-icon mdi mdi-chevron-left'></span> Самый простой маппер для базы данных знаков зодиака</a>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1' href='https://initkfs.github.io/index.html'
+       role='button' rel="first">
+        <span class='navigation-pages-link-icon mdi mdi-home'></span> Главная</a>
+
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='https://initkfs.github.io/pages/analogy-in-program-architect.html' role='button' rel="next"><span
+            class='navigation-pages-link-icon mdi mdi-chevron-right'></span> Метод аналогии в архитектуре программ</a>
+    
+</div>
+        </div>
+        <div class='col-lg-3 sidebar-right'>
+            <div class='section' id='section-sidebar-right'>
+    <div class='card sidebar-container post-labels'>
+        <div class='card-header sidebar-container-header post-labels-header'>
+            <span class='post-labels-header-icon mdi mdi-tag-outline'></span>
+            Метки (и кол-во статей)
+        </div>
+        <div class='sidebar-container-content post-labels-content'>
+            <div class='list-group list-group-flush'>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='https://initkfs.github.io/tags/diy.html'>
+                    DIY<span class='badge'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='https://initkfs.github.io/tags/groovy.html'>
+                    Groovy<span class='badge'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='https://initkfs.github.io/tags/javafx.html'>
+                    JavaFX<span class='badge'>4</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='https://initkfs.github.io/tags/arhitektura.html'>
+                    Архитектура<span class='badge'>6</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='https://initkfs.github.io/tags/metodologija.html'>
+                    Методология<span class='badge'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='https://initkfs.github.io/tags/raznoe.html'>
+                    Разное<span class='badge'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='https://initkfs.github.io/tags/ekonomika.html'>
+                    Экономика<span class='badge'>2</span></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class='card sidebar-container links-favorite'>
+        <div class='card-header sidebar-container-header links-favorite-header'>
+            <span class='mdi mdi-star-outline'></span>
+            Избранное
+        </div>
+        <div class='sidebar-container-content post-labels-content links-favorite-content'>
+                <div class='list-group list-group-flush'>
+                    
+                        <a class='list-group-item list-group-item-action align-items-center ' href='https://initkfs.github.io/pages/javafx-problems-list.html' >Баги и нюансы JavaFX</a>
+                    
+                        <a class='list-group-item list-group-item-action align-items-center ' href='https://initkfs.github.io/pages/javafx-useful-tips.html' >JavaFX - полезные ресурсы</a>
+                    
+                </div>
+        </div>
+    </div>
+    <div class='card mb-3 sidebar-container links-useful'>
+        <div class='card-header sidebar-container-header links-useful-header'>
+            <span class='mdi mdi-link'></span>
+            Полезности
+        </div>
+        <div class='sidebar-container-content links-useful-content'>
+                    <div class='links-useful-list list-group list-group-flush'>
+                        <a class='list-group-item list-group-item-action align-items-center' href='https://vk.com/jfxpulse'><span class='mdi mdi-vk-box'></span>  Девлог личного планировщика</a>
+                        <a class='list-group-item list-group-item-action align-items-center' href='https://github.com/initkfs'><span class='mdi mdi-github-box'></span> Github-эксперименты</a>
+                    </div>
+        </div>
+    </div>
+</div>
+<div class='page-up-wrapper float-right'>
+    <button class='btn d-none d-lg-block ' id='page-up-trigger' type='button'><span
+            class='mdi mdi-arrow-up-bold-outline'></span></button>
+</div>
+        </div>
+    </div>
+</div>
+<footer class='page-footer'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='card'>
+    <div class='card-body'>
+        <div class='mobile-up-wrapper text-center'>
+            <button class='btn d-lg-none' id='mobile-page-up-trigger' type='button'><span
+                    class='mdi mdi-arrow-up-bold-outline'></span> Вверх
+            </button>
+        </div>
+        <p class="text-danger">Сайт в процессе тестирования.</p>
+        <small><span class='blog-info-footer'>Всего статей: 14. Блог носит исследовательский характер. Относитесь ко всем материалам с высокой долей критики: я могу заблуждаться, ошибаться или чего-то не знать. Все статьи отражают лишь мое субъективное мнение, не более.</span> <span>&#169; <span id='copyright-date'></span> Все права
+                  защищены.</span></small>
+        <div class='blog-additional-links d-flex justify-content-center'>
+        <div class='blog-rss'><a class='blog-rss-item blog-icon-clickable'
+                                 href='https://initkfs.github.io/rss-all.xml'><span
+                class='mdi mdi-rss-box blog-icon-rss'></span></a></div>
+        </div>
+        <div class='text-danger' id='js-fail-block'>
+            <noscript>
+                <small>JavaScript отключен в браузере, функционал сайта ограничен.</small>
+            </noscript>
+        </div>
+    </div>
+</div>
+<script type='application/ld+json'>
+    {
+        "@context": "http://www.schema.org",
+        "@type": "person",
+        "name": "initkfs",
+        "jobTitle": "",
+        "url": "https://initkfs.github.io/index.html"
+    }
+</script>
+            </div>
+        </div>
+    </div>
+</footer>
+<script crossorigin='anonymous' integrity='sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2'
+        src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script crossorigin='anonymous' integrity='sha512-eUQ9hGdLjBjY3F41CScH3UX+4JDSI9zXeroz7hJ+RteoCaY+GP/LDoM8AO+Pt+DRFw3nXqsjh9Zsts8hnYv8/A=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/umd/popper.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sharer.js/0.4.0/sharer.min.js"
+        integrity='sha512-xMhq6za0HKHjqtXgTpKXoSEXhoLwHHmaJYRLeMdC2Y/pFLN94Hzh8c4IEjhaInJlTTnbXYDJ33ZY3pHkoZh/Jg==' crossorigin="anonymous"></script>
+<script crossorigin='anonymous' integrity='sha512-hqRrGU7ys5tkcqxx5FIZTBb7PkO2o3mU6U5+qB9b55kgMlBUT4J2wPwQfMCxeJW1fC8pBxuatxoH//z0FInhrA=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/components/prism-core.min.js"></script>
+<script crossorigin='anonymous' integrity='sha512-ROhjG07IRaPZsryG77+MVyx3ZT5q3sGEGENoGItwc9xgvx+dl+s3D8Ob1zPdbl/iKklMKp7uFemLJFDRw0bvig=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+<script>
+var problemScripts = [];
+if (typeof jQuery === 'undefined') {
+    problemScripts.push("jquery");
+}
+
+   if (typeof Sharer === 'undefined') {
+    problemScripts.push("sharer.js");
+   }
+   if (typeof Prism === 'undefined'){
+    problemScripts.push("prism.js");
+   }
+   
+if (typeof Popper === 'undefined') {
+    problemScripts.push("popper.js");
+}
+
+if (typeof $ === 'undefined' || typeof $.fn === 'undefined' || typeof($.fn.modal) === 'undefined') {
+    problemScripts.push("bootstrap.js");
+}
+
+if (problemScripts.length > 0) {
+    var message = "Ошибка загрузки JavaScript: " +
+        problemScripts.join(",") +
+        "." +
+        " Возможные причины: блокировщик рекламы, проблемы с сетью, устаревший браузер. Может не работать дополнительный функционал.";
+
+    var failInfoBlock = document.createElement("small");
+    failInfoBlock.innerHTML = message;
+
+    var mainFailBlock = document.getElementById("js-fail-block");
+    if (!mainFailBlock) {
+        console.error(message);
+    } else {
+        mainFailBlock.appendChild(failInfoBlock);
+    }
+}
+</script>
+<script src="https://initkfs.github.io/assets/dev/js/main.js"></script>
+</body>
+</html>
+
+
+

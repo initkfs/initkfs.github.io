@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'/>
+    <meta name="yandex-verification" content="7021eeb9c07b5c09"/>
+    <meta name="google-site-verification" content="PztbVe6Ru8ggM2n_tWUYwy0bEVHtJNvzIr-nsVCvBCA"/>
+    
+    
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://initkfs.github.io/assets/stab/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="https://initkfs.github.io/assets/stab/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://initkfs.github.io/assets/stab/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="https://initkfs.github.io/assets/stab/img/favicons/safari-pinned-tab.svg" color="#004245">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://initkfs.github.io/assets/stab/img/favicons/apple-touch-icon.png">
+    <meta name="msapplication-config" content="https://initkfs.github.io/assets/stab/img/favicons/browserconfig.xml">
+    <!-- end favicons -->
+    <link type="text/plain" rel="author" href="https://initkfs.github.io/humans.txt"/>
+    <link crossorigin='anonymous' href='https://cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css'
+          integrity='sha384-Ls5zBitvvQ/wdeZDuTUevSY5Tb/she50BeMPrco2ok6xDC8modj6/JPwdL0gNxmP' rel='stylesheet'/>
+    
+    <link crossorigin='anonymous' integrity='sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=='
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/themes/prism.min.css" rel="stylesheet"/>
+    
+    <link href="https://initkfs.github.io/assets/dev/css/main.css" rel='stylesheet'/>
+    
+    <title>О сайте. Аналитический блог разработчика. Заметки, идеи, мысли</title>
+    <meta name="description" content="Описание целей создания сайта и его пользы">
+    <meta content='О сайте. Аналитический блог разработчика. Заметки, идеи, мысли' property='og:title'/>
+    
+    <meta name="keywords" content="сайт,блог,статический генератор">
+    
+    <meta content='https://initkfs.github.io/index.html' property='og:url'/>
+    <meta content='website' property='og:type'/>
+    <meta content='ru_RU' property='og:locale'/>
+</head>
+<body>
+<div class='container mb-3'>
+    <div class='row'>
+        <div class='col-lg-12'>
+           <div class='card w-100 site-header-container'>
+    <div class='row align-items-center'>
+        <div class="col-lg-9">
+            <div class='card-header site-header'>
+                <div class='card-title site-header-title mb-3'>
+                    <h5 class='site-header-title-text'>
+                        <a href='https://initkfs.github.io/index.html' class='blog-title-text-link link-decoration-none'>Аналитический блог разработчика. Заметки, идеи, мысли.</a>
+                    </h5>
+                </div>
+                <div class='card-subtitle site-header-subtitle mb-2'>
+                     <a href="https://initkfs.github.io/pages/site-implementation.html" class="badge">Реализация (Groovy-генератор)</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            
+            <div class='site-map w-100 d-flex justify-content-center pr-lg-2'>
+                <a class='site-map-link btn w-100' href='https://initkfs.github.io/site-map.html' role='button'><span
+                        class='site-map-link-icon mdi mdi-sitemap'></span>
+                    Карта сайта (все статьи)</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-9 blog-posts'>
+            <article class='card post'>
+    <h5 class='card-header post-header font-weight-bold'>
+        О сайте
+    </h5>
+    <div class='card-body post-body'>
+        <div class="card-title mb3">
+            <div class="post-body-header">
+
+<div class='date-header'><span class='mdi mdi-calendar-clock'></span>
+    <span>21 сентября 2019</span>
+</div>
+
+
+
+<div class='post-labels'>
+    <span class='post-header-labels-icon mdi mdi-tag-outline'></span>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='https://initkfs.github.io/tags/raznoe.html' rel='tag'>Разное
+    </a>
+    
+</div>
+</div>
+        </div>
+        <div class='post-content'><p>Мне нравится Mercurial своей простотой и дружелюбием к пользователю, поэтому после прекращения на Bitbucket поддержки этой системы контроля версий было принято решение об аварийном переезде на Github, хотя бы и с обходными маневрами через hg-git.</p>
+<p>Я вообще не особый сторонник открытых репозиториев из-за множества рисков: <abbr title="Open source intelligence, Разведка на основе открытых источников">OSINT</abbr>-анализ, структура файловой системы может спрятаться где-то в конфигах, облегчая задачу взлома системы, просмотром кода можно предположить об уязвимостях в боевом приложении, подметить индивидуальные когнитивные особенности разработчика, специфические приёмы использования api, библиотек и т.п. Кроме того, наличие любого опенсурсного проекта порождает множество обязанностей перед его пользователями c высокой долей ответственности за свои действия и действия других, что требует огромного количества свободного времени, а его у меня совсем нет. Не секрет, что часто встречается развитие репозитория до определенной стадии с последующим прекращением сопровождения проекта, думаю, что вы много раз интегрировали библиотеку, которая умирала через некоторое время. Чрезвычайно неприятная ситуация и без достаточного количества времени проще не заниматься опенсурсными проектами, чтобы соблюсти <a href="https://ru.wikipedia.org/wiki/Золотое_правило_нравственности">&quot;Золотое правило нравственности&quot;</a>, не создавать проблем другим и не мучиться угрызениями совести.</p>
+<p>Однако в части чисто экспериментальных проектов эти риски уже не столь высоки: появляется дополнительная мотивация за счет публичного характера работы, а любая информация, находящаяся в репозиториях, быстро устаревает и достаточно бесполезна для сторонних лиц. Хотя аккаунт все еще является визитной карточкой разработчика и характеризует его черты характера и приемы работы. Стоит ли вообще заводить его на подобных площадках? Есть мнение, что на трудоустройство или любую другую монетизацию он влияет ровно никак, ибо в большинстве фирм найм упрощен и формализован. На авторитет он также влияет слабо, поскольку из-за множества направлений в IT-сфере каждый находится на разных стадиях опыта в самых разных технологиях. При этом оценка кода чужого всегда будет преломлена через призму своего опыта. Например, узкий специалист будет подмечать неправильное использование api или малоизвестные нюансы, когда как фуллстак - набор технологий и умелое их сочетание друг с другом для решения нетривиальных задач или для снижения издержек в работе и внедрении. Совместить некоторые знания практически невозможно из-за ограничений человеческих способностей вкупе с забыванием, поэтому всегда для кого-то репозиторий будет плохим и неавторитетным, отсюда и бесполезность цели авторитета или самоутверждения в глазах других.</p>
+<p>С другой стороны, отсутствие примеров кода затрудняет оценку разработчика, а также мешает коммуникациям, иногда превращая общение или взаимодействие в бессистемное перекидывание фактами, ссылками, выдумывание нелепых кейсов-ситуаций и прочую бесполезную трату времени. Так или иначе, но подобные проекты полезны и частично оправдывают вложение в них времени, а так как статический сайт реализуется обычным открытым репозиторием, то я сразу же начал обдумывать наилучшую стратегию работы с GitHub Pages, раз уж выдалась такая возможность из-за внезапно нагрянувшего переезда. Предстояло решить вопрос о форме сайта, его содержимом и технологии.</p>
+<p>Хотя на сегодняшний день C# уже не занимает место в моем стеке, но будучи хорошо знакомым с его коммьюнити, я отметил для себя статью из блога <a href="http://sergeyteplyakov.blogspot.com/2019/03/blog-post.html">Сергея Теплякова</a> о полезности блогинга. Из всех положительных сторон наиболее сильный интерес вызывает возможность прослеживать свою эволюцию и саморазвитие, а это чрезвычайно важно в нашем сложном технологичном мире, переполненном знаниями. Действительно, повсеместное распространение информационных технологий и усложнение жизни рождают особые требования к самообучению, возводя этот навык в ранг приоритетных для выживания и конкуренции на рынке труда и не только.</p>
+<p>К сожалению, постоянная загруженность работой затрудняет создание каких бы то ни было проработанных материалов из-за огромных затрат времени на проверку ошибок, исправление неточностей и структурирование.</p>
+<p>В этом замкнутом круге хорошим балансом может быть исследовательский формат статей:</p>
+<ul>
+<li>Не претендует на научность.</li>
+<li>Хорошо раскрывает принципы мышления, что согласуется с мониторингом саморазвития.</li>
+<li>Имеет добавочную полезность в виде нахождения новых знаний.</li>
+<li>Развивает исследовательские навыки.</li>
+</ul>
+<p>Конечно же, недостатками могут являться:</p>
+<ul>
+<li>Субъективизм и философия.</li>
+<li>Наличие ошибок или неточностей.</li>
+<li>Малая пригодность для практического применения из-за сильного отклонения от реальности.</li>
+</ul>
+<p>Любые попытки уменьшения недостатков потребуют увеличения затрат времени на обработку материала, а это наносит вред обучению в силу закона альтернативных издержек: потраченное время на изучение навыка можно использовать на его альтернативы. За счет наличия в сети и на специализированных ресурсах (хабр, реддит, блоги и т.п.) большого количества проработанных статей их дублирование выглядит бессмысленным, а присутствие в поиске менее качественных клонов скорее создает информационное вредительство.</p>
+<p>Таким образом, основная цель этого блога - <strong>личные заметки с акцентом на эксперименты и, по возможности, на аналитику</strong>. Остальные материалы выступают в роли дополнений, я веду блог лично для себя, не более. Такой формат наиболее удобен для выполнения задач блога.</p>
+<p>Из этого также следует, что материалы блога <strong>не могут рассматриваться как обучающие</strong>. Нужно относиться к ним с высокой долей критики и перепроверять. В принципе, это известный факт и относится ко всей информации в мире вообще. Но большое количество нюансов в отрасли и наличие нескольких способов решения задачи часто приводит к типичной ситуации: сегодня делаем так, а завтра узнаем о существовании более легкого и простого пути. В совокупности с форматом статей, который уже подразумевает наличие неточностей это способствует закрадыванию коварных ошибок в старых статьях, неактуальной информации или подобных промахов.</p>
+<p>Что касается реализации, то я рассматривал самые разные варианты. Основной ценный ресурс здесь - время. В контексте целей саморазвития общими принципами могут быть:</p>
+<p>По времени, от частного к общему:</p>
+<ul>
+<li>Сокращение времени на оформление поста.</li>
+<li>Сокращение времени на сопровождение движка.</li>
+<li>Сокращение времени на обслуживания окружения.</li>
+</ul>
+<p>Для веба наиболее критичный фактор - безопасность. Настройка, обновление, мониторинг дыр, накатывание патчей и т.п. совершенно не то, чем бы мне хотелось обременяться, занимаясь заметками или девлогом. Это отсеивает виртуальные серверы и сходные решения. Для движка, как правило, есть два варианта - взять готовое решение или написать самому. Срединный вариант смешения готовых библиотек и собственного кода обычно смещается к одному из двух. <abbr title="Content management system - система управления содержимым/контентом для сайта">CMS</abbr> или любой готовый движок порождает все те же проблемы, что и в случае с сервером. Несмотря на все предоставляемые удобства, есть и определенные сложности: например, частое расположение в рутовой директории и отсутствие акцента на безопасности сводят все преимущества к нулю. С одной стороны, что захотят - взломают, так устроен веб, с другой - риски всегда нужно понижать, когда они есть, особенно риски безопасности.</p>
+<p>Собственный движок выглядит заманчиво, а при наличии множества фреймворков самого различного уровня его построение сильно облегчается, однако количество дырок может быть еще большим в суровых ограничениях одиночной разработки. Да и облегчение работы достаточно условное, поскольку появляется зависимость уже от фреймворков, потери времени будут выражаться в войне со сторонним кодом и подстройке функционала под него.</p>
+<p>Хорошей стратегией тут может быть перемещение защиты на плечи сервиса. Изначально я выбирал между разными сервисами для блогинга и остановился на Blogger. Структура и возможности темизации достаточно плохо документированы и основным способом его изучения будет внесение ошибок в тему с наблюдением результата, но жить вполне можно. Однако политика Google и агрессивное закрытие различных менее популярных сервисов намекают на снижение рисков при любом использовании его продуктов. Я не помню продуктов Google, которые бы не вызывали у меня проблем, начиная от библиотек и заканчивая устройствами. Вероятно, здесь вступает в игру закон Легасова (&quot;чем выше уровень системы, тем более она неустойчива, тем больше расходов требуется на ее поддержание&quot;) или что-то похожее на него, трудно сказать. Тема пропитана xml и специфическим поведением и чем больше я занимаюсь её настройкой и кастомизацией, тем больше имею шанс потерять время при будущем переходе на другой сервис. Мне не нравится такой Дамоклов меч над головой и я решил подумать об альтернативах.</p>
+<p>Готовые площадки сильно ограничивают в экспериментах и не дают особых возможностей &quot;велосипедостроения&quot;. Однако у них есть и другие проблемы: любой сервис требует подстройки под себя, затрат большого количества времени для компенсации его недостатков или снижения рисков, что для меня не слишком подходит из-за высокой загруженности на фоне стремления к микрооптимизациям своего ежедневного расписания.</p>
+<p>При наличии таких рисков я решил уменьшить любую активность на генерирующих пользовательский контент площадках, заменив её на формат собственного блога, желательно не привязанный к специфическому окружению, что позволяет легко перемещать его между сервисами или хостерами.</p>
+<p>Достаточно очевидно, что меня сразу заинтересовал генератор статических сайтов с изучением его границ возможностей для блога. Преимущества очевидны: гибкость и упрощение развертывания, опыт разработки и сопровождения генератора, работа с <abbr title="Domain-specific language — язык, специфический для предметной области">DSL</abbr> и шаблонами. Простейший каркас из HTML и CSS также упрощает действия в неприятных ситуациях, например, известно, что Github блокировал репозитории пользователей из Крыма (UPD, также проблемы с Github Pages наблюдались <a href="https://habr.com/ru/news/t/515814/">и в других странах</a>). В случае подобных проблем алгоритм предельно прост: котомку на плечи и на другой сервис, к тому же реализация зеркала для статического сайта намного более проста.</p>
+<p>Но так как при каждом обновлении шаблона темы пересоздаются все страницы сайта (если даже использовать кеш, то при правке кода или либ все равно нужно будет генерировать все страницы по-новому), то имеем явную зависимость количества потенциальных ошибок от количества материалов. Кроме этого, известен фундаментальный закон диалектики о переходе количества в качество: с увеличением количества статей на сайте и разных способов форматирования неминуемо потребуется адаптация генератора к таким масштабам. Мне также показалось это интересным и я решил попробовать. Поэтому данный блог - это не только эксперимент с самим форматом блога, но еще и эксперимент с его реализацией.</p>
+<p>Поскольку генератор находится в очень ранней версии, то в развернутый сайт <strong>могут прорываться ошибки</strong>. От этого невозможно уйти, кроме как заморозив обновление и рефакторинг генератора. Но мне хотелось бы исследовать его возможности и поработать над улучшениями, а это закономерно повышает риск что-то нарушить.</p>
+<p>Надеюсь, что этот эксперимент принесёт полезный опыт, а случайный посетитель сайта найдет для себя что-то полезное в текстах статей.</p>
+</div>
+        <div class='post-tools'>
+    <div class='d-flex flex-wrap align-items-center h-100'>
+        <div class='share-group mr-1 mr-sm-3 mb-1 mb-md-0'>
+            <div>
+    <div>
+        <small><span class='text-muted'>Поделиться ссылкой:</span></small>
+    </div>
+    <div class='clearfix'>
+        <a class='share-group-item' data-sharer='vk' data-title='О сайте'
+           data-url='https://initkfs.github.io/pages/about.html' href='#'><i
+                class='share-icon-vk mdi mdi-vk'></i></a>
+        <a class='share-group-item' data-sharer='twitter' data-title='О сайте' data-url='https://initkfs.github.io/pages/about.html' href='#'><i
+                class='share-icon-twitter mdi mdi-twitter'></i></a>
+        <a class='share-group-item' data-sharer='telegram'
+           data-title='О сайте'
+           data-url='https://initkfs.github.io/pages/about.html' href='#'><i
+                class='share-icon-tg mdi mdi-telegram'></i></a>
+        <a class='share-group-item' data-sharer='facebook'
+           data-url='https://initkfs.github.io/pages/about.html' href='#'><i
+                class='share-icon-facebook mdi mdi-facebook-box'></i></a>
+        <a class='share-group-item' data-sharer='okru'
+           data-title='О сайте'
+           data-url='https://initkfs.github.io/pages/about.html' href='#'><i
+                class='share-icon-ok mdi mdi-odnoklassniki'></i></a>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+    </div>
+</article>
+<div class='navigation-pages btn-toolbar justify-content-center mb-2' role='navigation'>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1' href='https://initkfs.github.io/index.html'
+       role='button' rel="first">
+        <span class='navigation-pages-link-icon mdi mdi-home'></span> Главная</a>
+
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='https://initkfs.github.io/pages/site-implementation.html' role='button' rel="next"><span
+            class='navigation-pages-link-icon mdi mdi-chevron-right'></span> Реализация сайта (Groovy-генератор)</a>
+    
+</div>
+        </div>
+        <div class='col-lg-3 sidebar-right'>
+            <div class='section' id='section-sidebar-right'>
+    <div class='card sidebar-container post-labels'>
+        <div class='card-header sidebar-container-header post-labels-header'>
+            <span class='post-labels-header-icon mdi mdi-tag-outline'></span>
+            Метки (и кол-во статей)
+        </div>
+        <div class='sidebar-container-content post-labels-content'>
+            <div class='list-group list-group-flush'>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='https://initkfs.github.io/tags/diy.html'>
+                    DIY<span class='badge'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='https://initkfs.github.io/tags/groovy.html'>
+                    Groovy<span class='badge'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='https://initkfs.github.io/tags/javafx.html'>
+                    JavaFX<span class='badge'>4</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='https://initkfs.github.io/tags/arhitektura.html'>
+                    Архитектура<span class='badge'>6</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='https://initkfs.github.io/tags/metodologija.html'>
+                    Методология<span class='badge'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='https://initkfs.github.io/tags/raznoe.html'>
+                    Разное<span class='badge'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='https://initkfs.github.io/tags/ekonomika.html'>
+                    Экономика<span class='badge'>2</span></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class='card sidebar-container links-favorite'>
+        <div class='card-header sidebar-container-header links-favorite-header'>
+            <span class='mdi mdi-star-outline'></span>
+            Избранное
+        </div>
+        <div class='sidebar-container-content post-labels-content links-favorite-content'>
+                <div class='list-group list-group-flush'>
+                    
+                        <a class='list-group-item list-group-item-action align-items-center ' href='https://initkfs.github.io/pages/javafx-problems-list.html' >Баги и нюансы JavaFX</a>
+                    
+                        <a class='list-group-item list-group-item-action align-items-center ' href='https://initkfs.github.io/pages/javafx-useful-tips.html' >JavaFX - полезные ресурсы</a>
+                    
+                </div>
+        </div>
+    </div>
+    <div class='card mb-3 sidebar-container links-useful'>
+        <div class='card-header sidebar-container-header links-useful-header'>
+            <span class='mdi mdi-link'></span>
+            Полезности
+        </div>
+        <div class='sidebar-container-content links-useful-content'>
+                    <div class='links-useful-list list-group list-group-flush'>
+                        <a class='list-group-item list-group-item-action align-items-center' href='https://vk.com/jfxpulse'><span class='mdi mdi-vk-box'></span>  Девлог личного планировщика</a>
+                        <a class='list-group-item list-group-item-action align-items-center' href='https://github.com/initkfs'><span class='mdi mdi-github-box'></span> Github-эксперименты</a>
+                    </div>
+        </div>
+    </div>
+</div>
+<div class='page-up-wrapper float-right'>
+    <button class='btn d-none d-lg-block ' id='page-up-trigger' type='button'><span
+            class='mdi mdi-arrow-up-bold-outline'></span></button>
+</div>
+        </div>
+    </div>
+</div>
+<footer class='page-footer'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='card'>
+    <div class='card-body'>
+        <div class='mobile-up-wrapper text-center'>
+            <button class='btn d-lg-none' id='mobile-page-up-trigger' type='button'><span
+                    class='mdi mdi-arrow-up-bold-outline'></span> Вверх
+            </button>
+        </div>
+        <p class="text-danger">Сайт в процессе тестирования.</p>
+        <small><span class='blog-info-footer'>Всего статей: 14. Блог носит исследовательский характер. Относитесь ко всем материалам с высокой долей критики: я могу заблуждаться, ошибаться или чего-то не знать. Все статьи отражают лишь мое субъективное мнение, не более.</span> <span>&#169; <span id='copyright-date'></span> Все права
+                  защищены.</span></small>
+        <div class='blog-additional-links d-flex justify-content-center'>
+        <div class='blog-rss'><a class='blog-rss-item blog-icon-clickable'
+                                 href='https://initkfs.github.io/rss-all.xml'><span
+                class='mdi mdi-rss-box blog-icon-rss'></span></a></div>
+        </div>
+        <div class='text-danger' id='js-fail-block'>
+            <noscript>
+                <small>JavaScript отключен в браузере, функционал сайта ограничен.</small>
+            </noscript>
+        </div>
+    </div>
+</div>
+<script type='application/ld+json'>
+    {
+        "@context": "http://www.schema.org",
+        "@type": "person",
+        "name": "initkfs",
+        "jobTitle": "",
+        "url": "https://initkfs.github.io/index.html"
+    }
+</script>
+            </div>
+        </div>
+    </div>
+</footer>
+<script crossorigin='anonymous' integrity='sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2'
+        src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script crossorigin='anonymous' integrity='sha512-eUQ9hGdLjBjY3F41CScH3UX+4JDSI9zXeroz7hJ+RteoCaY+GP/LDoM8AO+Pt+DRFw3nXqsjh9Zsts8hnYv8/A=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/umd/popper.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sharer.js/0.4.0/sharer.min.js"
+        integrity='sha512-xMhq6za0HKHjqtXgTpKXoSEXhoLwHHmaJYRLeMdC2Y/pFLN94Hzh8c4IEjhaInJlTTnbXYDJ33ZY3pHkoZh/Jg==' crossorigin="anonymous"></script>
+<script crossorigin='anonymous' integrity='sha512-hqRrGU7ys5tkcqxx5FIZTBb7PkO2o3mU6U5+qB9b55kgMlBUT4J2wPwQfMCxeJW1fC8pBxuatxoH//z0FInhrA=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/components/prism-core.min.js"></script>
+<script crossorigin='anonymous' integrity='sha512-ROhjG07IRaPZsryG77+MVyx3ZT5q3sGEGENoGItwc9xgvx+dl+s3D8Ob1zPdbl/iKklMKp7uFemLJFDRw0bvig=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+<script>
+var problemScripts = [];
+if (typeof jQuery === 'undefined') {
+    problemScripts.push("jquery");
+}
+
+   if (typeof Sharer === 'undefined') {
+    problemScripts.push("sharer.js");
+   }
+   if (typeof Prism === 'undefined'){
+    problemScripts.push("prism.js");
+   }
+   
+if (typeof Popper === 'undefined') {
+    problemScripts.push("popper.js");
+}
+
+if (typeof $ === 'undefined' || typeof $.fn === 'undefined' || typeof($.fn.modal) === 'undefined') {
+    problemScripts.push("bootstrap.js");
+}
+
+if (problemScripts.length > 0) {
+    var message = "Ошибка загрузки JavaScript: " +
+        problemScripts.join(",") +
+        "." +
+        " Возможные причины: блокировщик рекламы, проблемы с сетью, устаревший браузер. Может не работать дополнительный функционал.";
+
+    var failInfoBlock = document.createElement("small");
+    failInfoBlock.innerHTML = message;
+
+    var mainFailBlock = document.getElementById("js-fail-block");
+    if (!mainFailBlock) {
+        console.error(message);
+    } else {
+        mainFailBlock.appendChild(failInfoBlock);
+    }
+}
+</script>
+<script src="https://initkfs.github.io/assets/dev/js/main.js"></script>
+</body>
+</html>
+
+
+
