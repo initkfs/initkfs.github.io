@@ -6,10 +6,20 @@
     <description>Аналитический блог о программировании, it-технологиях и всяком-разном.</description>
     <language>ru</language>
     <copyright>Copyright 2020</copyright>
-    <pubDate>Sun, 31 May 2020 20:00:00 GMT</pubDate>
-    <dc:date>2020-05-31T20:00:00Z</dc:date>
+    <pubDate>Sat, 26 Dec 2020 20:30:00 GMT</pubDate>
+    <dc:date>2020-12-26T20:30:00Z</dc:date>
     <dc:language>ru</dc:language>
     <dc:rights>Copyright 2020</dc:rights>
+    <item>
+      <title>Контрактное программирование в Groovy 4</title>
+      <link>https://initkfs.github.io/pages/contract-based-programming-in-groovy.html</link>
+      <description>Появление GContracts в Groovy 4. Пример использования контрактов, влияние на AST-трансформации, особенности устройства. Попытка усилить и ослабить условия, обойти через особенности языка и рефлексию. Более подробное их определение, пересечение накладываемых ограничений с утверждениями, интерфейсами-типами и абстрактными классами. Возможные преимущества и недостатки, конкуренция с валидацией, возможные места для применения.</description>
+      <category>Архитектура</category>
+      <category>Groovy</category>
+      <pubDate>Sat, 26 Dec 2020 20:30:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/contract-based-programming-in-groovy.html</guid>
+      <dc:date>2020-12-26T20:30:00Z</dc:date>
+    </item>
     <item>
       <title>Проблемы внедрения зависимостей</title>
       <link>https://initkfs.github.io/pages/dependency-injection-problems.html</link>
