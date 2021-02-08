@@ -102,7 +102,8 @@ function addTimeAgoBlockAfterTime(timeContainerBlock, timeTextContainerId) {
         var dateIsoString = timeTextContainer.attr('data-iso-time');
         var timeAgo = timeago.format(dateIsoString, "ru");
         if (timeAgo) {
-            var timeAgoBlock = $("<span class='d-block d-sm-inline'></span>").text(" (" + timeAgo + ")");
+            //class='d-block d-xs-inline'
+            var timeAgoBlock = $("<span></span>").text(" (" + timeAgo + ")");
             timeAgoBlock.insertAfter(timeTextContainer);
         }
     }
