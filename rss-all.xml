@@ -14,7 +14,7 @@
       <title>Контрактное программирование в Groovy 4</title>
       <link>https://initkfs.github.io/pages/contract-based-programming-in-groovy.html</link>
       <description>Появление GContracts в Groovy 4. Пример использования контрактов, влияние на AST-трансформации, особенности устройства. Попытка усилить и ослабить условия, обойти через особенности языка и рефлексию. Более подробное их определение, пересечение накладываемых ограничений с утверждениями, интерфейсами-типами и абстрактными классами. Возможные преимущества и недостатки, конкуренция с валидацией, возможные места для применения.</description>
-      <category>Архитектура</category>
+      <category>Архитектура ПО</category>
       <category>Groovy</category>
       <pubDate>Sat, 26 Dec 2020 20:30:00 GMT</pubDate>
       <guid>https://initkfs.github.io/pages/contract-based-programming-in-groovy.html</guid>
@@ -24,7 +24,7 @@
       <title>Проблемы внедрения зависимостей</title>
       <link>https://initkfs.github.io/pages/dependency-injection-problems.html</link>
       <description>Разные подходы к определению зависимостей. Количественный и качественный их анализ. Прямое создание объекта в коде, его проблемы. Недостатки IoC-контейнера. Паттерны внедрения зависимостей, влияние их объект. Object Mother и необходимость подстраиваться под ситуацию.</description>
-      <category>Архитектура</category>
+      <category>Архитектура ПО</category>
       <pubDate>Sun, 31 May 2020 20:00:00 GMT</pubDate>
       <guid>https://initkfs.github.io/pages/dependency-injection-problems.html</guid>
       <dc:date>2020-05-31T20:00:00Z</dc:date>
@@ -33,7 +33,7 @@
       <title>Вспомним о Protected Variations</title>
       <link>https://initkfs.github.io/pages/protected-variations.html</link>
       <description>Шаблон Protected Variations в GRASP, проблематика изменений, сложность определения их локализации и связь с проработкой предметной модели. Выявление изменений через декомпозицию задачи на концептуальные слои по аналогии с известными архитектурными схемами на примере MVC.</description>
-      <category>Архитектура</category>
+      <category>Архитектура ПО</category>
       <pubDate>Sun, 10 May 2020 19:00:00 GMT</pubDate>
       <guid>https://initkfs.github.io/pages/protected-variations.html</guid>
       <dc:date>2020-05-10T19:00:00Z</dc:date>
@@ -43,7 +43,7 @@
       <link>https://initkfs.github.io/pages/analogy-in-program-architect.html</link>
       <description>Проблематика архитектуры. Аналогия, её виды и принципы. Биологическая аналогия, структурная схема классов приложения, исследование популяции классов. Требования как аналогия факторов среды, действие факторов, адаптация, основные законы - лимитирующий фактор Либиха, Шелфорда, Митчерлиха.</description>
       <category>Методология</category>
-      <category>Архитектура</category>
+      <category>Архитектура ПО</category>
       <pubDate>Mon, 06 Apr 2020 18:05:00 GMT</pubDate>
       <guid>https://initkfs.github.io/pages/analogy-in-program-architect.html</guid>
       <dc:date>2020-04-06T18:05:00Z</dc:date>
@@ -52,7 +52,7 @@
       <title>Особенности выделения интерфейсов</title>
       <link>https://initkfs.github.io/pages/interface-separation.html</link>
       <description>Основные отличия интерфейсов от наследования, анализ отношений совместимых и несовместимых понятий: подчинение, пересечение, соподчинение. Недостатки интерфейсов, разные подходы к ним в литературе. Поиск целей для интерфейса.</description>
-      <category>Архитектура</category>
+      <category>Архитектура ПО</category>
       <pubDate>Sun, 01 Mar 2020 20:00:00 GMT</pubDate>
       <guid>https://initkfs.github.io/pages/interface-separation.html</guid>
       <dc:date>2020-03-01T20:00:00Z</dc:date>
@@ -61,7 +61,7 @@
       <title>Самый простой маппер для базы данных знаков зодиака</title>
       <link>https://initkfs.github.io/pages/simple-database-mapper.html</link>
       <description>Простая база данных знаков зодиака, объединение Groovy и JavaFX, отображение множеств, виды маппинга. Маппинг, основанный на ассоциации. Классы-универсалы для работы с запросами и соединением, валидация, класс маппинга для отображения типов и отношений, менеджер сущностей, примитивная кодогенерация.</description>
-      <category>Архитектура</category>
+      <category>Архитектура ПО</category>
       <category>Groovy</category>
       <category>JavaFX</category>
       <pubDate>Sun, 16 Feb 2020 19:00:00 GMT</pubDate>
@@ -72,7 +72,7 @@
       <title>Влияние трейтов на архитектуру</title>
       <link>https://initkfs.github.io/pages/traits-and-architect.html</link>
       <description>Моделирование захвата трейтом иерархии классов. Использование трейтов для функционала, не связанного с предметной областью, цепочки ответственности, SAM-трейты, наследование от набора компонентов во фреймворке. КотоПёс и его реализация на трейтах и без.</description>
-      <category>Архитектура</category>
+      <category>Архитектура ПО</category>
       <category>Groovy</category>
       <pubDate>Fri, 24 Jan 2020 22:00:00 GMT</pubDate>
       <guid>https://initkfs.github.io/pages/traits-and-architect.html</guid>

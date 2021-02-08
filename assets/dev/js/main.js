@@ -2,7 +2,33 @@
  * Main
  * Some functions don't use exceptions to prevent script failure, although this is not always correct.
  */
-$(document).ready(function() {
+$(document).ready(function () {
+ 
+    try {
+        var postHeaderContainers = $(".post-body-header");
+        if (postHeaderContainers && postHeaderContainers.length && postHeaderContainers.length > 0) {
+            postHeaderContainers.each(function (index) {
+                var postHeaderContainer = $(this);
+                var postHeaderDateContainer = postHeaderContainer.find(".post-header-date");
+                var postHeaderDateEditedContainer = postHeaderContainer.find(".post-header-date-edited");
+                addTimeAgoBlockAfterTime(postHeaderDateContainer, ".post-datetime-text");
+                addTimeAgoBlockAfterTime(postHeaderDateEditedContainer, ".post-datetime-text-edited");
+            });
+        }
+
+    } catch (e) {
+        logError(e);
+    }
+
+    try {
+        var isTouch = ('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0);
+        if (!isTouch) {
+            $('[data-toggle="tooltip"]').tooltip();
+        }
+    } catch (e) {
+        //TODO check is object
+        logError(e);
+    }
 
     window.Prism = window.Prism || {};
     window.Prism.manual = true;
@@ -25,7 +51,7 @@ $(document).ready(function() {
         setVerticalNavigationOnSmallScreen(navigationBlock, navigationBlockClassForVertical, windowStartWidth, smallScreenWidth, isDebug);
     }
 
-    windowObject.resize(function() {
+    windowObject.resize(function () {
 
         var windowWidth = windowObject.width();
         if (isDebug) {
@@ -45,12 +71,12 @@ $(document).ready(function() {
     if (!buttonUp || !buttonUp.length) {
         logError("Not found back to top button with selector: " + buttonUpSelector);
     } else {
-        buttonUp.on('click', function(e) {
+        buttonUp.on('click', function (e) {
             scrollTop();
         });
 
         var scrollDistance = 400;
-        $(window).on('scroll', function() {
+        $(window).on('scroll', function () {
             showBackToTopButton(windowObject, buttonUp, scrollDistance);
         });
         showBackToTopButton(windowObject, buttonUp, scrollDistance);
@@ -61,11 +87,26 @@ $(document).ready(function() {
     if (!mobileButtonUp || !mobileButtonUp.length) {
         logError("Not found mobile back to top button with selector: " + mobileButtonUpSelector);
     } else {
-        mobileButtonUp.on('click', function(e) {
+        mobileButtonUp.on('click', function (e) {
             scrollTop();
         });
     }
 })
+
+function addTimeAgoBlockAfterTime(timeContainerBlock, timeTextContainerId) {
+    if (!timeContainerBlock || !timeContainerBlock.length || timeContainerBlock.length < 1) {
+        return;
+    }
+    var timeTextContainer = timeContainerBlock.find(timeTextContainerId);
+    if (timeTextContainer && timeTextContainer.length === 1) {
+        var dateIsoString = timeTextContainer.attr('data-iso-time');
+        var timeAgo = timeago.format(dateIsoString, "ru");
+        if (timeAgo) {
+            var timeAgoBlock = $("<span class='d-block d-sm-inline'></span>").text(" (" + timeAgo + ")");
+            timeAgoBlock.insertAfter(timeTextContainer);
+        }
+    }
+}
 
 /*
  * Utilities
@@ -80,7 +121,7 @@ function logError(errorMessage) {
 }
 
 function formatAnyValueInfo(value) {
-    var info = "type: " + typeof(value) + ", value: " + value;
+    var info = "type: " + typeof (value) + ", value: " + value;
     return info;
 }
 
@@ -217,7 +258,7 @@ function showCollapseBlocks(isCollapse, blocksCollection) {
     var collapseValue = isCollapse ? "show" : "hide";
     var blockCount = blocksCollection.length;
     if (blockCount) {
-        blocksCollection.each(function(index) {
+        blocksCollection.each(function (index) {
             try {
                 $(this).collapse(collapseValue);
             } catch (error) {
@@ -263,17 +304,17 @@ function setCurrentYearInBlock(yearBlockSelector) {
 }
 
 function setOpenExternalLinksInNewWindow() {
-     $("a[href^=http]:not(:has(img))").each(function() {
-         if (location && location.hostname) {
-             if (this.href.indexOf(location.hostname) === -1) {
-                 $(this).attr({
-                     target: "_blank",
-                     rel: 'noopener'
-                 });
+    $("a[href^=http]:not(:has(img))").each(function () {
+        if (location && location.hostname) {
+            if (this.href.indexOf(location.hostname) === -1) {
+                $(this).attr({
+                    target: "_blank",
+                    rel: 'noopener'
+                });
 
-                 $(this).after("<span class='external-link-icon align-middle'></span>");
-             }
-         }
+                $(this).after("<span class='external-link-icon align-middle'></span>");
+            }
+        }
 
-     })
+    })
 }
