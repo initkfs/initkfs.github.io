@@ -14,7 +14,7 @@
       <title>RSS-агрегатор и эксперименты с gtkd</title>
       <link>https://initkfs.github.io/pages/rss-aggregator-and-gtkd.html</link>
       <description>Выбор пет-проекта десктопного RSS-агрегатора, особенности gtkd, запуск под Windows и Wine. Архитектура приложения, поправки на возможные изменения. Особенности D, влияющие на архитектуру. Библиотеки и полезности для работы с RSS-лентами. Проблемы gtkd и gtk-трея. Отказ от встроенного браузера и конвертация HTML-разметки в текст.</description>
-      <category>Разное</category>
+      <category>Dlang</category>
       <pubDate>Tue, 22 Jun 2021 15:20:00 GMT</pubDate>
       <guid>https://initkfs.github.io/pages/rss-aggregator-and-gtkd.html</guid>
       <dc:date>2021-06-22T15:20:00Z</dc:date>
