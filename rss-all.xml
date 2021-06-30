@@ -6,10 +6,20 @@
     <description>Аналитический блог о программировании, it-технологиях и всяком-разном.</description>
     <language>ru</language>
     <copyright>Copyright 2021</copyright>
-    <pubDate>Tue, 22 Jun 2021 15:20:00 GMT</pubDate>
-    <dc:date>2021-06-22T15:20:00Z</dc:date>
+    <pubDate>Wed, 30 Jun 2021 17:20:00 GMT</pubDate>
+    <dc:date>2021-06-30T17:20:00Z</dc:date>
     <dc:language>ru</dc:language>
     <dc:rights>Copyright 2021</dc:rights>
+    <item>
+      <title>DSL на русском языке в Groovy</title>
+      <link>https://initkfs.github.io/pages/russian-dsl-on-groovy.html</link>
+      <description>Выбор Groovy и библиотек для Domain specific language (DSL) на русском. Особенности Closure, стратегии делегирования, command chain, иерархия делегатов с аннотацией @Delegate. Русскоязычная альтернатива def через Binding, AST-трансформации и метки. Разница между методами и свойствами, включение скриптов друг в друга, поиск аналога assert. Локализация через метапрограммирование.</description>
+      <category>Groovy</category>
+      <category>Архитектура ПО</category>
+      <pubDate>Wed, 30 Jun 2021 17:20:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/russian-dsl-on-groovy.html</guid>
+      <dc:date>2021-06-30T17:20:00Z</dc:date>
+    </item>
     <item>
       <title>RSS-агрегатор и эксперименты с gtkd</title>
       <link>https://initkfs.github.io/pages/rss-aggregator-and-gtkd.html</link>
