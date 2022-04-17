@@ -3,7 +3,7 @@
 
     Site Name:         Аналитический блог разработчика. Заметки, идеи, мысли.
     Site URL:          https://initkfs.github.io/index.html
-    Last update (UTC): 2022/04/10
+    Last update (UTC): 2022/04/17
     Language:          Russian
     Created (UTC):     2019/09/21
     Standards:         HTML5, CSS3
