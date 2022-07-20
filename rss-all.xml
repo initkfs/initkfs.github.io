@@ -6,10 +6,19 @@
     <description>Аналитический блог о программировании, it-технологиях и всяком-разном.</description>
     <language>ru</language>
     <copyright>Copyright 2022</copyright>
-    <pubDate>Sun, 08 May 2022 22:00:00 GMT</pubDate>
-    <dc:date>2022-05-08T22:00:00Z</dc:date>
+    <pubDate>Wed, 20 Jul 2022 14:50:00 GMT</pubDate>
+    <dc:date>2022-07-20T14:50:00Z</dc:date>
     <dc:language>ru</dc:language>
     <dc:rights>Copyright 2022</dc:rights>
+    <item>
+      <title>Увлекательная геоинформатика с GeoTools</title>
+      <link>https://initkfs.github.io/pages/java-geoinformatics-with-geotools.html</link>
+      <description>Java библиотека GeoTools, использование с JavaFX. Модель пространственного объекта, его свойства, координаты. Векторная координатная сетка, Open Street Map карты, поддержка разных форматов. Гео-поиск статей с Википедии, маркеры на карте, расчёт расстояний и площади, интеграция Groovy для ECQL-фильтра.</description>
+      <category>JavaFX</category>
+      <pubDate>Wed, 20 Jul 2022 14:50:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/java-geoinformatics-with-geotools.html</guid>
+      <dc:date>2022-07-20T14:50:00Z</dc:date>
+    </item>
     <item>
       <title>Эксперимент с GStreamer и GtkD</title>
       <link>https://initkfs.github.io/pages/music-player-with-gstreamer-and-gtkd.html</link>
