@@ -35,7 +35,6 @@ $(document).ready(function () {
 
     var isDebug = false;
 
-    setShareButtonsVisibleInBlock(".share-group");
     setCurrentYearInBlock("#copyright-date");
 
     var windowObject = $(window);
@@ -75,7 +74,7 @@ $(document).ready(function () {
             scrollTop();
         });
 
-        var scrollDistance = 400;
+        var scrollDistance = 600;
         $(window).on('scroll', function () {
             showBackToTopButton(windowObject, buttonUp, scrollDistance);
         });
@@ -272,22 +271,6 @@ function showCollapseBlocks(isCollapse, blocksCollection) {
 /*
  * Some usability fixes
  */
-
-function setShareButtonsVisibleInBlock(shareBlockSelector) {
-
-    if (!validateNotEmptyString(shareBlockSelector, "Share block selector")) {
-        return;
-    }
-
-    var shareBlock = $(shareBlockSelector);
-    if (!shareBlock || !shareBlock.length) {
-        return;
-    }
-
-    if (shareBlock.is(":hidden")) {
-        shareBlock.show();
-    }
-}
 
 function setCurrentYearInBlock(yearBlockSelector) {
 

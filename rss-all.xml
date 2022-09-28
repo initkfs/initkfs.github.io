@@ -2,7 +2,7 @@
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <title>Аналитический блог разработчика. Заметки, идеи, мысли.</title>
-    <link>https://initkfs.github.io/index.html</link>
+    <link>https://initkfs.github.io</link>
     <description>Аналитический блог о программировании, it-технологиях и всяком-разном.</description>
     <language>ru</language>
     <copyright>Copyright 2022</copyright>

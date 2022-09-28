@@ -2,18 +2,18 @@
 /* SITE */
 
     Site Name:         Аналитический блог разработчика. Заметки, идеи, мысли.
-    Site URL:          https://initkfs.github.io/index.html
+    Site URL:          https://initkfs.github.io
     Last update (UTC): 2022/07/20
     Language:          Russian
     Created (UTC):     2019/09/21
     Standards:         HTML5, CSS3
-    Components:        jQuery, Bootstrap, Material Design Icons, Prism.js, Sharer.js, Kolobok smiles
+    Components:        jQuery, Bootstrap, Material Design Icons, Prism.js, Kolobok smiles
     Software:          Groovy static website generator, flexmark-java, com.rometools, org.nibor.autolink
-	Web Design:        initkfs
+    Web Design:        initkfs
 
 /* AUTHOR */
 
-	Nickname:    initkfs
+    Nickname:    initkfs
 
 /* THANKS */
 
@@ -26,7 +26,6 @@
     Prism.js:              https://prismjs.com
     jQuery:                https://jquery.com
     Bootstrap:             https://getbootstrap.com
-    Sharer.js:             https://ellisonleao.github.io/sharer.js
 
 /* META */
 
