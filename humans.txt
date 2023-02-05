@@ -1,7 +1,7 @@
 
 /* SITE */
 
-    Site Name:         Аналитический блог разработчика. Заметки, идеи, мысли.
+    Site Name:         Космическая станция Аналитики. Исследования и эксперименты
     Site URL:          https://initkfs.github.io
     Last update (UTC): 2023/01/09
     Language:          Russian
