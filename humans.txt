@@ -3,7 +3,7 @@
 
     Site Name:         Космическая станция Аналитики. Исследования и эксперименты
     Site URL:          https://initkfs.github.io
-    Last update (UTC): 2023/01/09
+    Last update (UTC): 2023/04/15
     Language:          Russian
     Created (UTC):     2019/09/21
     Standards:         HTML5, CSS3

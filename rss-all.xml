@@ -6,10 +6,19 @@
     <description>Аналитический блог о программировании, it-технологиях и всяком-разном.</description>
     <language>ru</language>
     <copyright>Copyright 2023</copyright>
-    <pubDate>Mon, 09 Jan 2023 11:00:00 GMT</pubDate>
-    <dc:date>2023-01-09T11:00:00Z</dc:date>
+    <pubDate>Sat, 15 Apr 2023 13:00:00 GMT</pubDate>
+    <dc:date>2023-04-15T13:00:00Z</dc:date>
     <dc:language>ru</dc:language>
     <dc:rights>Copyright 2023</dc:rights>
+    <item>
+      <title>Влияние психологии на архитектуру программ</title>
+      <link>https://initkfs.github.io/pages/psychology-in-software-architect.html</link>
+      <description>Поиск причин превращения хорошей архитектуры в плохую: эмерджентность, технические противоречия, сложность, компенсация энтропии. Когнитивные искажения в принятии решений. Влияние возрастной, дифференциальной психологии, различных психических явлений - ощущений, восприятия, внимания, представления, воображения, мышления, памяти разработчика. Психологические и социальные эффекты в группах.</description>
+      <category>Архитектура ПО</category>
+      <pubDate>Sat, 15 Apr 2023 13:00:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/psychology-in-software-architect.html</guid>
+      <dc:date>2023-04-15T13:00:00Z</dc:date>
+    </item>
     <item>
       <title>Первое знакомство с ESP32</title>
       <link>https://initkfs.github.io/pages/experiments-with-esp32.html</link>
