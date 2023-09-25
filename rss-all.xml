@@ -31,7 +31,7 @@
     <item>
       <title>Увлекательная геоинформатика с GeoTools</title>
       <link>https://initkfs.github.io/pages/java-geoinformatics-with-geotools.html</link>
-      <description>Java библиотека GeoTools, использование с JavaFX. Модель пространственного объекта, его свойства, координаты. Векторная координатная сетка, Open Street Map карты, поддержка разных форматов. Гео-поиск статей с Википедии, маркеры на карте, расчёт расстояний и площади, интеграция Groovy для ECQL-фильтра.</description>
+      <description>Java библиотека GeoTools, использование с JavaFX. Модель пространственного объекта, его свойства, координаты. Векторная координатная сетка, Open Street Map карты, поддержка разных форматов. Гео-поиск статей с Википедии, маркеры на карте, расчёт расстояний и площади, интеграция Groovy для ECQL-фильтра. 3D глобус.</description>
       <category>JavaFX</category>
       <pubDate>Wed, 20 Jul 2022 14:50:00 GMT</pubDate>
       <guid>https://initkfs.github.io/pages/java-geoinformatics-with-geotools.html</guid>
