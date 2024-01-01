@@ -344,7 +344,7 @@ class TypeManager {
 
 	List&lt;String&gt; getShortTableColumns() {
 		//рефлексивное получение полей и чтение их текстовых значений, здесь имеет смысл проверить тип
-		 final List&lt;String&gt; columns = ClassUtil.toMap(this).collect { fieldNameAndValueEntry -&gt;
+		final List&lt;String&gt; columns = ClassUtil.toMap(this).collect { fieldNameAndValueEntry -&gt;
 			String.valueOf(fieldNameAndValueEntry.getValue()) 
 		}
 		return columns
@@ -590,7 +590,7 @@ final ConnectionManager connectionManager
 
 			@Override
 			Optional&lt;Boolean&gt; toFieldFromDatabase(String fieldName, Integer databaseValue, Sql sql, Map&lt;String, Object&gt; valuesFromDb) throws SQLException {
-				 //assert fieldValue != null
+				//assert fieldValue != null
 				//нехороший упрощенный каст в int, но который может закончиться неприятностями, связанными не только с перепаковкой
 				return Optional.of(connectionManager.getTypeManager().toBoolean((int) databaseValue))
 			}
@@ -656,7 +656,7 @@ class SimpleEntityValidator&lt;E extends UniqueEntity&gt; {
 			//залогировать?
 			return Optional.empty()
 		}
-		 
+		
 		//каст as E для проверки типов
 		E entity = getEntityClass().getDeclaredConstructor().newInstance() as E
 		

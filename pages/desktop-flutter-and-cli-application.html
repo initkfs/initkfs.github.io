@@ -128,16 +128,16 @@ import java.awt.*
 
 new SwingBuilder().edt {
 frame(title: 'Frame', size: [250, 75], show: true) {
-	  borderLayout()
-	  textlabel = label(
-		  text: 'Click the button!', 
-		  constraints: BorderLayout.NORTH
-	  )
-	  button(
-		  text:'Click Me',
-		  actionPerformed: { println &quot;hello world&quot;},
-		  constraints: BorderLayout.SOUTH
-	  )
+	borderLayout()
+	textlabel = label(
+		text: 'Click the button!', 
+		constraints: BorderLayout.NORTH
+	)
+	button(
+		text:'Click Me',
+		actionPerformed: { println &quot;hello world&quot;},
+		constraints: BorderLayout.SOUTH
+	)
 	}
 }
 </code></pre>
@@ -177,9 +177,9 @@ frame(title: 'Frame', size: [250, 75], show: true) {
 Future&lt;void&gt; start(List&lt;String&gt; args) async {
 	await super.start(args); //где-то в глубине происходит запуск CliApplication
 	var app = FlutterDesktopApplication&lt;MainScreen&gt;(() {
-	  return MainScreen(
-		  mainController.fromMainControllerChannelsCollector,
-		  mainController.toMainControllerChannelsCollector);
+	return MainScreen(
+		mainController.fromMainControllerChannelsCollector,
+		mainController.toMainControllerChannelsCollector);
 	});
 	runApp(app);
 }
