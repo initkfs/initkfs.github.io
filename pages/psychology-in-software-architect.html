@@ -262,28 +262,16 @@
                </ul>
        </div>
     </div>
-    <div class='card sidebar-container links-favorite'>
-        <div class='card-header sidebar-container-header links-favorite-header'>
-            <span class='mdi mdi-link-variant'></span>
-            Другие мои проекты
-        </div>
-        <div class='sidebar-container-content post-labels-content links-favorite-content'>
-                <div class='list-group overflow-y-hidden overflow-x-auto'>
-                    <a class='link-favorite list-group-item list-group-item-action' href='https://vk.com/jfxpulse'><span class='mdi mdi-vk-box'></span> JavaFX-девлоги в ВК</a>
-                    <div id="vk_groups" class='list-group-item p-0 border-0'></div>
-                </div>
-        </div>
-    </div>
     <div class='card mb-3 sidebar-container links-contacts'>
         <div class='card-header sidebar-container-header links-contacts-header'>
             <span class='mdi mdi-account-outline'></span>
-            Девлоги экспериментов
+            Девлоги текущих проектов
         </div>
-        <div class='sidebar-container-content links-contacts-content d-flex justify-content-around align-items-center flex-wrap'>
-            <a class='link-contact' href='https://vk.com/kn.firsov'><span class='mdi mdi-vk' data-toggle='tooltip' data-placement='top' title='Вконтакте'></span></a>
-            <a class='link-contact' href='https://t.me/ansp_station'><span class='mdi mdi-telegram' data-toggle='tooltip' data-placement='top' title='Telegram'></span></a>
-            <a class='link-contact' href='https://x.com/initkfs'><span class='mdi mdi-twitter' data-toggle='tooltip' data-placement='top' title='X (Twitter)'></span></a>
-        </div>
+        <div class="list-group sidebar-container-content">
+			<a class='link-contact list-group-item list-group-item-action' href='https://vk.com/kn.firsov'>Вконтакте (подробный девлог)</a>
+			<a class='link-contact list-group-item list-group-item-action' href='https://t.me/ansp_station'>Telegram (подробный девлог)</a>
+			<a class='link-contact list-group-item list-group-item-action' href='https://x.com/initkfs'>X/Twitter (краткий девлог)</a>
+		</div>
     </div>
     <div class='page-up-wrapper'>
         <button class='btn d-none d-lg-block' id='page-up-trigger' type='button'><span
@@ -343,7 +331,6 @@ integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="ano
         src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.full.min.js" integrity="sha512-wb3lqal2VtYhmlPAr232VP+Zus676CFAEYdywxIUSxG6F/X9WhN6SpREkWUdwBvMpd6gCKuKTGHhdum6m1wOvQ==" crossorigin="anonymous"></script>
-<script src="https://vk.com/js/api/openapi.js?168"></script>
 
 <script crossorigin='anonymous' integrity='sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q=='
         src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
@@ -389,16 +376,6 @@ if (problemScripts.length > 0) {
         mainFailBlock.appendChild(failInfoBlock);
     }   
 }
-
-try {
-    if (typeof VK !== 'undefined') {
-        VK.Widgets.Group("vk_groups", {mode: 4, wide: 1, width: "auto", height: 400, color1: "FFFFFF", color2: "000000", color3: "5181B8"}, 156794511);
-    }else {
-        console.error("VK widget is not defined");
-    }
-} catch (e) {
-    console.error(e);
-} 
 </script>
 <script src="/assets/dev/js/main.js"></script>
 </body>
