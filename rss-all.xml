@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
-    <title>Космическая станция Аналитики. Исследования и эксперименты</title>
+    <title>Космическая станция Аналитики. Из темноты к ярким звёздам</title>
     <link>https://initkfs.github.io</link>
-    <description>Аналитический блог о программировании, it-технологиях и всяком-разном.</description>
+    <description>Авторский исследовательский блог о программировании, it-технологиях и всяком-разном.</description>
     <language>ru</language>
     <copyright>Copyright 2024</copyright>
     <pubDate>Sat, 15 Apr 2023 13:00:00 GMT</pubDate>

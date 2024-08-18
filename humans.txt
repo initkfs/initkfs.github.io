@@ -1,7 +1,7 @@
 
 /* SITE */
 
-    Site Name:         Космическая станция Аналитики. Исследования и эксперименты
+    Site Name:         Космическая станция Аналитики. Из темноты к ярким звёздам
     Site URL:          https://initkfs.github.io
     Last update (UTC): 2023/04/15
     Language:          Russian
