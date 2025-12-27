@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'>
+    <meta name="yandex-verification" content="7021eeb9c07b5c09">
+    <meta name="google-site-verification" content="PztbVe6Ru8ggM2n_tWUYwy0bEVHtJNvzIr-nsVCvBCA">
+    
+    
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/stab/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="/assets/stab/img/favicons/safari-pinned-tab.svg" color="#004245">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/stab/img/favicons/apple-touch-icon.png">
+    <meta name="msapplication-config" content="/assets/stab/img/favicons/browserconfig.xml">
+    <!-- end favicons -->
+    <!-- rss feeds -->
+    <link rel=alternate title="RSS лента" type=application/rss+xml href='/rss-all.xml'>
+    <!-- end rss feeds -->
+    <link type="text/plain" rel="author" href="/humans.txt">
+    <link crossorigin='anonymous' href='https://cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css'
+          integrity='sha384-Ls5zBitvvQ/wdeZDuTUevSY5Tb/she50BeMPrco2ok6xDC8modj6/JPwdL0gNxmP' rel='stylesheet'>
+    
+    <link crossorigin='anonymous' integrity='sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=='
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    
+    <link href="/assets/dev/css/main.css" rel='stylesheet'>
+    
+    <title>Интеграция десктопного Flutter в CLI-приложение. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</title>
+    <meta name="description" content="Эксперименты с Dart и Flutter">
+    <meta content='Интеграция десктопного Flutter в CLI-приложение. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах' property='og:title'>
+    
+    <meta name="keywords" content="dart,flutter">
+    
+    <meta content='/index.html' property='og:url'>
+    <meta content='website' property='og:type'>
+    <meta content='ru_RU' property='og:locale'>
+</head>
+<body>
+<div class='container mb-3'>
+    <div class='row'>
+        <div class='col-lg-12'>
+           <div class='card w-100 site-header-container'>
+    <div class='row align-items-center'>
+        <div class="col-lg-9">
+            <div class='card-header site-header'>
+                <div class='card-title site-header-title mb-3'>
+                    <h5 class='site-header-title-text'>
+                        <a href='/index.html' class='blog-title-text-link'>Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</
+                    </h5>
+                </div>
+                <div class='card-subtitle site-header-subtitle mb-2'>
+                     <a href="/pages/about.html" class="badge mb-2 mb-sm-0">О станции и капитане</a>  <a href="/pages/site-implementation.html" class="badge">Сайт (Groovy-генератор)</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            
+            <div class='site-map w-100 d-flex justify-content-center pe-lg-3'>
+                <a class='site-map-link btn w-100' href='/site-map.html' role='button'><span
+                        class='site-map-link-icon mdi mdi-sitemap'></span>
+                    <span class='text-clarification'>Карта сайта (все статьи)</span></a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-9 blog-posts'>
+            <article class='card post'>
+    <h5 class='card-header post-header fw-bold'>
+        Интеграция десктопного Flutter в CLI-приложение
+    </h5>
+    <div class='card-body post-body'>
+        <div class="card-title mb-3">
+            <div class="post-body-header">
+
+<div class='post-header-date'><span class='mdi mdi-calendar-clock'></span>
+    <span class="post-datetime-text" data-iso-time="2021-09-09">9 сентября 2021</span>
+</div>
+
+
+<span class='mdi mdi-code-braces'></span><span> Примеры кода</span>
+<div class='post-labels'>
+    <span class='post-header-labels-icon mdi mdi-tag-outline'></span>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/dart.html' rel='tag'>Dart
+    </a>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/arhitektura_po.html' rel='tag'>Архитектура ПО
+    </a>
+    
+</div>
+</div>
+        </div>
+        <div class='post-content'><p>На нынешней стадии мобильная разработка меня не слишком интересует из-за тесной связи с IoT и неопределенности тамошнего победителя: JavaScript, Dart, Kotlin или же какой-нибудь другой язык программирования станет доминирующим, а может они поделят рынок между собой - пока не слишком ясно. Есть неопределенность с Fuchsia, со свободными операционными системами, которые с тем же F-Droid на каких-то неспецифических и простых задачах вполне могут заменить собой доминирующие операционки и обойтись без официальных маркетов приложений. Разными могут быть стратегии в отношении конкурентов и воздействия на них через инструменты: например, есть определенные вопросы, насколько уютно HarmonyOS будет <a href="https://github.com/flutter/flutter/issues/38437">чувствовать</a> себя во Flutter.</p>
+<p>Кроме того, мобильный\IoT стек должен быть выгоден для электроники или же иметь какую-то дополнительную полезность, но в части Dart проект <a href="https://dartino.org">Dartino</a> немножко <a href="https://groups.google.com/g/dartino-discuss/c/U3fzZjoOdKg">умер</a>, замечены странности с фреймкорками (вымирание Aqueduct, непонятная ситуация с AngularDart), что намекает на определенную осторожность.</p>
+<p>Может так оказаться, что JavaScript (с бонусом Espruino) или тот же Kotlin (c бонусом от связи с Java) будет иметь большую совокупную полезность для стека, хорошо перекрывая и часть задач вне мобайла\IoT. Можно вспомнить и о <a href="https://tinygo.org">TinyGo</a>, хотя пока еще непонятно, чем обернется для него такой огромный список поддерживаемых платформ, но вместе с мобайлом (например, в <a href="https://fyne.io">Fyne</a> заявлена его поддержка) Go также может оказаться наиболее выгодным, покрывая большую часть кейсов на разные устройства. Поэтому пока я не определился окончательно со стеком и платформами, пытаясь нащупать наиболее выгодное сочетание инструментов.</p>
+<p>С другой стороны, простые эксперименты много времени не требуют и нет причин откладывать Dart и Flutter в долгий ящик. Меня интересует архитектурный опыт и возможность синхронизации кодовой базы между разными языками.</p>
+<p>Dart без Flutter вполне может работать как скрипт или же как native (как тот же Dart Sass), а так как десктопное приложение часто является частным случаем консольного, то задача формируется сама собой: попробовать сделать сначала консольное приложение, потестировать, а потом натянуть на него десктопный Flutter. Если с последним не выйдет, то все равно Dart можно где-нибудь использовать.</p>
+<p>После перебора разных претендентов победителем вышел парсер картинок для Reddit. Задача достаточно простая: нет каких-то специфических библиотек, асинхронность в Dart может быть полезна для распараллеливания загрузок, а сам по себе Reddit имеет удобное и относительно простое api.</p>
+<p>Прототип под Linux получился таким:</p>
+<p><img alt='flutter linux application' class='post-image' src='/assets/stab/img/posts/desktop-flutter-and-cli-application/flutter.jpg'></p>
+<p>Что касается консольного варианта, то здесь Dart показал себя неплохо, разве что есть несколько поправок на архитектуру со стороны самого языка.</p>
+<p>Наверное, главная из них - это наличие асинхронных вариантов методов и проблемы со случайным пропуском await, которые IDE никак особо не подсвечивает. В таком случае код, который должен выполняться синхронно, например, создание краш-файла, пойдет по аcинхронному варианту и приложение закончит свою работу раньше, чем файл будет создан. Поскольку вызов асинхронного метода вполне легален, то такие логические ошибки довольно трудно отследить, а за счет сторонних пакетов, большая часть которых ориентирована на асинхронность, код повсеместно пропитывается ей, что повышает количество возможных проблем в сравнении с менее асинхронными тулкитами.</p>
+<p>Еще есть интересный нюанс в отделении стектрейса от исключения. Этот стектрейс очень и очень легко потерять, а вместе с ним и все данных об ошибке в приложении. Учитывая, что некоторые ошибки в общем случае трудно или же вообще невоспроизводимы, то это попахивает катастрофой. Сами по себе исключения не поддерживают exception chaining, все это нужно реализовывать вручную.</p>
+<p>Объектность языка позволяет легко разделить код на универсальную логику фреймворка и специфическую предметную, тут никаких претензий нет. Архитектура легко подгоняется под любой другой объектный фреймворк, разве что с небольшими поправками на асинхронность. Как вывод, Dart (в отличие, например, от того же Go) позволяет реиспользовать уже протестированную на других языках архитектуру с минимальными правками.</p>
+<p>Кроме того, наличие mixin позволяет даже её улучшить в сравнении с языками, где примесей\трейтов нет: все же одиночное наследование в самых базовых компонентах фреймворка будет блокировать иерархию, что осложняет интеграцию в него сторонних либ.</p>
+<p>Каких-либо особо раздражающих вещей я в самом языке пока не заметил, синтаксис привычен и не вызывает когнитивных диссонансов. Своеобразные приватные методы, неявные интерфейсы для меня вполне допустимы, эволюция других языков привела к полноценным методам в интерфейсах, редукции модификаторов доступа и всяким разным изменениям ООП-модели, которая может быть очень и очень разной. Дженерики reifiable, что приятно.</p>
+<p>Есть, конечно, определенные вопросы к <a href="https://github.com/dart-lang/sdk/issues/1410">консистентности названий типов</a>, странному преобразованию перечислений в строку, что приводит к появлению <a href="https://pub.dev/packages/enum_to_string">более удобных библиотек</a> и прочим мелочам, которые выглядят очень странно, учитывая возможности и ресурсы команды Dart. Например, String не содержит удобного аналога IsNullOrWhiteSpace из C# или же isBlank из Java, хотя это очень распространенная проверка.</p>
+<p>А вот резкий переход к sound null safety заставил потратить достаточно много времени на рефакторинг. Все это вызывает определенные сомнения и одни проблемы с null поменялись на другие проблемы без null. Сразу инициализированные объекты можно получить только в очень простых случаях (обычно так и делается), а у более сложных компонентов, которые трудно собирать и создавать на полях все равно будет null, разве что late, но особо ничего не меняется, от null уйти проблематично. Для таких объектов невозможно использовать конструкторы, как и делить их на более мелкие, что сразу же усложнит сборку и управление самими компонентами. С одной стороны, IDE и компилятор начинают подсказывать места, в которых нужны проверки, с другой стороны, этих проверок может стать настолько много, что пользоваться апи неудобно, код зашумляется, юзабилити его понижается, а ошибки рантаймовые там все равно остаются, но здесь трудно сказать, какой вариант лучше - c null, без или что-то среднее, везде свои достоинства и недостатки.</p>
+<p>Первые значительные неприятности подкрались со стороны рефлексии, а вернее маппинга реддитовского json на объекты. Это очень просто и удобно в пару строчек кода делается через рефлексию в dart:mirrors, но Flutter <a href="https://github.com/flutter/flutter/issues/1150">так не думает</a>. Простая логика маппинга в cli-приложении должна быть заменена на кодогенерацию или конвертирование объектов вручную.</p>
+<p>Создание методов-конвертеров кодогенерацией выглядит неоправданным для такой простой задачи, обратной стороной будет завязывание кода на очень специфический инструмент, множество побочных эффектов и разделение багов между ним и самим кодом. Кроме того, само наличие dart:mirrors, который может работать в cli-приложениях, создает некоторые подозрения в изначальной продуманности инструментов и терять время из-за чужих ошибок и недоделок выглядит странным. Для больших моделей преимущества может быть и будут покрывать недостатки, но не факт.</p>
+<p>Способ с методами-конвертерами ведет к большому количеству ручной работы, но и не вносит какие-либо побочные эффекты. Если конвертирующие методы поместить в классах модели, то для более сложных случаев выйдет смешивание чистых данных с логикой, что принесет проблемы для разных форматов и частных случаев (если там будут разные стратегии маппинга для полей, перевод в типы и т.п.), а если вынести в отдельные специализированные классы-конвертеры, то тогда редактирование полей разбрасывается по разным местам, что может быть неудобным. С неудобством в компилируемом языке мириться проще, отдельный конвертер более гибок в настройке маппинга.</p>
+<p>Если конвертеры (методы) работают с типом Map&lt;String, dynamic&gt;, то их можно сделать более универсальными, подводя под специализированный интерфейс с мапой, убирая то, что связано с JSON под капот. Тот же маппинг в базу данных тоже можно построить через структуру ключ-значение и если приложение переключается с json на бд или использует их одновременно, то для более универсального Map правки могут не потребоваться. Но поскольку в конвертерах есть привязка к полям конвертируемого класса, а их может быть сколь угодно много, то масштабирование и поддержка тут не очень.</p>
+<p>С другой стороны, ручная возня с многочисленными полями встречается достаточно часто и даже менее подвержена ошибкам в сравнении с рефлексией, ну разве что есть шанс что-то забыть, установить не туда, присвоить поле несколько раз и т.п., но логика на рефлексии это тоже может делать и отследить ошибки будет труднее.</p>
+<p>Как итог - маппинг пришлось переделывать полностью и часть времени была потрачена впустую. Еще возникли проблемы с тестами - их пакет вступил в конфликт с тестами в Flutter, но после маппинга это уже не выглядит какой-то странностью.</p>
+<p>Также возникли небольшие проблемы с вводом-выводом: стабильно работающие в консольном варианте программы stdout.writeln и stderr.writeln внезапно <a href="https://stackoverflow.com/questions/57011309/i-cant-print-to-vscodes-console-with-stdout-write">отказались</a> работать в vscode, но тут трудно сказать, кто виноват, IDE или же фреймворк.</p>
+<p>Адаптация под десктоп выглядит довольно странной. Первые эксперименты пришлось вообще отложить из-за отсутствия проброса cli-аргументов приложению, что <a href="https://github.com/flutter/flutter/issues/32986">добавили позже</a>.</p>
+<p>Настройка ширины окна оказалась задачей нетривиальной и потребовала отдельного плагина <a href="https://pub.dev/packages/desktop_window">desktop_window</a>.</p>
+<p>Изначально трея не было, но позже его <a href="https://github.com/flutter/flutter/issues/81644">завезли</a>. Не тестировал, но судя по коду для Linux используется libappindicator, а эта библиотека очень &quot;своеобразная&quot; в плане юзабилити, только для самых простых случаев. С другой стороны, она используется повсеместно, в том же Electron и т.п.</p>
+<p>Сильных переделок потребовали проблемы производительности. При грубом ресайзе картинок с реддита приложение начинало жутко поглощать память даже на небольших объемах изображений, пришлось пробовать <a href="https://stackoverflow.com/questions/60279392/flutter-images-memory-does-not-get-gc">разные способы</a> и в итоге сделать отдельный кэш изображений и выводить в списке превьюшки низкого качества, по клику открывая оригинальную картинку.</p>
+<p>В принципе, все эти проблемы вполне терпимы и альтернативные тулкиты имеют примерно такие же, разве что другого рода. Однако есть еще одна проблема, а вернее ключевая особенность архитектуры - описание структуры вью через DSL-код, который образуется конструкторами иммутабельных контролов с повсеместно финализированными полями.</p>
+<p>Например, конструктор IconButton содержит около 20 аргументов, причем сам по себе не наследуется от какой-либо Button, чего интуитивно можно было бы ожидать. Есть мнение, что увеличение количества аргументов конструктора (и не только) после определенного значения очень сильно усложняет сборку объекта, чем и обусловлена известная проблематика инжекции зависимостей через конструктор и замены её на сеттеры ценой иммутабельности. Здесь же выбран DSL-путь и описание разметки в общем случае нельзя сделать последовательной, как в других тулкитах, где контролы мутабельны и могут настраиваться в разных участках кода.</p>
+<p>Кроме того, большинство десктопных тулкитов следят за состояниями контролов сами, скрывая эту логику под капот. В Flutter за этим всем нужно следить самому, а это шанс получить много ошибок в неправильном управлении стейтом. Вероятно, это будет осложнять фреймворку конкуренцию с десктопным тулкитами на их задачах. Конечно, эти задачи тоже делятся на разные классы сложности, но в любом случае подход Flutter намекает на большее количество проблем в т.ч. из-за иммутабельности контролов, которые проблематично настраивать поэтапно. Ключевым фактором выбора фреймворка скорее будет требования кроссплатформенности. Хотя десктопные интерфейсы сильно отличаются от своих коллег в мире портативных устройств, одно приложение с единым интерфейсом может запросто стать неудобным на всех платформах одновременно.</p>
+<p>С одной стороны, такой архитект из-за стейта можно посчитать более низкоуровневым и контролы становятся намного лучше управляемыми, с другой - это новый отдельный класс ошибок и сложность переноса кода из программ-билдеров, как и последующий рефакторинг.</p>
+<p>Создавать код дедовским ручным способом в 2021 выглядит такой себе идеей, но поскольку в разметку все равно проникает какая-то логика, то использование билдеров вроде <a href="https://flutterstudio.app">Flutter Studio</a> или его аналогов становится несколько проблематичным. Здесь можно вспомнить GUI-тулкиты первых поколений без всяких xml-разметок. Для их мутабельных контролов, которые описываются кодом, в билдерах можно получить общую структуру, а уже в самом приложении донастраивать, что уменьшает зависимость от билдера и такой макет все еще можно более-менее сносно редактировать.</p>
+<p>Вероятно, Flutter требует подстраховок на случай будущих переделок и нужно закладывать в интерфейс сразу все элементы, чтобы свести будущие правки дерева виджетов к минимуму, однако это не всегда возможно.</p>
+<p>Есть разные способы разделения логики, например, известный BLOC, как и <a href="https://github.com/brianegan/flutter_architecture_samples">многие другие</a> паттерны. Некоторые подходы требуют создания огромного количества классов, сильно запутывая логику и последующий фикс багов может быть той еще задачкой. Использование сторонних библиотек для такой ключевой логики выглядит тоже затеей немного рискованной: любые проблемы в этих библиотеках сразу похоронят проект, какая-либо миграция скорее всего будет невозможной из-за больших трудозатрат, проще переписать с нуля.</p>
+<p>Поскольку в блоге есть Groovy, то можно провести аналогии с его DSL для Swing через <a href="https://groovy-lang.org/swing.html">SwingBuilder</a>. Я возьму пример из документации и простейшее окошко с кнопкой можно вывести вот так:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>import groovy.swing.SwingBuilder
+import java.awt.*
+
+new SwingBuilder().edt {
+frame(title: 'Frame', size: [250, 75], show: true) {
+	borderLayout()
+	textlabel = label(
+		text: 'Click the button!', 
+		constraints: BorderLayout.NORTH
+	)
+	button(
+		text:'Click Me',
+		actionPerformed: { println &quot;hello world&quot;},
+		constraints: BorderLayout.SOUTH
+	)
+	}
+}
+</code></pre>
+<p>Выглядит идеологически очень похоже, разве что DSL формируется с помощью Closure. Трудно сказать, насколько тут улучшается читаемость в сравнении с обычным Swing, где можно последовательно настраивать контролы или же отделить структуру макета от его поведения.</p>
+<p>С другой стороны, главный контроллер приложения совсем необязательно должен что-то знать о Flutter, задача вырождается в обмен событиями между главным контроллером и всеми остальными, в роли которых может выступать презентер\вью Flutter, как и что-нибудь другое. Механизм обмена можно абстрагировать в понятие канала, которых минимально нужно два: события из контроллера и события в контроллер. Без IoC контейнера в игру вступает ограничения инжекции через конструктор - количество передаваемых зависимостей должно быть небольшим, да и нужно пробросить все основные службы - логгер, конфиг и т.п.. Кроме того, в них легко запутаться, поэтому нужны классы агрегаторы.</p>
+<p>В итоге, как самый простой способ можно попробовать создать два класса-агрегатора каналов, которые заинжектить в конструктор, что-то вроде:</p>
+<pre class='line-numbers'><code class='prettyprint language-dart'>class FromMainControllerChannelsCollector {
+	final StreamController&lt;RedditPost&gt; postProcessChannel = StreamController();
+	final StreamController&lt;ParserProcessingEvent&gt; parserEventsChannel = StreamController();
+}
+</code></pre>
+<p>при получении событий от контроллера и его брата, для получении событий в контроллер:</p>
+<pre class='line-numbers'><code class='prettyprint language-dart'>class ToMainControllerChannelsCollector {
+	Function()? onRun;
+	Function()? onStop;
+	Function()? onExit;
+	Function(RedditPost)? onFavoritePost;
+}
+</code></pre>
+<p>&quot;Каналы&quot; можно агрегировать во что-то другое, частично объединив, надстроить над ними множество родителей, как и убрать из названия направление, однако с т.з. юзабилити это оказалось более удобным, в других случаях возможна путаница, ибо такая примитивная реализация не исключает перепутывания каналов и неправильное их использование, кроме того, она плохо масштабируется.</p>
+<p>Можно поиграться и с неймингом полей, но разделение на классическое имя коллбэка onX и XChannel (или XListener?) для стрима выглядит более удобным. Имя postProcess скорее всего неудачно из-за мимикрии под повсеместно распространеный префикс post\pre, так что сугубо пример. Конечно же, то же самое можно реализовать и через более продвинутый наблюдатель - шину сообщений (event bus). При наличии рефлексии можно лишь зарегистрировать подписчика в шине, а далее автоматически вызывать нужные методы под определенные события.</p>
+<p>Если в роли вью выступает потомок State, то в initState можно подписаться на события главного контроллера, как и освободить слушатели в dispose. Контроллер, в свою очередь, ловит события от вью, при пересоздании вью снова происходит инжекция каналов в конструктор. Наибольшая проблема тут появляется (как и для любого наблюдателя) в более сложном обмене между ними, что может быстро превратить все в хаос из событий и коллбэков. Ну а более сложные случаи навроде взаимозависимости событий друг от друга или же их ретрансляции скорее всего потребуют другое решение.</p>
+<p>Такой подход намекает на отношение один-ко-многим, где на стороне одного - главный контроллер, а на стороне &quot;многих&quot; - какие-то другие контроллеры приложения. Соответственно, задача может потребовать многие-ко-многим и вью Flutter потребует получать события из другого контроллера, например, трея. Но обычно этим тоже занимается главный контроллер, пробрасывая события от одного контроллера к другому.</p>
+<p>Также возникает вопрос обмена событий между разными экранами, чем главный контроллер не занимается и у Flutter должен быть свой механизм, который пробрасывает каналы всем остальным. Разным экранам нужны разные события и проброс всех каналов скопом хотя и самый простой способ, но, вероятно, может быть опасным из-за возможности подписки на чужие события или создания побочных эффектов.</p>
+<p>Теоретически, если использовать что-то вроде Integration Patterns, то можно сократить количество полей и обратных вызовов, но усложнится обработка событий - ими нужно как-то управлять и маршрутизировать. Для такой простой задачи эта дополнительная сложность выглядит не слишком обоснованной. Ну и поскольку никаких ссылок на контроллер в событиях не передается, то эта модель напоминает выталкивающий (push) Наблюдатель, а значит в более специфических случаях может потребоваться pull-модель, например, для ленивых вычислений.</p>
+<p>Сама интеграция Fluter в существующее приложения достаточно проста, разве что жизнь может осложнить StatelessWidget, можно попробовать сделать так:</p>
+<pre class='line-numbers'><code class='prettyprint language-dart'>abstract class DesktopApplication&lt;C extends MainController&gt; extends StatelessWidget with CliApplication&lt;C&gt; { }
+</code></pre>
+<p>Из-за наследования класс базового приложения должен быть миксином, но в общем случае эти классы проблематично сделать иммутабельными: на ранних этапах жизни приложения службы\сервисы еще не существуют, они формируются поэтапно. Первым может создаваться конфиг, на основе конфига - логгер и т.д. Требования иммутабельности для StatelessWidget можно соблюсти через композицию, например, так:</p>
+<pre class='line-numbers'><code class='prettyprint language-dart'>abstract class DesktopApplication&lt;C extends MainController&gt; with CliApplication&lt;C&gt; { }
+</code></pre>
+<p>в котором уже можно создать и запустить Flutter:</p>
+<pre class='line-numbers'><code class='prettyprint language-dart'>abstract class FlutterDesktopApplication&lt;S extends StatefulWidget&gt; extends StatelessWidget { }
+</code></pre>
+<p>Тогда класс вне core-кода может наследоваться от DesktopApplication, переопределять создание контроллера и стратегии сборки служб, а также создать FlutterDesktopApplication, что-то вроде:</p>
+<pre class='line-numbers'><code class='prettyprint language-dart'>class App extends DesktopApplication&lt;MainController&gt; {
+
+@override
+Future&lt;void&gt; start(List&lt;String&gt; args) async {
+	await super.start(args); //где-то в глубине происходит запуск CliApplication
+	var app = FlutterDesktopApplication&lt;MainScreen&gt;(() {
+	return MainScreen(
+		mainController.fromMainControllerChannelsCollector,
+		mainController.toMainControllerChannelsCollector);
+	});
+	runApp(app);
+}
+}
+</code></pre>
+<p>Таким образом, сборка все также проходит по этапам cli-приложения, создаются все необходимые службы, которыми комплектуется главный контроллер, каналы которого инжектятся через конструктор в вью Flutter. Если снова нужно переделать десктопное приложение в CLI-приложение, то нужно наследоваться от CliApplication и если донастроек не требуется, то просто удалить этот метод вообще. Каналы в контроллере так и остаются - они особо ни на что не влияют (кроме усложнения и влияния на производительность, разумеется).</p>
+<p>Хотя здесь могут быть определенные проблемы от очередности запуска контроллера и самого Flutter: если главный контроллер будет запускаться из CliApplication, то он вполне может содержать какую-то логику, которая должна срабатывать после загрузки интерфейса, иначе часть событий банально не дойдет до Flutter и будет потеряна. Все это может намекать на отделение запуска контроллера от его сборки в стартовых методах или же какой-то другой способ его контроля.</p>
+<p>В ручном управлении стейтом, как показала практика, рано или поздно появляется достаточно много логики и последующий рефакторинг становится очень проблематичным. Вероятно, здесь можно использовать что-то вроде BLOC, однако понятие &quot;разделение логики&quot; очень близко к понятию &quot;разброс логики&quot;, что также может затруднить рефакторинг и понимание происходящего, а асинхронность все это сильно усугубляет. Для читаемости и рефакторинга есть смысл максимально облегчать конструкторы контролов, чтобы они не могли сильно раздувать вложенность и объем кода, но тогда начнется разбрасывание кода по разным местам.</p>
+<p>На этом мои эксперименты закончились: относительно простая задача по выводу картинок списком постепенно начала обрастать излишней и сомнительной сложностью, проект не оправдывает вложенное в него время. На фоне неопределенности со стеком я не тестировал кроссплатформенность, а так же аналоги, например, тот же JavaFX с плагинами Gluon теоретически тоже может в мобильную разработку, как и многие другие инструменты, поэтому не могу сравнить с чем-то похожим по задачам или с ближайшими конкурентами, как и сказать о проблемах кроссплатформенности на разных устройствах.</p>
+<p>Вероятно, иммутабельность имеет свои сильные стороны в мобильных (или веб) интерфейсах, поскольку мобильные операционные системы более жестко управляют приложением, но это не снимает вопроса адаптации Flutter для десктопных программ с более-менее сложной логикой.</p>
+<p>Сам Dart показал себя очень хорошо в качестве консольного приложения, язык частично унифицирован со многими объектными языками и реиспользование кода очень высокое. Есть определенные вопросы к стратегии развития языка, вносимым изменениям и живучести сторонних библиотек, но тут покажет время. Однозначно, сам Dart мне интересен как язык, хотя есть проблема в библиотеках, часть из них сильно завязаны на Flutter. Это завязка инфраструктуры на один фреймворк может потенциально осложнить использование на других задачах.</p>
+<p>А вот архитектура и функционал Flutter вызывает определенные вопросы. С одной стороны, выигрыш от Flutter может быть из-за большого количества готовых библиотек, которые отсутствуют в других тулкитах и тогда это компенсирует архитектурные сложности, проект по времени и усилиям себя окупит. С другой стороны, его архитектура явно требует каких-то более продвинутых инструментов или же оригинального библиотечного решения. Пока понаблюдаю за ним и за эволюцией тамошнего архитекта, а потом скорее всего опять попробую на какой-нибудь действительно кроссплатформенном задаче с более полезным результатом, нежели простое скачивание картинок.</p>
+</div>
+    </div>
+</article>
+<div class='navigation-pages btn-toolbar justify-content-center mb-2' role='navigation'>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/russian-dsl-on-groovy.html' role='button' rel="prev"> <span
+            class='navigation-pages-link-icon mdi mdi-chevron-left'></span> DSL на русском языке в Groovy</a>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1' href='/index.html'
+       role='button' rel="first">
+        <span class='navigation-pages-link-icon mdi mdi-home'></span> Главная</a>
+
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/javafx-marketing-analysis.html' role='button' rel="next">Маркетинговый анализ JavaFX проекта <span
+            class='navigation-pages-link-icon mdi mdi-chevron-right'></span></a>
+    
+</div>
+        </div>
+        <div class='col-lg-3 sidebar-right'>
+            <div class='section' id='section-sidebar-right'>
+    <div class='card sidebar-container post-labels'>
+        <div class='card-header sidebar-container-header post-labels-header'>
+            <span class='post-labels-header-icon mdi mdi-tag-outline'></span>
+            Метки <span class='text-clarification'>(и кол-во статей)</span>
+        </div>
+        <div class='sidebar-container-content post-labels-content'>
+            <div class='list-group list-group-flush'>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dart.html'>Dart<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dlang.html'>Dlang<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/groovy.html'>Groovy<span class='badge' style='min-width:40px;'>5</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/javafx.html'>JavaFX<span class='badge' style='min-width:40px;'>6</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/arhitektura_po.html'>Архитектура ПО<span class='badge' style='min-width:40px;'>10</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/metodologija.html'>Методология<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/raznoe.html'>Разное<span class='badge' style='min-width:40px;'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/ekonomika.html'>Экономика<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/elektronika.html'>Электроника<span class='badge' style='min-width:40px;'>1</span></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class='card sidebar-container in-progress-articles'>
+       <div class='card-header sidebar-container-header in-progress-articles-header'>
+           <span class='mdi mdi-calendar-clock'></span>
+            В процессе написания
+       </div>
+       <div class='sidebar-container-content post-labels-content in-progress-articles-content'>
+               <ul class='list-group'>
+				   <li class='list-group-item align-items-center text-muted'>Нет статей</li>
+               </ul>
+       </div>
+    </div>
+    <div class='card mb-3 sidebar-container links-contacts'>
+        <div class='card-header sidebar-container-header links-contacts-header'>
+            <span class='mdi mdi-open-in-new'></span>
+            Девлоги текущих проектов
+        </div>
+        <div class="list-group sidebar-container-content">
+			<a class='link-contact list-group-item list-group-item-action' rel="me" href='https://www.youtube.com/@initkfs'>Youtube (готовится)</a>
+		</div>
+    </div>
+    <div class='page-up-wrapper'>
+        <button class='btn d-none d-lg-block' id='page-up-trigger' type='button'><span
+                class='mdi mdi-arrow-up'></span></button>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<footer class='page-footer'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='card'>
+    <div class='card-body'>
+        <p class="text-danger">Сайт в процессе тестирования.</p>
+        <small><span class='blog-info-footer'>Всего статей: 24. Блог - исследовательский, статьи отражают лишь субъективное мнение автора.</span> <span>&#169; <span id='copyright-date'></span>, Константин Фирсов.</span></small>
+        
+        <div class='blog-additional-links d-flex justify-content-center'>
+        <div class='blog-rss'><a class='blog-rss-item blog-icon-clickable'
+                                 href='/rss-all.xml'><span
+                class='mdi mdi-rss-box blog-icon-rss'></span></a></div>
+        </div>
+        <div class='text-danger' id='js-fail-block'>
+            <noscript>
+                <small>JavaScript отключен в браузере, функционал сайта ограничен.</small>
+            </noscript>
+        </div>
+    </div>
+</div>
+<script type='application/ld+json'>
+    {
+        "@context": "http://www.schema.org",
+        "@type": "person",
+        "name": "initkfs",
+        "jobTitle": "",
+        "url": "/index.html"
+    }
+</script>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class='mobile-up-wrapper text-center'>
+    <button class='btn d-lg-none' id='mobile-page-up-trigger' type='button'><span
+            class='mdi mdi-arrow-up'></span> Вверх
+    </button>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js'></script>
+
+<script crossorigin='anonymous' integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.full.min.js" integrity="sha512-wb3lqal2VtYhmlPAr232VP+Zus676CFAEYdywxIUSxG6F/X9WhN6SpREkWUdwBvMpd6gCKuKTGHhdum6m1wOvQ==" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+
+<script crossorigin='anonymous' integrity='sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+<script>
+var problemScripts = [];
+if (typeof jQuery === 'undefined') {
+    problemScripts.push("jquery");
+}
+
+   if (typeof Prism === 'undefined'){
+    problemScripts.push("prism.js");
+   }
+   
+if (typeof Popper === 'undefined') {
+    problemScripts.push("popper.js");
+}
+
+if (typeof timeago === 'undefined') {
+    problemScripts.push("timeago.js");
+}
+
+if (typeof window.bootstrap === 'undefined') {
+    problemScripts.push("bootstrap.js");
+}
+
+if (problemScripts.length > 0) {
+    var message = "Ошибка загрузки JavaScript: " +
+        problemScripts.join(",") +
+        "." +
+        " Возможные причины: блокировщик рекламы, проблемы с сетью, устаревший браузер. Может не работать дополнительный функционал.";
+
+    var failInfoBlock = document.createElement("small");
+    failInfoBlock.innerHTML = message;
+
+    var mainFailBlock = document.getElementById("js-fail-block");
+    if (!mainFailBlock) {
+        console.error(message);
+    } else {
+        mainFailBlock.appendChild(failInfoBlock);
+    }   
+}
+</script>
+<script src="/assets/dev/js/main.js"></script>
+</body>
+</html>
+
+
+

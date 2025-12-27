@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'>
+    <meta name="yandex-verification" content="7021eeb9c07b5c09">
+    <meta name="google-site-verification" content="PztbVe6Ru8ggM2n_tWUYwy0bEVHtJNvzIr-nsVCvBCA">
+    
+    
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/stab/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="/assets/stab/img/favicons/safari-pinned-tab.svg" color="#004245">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/stab/img/favicons/apple-touch-icon.png">
+    <meta name="msapplication-config" content="/assets/stab/img/favicons/browserconfig.xml">
+    <!-- end favicons -->
+    <!-- rss feeds -->
+    <link rel=alternate title="RSS лента" type=application/rss+xml href='/rss-all.xml'>
+    <!-- end rss feeds -->
+    <link type="text/plain" rel="author" href="/humans.txt">
+    <link crossorigin='anonymous' href='https://cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css'
+          integrity='sha384-Ls5zBitvvQ/wdeZDuTUevSY5Tb/she50BeMPrco2ok6xDC8modj6/JPwdL0gNxmP' rel='stylesheet'>
+    
+    <link crossorigin='anonymous' integrity='sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=='
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    
+    <link href="/assets/dev/css/main.css" rel='stylesheet'>
+    
+    <title>JavaFX мёртв или жив? Анализ рынка. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</title>
+    <meta name="description" content="Анализ рынка, положения и перспектив JavaFX (OpenJFX)">
+    <meta content='JavaFX мёртв или жив? Анализ рынка. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах' property='og:title'>
+    
+    <meta name="keywords" content="javafx,openjfx,рынок,аналитика">
+    
+    <meta content='/index.html' property='og:url'>
+    <meta content='website' property='og:type'>
+    <meta content='ru_RU' property='og:locale'>
+</head>
+<body>
+<div class='container mb-3'>
+    <div class='row'>
+        <div class='col-lg-12'>
+           <div class='card w-100 site-header-container'>
+    <div class='row align-items-center'>
+        <div class="col-lg-9">
+            <div class='card-header site-header'>
+                <div class='card-title site-header-title mb-3'>
+                    <h5 class='site-header-title-text'>
+                        <a href='/index.html' class='blog-title-text-link'>Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</
+                    </h5>
+                </div>
+                <div class='card-subtitle site-header-subtitle mb-2'>
+                     <a href="/pages/about.html" class="badge mb-2 mb-sm-0">О станции и капитане</a>  <a href="/pages/site-implementation.html" class="badge">Сайт (Groovy-генератор)</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            
+            <div class='site-map w-100 d-flex justify-content-center pe-lg-3'>
+                <a class='site-map-link btn w-100' href='/site-map.html' role='button'><span
+                        class='site-map-link-icon mdi mdi-sitemap'></span>
+                    <span class='text-clarification'>Карта сайта (все статьи)</span></a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-9 blog-posts'>
+            <article class='card post'>
+    <h5 class='card-header post-header fw-bold'>
+        JavaFX мёртв или жив? Анализ рынка
+    </h5>
+    <div class='card-body post-body'>
+        <div class="card-title mb-3">
+            <div class="post-body-header">
+
+<div class='post-header-date'><span class='mdi mdi-calendar-clock'></span>
+    <span class="post-datetime-text" data-iso-time="2019-09-29">29 сентября 2019</span>
+</div>
+
+
+
+<div class='post-labels'>
+    <span class='post-header-labels-icon mdi mdi-tag-outline'></span>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/javafx.html' rel='tag'>JavaFX
+    </a>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/ekonomika.html' rel='tag'>Экономика
+    </a>
+    
+</div>
+</div>
+        </div>
+        <div class='post-content'><p>Данную статью попросили написать коллеги, ибо в связи с малой популярностью Java-десктопа достаточно трудно встретить разработчиков, которые применяли бы OpenJFX для сложных и амбициозных пет-проектов.</p>
+<p>Разрабатывая собственный JavaFX-фреймворк несколько лет, я, конечно же, буду подвержен когнитивным искажениям, а статья будет плавно скатываться к субъективизму и философии. Поэтому стоит сразу вспомнить такие феномены как: <a href="https://ru.wikipedia.org/wiki/Профессиональная_деформация">профессиональная деформация</a>, <a href="https://ru.wikipedia.org/wiki/Склонность_к_подтверждению_своей_точки_зрения">склонность к подтверждению своей точки зрения</a>, <a href="https://ru.wikipedia.org/wiki/Эффект_знакомства_с_объектом">эффект знакомства с объектом</a> и подобные им. Конечно же, <a href="https://thequestion.ru/questions/346690/chto-takoe-sindrom-utyonka">синдром утёнка</a>, который присутствует у многих разработчиков (и у меня в том числе) тоже может хитро маскироваться в рассуждениях. Для понижения влияния этой команды негативных эффектов я буду стараться использовать различные источники и рассматривать изучаемый предмет с разных сторон, хотя бы это и может выглядеть достаточно наивно или занудно.</p>
+<p>Начать следует с самого главного холиварно-философского вопроса о десктопе в Java. Перекос Java-инфраструктуры в бэкенд - это общеизвестный факт, что ведёт к размножению комментариев и мнений в сети рода &quot;десктоп на Java не пишут&quot;. Меня всегда удивлял такой подход, поскольку он выглядит каким-то уж очень подозрительным, ибо разработчики обычно радуются возможностям языка и чем их больше - тем лучше. Я участвовал в самых разных языковых комьюнити и в общем-то нигде не припоминаю такого неприятия какой-то области языка, будь то бэкенд, десктоп или какая-то очень и очень узкоспециализированная специфика.</p>
+<p>Более того, GUI-программы пишут на очень редких и своеобразных языках программирования, которые очень и очень на любителя, да и там никто не жалуется. А Java предоставляет знакомый и привычный синтаксис С-семейства, множество удобств, библиотек и возможностей, которыми грех не воспользоваться, что создаёт некоторый когнитивный диссонанс: возможности вроде как и есть, но они почему-то не нужны, почему... это хороший вопрос.</p>
+<p>После более плотного знакомства с Java-комьюнити ответ на этот вопрос я, конечно же, знаю, поэтому статью можно было бы закончить на этом абзаце, но прямой ответ многим бы не понравился, а особенно хейтерам Java-десктопа. Так что пойдём объёмным и занудным обходным путём.</p>
+<p>Итак, в социальной сети размещается пост с материалами по JavaFX, далее под ним кто-то пишет комментарий &quot;JavaFX мертв&quot;, если находятся возражающие, то они отвечают, если нет, то нет. Побудем занудами и позаимствуем определение смерти с Википедии, где <a href="https://ru.wikipedia.org/wiki/Смерть">смерть</a> - прекращение, полная остановка биологических и физиологических процессов жизнедеятельности организма. Применим данное определение аналогией к JavaFX, не теряя его смысла, с доказательством от обратного: предположим, что JavaFX мёртв.</p>
+<p>Это значит, что должно наблюдаться <strong>полное прекращение</strong> процессов разработки, сопровождения и использования тулкита. Посмотрим зеркало репозитория <a href="https://github.com/javafxports/openjdk-jfx">openjdk-jfx</a>: в ветку develop идут фиксы багов, открываются новые в багтрекере. За месяц, с 28.08.2019 по 28.09.2019 - 8 активных пулл-реквестов, 4 влиты в ветку, 22 проблемы, из них закрыто 3, открыто 19. Последний коммит несколько дней назад. Трудно оценить степень такой активности из-за сложности и монструозности тулкита, но это какая-никакая активность.</p>
+<p>Рассылка разработчиков <a href="http://mail.openjdk.java.net/pipermail/openjfx-dev/">openjfx-dev</a> активна. На сайте <a href="https://openjfx.io">openjfx.io</a> доступны несколько версий в т.ч. раннего доступа. По <a href="https://stackoverflow.com/questions/tagged/javafx">тегу &quot;javafx&quot;</a> на StackOverflow достаточно много ответов, вопросы бывают с периодичностью в несколько часов.</p>
+<p>Отсюда мы не можем говорить о полном прекращении жизни JavaFX, это было бы грубым нарушением логики определения смерти. Значит вопрос стоит о какой-то степени активности. Раз вводится понятие степени, то должна быть шкала или ранжирование, а самих элементов множество, иначе мы не может знать, насколько &quot;жив&quot; и &quot;мертв&quot; различаются между собой. Так как мы не можем сравнивать две совершенно разных технологии, например, веб и десктопный тулкит, то должны бегло изучить инфраструктуру десктопного рынка, чем и займемся.</p>
+<p>Я буду опираться на несколько статей, которые находятся в топе Google, полагая, что большая часть новичков и непрофессиональных пользователей будут ориентироваться на них. В статье <a href="https://michaelscodingspot.com/9-must-decisions-in-desktop-application-development-for-windows/">9 Must Decisions in Desktop Application Development for Windows</a> приводится ссылка на исследование 2016 года по выбору технологии для Windows: на первом месте WPF, WinForms, UWP. Следом за ним Electron и все остальные.</p>
+<p>Сразу есть смысл выделить два больших класса приложений: платформозависимые и кроссплатформенные. В качестве кроссплатформенных решений приводятся Electron, Qt, Swing, JavaFX. Этот список можно также дополнить Avalonia, Flutter, который уже начинает ориентацию на десктоп. JavaFX является кроссплатформенным тулкитом, что будет отражаться на архитектуре, функционале и всём остальном. Мы не можем однозначно сравнить платформозависимый тулкит и кроссплатформенный за счет их большой архитектурной разницы. Платформозависимый будет иметь более развитый функционал, но при отказе от платформы вся кодовая база или её часть потеряется, кроме того, инструменты - IDE, процессы сборки, библиотеки и т.п. также могут быть зависимыми от операционной системы и нет, как и вся инфраструктура.</p>
+<p>С другой стороны, нельзя рассматривать их как два разных рынка в силу малого распространения альтернативных операционных систем. По данным <a href="https://netmarketshare.com">netmarketshare.com</a> на август 2019 доли Windows/Mac/Linux относятся как 87.50%/9.74%/2.14% соответственно. Поэтому в мировом масштабе фреймворки могут быть прямыми конкурентами, в региональном - в зависимости от разных условий, например, отношения бизнеса к свободному софту: из-за жёсткой борьбы с пиратством для части мелких контор закономерен поиск снижения издержек за счет наличия только одного компьютера с Windows, как правило, для бухгалтера. Компьютеры сотрудников, менее зависимые от специфического софта могут более безболезненно переводиться на Linux, могут проводиться политики импортозамещения или подобные им. Например, для технических специалистов доля Linux может резко возрасти.</p>
+<p>Рынок мог оказывать влияние даже на создание JavaFX: для Oracle излишнее вложение ресурсов на разработку тулкита в условиях доминирующего положения Windows выглядит такой себе затеей, кроме того, в случае явной конкуренции это могло вызвать ответные меры со стороны Microsoft. А замена устаревшей технологии для целей поддержки Java-инфраструктуры вполне логична и вписывается в необходимость.</p>
+<p><strong>Какой вывод напрашивается:</strong> на степень популярности тулкита будет влиять рынок, а на рынок наиболее сильное влияние оказывает доминирующая с большим отрывом операционная система. Мы не можем так просто сравнивать популярность кроссплатформенных решений и сильно\частично платформозависимых, получается, что мы сравниваем между собой сильно различающиеся инструменты. Так как Windows имеет C#-зависимые инструменты, то в мировом масштабе у других решений будет меньшая популярность, которая зависит от разных факторов. Каких факторов...</p>
+<p>Относительно кроссплатформенных приложений в статье приводятся примеры выбора инструментов:</p>
+<ul>
+<li>В случае веб-продукта, наличия подходящих библиотек и любой ориентации на веб предпочтителен Electron.</li>
+<li>В случае наличия Java-программистов - Swing, JavaFX.</li>
+<li>В случае взаимодействия с C++ приложениями, требованиями к производительности - Qt.</li>
+</ul>
+<p>Мы видим, что выбор инструмента определяется каким-то набором правил, которые опираются на преимущества тулкитов. Если в случае веба и производительности они технического характера, то в случае JavaFX это наличие программистов.</p>
+<p>Кроме того, за каждым тулкитом стоит инфраструктура языка, который возник на основе наличия проблем в других языках. Например, позиционирование Java на рынке использовало преимущества высокоабстрактного языка с уклоном на объектный анализ с архитектурой. Трудно сказать, сыграло ли это главную роль в занятии доли рынка, но факт остается фактом: другой язык либо решает проблему, либо дает какое-то преимущество, за счет чего и существует огромное множество различных языков. Это также вводит ограничение - универсального языка программирования нет. Если бы он был, то необходимость во всех остальных языках отпала бы, хотя и с задержкой из-за вымирания наиболее опытных разработчиков, которые никогда не будут терять свой опыт и планку зарплат, переходя на лучший, но менее выгодный для них новый язык программирования. Из-за разброса разработчиков по разным коммьюнити наблюдаются перекосы: в одном языке много простых библиотек, но мало специфических, в другом - наоборот и т.п, что сильно влияет на возможность выполнения требований.</p>
+<p>Существуют самые различные виды требований к продуктам. Например, в статье указывается стратегия развертывания, удобство и наличие установщика, возможность непрерывной интеграции, логирование, темизация приложения, лицензирования и подобных им, которые корнями уходят в функциональный и нефункциональные, <a href="https://ru.wikipedia.org/wiki/FURPS">FURPS</a> и прочие требования. Через цепочку косвенных связей на них будут влиять не только архитектура и сам тулкит, но инфраструктура языка, сторонние библиотеки, устоявшиеся приемы, квалификация разработчиков и другие зависимости. Интуитивно, что в разных языках часть требований будет лучше чем в других, а часть - хуже.</p>
+<p>Для решения технической задачи и выбора десктопного тулкита нужно учитывать:</p>
+<ul>
+<li>Надсистему - язык и его инфраструктуру</li>
+<li>Сам тулкит - его возможности и функционал</li>
+<li>Подсистему - особенности работы и квалификация разработчика</li>
+</ul>
+<p>Например, команда Microsoft, работая с веб-тулкитом может решить практически любой спектр задач за счет наличия возможности запроса помощи из других отделов, отлаженной системы тестирования, наличия программистов узкой специализации и других преимуществ, которых, конечно же, не будет у маленькой команды в небольшом городе.</p>
+<p><strong>Какой вывод напрашивается:</strong> на фоне меньшей популярности и в условиях наличия платформозависимых альтернатив, для решения технической задачи кроссплатформенным тулкитом существует зависимость от множества различных факторов, что еще больше сужает популярность некоторых решений.</p>
+<p>С другой стороны, есть определенный класс приложений, для которых выбор сделать намного легче. Не будем далеко ходить, и вспомним некоторые категории приложений, позаимствовав их из статьи  <a href="https://dzone.com/articles/best-frameworks-for-desktop-application-developmen">Best Frameworks for Desktop Application Development</a>:</p>
+<ul>
+<li>Автономные (коробочные) бизнес-приложения.</li>
+<li>Клиент-серверные приложения.</li>
+<li>Программное обеспечение совместной работы</li>
+<li>Утилиты</li>
+<li>Системные приложения</li>
+<li>Мультимедиа приложения</li>
+<li>Сетевые приложения</li>
+</ul>
+<p>Нельзя назвать данную систематику совершенной: в одном случае признак, по которому производится деление относится к архитектуре (клиент-сервер), в другом - к решаемой задаче (мультимедиа). С другой стороны, для беглого рассмотрения этого может быть достаточным и позволяет сделать несколько грубых выводов.</p>
+<p>Мультимедиа, системные приложения достаточно сильно связаны с системой. За счет приведенной выше структуры рынка операционных систем кроссплатформенным тулкитам нужно намного больше ресурсов, чтобы сравниться с функционалом платформозависимых, для большей части задач может хватить и версии под самую распространенную систему.</p>
+<p><strong>Какой вывод напрашивается:</strong> на фоне меньшей популярности, в условиях альтернатив и сложного влияния разных факторов для кроссплатформенных решений лишь некоторый класс задач дает преимущество, в ином случае рождая дополнительные риски. А это также сказывается на популярности.</p>
+<p>Риск потери пользователей на альтернативных системах может быть намного меньше риска получения низкокачественного продукта на всех системах и банкротства из-за невозможности соблюсти критические требования.</p>
+<p>Стоит ли ожидать сильного роста популярности и так малопопулярного инструмента. Думается, что нет. Основные тренды 2019 года были <a href="https://hackernoon.com/10-top-software-development-trends-a12d25f5fd2d">связаны</a> с развитием новых технологий виртуальной и дополненной реальности, искусственного интеллекта, блокчейна, ростом популярности JavaScript, развитием IoT, PWA.</p>
+<p>Кроме того, в конце 2018 года на OpenSource лицензию были <a href="https://blogs.windows.com/windowsdeveloper/2018/12/04/announcing-open-source-of-wpf-windows-forms-and-winui-at-microsoft-connect-2018/">переведены</a> Windows тулкиты WPF, Windows Forms, WinUI. Трудно оценить этот шаг из-за масштаба Microsoft и многовариантных маневров, но можно грубо предположить, что открытие исходного кода менее вероятно в условиях высокой бизнес-ценности продукта. Активное развитие Visual Studio Code, упрощение сопровождения последних версий Windows(<a href="https://habr.com/ru/news/t/468585">Уволенный сотрудник Microsoft объяснил, почему в Windows стало так много багов</a>) постоянно появляющиеся материалы о проблемах десктопного софта с 2017 года, например, <a href="https://www.quora.com/Is-desktop-software-dead">Is desktop software dead</a> по настоящее время также говорят об опасениях наблюдателей, снижении интереса к десктопу со стороны гигантов индустрии или других проблемах.</p>
+<p>В таких условиях маловероятно ожидать увеличения популярности и без того прикладных решений в том числе и JavaFX.</p>
+<p><strong>Результирующий вывод:</strong> на популярность инструмента влияет множество факторов, начиная от глобально-мировых и заканчивая местными региональными. Технические особенности и функционал тулкита играет важную, но не главную роль в случае выбора технологии. JavaFX основан на Java, прямо не связан с C# и не может иметь популярность в условиях доминирующей операционной системы на рынке.</p>
+<p>Давайте бегло рассмотрим непосредственно рынок JavaFX.</p>
+<p>На сентябрь 2019 года по данным поисковой системы Indeed на США <a href="https://www.indeed.com/q-javafx-l-United-States-jobs.html">приходится</a> всего 70 рабочих мест по ключевым словам &quot;javafx&quot;, часть вместе со Swing и AWT. hh.ru: 7 вакансий, большая часть из которых без специализации на тулките. По данным jobs.tut.by, hh.ua, work.ua нет вакансий. При добавлении к запросу “java” количество вакансий возрастает.</p>
+<p>Можно сделать грубый вывод, что в мировом масштабе не существует как таковой специализации на JavaFX, а большую часть очень простых задач, вероятно, может решить обычный java-разработчик.</p>
+<p>Насколько десктопное программирование развито в самой Java-инфраструктуре? Например, по ссылкам разной степени давности <a href="https://habr.com/ru/company/haulmont/blog/353440/">Блеск и нищета Java для настольных систем<br/></a>, <a href="https://www.reddit.com/r/java/comments/3tozqi/why_is_java_desktop_considered_to_be_dead/">Why is Java desktop considered to be dead?</a>, <a href="https://coderanch.com/t/563002/java/Java-Desktop-Application-industry">Java Desktop Application industry</a> можно уследить, что не существует однозначного класса задач, которые бы дали преимущество в случае Java-десктопного приложения или анализ при выборе инструментов порой упрощен.</p>
+<p>Сдерживающим фактором может быть большое количество проблем в самом тулките. В JavaFX до сих пор не исправлено несколько критических для использования проблем: поддержка трея, локализация контекстных меню, случайные графические артефакты, юзабилити таблиц и т.п.. Кроме того, модульность в Java 9 создала новые проблемы в виде конфликтующих библиотек и сложности интеграции плагинов. Это всё может отталкивать разработчиков и приводить к уменьшению использования тулкита или стимулировать переход на другие технологии.</p>
+<p>Основным преемником прав на тулкит является Gluon, который строит свой бизнес вокруг мобильных технологий. Неизвестно, что будет в случае падения коммерческого интереса к тулкиту. Некоторые разработчики могут рассматривать это как дополнительный риск. В маркетинге Gluon не представлен десктопный сегмент, кроме того, расположение ссылки на тулкит в меню Products может оттолкнуть разработчиков открытого кода.</p>
+<p>С другой стороны, включение JavaFX в состав Zulu JDK с официальным обоснованием как потребность клиента, наличие собственного сайта, версии под ARM-архитектуру на основе Liberica, проведение конференций, частые минорные обновления и другие моменты говорят о более лучшем положении тулкита после отделения от jdk.</p>
+<p>Косвенно, количество разработчиков может увеличиться из-за распространения курсов программирования и моды на него в среде молодежи. Java стабильно занимает топ различных рейтингов и эксплуатирует стереотип высоких зарплат. Даже в случае невозможности трудоустройства часть разработчиков может пожелать использовать тулкит для личных целей вместо изучения альтернатив.</p>
+<p>Таким образом, так как выбор JavaFX в качестве технологии зависит от многочисленных факторов, часть из которых носят нетехнический характер, то популярность будет зависеть еще и от методологии анализа, применяемой в бизнесе, отстаивания частных интересов заинтересованными лицами или невозможностью оценить степени риска. Действительно, в условиях высокой степени неопределенности многие будут выбирать наиболее проверенные варианты, чтобы в случае провала (даже из-за других факторов) они не были уличены в ошибочном решении, поэтому доля малопопулярных решений будет еще больше снижаться из-за человеческого фактора.</p>
+<p>Трудно сказать, улучшилось ли положение JavaFX после отделение от JDK. Формально - да, поскольку Gluon проводит необходимые меры пиара, однако вопрос в том, что мы не знаем процент java-разработчиков для которых отделение от JDK было сигналом прекращения поддержки либо серьезным риском. Много ли их было... если да, то JavaFX-инфраструктуре был нанесен серьезный урон.</p>
+<p>Для комплексного характера статьи можно попробовать смоделировать задачи, на которых JavaFX имеет преимущества. К сожалению, за недостатком информации дальнейшее рассуждение будет носить <strong>субъективный характер.</strong></p>
+<p>По итогам активного мониторинга JavaFX-инфраструктуры, ведения паблика во Вконтакте мне встречались следующие основные применения:</p>
+<ul>
+<li>Внутренние разработки и специализированные приложения для личного использования в т.ч. внутрикорпоративного.</li>
+<li>GUI-обёртки над более трудоёмкими библиотеками и api.</li>
+<li>Тонкие клиенты как дополнение к другим java-приложениям.</li>
+<li>Учебные проекты.</li>
+<li>Хобби-проекты.</li>
+</ul>
+<p>Наличие тонких клиентов как вспомогательных инструментов подтверждается частым наличием в вакансиях javafx наряду со всем стеком java-бэкенда. Есть примеры <a href="https://twitter.com/dlemmermann/status/1138449661881147395">CRM</a>, <a href="https://apps.microsoft.com/detail/9PM0L64LF46G?hl=en-us&amp;gl=US">производственных</a>, вспомогательных приложений в личных блогах и сайтах ведущих javafx-разработчиков, достаточно крупных хобби-проектов, которые могут использовать пожертвования или служить для портфолио как, например <a href="https://github.com/goxr3plus/XR3Player">XR3Player</a>.</p>
+<p>Что касается распространения JavaFX на мобильных устройствах, то у меня нет достаточных примеров за небольшим исключением, например, статьи 2017 года <a href="https://dlsc.com/2017/05/08/javafx-real-world-apps-monastery">JavaFX Real-World Apps: Monastery Disentis</a> или косвенных материалов, навроде <a href="https://www.reddit.com/r/JavaFX/comments/azkp84/javafx_on_mobile_any_one_tried/">JavaFX on mobile - any one tried?</a>. За счет наличия сильных конкурентов и зрелой инфраструктуры в мобайле в т.ч. интеграции туда веб-стека и развития технологии PWA достаточно трудно оценить применимость JavaFX вне специфических задач.</p>
+<p>Основные конкуренты тулкита: в мире java - Swing и Awt. Кроссплатформенные Electron js, Qt, Gtk, Avalonia, Flutter и т.д. Вторичные конкуренты в контексте операционных систем: WPF\UWP\WinForms.</p>
+<p>Часто можно услышать мнения о свободной заменяемости Swing и JavaFX. Это крайне сомнительное утверждение из-за сильного отличия их по концепциям и возможностям. Для оценки применимости той или иной десктопной технологии оценивающий должен быть плотно связан с десктопом и графикой. Поскольку в Java-комьюнити подавляющее количество разработчиков специализируется на бэкенде и фронтенде, то любые оценки от специалиста совершенно другой области будут иметь повышенный шанс быть неверными, что часто и происходит.</p>
+<p>Поскольку многие java-приложения служат лишь клиентом для обращения к базе данных, то часть задач может быть решена без JavaFX и дополнительных возможностей, здесь обычно вспоминается Swing. Однако при усложнении задач разные тулкиты начинают демонстрировать всё больше отличий и преимущества будут сдвигаться в сторону JavaFX, особенно архитектурные.</p>
+<p>Возможен скрытый спрос со стороны индивидуальных предпринимателей с потребностью в узкоспециальном софте, задачи которого не могут решить имеющиеся решения или их доработка будет стоить дорого. Часть из них не обладают специальными знаниями и не могут перенести бизнес-процессы в электронный вид, а также рассчитать риски внедрения. Для некоторых задач клиент-серверная архитектура избыточна и ведет к дополнительным рискам безопасности даже в пределах локальной сети. В случае наличия агрессивных конкурентов, которые могут инициировать взлом инфраструктуры, возможен интерес к десктопным приложениям.</p>
+<p>С одной стороны, конкурирующие фирмы на основе веб-стека скорее всего будут делать упор на возможность масштабирования или интеграции в другие системы, поэтому в случае плохо определенной задачи их аргументы будет трудно опровергнуть. С другой стороны, веб-стек ограниченно интегрируется в систему, а эволюция приложения может требовать всё больше и больше системного доступа, использование низкоуровневых библиотек и личных данных, что рано или поздно может стать проблематичным для веб-стека.</p>
+<p>Нельзя забывать и особенность DSL-тулкитов в лишних багов от управления стейтом или асинхронности, которые обычные классические тулкиты старой школы не имеют. Кроме того, чрезвычайно широкая кроссплатформенность тулкитов последних поколений сильно повышает их сложность, что будет отражаться на количестве багов, постоянных поломках апи при обновлении, проблемах от тулчейна и прочего. Специализированный на десктопе инструмент может здесь решить задачу лучше как за счёт общей простоты своего устройства, так и за счёт юзабилити контролов, которые проблематично сделать одновременно удобными под все устройства.</p>
+<p>С другой стороны, нельзя сбрасывать со счетов перекос Java в сторону бэкенда, как я отмечал в самом начале статьи. В таких условиях выбор менее популярного инструмента действительно несет повышенный риск в случае неправильного построения стратегии его использования.</p>
+<p>Например, для новичков изучение малопопулярного инструмента может нанести вред и сделать их менее конкурентноспособными по определённым вакансиям в сравнении с другими. Трудно сказать, что может нанести тулкиту больший вред, наличие популярности в условии хаотично насыщаемого рынка программирования или её отсутствие с возможностью развиваться более медленно, но стабильно.</p>
+<p>Подведем итоги. JavaFX - не может быть мертвым и является инструментом для узких задач, преимущество которого зависят от множества факторов в т.ч. от квалификации лица, принимающего решение о внедрении. Заявление о смерти узко прикладных инструментов и языков обычно всегда ошибочны, ибо подобные инструменты рассчитаны на определенный круг специалистов, которые знают, что им нужно и не зависят от общей массы. Здесь можно уловить аналогию между популярной музыкой и андеграундом, литературой, искусством и т.п. разделениями почти всех отраслей нашей жизни. Несмотря на большой класс проблем, узкоспецифические отрасли\инструменты\технологии обычно всё равно кем-то востребованы и за счет этого держатся на плаву.</p>
+<p>В любом случае, не стоит забывать и о будущем. Завтра всё может измениться, технологии рождаются и умирают, это происходило всегда и будет происходить вечно. Что будет с JavaFX завтра? Трудно сказать, может быть тулкит станет лучше, а может и погибнет в жестоких конкурентных войнах, где принцип Vae victis, как ни парадоксально, является двигателем эволюции технологий. Поживем, увидим...</p>
+</div>
+    </div>
+</article>
+<div class='navigation-pages btn-toolbar justify-content-center mb-2' role='navigation'>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/javafx-problems-list.html' role='button' rel="prev"> <span
+            class='navigation-pages-link-icon mdi mdi-chevron-left'></span> Баги и нюансы JavaFX</a>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1' href='/index.html'
+       role='button' rel="first">
+        <span class='navigation-pages-link-icon mdi mdi-home'></span> Главная</a>
+
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/bacon-mill-method.html' role='button' rel="next">Индукция Бэкона-Милля или поиск причины бага методом тыка <span
+            class='navigation-pages-link-icon mdi mdi-chevron-right'></span></a>
+    
+</div>
+        </div>
+        <div class='col-lg-3 sidebar-right'>
+            <div class='section' id='section-sidebar-right'>
+    <div class='card sidebar-container post-labels'>
+        <div class='card-header sidebar-container-header post-labels-header'>
+            <span class='post-labels-header-icon mdi mdi-tag-outline'></span>
+            Метки <span class='text-clarification'>(и кол-во статей)</span>
+        </div>
+        <div class='sidebar-container-content post-labels-content'>
+            <div class='list-group list-group-flush'>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dart.html'>Dart<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dlang.html'>Dlang<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/groovy.html'>Groovy<span class='badge' style='min-width:40px;'>5</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/javafx.html'>JavaFX<span class='badge' style='min-width:40px;'>6</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/arhitektura_po.html'>Архитектура ПО<span class='badge' style='min-width:40px;'>10</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/metodologija.html'>Методология<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/raznoe.html'>Разное<span class='badge' style='min-width:40px;'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/ekonomika.html'>Экономика<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/elektronika.html'>Электроника<span class='badge' style='min-width:40px;'>1</span></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class='card sidebar-container in-progress-articles'>
+       <div class='card-header sidebar-container-header in-progress-articles-header'>
+           <span class='mdi mdi-calendar-clock'></span>
+            В процессе написания
+       </div>
+       <div class='sidebar-container-content post-labels-content in-progress-articles-content'>
+               <ul class='list-group'>
+				   <li class='list-group-item align-items-center text-muted'>Нет статей</li>
+               </ul>
+       </div>
+    </div>
+    <div class='card mb-3 sidebar-container links-contacts'>
+        <div class='card-header sidebar-container-header links-contacts-header'>
+            <span class='mdi mdi-open-in-new'></span>
+            Девлоги текущих проектов
+        </div>
+        <div class="list-group sidebar-container-content">
+			<a class='link-contact list-group-item list-group-item-action' rel="me" href='https://www.youtube.com/@initkfs'>Youtube (готовится)</a>
+		</div>
+    </div>
+    <div class='page-up-wrapper'>
+        <button class='btn d-none d-lg-block' id='page-up-trigger' type='button'><span
+                class='mdi mdi-arrow-up'></span></button>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<footer class='page-footer'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='card'>
+    <div class='card-body'>
+        <p class="text-danger">Сайт в процессе тестирования.</p>
+        <small><span class='blog-info-footer'>Всего статей: 24. Блог - исследовательский, статьи отражают лишь субъективное мнение автора.</span> <span>&#169; <span id='copyright-date'></span>, Константин Фирсов.</span></small>
+        
+        <div class='blog-additional-links d-flex justify-content-center'>
+        <div class='blog-rss'><a class='blog-rss-item blog-icon-clickable'
+                                 href='/rss-all.xml'><span
+                class='mdi mdi-rss-box blog-icon-rss'></span></a></div>
+        </div>
+        <div class='text-danger' id='js-fail-block'>
+            <noscript>
+                <small>JavaScript отключен в браузере, функционал сайта ограничен.</small>
+            </noscript>
+        </div>
+    </div>
+</div>
+<script type='application/ld+json'>
+    {
+        "@context": "http://www.schema.org",
+        "@type": "person",
+        "name": "initkfs",
+        "jobTitle": "",
+        "url": "/index.html"
+    }
+</script>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class='mobile-up-wrapper text-center'>
+    <button class='btn d-lg-none' id='mobile-page-up-trigger' type='button'><span
+            class='mdi mdi-arrow-up'></span> Вверх
+    </button>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js'></script>
+
+<script crossorigin='anonymous' integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.full.min.js" integrity="sha512-wb3lqal2VtYhmlPAr232VP+Zus676CFAEYdywxIUSxG6F/X9WhN6SpREkWUdwBvMpd6gCKuKTGHhdum6m1wOvQ==" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+
+<script crossorigin='anonymous' integrity='sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+<script>
+var problemScripts = [];
+if (typeof jQuery === 'undefined') {
+    problemScripts.push("jquery");
+}
+
+   if (typeof Prism === 'undefined'){
+    problemScripts.push("prism.js");
+   }
+   
+if (typeof Popper === 'undefined') {
+    problemScripts.push("popper.js");
+}
+
+if (typeof timeago === 'undefined') {
+    problemScripts.push("timeago.js");
+}
+
+if (typeof window.bootstrap === 'undefined') {
+    problemScripts.push("bootstrap.js");
+}
+
+if (problemScripts.length > 0) {
+    var message = "Ошибка загрузки JavaScript: " +
+        problemScripts.join(",") +
+        "." +
+        " Возможные причины: блокировщик рекламы, проблемы с сетью, устаревший браузер. Может не работать дополнительный функционал.";
+
+    var failInfoBlock = document.createElement("small");
+    failInfoBlock.innerHTML = message;
+
+    var mainFailBlock = document.getElementById("js-fail-block");
+    if (!mainFailBlock) {
+        console.error(message);
+    } else {
+        mainFailBlock.appendChild(failInfoBlock);
+    }   
+}
+</script>
+<script src="/assets/dev/js/main.js"></script>
+</body>
+</html>
+
+
+

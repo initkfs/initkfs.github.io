@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'>
+    <meta name="yandex-verification" content="7021eeb9c07b5c09">
+    <meta name="google-site-verification" content="PztbVe6Ru8ggM2n_tWUYwy0bEVHtJNvzIr-nsVCvBCA">
+    
+    
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/stab/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="/assets/stab/img/favicons/safari-pinned-tab.svg" color="#004245">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/stab/img/favicons/apple-touch-icon.png">
+    <meta name="msapplication-config" content="/assets/stab/img/favicons/browserconfig.xml">
+    <!-- end favicons -->
+    <!-- rss feeds -->
+    <link rel=alternate title="RSS лента" type=application/rss+xml href='/rss-all.xml'>
+    <!-- end rss feeds -->
+    <link type="text/plain" rel="author" href="/humans.txt">
+    <link crossorigin='anonymous' href='https://cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css'
+          integrity='sha384-Ls5zBitvvQ/wdeZDuTUevSY5Tb/she50BeMPrco2ok6xDC8modj6/JPwdL0gNxmP' rel='stylesheet'>
+    
+    <link crossorigin='anonymous' integrity='sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=='
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    
+    <link href="/assets/dev/css/main.css" rel='stylesheet'>
+    
+    <title>Увлекательная геоинформатика с GeoTools. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</title>
+    <meta name="description" content="Geoinformatics with GeoTools and JavaFX">
+    <meta content='Увлекательная геоинформатика с GeoTools. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах' property='og:title'>
+    
+    <meta name="keywords" content="геоинформатика,geotools,java,javafx">
+    
+    <meta content='/index.html' property='og:url'>
+    <meta content='website' property='og:type'>
+    <meta content='ru_RU' property='og:locale'>
+</head>
+<body>
+<div class='container mb-3'>
+    <div class='row'>
+        <div class='col-lg-12'>
+           <div class='card w-100 site-header-container'>
+    <div class='row align-items-center'>
+        <div class="col-lg-9">
+            <div class='card-header site-header'>
+                <div class='card-title site-header-title mb-3'>
+                    <h5 class='site-header-title-text'>
+                        <a href='/index.html' class='blog-title-text-link'>Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</
+                    </h5>
+                </div>
+                <div class='card-subtitle site-header-subtitle mb-2'>
+                     <a href="/pages/about.html" class="badge mb-2 mb-sm-0">О станции и капитане</a>  <a href="/pages/site-implementation.html" class="badge">Сайт (Groovy-генератор)</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            
+            <div class='site-map w-100 d-flex justify-content-center pe-lg-3'>
+                <a class='site-map-link btn w-100' href='/site-map.html' role='button'><span
+                        class='site-map-link-icon mdi mdi-sitemap'></span>
+                    <span class='text-clarification'>Карта сайта (все статьи)</span></a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-9 blog-posts'>
+            <article class='card post'>
+    <h5 class='card-header post-header fw-bold'>
+        Увлекательная геоинформатика с GeoTools
+    </h5>
+    <div class='card-body post-body'>
+        <div class="card-title mb-3">
+            <div class="post-body-header">
+
+<div class='post-header-date'><span class='mdi mdi-calendar-clock'></span>
+    <span class="post-datetime-text" data-iso-time="2022-07-20">20 июля 2022</span>
+</div>
+
+
+
+<div class='post-labels'>
+    <span class='post-header-labels-icon mdi mdi-tag-outline'></span>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/javafx.html' rel='tag'>JavaFX
+    </a>
+    
+</div>
+</div>
+        </div>
+        <div class='post-content'><p>Геоинформационные системы (ГИС) - достаточно узкоспециализированный класс приложений, однако их алгоритмы из-за тесной своей связи с естественными науками носят важный вспомогательный характер, уменьшая риск ошибок и багов при встрече с предметными задачами или близкими к ним, оправдывая тем самым потерю времени на эксперименты. В этот раз настал черёд библиотеки <a href="https://www.geotools.org/">GeoTools</a>, к которой я давно уже присматривался.</p>
+<p>У проекта есть несколько качеств, повышающих его экспериментальную привлекательность:</p>
+<ul>
+<li>Специализированная и достаточно сложная область намекает на выбор объектного языка высокой степени абстракции и продвинутых IDE, что всё вместе должно сильно облегчить и ускорить разработку (теоретически).</li>
+<li>Разработчик в лице Open Source Geospatial Foundation выглядит авторитетным для знакомства со всеми основными свободными стандартами.</li>
+<li>Библиотека относительно неплохо документирована, достаточно много вопросов на SO и примеров кода.</li>
+<li>Появляется возможность использовать её в JavaFX, а также интегрировать Groovy.</li>
+</ul>
+<p>Конечно же, в дикой природе встречается огромное количество разных проектов на самых разных языках, так что выбор GeoTools скорее субъективен. Эту библиотеку хотелось бы сравнить с <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a> или же с <a href="https://developers.arcgis.com/documentation/mapping-apis-and-services/apis-and-sdks/">sdk от ArcGIS</a>, но тесная дружба с Unix-системами делает общение с C# хотя и возможным, но проблемным, а ArcGIS закрыл регистрацию аккаунта разработчика из некоторых стран, что тоже создаёт проблемы, особенно для использования всего многообразия их сервисов.</p>
+<p>К сожалению, у эксперимента сразу же появляется критически слабое место - полезность его результата. Для какой-либо игры с геоинформатикой можно использовать многочисленные существующие программы, например, QGIS Desktop, дублирование такого функционала выглядит бессмысленным. При беглом поиске в сети полезных геосервисов и серверов какой-то уникальной полезной комбинации найдено не было, отсюда цели эксперимента сводятся к оценке удобства этой библиотеки и её основным недостаткам для облегчения выбора стека для геоинформационных задач, если таковые внезапно встретятся, не более. Можно назвать его разведочным тестированием.</p>
+<p>Первая попытка экспериментов уже была на стыке модульных Java-миров, но из-за огромного количества различных зависимостей в модульном приложении возникали многочисленные конфликты и решено было подождать обновления. Обновление пришло, но ситуация особенно не изменилась, а так ждать можно бесконечно, что проще убрать модульность из приложения.</p>
+<p>В части десктопных тулкитов библиотека туториалами и примерами сильно завязана на Swing, в отличие от того же sdk ArcGIS, но интереснее интегрировать её в более продвинутый тулкит. Примеры работы с JavaFX были найдены в <a href="https://github.com/geotools/geotools/blob/main/modules/unsupported/javafx/src/main/java/org/geotools/javafx/FXMap.java">официальном репозитории</a>, так и <a href="https://aofxzuza.github.io/2016/02/12/javafx-with-geotools-tutorial-part-1-load-shape-file/">в сети</a> через <a href="https://github.com/jfree/fxgraphics2d">FXGraphics2D</a>. Имя метода getScreenToWorld не должно вводить в заблуждение: в него передаются именно координаты сцены, getSceneX() и getSceneY(). Однако такой прямой перерасчёт не будет учитывать трансформаций канваса и если он, например, будет лежать в каком-либо контейнере, то появятся смещения из-за других контролов и координаты будут работать неправильно, здесь можно использовать sceneToLocal. Ну и нужно помнить, что javafx.scene.canvas.Canvas сам по себе <a href="https://stackoverflow.com/questions/24533556/how-to-make-canvas-resizable-in-javafx">не изменяет свои размеры</a>.</p>
+<p>Для удаления модульности в части JavaFX в IDE нужно дописать модули, как указано в <a href="https://openjfx.io/openjfx-docs/">документации тулкита</a>. Запуск получается немного более хитрым т.к. конфликтующие зависимости нельзя загружать из module path (собственно, это и приводит к конфликтам), однако jvm позволяет смешивать загрузку модульных и немодульных jar-файлов, используя последние из class path. Например, как java -cp &quot;директория проблемных либ/*:app.jar&quot; -p &quot;директория javafx либ&quot; --add-modules=javafx.fxml... app.App, разделители путей системоспецифичны, относительные пути в зависимости от логики и способа запуска шелла, конечно же.</p>
+<p>Модель пространственного объекта описывается классом <a href="https://docs.geotools.org/latest/userguide/library/opengis/feature.html">Feature</a>. Некоторые очень важные апи вынесены в статические методы класса org.geotools.data.DataUtilities, что немного неочевидно, в этот класс нужно заглянуть обязательно.</p>
+<p>В геоинформатике пространственные данные, а значит и свойства Feature делятся на два вида: позиционные (геометрия) и непозиционные. Их разделение может потребоваться, например, для отображения информации об объекте с распечаткой всех его свойств. Какого-либо специализированного апи для их разделения я не встретил, а значит можно использовать особенность иерархии: интерфейс GeometryAttribute подчинён интерфейсу Property, следовательно проверка свойства на instanceof GeometryAttribute должно, по идее, такое разделение создать.</p>
+<p>Для работы с координатными системами нужен пакет org.geotools:gt-epsg-hsql, который распаковывает HSQL базу данных либо по временную директорию, либо путь можно передать через <a href="https://docs.geotools.org/latest/javadocs/org/geotools/referencing/factory/epsg/hsql/ThreadedHsqlEpsgFactory.html">системное свойство из поля DIRECTORY_KEY</a>. Без него что-то будет работать, а что-то будет выдавать ошибки, код будет пытаться запросить crs через CRS.decode(&quot;EPSG:XXXX&quot;), вываливаясь на исключении.</p>
+<p>Система координат описывается классом CRS (coordinate reference system). Здесь может возникнуть расхождение с параметрами эллипсоида и <a href="https://ru.wikipedia.org/wiki/Датум">датумом</a>: в СССР активно использовались системы координат на <a href="https://ru.wikipedia.org/wiki/Референц-эллипсоид_Красовского">эллипсоиде Красовского</a>, характеристики которого отличаются от эллипсоида <a href="https://ru.wikipedia.org/wiki/International_Terrestrial_Reference_Frame">ITRF</a> на который (судя по всему, всё же с некоторыми отличиями) опирается распространённая <a href="https://ru.wikipedia.org/wiki/WGS_84">WGS 84</a>. Хотя вроде как осуществляется постепенный переход, но в литературе и статьях могут встречаться самые разные варианты.</p>
+<p>Положение координатных осей может быть разным, как x/y, так и y\x для чего есть CRS.getAxisOrder, как в <a href="https://docs.geotools.org/latest/userguide/library/referencing/crs.html">официальном туториале</a>, так и <a href="https://docs.geotools.org/latest/userguide/library/referencing/order.html">настройки</a>, так и есть булев флаг в CRS.getAuthorityFactory(boolean longitudeFirst).</p>
+<p>Из-за возможных ошибок в конвертации координат между тулкитом и библиотекой, в первую очередь есть смысл сразу <a href="https://docs.geotools.org/stable/userguide/extension/grid.html">создать сетку</a> через gt-grid для упрощение отлова багов (удобно и сразу сделать вывод позиции курсора мыши). Да и карта без координатной сетки выглядит как-то странно. Но если очень мелкую сетку создавать для всей карты, то потребление памяти огромно и на мировой карте при минимальном зуме всё это сливается. Вероятно, можно сделать как <a href="https://gis.stackexchange.com/questions/296647/speed-up-geotools-vector-grid-processing">тут для Индии</a>, ограничивая её для какого-то определённого участка на карте или же временно на отдельном слое.</p>
+<p>При зуммировании карты появляется дублирование меток (не только для сетки). Беглый поиск по другим проектам навёл на метод с интересным именем <a href="https://github.com/senbox-org/snap-desktop/blob/0e4840d16bf3ebf4ac5f2934f500715186ad4513/snap-rcp/src/main/java/org/esa/snap/rcp/layermanager/layersrc/shapefile/FeatureLayer.java#L144">workaroundLabelCacheBug</a>. После опробования он вроде как решил проблему с дублированием, хотя ценой создания побочного эффекта в виде удаления старых меток, но это всяко меньшая беда.</p>
+<p>Библиотека поддерживает достаточно большое количество разных форматов файлов, векторных и растровых, но а первую очередь меня интересовала работа OpenStreetMap-карт, которые <a href="https://docs.geotools.org/stable/userguide/extension/tile-client/tileclient.html">поддерживаются</a> через пакет gt-tile-client. Они корректно натягиваются на сниппеты кода выше, разве что перемещение по карте не слишком быстрое, возможно, проблема в скорости отдачи тайлов osm-сервером и здесь можно что-то оптимизировать, зум тоже работает. OSM использует проекцию Меркатора (наследование от WebMercatorTileService), отсекая полюсы по -85..85° широты. Поскольку там своя отдельная иерархия слоёв (TileLayer, AsyncTileLayer, а также различные другие типы) от Layer, то это может осложнить завязывание работы со слоями на какой-то свой тип, унаследованный от Layer, требуя обёртки либо какого-то другого решения. Встроенных настроек кэширования вроде как хватает, хотя при очень активном использовании можно легко нарваться на лимиты сервера.</p>
+<p>Однако хотелось бы заставить работать их в оффлайне, на ум приходят разные варианты:</p>
+<ul>
+<li>Проксировать запросы и кэшировать png-тайлы, но из-за разнообразного зуммирования и перемещения по карте затея выглядит такой себе, разве что для небольших участков.</li>
+<li>Запускать в программе локальный OSM-сервер, однако удобные найдены не были. Есть формат MBTiles, можно отдельные регионы выгрузить из osm, но внутри там pbf, для которого сходу не нашёлся декодер, в сторонние <a href="https://gis.stackexchange.com/questions/323334/mbtiles-file-with-pbf-to-mbtiles-with-png-or-jpeg">конверторы</a> выглядят проблемными.</li>
+<li>Выкачать шейп-файлы для региона, но они там в общем случае очень большого размера, тоже нужно как-то нарезать\разрезать.</li>
+</ul>
+<p>В итоге вопрос с оффлайном остаётся открытым. Для экспериментов был набросан простейший макет, для тестирования оказался очень удобным шейп-файл <a href="https://gadm.org/index.html">GADM</a> Лихтенштейн из-за его небольших размеров. При комбинации слоя OSM-карт с шейп-файлом получается что-то такое:</p>
+<p><img alt='JavaFX and GeoTools' class='post-image' src='/assets/stab/img/posts/java-geoinformatics-with-geotools/java-geotools-javafx.png'></p>
+<p>Слои в ListView, перетаскивание их также реализовать достаточно легко. В данном случае верхний слой соответствует последнему в списке для упрощения, хотя по аналогии со слоями в графических редакторах сортировка должна быть наоборот. Для перемещения слоёв там есть специальное апи org.geotools.map.MapContent.moveLayer, когда как неаккуратная модификация их списка через layers() может приводить к разного рода ошибкам.</p>
+<p>Как видно, шейп-файл располагается почти по границам территории на OSM-карте. По клику мыши <a href="https://github.com/geotools/geotools/blob/main/docs/src/main/java/org/geotools/tutorial/style/SelectionLab.java">можно поискать и выделить</a> объекты на слое (со слоя OSM-карт никаких данных геометрии он не выдаёт). Здесь есть нюанс с работой фильтра intersects из туториалов: если пересечение будет проверяться с ReferencedEnvelope, у которого отсутствует длина\ширина (т.е. минимальные и максимальные координаты совпадают), то такой фильтр может не работать.</p>
+<p>С сервера тайлов часть объектов уже подписана, вот зум повыше:</p>
+<p><img alt='JavaFX with GeoTools and OSM maps' class='post-image' src='/assets/stab/img/posts/java-geoinformatics-with-geotools/java-geotools-osm-zoom-map.png'></p>
+<p>Большой шейп-файл уже способен подвесить приложение, а вот загрузку некоторых цветных GeoTIFF мне дождаться так и не удалось, потребление памяти также очень высокое в сравнении с QGIS. Возможно, что-то не так с созданием стилей, который был взят из <a href="https://docs.geotools.org/stable/tutorials/raster/image.html">примера</a>.</p>
+<p>C GeoJSON вроде работает штатно, разве что gt-geojson устаревший, как подмечено там в документации. Например, небольшой файл с <a href="https://opendata.stackexchange.com/questions/11300/free-ocean-currents-polyline-shapefile-download">океаническими течениями</a> вместе с OSM-слоем карт и сеткой выглядит как-то так:</p>
+<p><img alt='Ocean currents' class='post-image' src='/assets/stab/img/posts/java-geoinformatics-with-geotools/java-geotools-geojson-osm-grid.png'></p>
+<p>Для интереса попробовал загрузить <a href="https://ru.wikipedia.org/wiki/GRIB">GRIB</a>, но перемещение по карте, как и зум, выглядит некорректным, так что для этого формата может потребоваться какие-то свои настройки, хотя в QGIS он тоже что-то подтормаживает.</p>
+<p>В поисках хотя бы какой-то полезности от карт вспомнился <a href="https://www.mediawiki.org/wiki/API:Geosearch">гео-поиск Википедии</a>. Поскольку в параметрах есть радиус поиска, то было бы неплохо отразить его на карте, проставить маркеры по координатам найденных статей и подписать их. Маркер можно <a href="https://gis.stackexchange.com/questions/46936/how-to-draw-polygons-on-an-existing-map">получить стилем</a>, а круг через GeometricShapeFactory <a href="https://stackoverflow.com/questions/44249945/how-to-use-geometricshapefactory-in-geotools-to-create-a-circle-on-map">как-то так</a>.</p>
+<p><img alt='JavaFX with GeoTools and Wikipedia geosearch' class='post-image' src='/assets/stab/img/posts/java-geoinformatics-with-geotools/java-geotools-wiki-geoosearch.png'></p>
+<p>Немного сплюснутая форма поисковой окружности связана с особенностями <a href="https://habr.com/ru/post/235283/">картографических проекций</a>. Так как маркер стилизуется, но сам по себе представлен точкой, то это, вероятно, может осложнить поиск пересечения его геометрии с мышью. С другой стороны, полезность такого поиска статей тоже крайне сомнительна из-за более удобной работы на самом портале, да и основной браузер, как правило, намного удобнее чем WebView.</p>
+<p><img alt='JavaFX with GeoTools' class='post-image' src='/assets/stab/img/posts/java-geoinformatics-with-geotools/map-javafx-geotools.gif'></p>
+<p>Расчёт расстояния можно сделать с помощью <a href="https://docs.geotools.org/latest/userguide/library/referencing/calculator.html">геодезического калькулятора</a>, он также показывает и угол\азимут. Наиболее удобной оказалась отрисовка линий через сам тулкит, а на последнем клике перенос фигуры на карту. Допустим, нужно рассчитать расстояние между столицей княжества Вадуц и деревней Мюлехольц. Сервис <a href="https://www.distancecalculator.net/">distancecalculator</a> вычисляет 1.66 км, калькулятор:</p>
+<p><img alt='JavaFX with GeoTools, calculate distance' class='post-image' src='/assets/stab/img/posts/java-geoinformatics-with-geotools/java-geotools-calculate-distance.png'></p>
+<p>Учитывая, что точки выбраны очень грубо, то где-то близко. Несложно заметить, что расчёт расстояния получается частным случаем расчёта площади. Её можно получить как через геометрию из того же шейп-файла, так и через рисование нового полигона с конвертацией его в <a href="https://gis.stackexchange.com/questions/127921/unit-of-geotools-getarea-function">автопроекцию</a>. Сам полигон можно построить также тулкитом, а после последнего клика перенести на карту:</p>
+<p><img alt='JavaFX with GeoTools, calculate area' class='post-image' src='/assets/stab/img/posts/java-geoinformatics-with-geotools/java-geotools-calculate-area.png'></p>
+<p>Википедия говорит о 160 кв. километрах, что тоже достаточно близко, учитывая очень грубую обводку, создающую множественные погрешности.</p>
+<p>Для фильтров библиотека поддерживает DSL-язык CQL и его расширения ECQL. Здесь сразу на ум приходит попробовать интегрировать в такое приложение Groovy, используя <a href="https://github.com/FXMisc/RichTextFX">RichTextFX</a> для редактора. Хотя сам фильтр можно сделать и обычным текстовым полем, но это не так интересно, как интеграция полноценного скриптового языка. &quot;==&quot; не сработает, хотя он там прямо об этом скажет (WARNING: &quot;==&quot; is deprecated comparison operator. You should use &quot;=&quot;), без одинарных кавычек тоже не работает.</p>
+<p><img alt='JavaFX with GeoTools, Groovy and ECQL' class='post-image' src='/assets/stab/img/posts/java-geoinformatics-with-geotools/java-geotools-groovy-filter.png'></p>
+<p>Такая интеграция открывает очень широкие возможности, начиная от рисования и заканчивая обработкой данных. Вопросы здесь есть к RichTextFX, которая скудна на настройки и значительная часть поведения реализуется вручную: подсветка, подсказки, фолдинг и т.д. С одной стороны, это достаточно гибко, ибо припоминаю проблемы с этим в RSyntaxTextArea, с другой - пару раз вылетело исключение, создавая угрозу сделать приложение менее стабильным из-за такого редактора.</p>
+<p>Экспортировать карту в изображение можно <a href="https://gis.stackexchange.com/questions/373852/convert-shapefile-to-png-using-geotools">с помощью GTRenderer</a>, сохраняются все слои.</p>
+<p>Также было интересно немного потестировать 3D-глобус, часто встречаемый в геоприложениях:</p>
+<p><img alt='3D JavaFX with GeoTools' class='post-image' src='/assets/stab/img/posts/java-geoinformatics-with-geotools/3d-gis-javafx.gif'></p>
+<p>Встроить 3D в общую сцену можно через javafx.scene.SubScene. Однако тут появляется много неопределённостей: маппинг диффузной текстуры на сферу и смещения опорного меридиана для расчёта долготы, расположение камеры, света и т.д. и т.п., намекая на какой-то простенький встроенный отладчик, писать который сейчас нет времени.</p>
+<p>Без отладчика остаётся старый добрый метод тыка: отображение структуры сферы через setDrawMode(DrawMode.LINE), чтобы исключить проваливание в неё других фигур, как и выставление везде нулевых координат для уменьшения побочных эффектов. Из сети был рандомно взят <a href="https://stackoverflow.com/questions/36369734/how-to-map-latitude-and-longitude-to-a-3d-sphere">способ вычисления координат</a>, который после серии экспериментов был скорректирован. Трудно сказать, какие погрешности там ещё могут быть из-за особенностей текстуры-изображения и всяких разных побочных эффектов, но выглядит оно работоспособным.</p>
+<p>Для вращения глобуса был взят <a href="https://stackoverflow.com/questions/30915072/mouse-rotation-along-z-axis-in-javafx">сниппет</a>, однако в случае добавления маркера его нужно будет тоже вращать, как и всё остальное. Отсюда намного удобнее показался другой подход: вращение не группы фигур, а камеры через Rotate с центром вращения (pivot) в координатах центра Земли, что многое упрощает.</p>
+<p>На этом идеи для эксперимента закончились, каких-либо полезных задач для взаимодействия с базами данных, геосерверами и прочего функционала найдено не было.</p>
+<p>Какие итоги можно подвести. В целом, эксперимент был достаточно интересным, хотя потребовал намного больше времени, чем планировалось. Библиотека неплохо себя показала, она действительно очень мощная и хотя у меня не было каких-то серьёзных задач, думается, что гибкость её очень и очень высокая и она хорошо подходит для сложных гео-приложений. Там даже встречается <a href="https://docs.geotools.org/stable/javadocs/index.html?org/geotools/nature/Calendar.html">апи для работы с датами</a>, хотя язык документации вызывает вопросы.</p>
+<p>С другой стороны, из-за обширных возможностей скорее наблюдается эффект масштаба или что-то похожее: самодокументирование и лёгкое изучение объектного апи уже не так хорошо работает, а вынос апи в статические методы и утилиты делает его обнаружение очень проблемным. Да и в игру вступает специфичность предметной области, понятия которой могут быть неизвестны или не так пониматься, требуя изучения многочисленных стандартов, так что использование этой библиотеки не самое простое. Всё это немного уменьшает преимущества объектного языка и IDE, выдвигая на первый план документацию, примеры и многочисленные эксперименты с апи, что потребует времени.</p>
+<p>Остаются некоторые вопросы с производительностью: часть форматов работает достаточно быстро, а к другой части есть определённые вопросы, особенно к растру, так что есть смысл начинать сразу с них и с нагрузочного тестирования. Возможно, как это обычно бывает в других библиотеках, там есть отдельное стриминговое или аналогичное апи для оптимизаций, кэширования и прочего ускорения, которое мне не попалось.</p>
+<p>Ещё здесь наиболее полно ощущается отсутствие null-безопасности в языке: из-за сложного устройства соблюсти все инварианты класса достаточно сложно и в процессе использования апи рождается много NPE, часть которых не слишком интуитивна, например, от неправильного использования или отсутствия стиля, что потенциально может сделать приложение более хрупким. Вероятно, пути этих исключений нужно особенно тщательно продумывать, в ином случае может быть беда.</p>
+<p>В целом, можно признать эксперимент успешным, было интересно и весело.</p>
+</div>
+    </div>
+</article>
+<div class='navigation-pages btn-toolbar justify-content-center mb-2' role='navigation'>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/music-player-with-gstreamer-and-gtkd.html' role='button' rel="prev"> <span
+            class='navigation-pages-link-icon mdi mdi-chevron-left'></span> Эксперимент с GStreamer и GtkD</a>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1' href='/index.html'
+       role='button' rel="first">
+        <span class='navigation-pages-link-icon mdi mdi-home'></span> Главная</a>
+
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/experiments-with-esp32.html' role='button' rel="next">Первое знакомство с ESP32 <span
+            class='navigation-pages-link-icon mdi mdi-chevron-right'></span></a>
+    
+</div>
+        </div>
+        <div class='col-lg-3 sidebar-right'>
+            <div class='section' id='section-sidebar-right'>
+    <div class='card sidebar-container post-labels'>
+        <div class='card-header sidebar-container-header post-labels-header'>
+            <span class='post-labels-header-icon mdi mdi-tag-outline'></span>
+            Метки <span class='text-clarification'>(и кол-во статей)</span>
+        </div>
+        <div class='sidebar-container-content post-labels-content'>
+            <div class='list-group list-group-flush'>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dart.html'>Dart<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dlang.html'>Dlang<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/groovy.html'>Groovy<span class='badge' style='min-width:40px;'>5</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/javafx.html'>JavaFX<span class='badge' style='min-width:40px;'>6</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/arhitektura_po.html'>Архитектура ПО<span class='badge' style='min-width:40px;'>10</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/metodologija.html'>Методология<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/raznoe.html'>Разное<span class='badge' style='min-width:40px;'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/ekonomika.html'>Экономика<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/elektronika.html'>Электроника<span class='badge' style='min-width:40px;'>1</span></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class='card sidebar-container in-progress-articles'>
+       <div class='card-header sidebar-container-header in-progress-articles-header'>
+           <span class='mdi mdi-calendar-clock'></span>
+            В процессе написания
+       </div>
+       <div class='sidebar-container-content post-labels-content in-progress-articles-content'>
+               <ul class='list-group'>
+				   <li class='list-group-item align-items-center text-muted'>Нет статей</li>
+               </ul>
+       </div>
+    </div>
+    <div class='card mb-3 sidebar-container links-contacts'>
+        <div class='card-header sidebar-container-header links-contacts-header'>
+            <span class='mdi mdi-open-in-new'></span>
+            Девлоги текущих проектов
+        </div>
+        <div class="list-group sidebar-container-content">
+			<a class='link-contact list-group-item list-group-item-action' rel="me" href='https://www.youtube.com/@initkfs'>Youtube (готовится)</a>
+		</div>
+    </div>
+    <div class='page-up-wrapper'>
+        <button class='btn d-none d-lg-block' id='page-up-trigger' type='button'><span
+                class='mdi mdi-arrow-up'></span></button>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<footer class='page-footer'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='card'>
+    <div class='card-body'>
+        <p class="text-danger">Сайт в процессе тестирования.</p>
+        <small><span class='blog-info-footer'>Всего статей: 24. Блог - исследовательский, статьи отражают лишь субъективное мнение автора.</span> <span>&#169; <span id='copyright-date'></span>, Константин Фирсов.</span></small>
+        
+        <div class='blog-additional-links d-flex justify-content-center'>
+        <div class='blog-rss'><a class='blog-rss-item blog-icon-clickable'
+                                 href='/rss-all.xml'><span
+                class='mdi mdi-rss-box blog-icon-rss'></span></a></div>
+        </div>
+        <div class='text-danger' id='js-fail-block'>
+            <noscript>
+                <small>JavaScript отключен в браузере, функционал сайта ограничен.</small>
+            </noscript>
+        </div>
+    </div>
+</div>
+<script type='application/ld+json'>
+    {
+        "@context": "http://www.schema.org",
+        "@type": "person",
+        "name": "initkfs",
+        "jobTitle": "",
+        "url": "/index.html"
+    }
+</script>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class='mobile-up-wrapper text-center'>
+    <button class='btn d-lg-none' id='mobile-page-up-trigger' type='button'><span
+            class='mdi mdi-arrow-up'></span> Вверх
+    </button>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js'></script>
+
+<script crossorigin='anonymous' integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.full.min.js" integrity="sha512-wb3lqal2VtYhmlPAr232VP+Zus676CFAEYdywxIUSxG6F/X9WhN6SpREkWUdwBvMpd6gCKuKTGHhdum6m1wOvQ==" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+
+<script crossorigin='anonymous' integrity='sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+<script>
+var problemScripts = [];
+if (typeof jQuery === 'undefined') {
+    problemScripts.push("jquery");
+}
+
+   if (typeof Prism === 'undefined'){
+    problemScripts.push("prism.js");
+   }
+   
+if (typeof Popper === 'undefined') {
+    problemScripts.push("popper.js");
+}
+
+if (typeof timeago === 'undefined') {
+    problemScripts.push("timeago.js");
+}
+
+if (typeof window.bootstrap === 'undefined') {
+    problemScripts.push("bootstrap.js");
+}
+
+if (problemScripts.length > 0) {
+    var message = "Ошибка загрузки JavaScript: " +
+        problemScripts.join(",") +
+        "." +
+        " Возможные причины: блокировщик рекламы, проблемы с сетью, устаревший браузер. Может не работать дополнительный функционал.";
+
+    var failInfoBlock = document.createElement("small");
+    failInfoBlock.innerHTML = message;
+
+    var mainFailBlock = document.getElementById("js-fail-block");
+    if (!mainFailBlock) {
+        console.error(message);
+    } else {
+        mainFailBlock.appendChild(failInfoBlock);
+    }   
+}
+</script>
+<script src="/assets/dev/js/main.js"></script>
+</body>
+</html>
+
+
+

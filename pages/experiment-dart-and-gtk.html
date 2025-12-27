@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'>
+    <meta name="yandex-verification" content="7021eeb9c07b5c09">
+    <meta name="google-site-verification" content="PztbVe6Ru8ggM2n_tWUYwy0bEVHtJNvzIr-nsVCvBCA">
+    
+    
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/stab/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="/assets/stab/img/favicons/safari-pinned-tab.svg" color="#004245">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/stab/img/favicons/apple-touch-icon.png">
+    <meta name="msapplication-config" content="/assets/stab/img/favicons/browserconfig.xml">
+    <!-- end favicons -->
+    <!-- rss feeds -->
+    <link rel=alternate title="RSS лента" type=application/rss+xml href='/rss-all.xml'>
+    <!-- end rss feeds -->
+    <link type="text/plain" rel="author" href="/humans.txt">
+    <link crossorigin='anonymous' href='https://cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css'
+          integrity='sha384-Ls5zBitvvQ/wdeZDuTUevSY5Tb/she50BeMPrco2ok6xDC8modj6/JPwdL0gNxmP' rel='stylesheet'>
+    
+    <link crossorigin='anonymous' integrity='sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=='
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    
+    <link href="/assets/dev/css/main.css" rel='stylesheet'>
+    
+    <title>Эксперимент с Dart №2, но вместо Flutter - GTK. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</title>
+    <meta name="description" content="Эксперимент с Dart и GTK">
+    <meta content='Эксперимент с Dart №2, но вместо Flutter - GTK. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах' property='og:title'>
+    
+    <meta name="keywords" content="dart,gtk">
+    
+    <meta content='/index.html' property='og:url'>
+    <meta content='website' property='og:type'>
+    <meta content='ru_RU' property='og:locale'>
+</head>
+<body>
+<div class='container mb-3'>
+    <div class='row'>
+        <div class='col-lg-12'>
+           <div class='card w-100 site-header-container'>
+    <div class='row align-items-center'>
+        <div class="col-lg-9">
+            <div class='card-header site-header'>
+                <div class='card-title site-header-title mb-3'>
+                    <h5 class='site-header-title-text'>
+                        <a href='/index.html' class='blog-title-text-link'>Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</
+                    </h5>
+                </div>
+                <div class='card-subtitle site-header-subtitle mb-2'>
+                     <a href="/pages/about.html" class="badge mb-2 mb-sm-0">О станции и капитане</a>  <a href="/pages/site-implementation.html" class="badge">Сайт (Groovy-генератор)</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            
+            <div class='site-map w-100 d-flex justify-content-center pe-lg-3'>
+                <a class='site-map-link btn w-100' href='/site-map.html' role='button'><span
+                        class='site-map-link-icon mdi mdi-sitemap'></span>
+                    <span class='text-clarification'>Карта сайта (все статьи)</span></a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-9 blog-posts'>
+            <article class='card post'>
+    <h5 class='card-header post-header fw-bold'>
+        Эксперимент с Dart №2, но вместо Flutter - GTK
+    </h5>
+    <div class='card-body post-body'>
+        <div class="card-title mb-3">
+            <div class="post-body-header">
+
+<div class='post-header-date'><span class='mdi mdi-calendar-clock'></span>
+    <span class="post-datetime-text" data-iso-time="2022-04-10">10 апреля 2022</span>
+</div>
+
+
+
+<div class='post-labels'>
+    <span class='post-header-labels-icon mdi mdi-tag-outline'></span>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/dart.html' rel='tag'>Dart
+    </a>
+    
+</div>
+</div>
+        </div>
+        <div class='post-content'><p>Немного обидно терять наработки и кодовую базу, оставшиеся после <a href="/pages/desktop-flutter-and-cli-application.html">не слишком удачного эксперимента</a>, однако любые изменения в существующем коде выглядят по ощущениям более трудоёмкими в сравнении с классическими десктопными тулкитами из-за DSL Flutter-а. Отсюда приходит мысль отсоединить Flutter и поставить на его место другой тулкит. GTK выглядит здесь наиболее подходящим претендентом, учитывая лёгкость создания биндингов и возможность аналогий с объектным апи <a href="https://github.com/gtkd-developers/GtkD">GtkD</a>, которое синтаксически не сильно расходится с синтаксисом Dart.</p>
+<p>С одной стороны, биндинги на Dart намного тяжелее как создать, так и использовать в силу высокой абстракции языка, что чревато многочисленными коварными багами, но в рамках эксперимента эти риски минимальны. Кроме того, инфраструктура почти целиком завязана на Flutter, как и значительная часть библиотек, которые проблематично использовать в других тулкитах. С другой стороны, даже частично работающее приложение может делать что-то полезное, а польза в связке Dart и GTK может быть самой разной:</p>
+<ul>
+<li>Биндинги к Gtk.Builder позволяют использовать описание вью в xml и билдер Glade, что сэкономит время на последующих (и особенно глобальных) изменениях макета.</li>
+<li>Запуск GTK на Dart VM выглядит аналогом PyGTK, что удобно для скриптовых и очень простых вспомогательных приложений.</li>
+<li>Возможность использования в одной кодовой базе двух разных тулкитов для мобайла и десктопа, каждый из которых специализирован: юзабилити мобайла сильно отличается от десктопного, что может вносить разного рода неудобства.</li>
+<li>Опыт работы с dart:ffi, учёт архитектурой приложения двух разных тулкитов и т.п.</li>
+</ul>
+<p>Поскольку архитектура приложения уже предполагает независимость от интерфейса, то удаление из него Flutter сложностей не представляет, задача сводится к двум основным направлениям: получению биндингов к библиотекам и интеграции тулкита в событийную систему Dart.</p>
+<p>Готовых биндингов я не нашёл. На гитхабе и <a href="https://habr.com/ru/company/otus/blog/659159/">хабре</a> есть несколько примеров, достаточных для старта, однако несмотря на относительно свежие репозитории, апи всё равно уже несовместимо и много где поломано. Это может намекать на серьёзный риск из-за ffi-библиотек и уменьшение количества кода в биндингах, чтобы не пришлось потом его постоянно переделывать.</p>
+<p>В примерах была найдена подсказка о работе с UTF8 строками через пакет <a href="https://pub.dev/packages/ffi">dart:ffi</a>, а также <a href="https://pub.dev/packages/ffigen">ffigen</a> для помощи в генерации биндингов. Генерация в лоб приводит к огромным файлам на десятки тысяч строк, что, вероятно, сделает приложение более хрупким из-за изменений в ffi-библиотеках и апи, как отмечалось выше, поэтому я решил большую часть биндингов делать вручную, оставлять только самое необходимое, упрощая апи, прибегая к ffigen для генерации перечислений, констант, структуры классов и т.п. вспомогательных задач. С другой стороны, в автоматическую генерацию временами закрадываются ошибки, например, типы у GdkEventButton сгенерировались неправильно и на полях класса оказался мусор.</p>
+<p>Черновой прототип получился каким-то таким, Dart-приложение работает на Dart VM в Linux:</p>
+<p><img alt='rss agregator' class='post-image' src='/assets/stab/img/posts/experiment-dart-and-gtk/dart-gtk-app.png'></p>
+<p>Запуск просто GTK-окна на виртуальной машине занимает считанные секунды, самого приложения в районе 5 секунд или около того, но всё равно вполне терпимо, как и потребление памяти. Приложение успешно компилируется (и работает) в нативный исполняемый файл (ELF) через dart compile, запуск становится почти мгновенным.</p>
+<p>В целом биндинги можно свести к концепту GtkD: классам-обёрткам над Pointer с указателем на GTK-структуру. Повсеместное вынесение typedef-ов из параметризации lookupFunction в условиях нестабильного апи не слишком удобно из-за постоянных правок этих двух взаимосвязанных между собой объявлений. С другой стороны, на более устоявшемся коде можно снизить дублирование, а в тех же сигналах без него не обойтись.</p>
+<p>Мне потребовались следующие биндинги:</p>
+<ul>
+<li>Glib. Для работы с GObject, сигналами, управления памятью (g_malloc, g_free и т.п.). Часть апи GTK предполагает ручное управление памятью и если управлять ей через аллокаторы ffi апи, то разные типы аллокации запросто могут смешаться.</li>
+<li>Gdk. Разные вспомогательные типы.</li>
+<li>Gtk. Основное апи и контролы (что касается Gio, то функции в Gio.Application можно достать и через Gtk.Application).</li>
+<li><a href="https://wiki.gnome.org/Projects/GtkSourceView">GtkSourceView</a>. Для подсветки синтаксиса JSON-конфига адресов для парсера и окна лога. Об этой библиотеке будет отдельная статья.</li>
+<li>GdkPixbuf. Для работы с изображениями.</li>
+</ul>
+<p>Апи основных контролов по большей части простое, построение его тривиально. Вопросы возникают с обработкой событий виджетов: ffi вводит ограничение на коллбэк - статическую функцию на уровне пакета, поэтому я встречал лишь связку её с отдельным статическим StreamController (broadcast), на который подписываются все виджеты, а каждый получает свои события через фильтр (можно сравнить приватный указатель на GTK-структуру с указателем в событии). Способ нельзя назвать удобным, но он выглядит работоспособным в простых случаях.</p>
+<p>Ещё одна проблема в интеграции тулкита в event-loop Dart. Запуск приложения через g_application_run блокирующий, вынос логики GTK в отдельный изолят всё равно проблемен из-за неработоспособности входящих событий (т.е. от контроллера в gtk-изолят, слушатель у ReceivePort не срабатывает, ручной поллинг через isEmpty, first и т.п. тоже, ибо они асинхронные), когда как исходящие будут работать. Был <a href="https://stackoverflow.com/questions/46910038/how-to-avoid-blocking-function-g-application-run">найден сниппет</a> с обходным путём через g_main_context_iteration. Если поместить опрос событий gtk в какой-нибудь Dart-цикл (пробовал Timer), то всё начинает работать, хотя бы и с небольшим оверхедом по использованию CPU, вероятно, это можно настроить и получше.</p>
+<p>Для отслеживания событий org.freedesktop.NetworkManager и сети использовал <a href="https://pub.dev/packages/dbus">dbus</a> по аналогии с <a href="/pages/rss-aggregator-and-gtkd.html">RSS-ридером</a>. Бонусом в Dart присутствуют и другие <a href="https://github.com/orgs/canonical/repositories?language=dart">биндинги от Canonical</a>.</p>
+<p>Каких-либо других проблем с биндингами или самим Dart я не заметил, основная логика приложения осталась без изменений, поменялся только графический интерфейс. Однако упрощённая двухканальная архитектура сумела вывезти смену графического тулкита, возможно, при более плотных экспериментах с Flutter я также присмотрюсь к этому варианту, а может быть возьму и какой-то более специализированный вариант архитектуры из мобайла или их гибрид.</p>
+<p>Несмотря на относительную трудоёмкость затеи и остаточное количество плавающих багов, эксперимент можно признать частично успешным: приложение успешно выполняет свои задачи, однако отсутствие пакета с биндингами для такого монструозного тулкита как GTK сильно замедляет разработку и создаёт почву для коварных багов.</p>
+<p>Это намекает на более узкий класс задач, учитывающий, например, богатый выбор библиотек в Dart и относительную простоту интерфейса, как и другие факторы, где связку Dart с GTK вполне возможно и удобно использовать. В ином же случае проще взять Flutter или же другой тулкит, собственно, как и всегда: каждой задаче - свой инструмент.</p>
+</div>
+    </div>
+</article>
+<div class='navigation-pages btn-toolbar justify-content-center mb-2' role='navigation'>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/javafx-marketing-analysis.html' role='button' rel="prev"> <span
+            class='navigation-pages-link-icon mdi mdi-chevron-left'></span> Маркетинговый анализ JavaFX проекта</a>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1' href='/index.html'
+       role='button' rel="first">
+        <span class='navigation-pages-link-icon mdi mdi-home'></span> Главная</a>
+
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/text-editor-with-gtksourceview.html' role='button' rel="next">Текстовый редактор на основе GtkSourceView <span
+            class='navigation-pages-link-icon mdi mdi-chevron-right'></span></a>
+    
+</div>
+        </div>
+        <div class='col-lg-3 sidebar-right'>
+            <div class='section' id='section-sidebar-right'>
+    <div class='card sidebar-container post-labels'>
+        <div class='card-header sidebar-container-header post-labels-header'>
+            <span class='post-labels-header-icon mdi mdi-tag-outline'></span>
+            Метки <span class='text-clarification'>(и кол-во статей)</span>
+        </div>
+        <div class='sidebar-container-content post-labels-content'>
+            <div class='list-group list-group-flush'>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dart.html'>Dart<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dlang.html'>Dlang<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/groovy.html'>Groovy<span class='badge' style='min-width:40px;'>5</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/javafx.html'>JavaFX<span class='badge' style='min-width:40px;'>6</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/arhitektura_po.html'>Архитектура ПО<span class='badge' style='min-width:40px;'>10</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/metodologija.html'>Методология<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/raznoe.html'>Разное<span class='badge' style='min-width:40px;'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/ekonomika.html'>Экономика<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/elektronika.html'>Электроника<span class='badge' style='min-width:40px;'>1</span></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class='card sidebar-container in-progress-articles'>
+       <div class='card-header sidebar-container-header in-progress-articles-header'>
+           <span class='mdi mdi-calendar-clock'></span>
+            В процессе написания
+       </div>
+       <div class='sidebar-container-content post-labels-content in-progress-articles-content'>
+               <ul class='list-group'>
+				   <li class='list-group-item align-items-center text-muted'>Нет статей</li>
+               </ul>
+       </div>
+    </div>
+    <div class='card mb-3 sidebar-container links-contacts'>
+        <div class='card-header sidebar-container-header links-contacts-header'>
+            <span class='mdi mdi-open-in-new'></span>
+            Девлоги текущих проектов
+        </div>
+        <div class="list-group sidebar-container-content">
+			<a class='link-contact list-group-item list-group-item-action' rel="me" href='https://www.youtube.com/@initkfs'>Youtube (готовится)</a>
+		</div>
+    </div>
+    <div class='page-up-wrapper'>
+        <button class='btn d-none d-lg-block' id='page-up-trigger' type='button'><span
+                class='mdi mdi-arrow-up'></span></button>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<footer class='page-footer'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='card'>
+    <div class='card-body'>
+        <p class="text-danger">Сайт в процессе тестирования.</p>
+        <small><span class='blog-info-footer'>Всего статей: 24. Блог - исследовательский, статьи отражают лишь субъективное мнение автора.</span> <span>&#169; <span id='copyright-date'></span>, Константин Фирсов.</span></small>
+        
+        <div class='blog-additional-links d-flex justify-content-center'>
+        <div class='blog-rss'><a class='blog-rss-item blog-icon-clickable'
+                                 href='/rss-all.xml'><span
+                class='mdi mdi-rss-box blog-icon-rss'></span></a></div>
+        </div>
+        <div class='text-danger' id='js-fail-block'>
+            <noscript>
+                <small>JavaScript отключен в браузере, функционал сайта ограничен.</small>
+            </noscript>
+        </div>
+    </div>
+</div>
+<script type='application/ld+json'>
+    {
+        "@context": "http://www.schema.org",
+        "@type": "person",
+        "name": "initkfs",
+        "jobTitle": "",
+        "url": "/index.html"
+    }
+</script>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class='mobile-up-wrapper text-center'>
+    <button class='btn d-lg-none' id='mobile-page-up-trigger' type='button'><span
+            class='mdi mdi-arrow-up'></span> Вверх
+    </button>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js'></script>
+
+<script crossorigin='anonymous' integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.full.min.js" integrity="sha512-wb3lqal2VtYhmlPAr232VP+Zus676CFAEYdywxIUSxG6F/X9WhN6SpREkWUdwBvMpd6gCKuKTGHhdum6m1wOvQ==" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+
+<script crossorigin='anonymous' integrity='sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+<script>
+var problemScripts = [];
+if (typeof jQuery === 'undefined') {
+    problemScripts.push("jquery");
+}
+
+   if (typeof Prism === 'undefined'){
+    problemScripts.push("prism.js");
+   }
+   
+if (typeof Popper === 'undefined') {
+    problemScripts.push("popper.js");
+}
+
+if (typeof timeago === 'undefined') {
+    problemScripts.push("timeago.js");
+}
+
+if (typeof window.bootstrap === 'undefined') {
+    problemScripts.push("bootstrap.js");
+}
+
+if (problemScripts.length > 0) {
+    var message = "Ошибка загрузки JavaScript: " +
+        problemScripts.join(",") +
+        "." +
+        " Возможные причины: блокировщик рекламы, проблемы с сетью, устаревший браузер. Может не работать дополнительный функционал.";
+
+    var failInfoBlock = document.createElement("small");
+    failInfoBlock.innerHTML = message;
+
+    var mainFailBlock = document.getElementById("js-fail-block");
+    if (!mainFailBlock) {
+        console.error(message);
+    } else {
+        mainFailBlock.appendChild(failInfoBlock);
+    }   
+}
+</script>
+<script src="/assets/dev/js/main.js"></script>
+</body>
+</html>
+
+
+

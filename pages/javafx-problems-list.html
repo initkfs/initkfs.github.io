@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'>
+    <meta name="yandex-verification" content="7021eeb9c07b5c09">
+    <meta name="google-site-verification" content="PztbVe6Ru8ggM2n_tWUYwy0bEVHtJNvzIr-nsVCvBCA">
+    
+    
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/stab/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="/assets/stab/img/favicons/safari-pinned-tab.svg" color="#004245">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/stab/img/favicons/apple-touch-icon.png">
+    <meta name="msapplication-config" content="/assets/stab/img/favicons/browserconfig.xml">
+    <!-- end favicons -->
+    <!-- rss feeds -->
+    <link rel=alternate title="RSS лента" type=application/rss+xml href='/rss-all.xml'>
+    <!-- end rss feeds -->
+    <link type="text/plain" rel="author" href="/humans.txt">
+    <link crossorigin='anonymous' href='https://cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css'
+          integrity='sha384-Ls5zBitvvQ/wdeZDuTUevSY5Tb/she50BeMPrco2ok6xDC8modj6/JPwdL0gNxmP' rel='stylesheet'>
+    
+    <link crossorigin='anonymous' integrity='sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=='
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    
+    <link href="/assets/dev/css/main.css" rel='stylesheet'>
+    
+    <title>Баги и нюансы JavaFX. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</title>
+    <meta name="description" content="Список багов, проблем и нюансов JavaFX, описание которых может помочь начинающим.">
+    <meta content='Баги и нюансы JavaFX. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах' property='og:title'>
+    
+    <meta name="keywords" content="javafx,bugs,problems">
+    
+    <meta content='/index.html' property='og:url'>
+    <meta content='website' property='og:type'>
+    <meta content='ru_RU' property='og:locale'>
+</head>
+<body>
+<div class='container mb-3'>
+    <div class='row'>
+        <div class='col-lg-12'>
+           <div class='card w-100 site-header-container'>
+    <div class='row align-items-center'>
+        <div class="col-lg-9">
+            <div class='card-header site-header'>
+                <div class='card-title site-header-title mb-3'>
+                    <h5 class='site-header-title-text'>
+                        <a href='/index.html' class='blog-title-text-link'>Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</
+                    </h5>
+                </div>
+                <div class='card-subtitle site-header-subtitle mb-2'>
+                     <a href="/pages/about.html" class="badge mb-2 mb-sm-0">О станции и капитане</a>  <a href="/pages/site-implementation.html" class="badge">Сайт (Groovy-генератор)</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            
+            <div class='site-map w-100 d-flex justify-content-center pe-lg-3'>
+                <a class='site-map-link btn w-100' href='/site-map.html' role='button'><span
+                        class='site-map-link-icon mdi mdi-sitemap'></span>
+                    <span class='text-clarification'>Карта сайта (все статьи)</span></a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-9 blog-posts'>
+            <article class='card post'>
+    <h5 class='card-header post-header fw-bold'>
+        Баги и нюансы JavaFX
+    </h5>
+    <div class='card-body post-body'>
+        <div class="card-title mb-3">
+            <div class="post-body-header">
+
+<div class='post-header-date'><span class='mdi mdi-calendar-clock'></span>
+    <span class="post-datetime-text" data-iso-time="2019-09-22">22 сентября 2019</span>
+</div>
+
+<div class='post-header-date-edited text-success'><span class='mdi mdi-file-document-edit'></span><span class="post-datetime-text-edited" data-iso-time="2023-11-28"> Обновлено: 28 ноября 2023</span>
+</div>
+
+
+
+<div class='post-labels'>
+    <span class='post-header-labels-icon mdi mdi-tag-outline'></span>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/javafx.html' rel='tag'>JavaFX
+    </a>
+    
+</div>
+</div>
+        </div>
+        <div class='post-content'><p>Обновлено: 28-11-2023. Использование OpenGL напрямую.</p>
+<p>Обновлено: 19-02-2022. При открытии файла в стороннем приложении через ProcessBuilder код возврата fflush (stdio.h) на stdout может трактоваться как ошибка, приводя к завершению приложения.</p>
+<p>Обновлено: 11-01-2022. Потеря биндингов. Утечка памяти в setContextMenu.</p>
+<p>Обновлено: 01-09-2020. Проверка javafx.application.Platform#isSupported(ConditionalFeature feature) бросает исключение. Зачеркивание ячеек. SplitPane.Divider не Node. При масштабировании контента в ScrollPane скроллбары не обновляются. Вызов toString() не сквозной, некоторые классы не вызывают родительский метод.</p>
+<p>Обновлено: 06-01-2020. DatePicker крашит Cinnamon при открытии custom colors, Accordion и expandedPane, слушатели ссылок на WebView, редактируемый ListView, транзитивная связь в таблицах, Drag-and-Drop и сериализация.</p>
+<p>Сформировал небольшой список нюансов, проблем и граблей JavaFX (OpenJFX) по итогам написания нескольких программ. Конечно же, все баги есть в официальном багтрекере, а проблемы обсуждаются на Stack Overflow, но я все равно отмечу те из них, которые доставили мне особые неудобства или часто встречались. Можно сказать, что это мой личный рейтинг злоключений и памятник моему потерянному времени. Возможно, кому-то это будет полезным.</p>
+<p>JavaFX постоянно совершенствуется и обновляется, поэтому некоторые проблемы на новых версиях могут быть уже неактуальными. Очень часты баги в WebView, медиа и логике событий. Если вы реализуете кастомный контрол, скин или нестандартное поведение, то скорее всего вы с ними быстро познакомитесь.</p>
+<ol>
+<li><a href="#core_api">Общий функционал и особенности</a></li>
+<li><a href="#javafx_stage_window">Окна и Stage</a></li>
+<li><a href="#javafx_fxml_controllers">Контроллеры</a></li>
+<li><a href="#javafx_controls">Контролы</a></li>
+<li><a href="#javafx_graphics">Графика</a></li>
+</ol>
+<h5><a name="core_api"></a>Общий функционал и особенности</h5>
+<ul>
+<li>
+<p>Результат сложных биндингов легко потерять, если не сохранить в поле: <a href="https://stackoverflow.com/questions/26512181/bindings-and-in-javafx-not-firing">Bindings.and() in JavaFX not firing?</a></p>
+</li>
+<li>
+<p>Некоторые классы не вызывают родительский toString(), который у Node содержит разную служебную информацию, например, о стилях. Если вы реализуете механизм дебага в окне с выводом иерархии узлов, то при использовании Node.toString() у некоторых узлов будет печататься информация о стилях, а у некоторых нет, что может создавать обманчивое впечатление, что у последних стили просто не выставлены, когда родительский toString() не вызывается. Коварная ловушка, сам попал в такую.</p>
+</li>
+<li>
+<p>При вызове javafx.application.Platform#isSupported(ConditionalFeature.SWT) в модульном приложении вылетел эксепшен из-за отсутствия swt-классов. Неочевидно, что такой безобидный метод может положить приложение.</p>
+</li>
+<li>
+<p>Отсутствие Toast-уведомлений. Есть несколько неплохих померших либ, из которых можно выдрать логику. Или использовать ControlsFX или альтернативы:<br/><a href="https://controlsfx.bitbucket.io/org/controlsfx/control/Notifications.html">https://controlsfx.bitbucket.io/org/controlsfx/control/Notifications.html</a></p>
+</li>
+<li>
+<p>Отсутствие собственного трея. Нужно использовать awt (будьте внимательны, в каком потоке выполняется слушатели) или использовать сторонние либы, например:<br/><a href="https://github.com/dorkbox/SystemTray">https://github.com/dorkbox/SystemTray</a></p>
+</li>
+<li>
+<p><del>В GTK3 не работает DragAndDrop. Починят в 13 версии: <a href="https://bugs.openjdk.java.net/browse/JDK-8211302">https://bugs.openjdk.java.net/browse/JDK-8211302</a></del></p>
+</li>
+<li>
+<p>Drag-and-Drop (по крайней мере, пока его не переделали) требует сериализованного объекта для работы с ClipboardContent, а компоненты тулкита не могут в сериализацию, их наличие на полях может все сильно осложнить: <a href="https://stackoverflow.com/questions/11033943/serialize-javafx-components">Serialize JavaFX components</a>, <a href="https://stackoverflow.com/questions/49013841/serialize-objects-for-dragboard-content">Serialize objects for Dragboard content</a>. По ссылкам можно найти и <a href="https://gist.github.com/james-d/a7202039b00170256293">хаки</a>.</p>
+</li>
+<li>
+<p>Невозможность локализовать некоторые контролы, самая частая потребность — контекстное меню всех текстовых контролов: Копировать, Вырезать, Вставить и т. п. Этот баг мой любимый. Их там целая компания: <a href="https://bugs.openjdk.java.net/browse/JDK-8092388">It is not practical/possible to manually Localize the JavaFx controls</a>, <a href="https://bugs.openjdk.java.net/browse/JDK-8091503">I18N for Default ContextMenu of TextInput</a> и т.п.</p>
+</li>
+<li>
+<p>Может произойти потеря буфера обмена при завершении приложения. Зависит от операционной системы и других переменных, стоит учитывать и проверять: <a href="https://stackoverflow.com/questions/34864062/javafx-clipboard-content-deleted-when-program-ends">Javafx - Clipboard content deleted when program ends</a>.</p>
+</li>
+<li>
+<p>Фриз большинства IDE, а в самом плохом случае и рабочего стола, когда при дебаге точка останова находится в выпадающих меню или в другом неудачном месте: <a href="https://stackoverflow.com/questions/27863245/ide-hangs-in-debug-mode-on-break-point-in-java-fx-application">IDE hangs in debug mode on break point in java fx application</a>.<br/>Решается через -Dsun.awt.disablegrab=true, однако отключит функционал перетаскивания. В самом простом случае можно завести несколько профилей запуска или отладки, в флагом и без, или еще что-то в этом роде.</p>
+</li>
+<li>
+<p>Может возникнуть тонкий баг из-за многократного помещения одного и того же узла в граф узлов сцены. Контролы могут исчезать, это очень трудно выловить, у меня так пропадали иконки кнопок управления медиа. Похожий пример: <a href="https://stackoverflow.com/questions/15901860/javafx-add-more-than-one-label-with-image-to-pane">JavaFX. Add more than one Label with image to Pane</a>.<br/>Исключение выскочит лишь в случае установки через setRoot в Scene, тогда тулкит сообщит, что узел уже является рутом в другой сцене.</p>
+</li>
+<li>
+<p>getClass().getResource или getClassLoader().getResource возвращают null, хотя вроде бы все файлы лежат как нужно.<br/>Это не проблема JavaFX, но тут могут быть различия в поведении IDE и сборщика. Например, для модульного приложения при запуске из IDE поиск ресурсов может быть в module path, в который не попадает директория с ними: если сравнить системные свойства jdk.module.path и java.class.path и создать символическую ссылку из ресурсов в одну из директорий module path, то загрузка заработает. Таких ситуаций может быть много, как и могут быть <a href="https://youtrack.jetbrains.com/issue/IDEA-212364/intellij-does-not-find-resources-java-modules-openjfx">побочные эффекты от IDE</a>. В <a href="https://github.com/openjfx/samples">репозитории примеров</a> есть варианты с ресурсами, можно подменить файлы на свои, меняя потом код с наблюдением поломок. Это алгоритм вообще крайне эффективен: получить работоспособный пример, а потом ломать его своим кодом, не наоборот.</p>
+</li>
+<li>
+<p>Не проблема JavaFX, но также отмечу её в контексте десктопа. При попытке открытия файла или ссылки в системе через java.awt.Desktop по крайней мере под Linux можно подвесить намертво рабочий стол, наблюдал сам неоднократно. Баги проявляются в самых разных вариантах: <a href="https://stackoverflow.com/questions/27879854/desktop-getdesktop-browse-hangs">Desktop.getDesktop().browse Hangs</a>, <a href="https://stackoverflow.com/questions/21933442/desktop-browse-does-not-work-in-java-for-ubuntu">Desktop browse does not work in java for Ubuntu</a>, <a href="https://stackoverflow.com/questions/23176624/javafx-freeze-on-desktop-openfile-desktop-browseuri">JavaFX Freeze on Desktop.open(file), Desktop.browse(uri)</a> и т.п. Зависает рандомно и при испробовании очередного обхода бага может сложиться ложное чувство успешной победы, а потом опять зависнет. После нескольких таких зависаний я перешел на открытие через ProcessBuilder и &quot;xdg-open&quot;, хотя опять же не для всех дистров это подойдет.<br/>Нужно также учитывать, что в случае открытия файла без обработки результата (например, как <a href="https://stackoverflow.com/questions/18390912/opening-a-file-using-java-awt-desktop-while-redirecting-its-stderr">тут</a>), сторонняя программа может проверять код возврата fflush (stdio.h) на stdout, получать -1 и завершаться, некоторые программы будут работать, а некоторые - нет. Так может себя вести логгер: при невозможности логирования в stdout приложение рассматривает это как недопустимый режим работы и скорее всего правильно делает.</p>
+</li>
+<li>
+<p>Создание .exe для запуска.<br/>Обычно в таких вопросах склонны скрываться два разных: как запустить приложение простым способом, либо же как создать именно бинарный файл, запускающий JRE с JavaFX. Часто срабатывает аналогия с другими GUI-приложениями, создавая ложное впечатление, что для запуска необходим именно отдельный бинарник для запуска, но уже есть - это бинарник JRE в виде java.exe\javaw.exe, которому нужно указать данные для запуска JavaFX приложения.<br/>Современный и простой способ для модульных приложений - плагины сборщиков из примеров на сайте тулкита, которые через jlink создают легковесный кастомный JRE-образ с текстовым shell-скриптом, запускаемым командной оболочкой, в Unix - bash, sh, fish и т.п. PowerShell, batch file (&quot;батник&quot;) у Windows и т.д. Плагины умеют создавать даже инсталлятор через jpackage, а также подстраиваться под ось, например, запуская на Windows через javaw для отключения окна консоли. Однако в случае крупной легаси библиотеки или по каким-то другим причинам с модулями могут быть проблемы.<br/>Более сложный, но и более гибкий способ - собственный шелл-скрипт, который можно подсмотреть в примерах или взять за основу созданный сборщиком. Если возникает модульный конфликт между библиотеками, то их можно загружать из class path, а сам JavaFX из module path. Вам могут помочь также и JVM-флаги: --list-modules, --show-module-resolution и т.д.<br/>Более сложный способ - использование другого языка для написания бинарника-запускалки, как и использование сторонних - launch4j и т.п. Сложность их, в отличие от шелл-скрипта, в создании дополнительного низкоуровневого слоя абстракции, в случае проблем с которым нужно понимать механику запуска: либо лезть в исходники, либо анализировать бинарный файл.</p>
+</li>
+</ul>
+<h5><a name="javafx_stage_window"></a>Окна и Stage</h5>
+<ul>
+<li>
+<p>javafx.stage.Stage.setOnCloseRequest слушатель не срабатывает при программном закрытии окна, хотя это кажется интуитивным: <a href="https://stackoverflow.com/questions/24483686/how-to-force-javafx-application-close-request-programmatically">How to force JavaFX application close request programmatically</a>.<br/>Также, в случае ручного вызова close, там внутри вызывается hide.</p>
+</li>
+<li>
+<p>Нельзя создать StageStyle.TRANSPARENT или StageStyle.UNDECORATED без удаления окна из панели задач: <a href="https://bugs.openjdk.java.net/browse/JDK-8091566">Taskbar-less Undecorated Transparent Window</a>.<br/>Нужно для создания виджетов. Я просто использую UTILITY.</p>
+</li>
+<li>
+<p>На Linux системах может не появляться иконка окна, причем рандомно: <a href="https://bugs.openjdk.java.net/browse/JDK-8204936">stage.getIcons().add(icon); works sometimes</a>. Баг не особо злобный, но жутко бесит.</p>
+</li>
+</ul>
+<h5><a name="javafx_fxml_controllers"></a>Контроллеры</h5>
+<ul>
+<li>
+<p>Соглашение о наименовании Nested Сontrollers: <a href="https://openjfx.io/javadoc/11/javafx.fxml/javafx/fxml/doc-files/introduction_to_fxml.html#nested_controllers">Introduction to FXML</a>.<br/>Не всегда очевидно, что имя переменной контроллера формируется по соглашению как id из fxml + Controller. Ошибки бывают в самых разных сочетаниях: <a href="https://stackoverflow.com/questions/12543487/javafx-nested-controllers-fxml-include">JavaFx Nested Controllers</a>, <a href="https://stackoverflow.com/questions/36113453/nested-controller-issue-in-java-fx">Nested controller issue in Java FX</a> и т.д.</p>
+</li>
+<li>
+<p>Случайный вызов статического метода FXMLoader.load на созданном объекте. Особенно актуально для IDE, которые не предупреждают об этом. Все из-за расплывчатого эксепшена, который не конкретизирует причину. Ошибки бывают в самых разных формах: <a href="https://stackoverflow.com/questions/33682364/javafx-controller-loading">JavaFX Controller loading</a>, <a href="https://stackoverflow.com/questions/22910611/javafx-controller-is-always-null">JavaFX controller is always null<br/></a></p>
+</li>
+</ul>
+<h5><a name="javafx_controls"></a>Контролы</h5>
+<ul>
+<li>
+<p>При масштабировании контента в ScrollPane скроллбары могут не реагировать на это: <a href="https://bugs.openjdk.java.net/browse/JDK-8111160">ScrollPane : scrollbars not updated for transforms</a>, нужна обертка в Group. Это как-бы написано в документации, но забывается и баг периодически всплывает вновь и вновь. Для начинающих странная пометка в документации может вообще ни о чем не говорить, я также её не заметил.</p>
+</li>
+<li>
+<p>SplitPane.Divider не наследуется от Node, т.е. он имеет мало чего общего с тем разделителем, на который хочется повесить слушатель для отслеживания события мыши. Можно попробовать что-то вроде mainSplitContainer.lookupAll(&quot;.split-pane-divider&quot;) и проверить, что divider.getParent() == mainSplitContainer или что-то в этом роде.</p>
+</li>
+<li>
+<p>Зачеркивание ячеек можно попробовать сделать через стили, как, например тут <a href="https://stackoverflow.com/questions/41782933/java-striking-through-item-in-listview-javafx">Java- Striking through item in ListView javafx?</a> или получать узел через lookup(&quot;.text&quot;). Это нужно учитывать для кастомного формата строки в TableView, например, для обходов багов с переносами и т.п., когда текст устанавливается графикой. В подобных случаях в строках таблиц текст может не иметь класса и узел нужно искать по имени.</p>
+</li>
+<li>
+<p>Наезд скроллбара на контент, когда скроллбар должен показываться по необходимости. Очень и очень мерзкий баг: <a href="https://bugs.openjdk.java.net/browse/JDK-8199934">ScrollPane: horizontal scrollBar hides content</a>, <a href="https://stackoverflow.com/questions/49386416/javafx-scrollpanes-horizontal-scroll-bar-hides-content">JavaFX ScrollPane's horizontal scroll bar hides content</a>.</p>
+</li>
+<li>
+<p>Переносы в кастомной ячейке ListView через setWrapText(true) не работают: <a href="https://bugs.openjdk.java.net/browse/JDK-8088100">ListView/ListCell: setWrapText/setMaxWidth has no effect</a>. В комментах можно найти хак через установку очень малого значения. Только setWrapText(true).</p>
+</li>
+<li>
+<p>Чтобы сделать ListView редактируемым только лишь setEditable(true) недостаточно, а нужно еще и предоставить соответствующую фабрику ячеек: <a href="https://stackoverflow.com/questions/53692517/javafx-set-listview-to-be-editable">JavaFX set listview to be editable</a>.</p>
+</li>
+<li>
+<p>В целях обратной совместимости у  javafx.scene.control.ContextMenu есть метод show(Node anchor, double screenX, double screenY). В этом случае меню не будет закрываться при клике где-нибудь вне контрола. Для этого есть show(Window ownerWindow, double anchorX, double anchorY) из javafx.stage.PopupWindow: <a href="https://bugs.openjdk.java.net/browse/JDK-8095591">ContextMenu (Popupmenu) doesn't get dismissed when clicking outside</a>.</p>
+</li>
+<li>
+<p>При профилировании обнаружил, что сборщиком мусора не собираются закрытые окна, однако какого либо сохранения в поля, установки слушателей и т.п. не было. Методом тыка было определено потенциально проблемное место: метод TextInputControl.setContextMenu. Возможно, было что-то близко к <a href="https://bugs.openjdk.java.net/browse/JDK-8192063">Repeatedly creating a ContextMenu causes memory leak</a> и этот участок кода есть смысл проверить дополнительно.</p>
+</li>
+<li>
+<p>TableView, TreeView, ListView, TreeTableView теряет коммит при потере фокуса: <a href="https://bugs.openjdk.java.net/browse/JDK-8089514">Clicking outside of the edited cell, node, or entry should commit the value</a>, <a href="https://bugs.openjdk.java.net/browse/JDK-8089311">TableCell commit on focus lost not possible in every case</a>. Сам когда-то жутко костылял и все равно иногда работало криво.</p>
+</li>
+<li>
+<p>Таблицы в JavaFX тесно связаны с объектом из которого заполняются. В случае наличия в нём разных свойств от ObjectProperty сильно упрощается редактирование, после коммита таблица уже содержит измененную сущность. Однако это рождает и проблемы: может быть нужна рефлексия (помним о модульности в Java 9), модели или бизнес-логика завязываются на gui-пакеты и может быть транзитивная зависимость: класс-сущность зависит от понятия предметной области, таблица зависит от сущности, в итоге таблица зависит от предметной области через класс-сущность. Это затрудняет добавление синтетических столбцов - нельзя добавлять чужеродные поля в класс-сущность, поскольку они не относятся к описываемому им понятию предметной области.<br/>Иными словами, в самом первом туториале о <a href="https://docs.oracle.com/javafx/2/ui_controls/table-view.htm">Table View</a> используется класс Person, если в этой же таблице позже потребуется столбец с полной информацией или частью емайла, то могут быть проблемы, поскольку класс-сущность никак не может обо всем этом знать. Такая переделка может быть очень болезненной в случае сложной таблицы с многочисленной кастомизацией, фабриками и т.п., есть смысл задуматься сразу об отдельном классе. Технически, ограничения можно попытаться обойти через фабрики столбцов, но нужны жуткие костыли, ибо таблица имеет запутанное управление состояниями при редактировании и т.п.</p>
+</li>
+<li>
+<p>В TreeView может прыгать скролл, проще заменить на TreeTableView, поскольку такое прыгание в рандомное место делает контрол совершенно неюзабельным: <a href="https://bugs.openjdk.java.net/browse/JDK-8087859">Unexpected scrolling behaviour of TreeView</a> и быстро выводит из себя.</p>
+</li>
+<li>
+<p>Menu при клике не работает как MenuItem. Кроме хака через графику: <a href="https://stackoverflow.com/questions/10315774/javafx-2-0-activating-a-menu-like-a-menuitem">JavaFX 2.0 Activating a Menu like a MenuItem</a>, есть вариант через EventFilter и вызывать menu.hide() вручную, чтобы скрыть вспомогательный MenuItem сразу после клика, конечно, в обертке Platform.runLater.</p>
+</li>
+<li>
+<p>При вызове setValue у  DatePicker срабатывает слушатель onAction: <a href="https://bugs.openjdk.java.net/browse/JDK-8133328">JavaFX DatePicker Triggers onAction event when setValue is called through code</a>. Можно запросто пропустить и получить многократные вызовы методов. Я так получил три перезагрузки достаточно тяжелого окна с диаграммами вместо одной.</p>
+</li>
+<li>
+<p>При тестировании на Linux Mint умирал Cinnamon при клике на Custom colors в DatePicker. У меня была таблица с кастомными ячейками, в которых при редактировании появлялся выбор цвета. Программа рандомно зависала и крашила рабочий стол, оставляя лишь один шанс перезагрузить систему - переключиться полностью в терминал. Такое же наблюдал с какой-то сторонней библиотекой кастомного DatePicker-а несколько версий минта назад, описания бага не нашел, он плавающий. Но это заставило меня заменить этот контрол во всех критичных участках, за основу взял идею от Jose Pereda <a href="https://stackoverflow.com/questions/27171885/display-custom-color-dialog-directly-javafx-colorpicker/34257451">Display custom color dialog directly- JavaFX ColorPicker</a> и немного допилил под свои задачи.<br/>Стоит отметить, что похожие баги могут быть из-за запуска в IDE, например, при запуске из  IntelliJ IDEA окошко диалога выбора директории вызывало краш, может быть там какие-нибудь флаги были <a href="https://bugs.openjdk.java.net/browse/JDK-8158914">JMV crash on show javafx.stage.DirectoryChooser</a></p>
+</li>
+<li>
+<p>Tab не наследуется от Node. Из-за этого отличия усложняются методы установки графики, слушатели и т.п. Он не имеет удобных методов для отслеживания событий, например, хак для мыши через графику: <a href="https://stackoverflow.com/questions/26973463/capturing-mouseenter-event-in-a-tab-javafx">Capturing MouseEnter event in a Tab</a>. Такой способ имеет многочисленные проблемы если потребуется сложное поведение. Есть вариант отслеживать события через TabPane, способы самой разной степени костыльности, от фильтров событий, до прямого доступа через lookup, например: <a href="https://stackoverflow.com/questions/37711087/javafx-how-to-simulate-a-right-click-event-on-tab">Javafx how to simulate a right click event on Tab</a>.</p>
+</li>
+<li>
+<p>При быстром удалении и добавлении табов (например, при перетаскивании тулбара с контентом) могут возникнуть артефакты графики и прочие глюки в TabPane. Это поведение похоже на <a href="https://bugs.openjdk.java.net/browse/JDK-8193495">TabPane does not update correctly tab positions in the header area after a quick remove and add operations</a>. Несмотря на закрытый статус бага я снова встретился с подозрительно на него похожим в JavaFX 12. Исчез он также при добавлении задержки как и здесь: <a href="https://stackoverflow.com/questions/47616221/javafx-tabpane-tabs-dont-update-position/47625071#47625071">JavaFX TabPane tabs don't update position</a>.</p>
+</li>
+<li>
+<p>Практически всегда в Accordion есть какая-то дефолтная TitledPane, которая должна быть раскрыта. При этом SceneBuilder не поддерживает свойство expandedPane в Accordion, что не совсем очевидно: <a href="https://stackoverflow.com/questions/33194517/javafx-how-to-set-a-titeledpane-selected-opened-by-default">JavaFX: How to set a TiteledPane selected/opened by default</a>. Если же пропишите в FXML, то он вывалится с ошибкой, может в будущем поддержку свойства добавят, проверяйте на всякий случай.</p>
+</li>
+<li>
+<p>Иногда нужно отслеживать нажатия ссылок в WebView, например, для перенаправления в системный браузер. Если вы разбираете DOM с получением тегов, то стоит помнить о многочисленных подводных камнях вроде разных регистров, пустых тегов и т.п.: <a href="http://viyable.blogspot.com/2017/01/javafx-webview-hyperlink-listeners-and.html">JavaFX WebView: Hyperlink listeners and issue with extracting href value from tag 'A'</a></p>
+</li>
+</ul>
+<h5><a name="javafx_graphics"></a>Графика</h5>
+<ul>
+<li>
+<p>Искажение шрифтов в Linux-системах, особенно на старых версиях (JavaFX 8). Создана даже небольшая демонстрация: <a href="https://github.com/woky/javafx-hates-linux">https://github.com/woky/javafx-hates-linux</a><br/>В последних версиях ситуация немного улучшилась. Но некоторые флаги prism уже удалены.</p>
+</li>
+<li>
+<p>Баг в CSS функции derive: <a href="https://bugs.openjdk.java.net/browse/JDK-8176027">CSS derive() function not working properly when calculating lighter</a>. Наряду с ladder часто используется для обсчета всей темы, чтобы сократить в ней количество цветов. Можно долго гадать, почему цвет отличается.</p>
+</li>
+<li>
+<p>Один раз случайно выставил -fx-stroke-dash-array в css для класса .chart-vertical-grid-lines в 0, вылетело java.lang.IllegalArgumentException: dash lengths all zero.  После него с частотой тиков pulse начинает прилетать из JavaFX потока NPE. Приложение фризится, стоит помнить о такой возможности его сломать.</p>
+</li>
+<li>
+<p>Артефакты графики или кривое сглаживание в ImageView. Иногда иконка отображается хорошо, иногда портит. Можно попробовать глянуть что-то из этого: <a href="https://stackoverflow.com/questions/16089304/javafx-imageview-without-any-smoothing/16092631#16092631">JavaFX ImageView without any smoothing</a>, <a href="https://gist.github.com/jewelsea/5415891">https://gist.github.com/jewelsea/5415891</a></p>
+</li>
+<li>
+<p>Может быть проблема с gif-анимациями, тоже встречался с ним. Это баг самой джавы, но тоже отмечу его: <a href="https://bugs.openjdk.java.net/browse/JDK-7132728">stringtable overflow in GIFImageReader (ArrayIndexOutOfBoundsException)</a>.<br/>Будет эксепшен java.lang.ArrayIndexOutOfBoundsException: 4096, <a href="https://stackoverflow.com/questions/22259714/arrayindexoutofboundsexception-4096-while-reading-gif-file">ArrayIndexOutOfBoundsException: 4096 while reading gif file</a>.</p>
+</li>
+<li>
+<p>В некоторых случаях даже простейшая анимация может загружать CPU на 100%. Может зависеть от рабочего стола, сталкивался с этим на Linux: <a href="https://stackoverflow.com/questions/40728531/why-does-such-a-simple-animation-consume-high-cpu">Why does such a simple animation consume high cpu?</a>, <a href="https://bugs.openjdk.java.net/browse/JDK-8170335">A simple animation consume high cpu</a>.</p>
+</li>
+<li>
+<p>Может быть незаметная потеря иконки, если в FXML будет указан неправильный путь к изображению. Возможно, как-то коррелирует с обработкой ошибок изображений: <a href="https://bekwam.blogspot.com/2017/05/javafx-image-error-handling.html">JavaFX Image Error Handling</a>. SceneBuilder должен пометить такой случай иконкой с ошибкой.</p>
+</li>
+<li>
+<p>Можно наткнуться на целый класс проблем, связанных с Prism, рендерингом или специфическим железом: <a href="https://qna.habr.com/q/348397">Какую технологию использовать для непрерывное проигрывания видео?</a>, <a href="https://bugs.openjdk.java.net/browse/JDK-8198738">White screen when running Java FX Applications</a>.<br/>Сами магические флаги можно узнать из <a href="http://hg.openjdk.java.net/openjfx/9/rt/file/c734b008e3e8/modules/javafx.graphics/src/main/java/com/sun/prism/impl/PrismSettings.java">исходников</a>, но в различных версиях они постоянно меняются. Еще некоторые есть на <a href="https://wiki.openjdk.java.net/display/OpenJFX/Debug+Flags">вики</a>.<br/>Подергивание и артефакты часто встречается при перемещении узлов: <a href="https://stackoverflow.com/questions/10682107/correct-way-to-move-a-node-by-dragging-in-javafx-2">correct way to move a node by dragging in javafx 2?</a>, есть даже баг: <a href="https://bugs.openjdk.java.net/browse/JDK-8087922">Performance issue when tracking mouse events</a>.</p>
+</li>
+<li>
+<p>Встроенного 3D может быть недостаточно, а равно как и может потребоваться более низкоуровневое графическое api, например, OpenGL. Я использовал <a href="https://jogamp.org/">JOGL</a>, хотя есть и другие варианты, например, <a href="https://github.com/husker-dev/openglfx">openglfx</a>, <a href="https://github.com/eclipse-efx/efxclipse-drift">DriftFX</a> и т.п. В JOGL есть NewtCanvasJFX, наследуемый от javafx.scene.canvas.Canvas и конструктор которого может принять GLWindow. Так, например, можно интегрировать <a href="https://libgdx.com/">libGDX</a> в JavaFX для целей, например, GUI-редактора уровней. Ради эксперимента я запускал несколько libgdx-демок и они вполне неплохо работали. Будут, конечно же, определённые сложности от многопоточности и прочей специфики, но работать как-то будет.</p>
+</li>
+</ul>
+</div>
+    </div>
+</article>
+<div class='navigation-pages btn-toolbar justify-content-center mb-2' role='navigation'>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/site-implementation.html' role='button' rel="prev"> <span
+            class='navigation-pages-link-icon mdi mdi-chevron-left'></span> Реализация сайта (Groovy-генератор)</a>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1' href='/index.html'
+       role='button' rel="first">
+        <span class='navigation-pages-link-icon mdi mdi-home'></span> Главная</a>
+
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/javafx-dead-or-alive.html' role='button' rel="next">JavaFX мёртв или жив? Анализ рынка <span
+            class='navigation-pages-link-icon mdi mdi-chevron-right'></span></a>
+    
+</div>
+        </div>
+        <div class='col-lg-3 sidebar-right'>
+            <div class='section' id='section-sidebar-right'>
+    <div class='card sidebar-container post-labels'>
+        <div class='card-header sidebar-container-header post-labels-header'>
+            <span class='post-labels-header-icon mdi mdi-tag-outline'></span>
+            Метки <span class='text-clarification'>(и кол-во статей)</span>
+        </div>
+        <div class='sidebar-container-content post-labels-content'>
+            <div class='list-group list-group-flush'>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dart.html'>Dart<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dlang.html'>Dlang<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/groovy.html'>Groovy<span class='badge' style='min-width:40px;'>5</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/javafx.html'>JavaFX<span class='badge' style='min-width:40px;'>6</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/arhitektura_po.html'>Архитектура ПО<span class='badge' style='min-width:40px;'>10</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/metodologija.html'>Методология<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/raznoe.html'>Разное<span class='badge' style='min-width:40px;'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/ekonomika.html'>Экономика<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/elektronika.html'>Электроника<span class='badge' style='min-width:40px;'>1</span></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class='card sidebar-container in-progress-articles'>
+       <div class='card-header sidebar-container-header in-progress-articles-header'>
+           <span class='mdi mdi-calendar-clock'></span>
+            В процессе написания
+       </div>
+       <div class='sidebar-container-content post-labels-content in-progress-articles-content'>
+               <ul class='list-group'>
+				   <li class='list-group-item align-items-center text-muted'>Нет статей</li>
+               </ul>
+       </div>
+    </div>
+    <div class='card mb-3 sidebar-container links-contacts'>
+        <div class='card-header sidebar-container-header links-contacts-header'>
+            <span class='mdi mdi-open-in-new'></span>
+            Девлоги текущих проектов
+        </div>
+        <div class="list-group sidebar-container-content">
+			<a class='link-contact list-group-item list-group-item-action' rel="me" href='https://www.youtube.com/@initkfs'>Youtube (готовится)</a>
+		</div>
+    </div>
+    <div class='page-up-wrapper'>
+        <button class='btn d-none d-lg-block' id='page-up-trigger' type='button'><span
+                class='mdi mdi-arrow-up'></span></button>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<footer class='page-footer'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='card'>
+    <div class='card-body'>
+        <p class="text-danger">Сайт в процессе тестирования.</p>
+        <small><span class='blog-info-footer'>Всего статей: 24. Блог - исследовательский, статьи отражают лишь субъективное мнение автора.</span> <span>&#169; <span id='copyright-date'></span>, Константин Фирсов.</span></small>
+        
+        <div class='blog-additional-links d-flex justify-content-center'>
+        <div class='blog-rss'><a class='blog-rss-item blog-icon-clickable'
+                                 href='/rss-all.xml'><span
+                class='mdi mdi-rss-box blog-icon-rss'></span></a></div>
+        </div>
+        <div class='text-danger' id='js-fail-block'>
+            <noscript>
+                <small>JavaScript отключен в браузере, функционал сайта ограничен.</small>
+            </noscript>
+        </div>
+    </div>
+</div>
+<script type='application/ld+json'>
+    {
+        "@context": "http://www.schema.org",
+        "@type": "person",
+        "name": "initkfs",
+        "jobTitle": "",
+        "url": "/index.html"
+    }
+</script>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class='mobile-up-wrapper text-center'>
+    <button class='btn d-lg-none' id='mobile-page-up-trigger' type='button'><span
+            class='mdi mdi-arrow-up'></span> Вверх
+    </button>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js'></script>
+
+<script crossorigin='anonymous' integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.full.min.js" integrity="sha512-wb3lqal2VtYhmlPAr232VP+Zus676CFAEYdywxIUSxG6F/X9WhN6SpREkWUdwBvMpd6gCKuKTGHhdum6m1wOvQ==" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+
+<script crossorigin='anonymous' integrity='sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+<script>
+var problemScripts = [];
+if (typeof jQuery === 'undefined') {
+    problemScripts.push("jquery");
+}
+
+   if (typeof Prism === 'undefined'){
+    problemScripts.push("prism.js");
+   }
+   
+if (typeof Popper === 'undefined') {
+    problemScripts.push("popper.js");
+}
+
+if (typeof timeago === 'undefined') {
+    problemScripts.push("timeago.js");
+}
+
+if (typeof window.bootstrap === 'undefined') {
+    problemScripts.push("bootstrap.js");
+}
+
+if (problemScripts.length > 0) {
+    var message = "Ошибка загрузки JavaScript: " +
+        problemScripts.join(",") +
+        "." +
+        " Возможные причины: блокировщик рекламы, проблемы с сетью, устаревший браузер. Может не работать дополнительный функционал.";
+
+    var failInfoBlock = document.createElement("small");
+    failInfoBlock.innerHTML = message;
+
+    var mainFailBlock = document.getElementById("js-fail-block");
+    if (!mainFailBlock) {
+        console.error(message);
+    } else {
+        mainFailBlock.appendChild(failInfoBlock);
+    }   
+}
+</script>
+<script src="/assets/dev/js/main.js"></script>
+</body>
+</html>
+
+
+

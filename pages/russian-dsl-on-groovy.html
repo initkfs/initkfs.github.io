@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'>
+    <meta name="yandex-verification" content="7021eeb9c07b5c09">
+    <meta name="google-site-verification" content="PztbVe6Ru8ggM2n_tWUYwy0bEVHtJNvzIr-nsVCvBCA">
+    
+    
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/stab/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="/assets/stab/img/favicons/safari-pinned-tab.svg" color="#004245">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/stab/img/favicons/apple-touch-icon.png">
+    <meta name="msapplication-config" content="/assets/stab/img/favicons/browserconfig.xml">
+    <!-- end favicons -->
+    <!-- rss feeds -->
+    <link rel=alternate title="RSS лента" type=application/rss+xml href='/rss-all.xml'>
+    <!-- end rss feeds -->
+    <link type="text/plain" rel="author" href="/humans.txt">
+    <link crossorigin='anonymous' href='https://cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css'
+          integrity='sha384-Ls5zBitvvQ/wdeZDuTUevSY5Tb/she50BeMPrco2ok6xDC8modj6/JPwdL0gNxmP' rel='stylesheet'>
+    
+    <link crossorigin='anonymous' integrity='sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=='
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    
+    <link href="/assets/dev/css/main.css" rel='stylesheet'>
+    
+    <title>DSL на русском языке в Groovy. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</title>
+    <meta name="description" content="Разработка DSL (Domain specific language) на русском в Groovy">
+    <meta content='DSL на русском языке в Groovy. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах' property='og:title'>
+    
+    <meta name="keywords" content="dsl,groovy">
+    
+    <meta content='/index.html' property='og:url'>
+    <meta content='website' property='og:type'>
+    <meta content='ru_RU' property='og:locale'>
+</head>
+<body>
+<div class='container mb-3'>
+    <div class='row'>
+        <div class='col-lg-12'>
+           <div class='card w-100 site-header-container'>
+    <div class='row align-items-center'>
+        <div class="col-lg-9">
+            <div class='card-header site-header'>
+                <div class='card-title site-header-title mb-3'>
+                    <h5 class='site-header-title-text'>
+                        <a href='/index.html' class='blog-title-text-link'>Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</
+                    </h5>
+                </div>
+                <div class='card-subtitle site-header-subtitle mb-2'>
+                     <a href="/pages/about.html" class="badge mb-2 mb-sm-0">О станции и капитане</a>  <a href="/pages/site-implementation.html" class="badge">Сайт (Groovy-генератор)</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            
+            <div class='site-map w-100 d-flex justify-content-center pe-lg-3'>
+                <a class='site-map-link btn w-100' href='/site-map.html' role='button'><span
+                        class='site-map-link-icon mdi mdi-sitemap'></span>
+                    <span class='text-clarification'>Карта сайта (все статьи)</span></a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-9 blog-posts'>
+            <article class='card post'>
+    <h5 class='card-header post-header fw-bold'>
+        DSL на русском языке в Groovy
+    </h5>
+    <div class='card-body post-body'>
+        <div class="card-title mb-3">
+            <div class="post-body-header">
+
+<div class='post-header-date'><span class='mdi mdi-calendar-clock'></span>
+    <span class="post-datetime-text" data-iso-time="2021-06-30">30 июня 2021</span>
+</div>
+
+
+<span class='mdi mdi-code-braces'></span><span> Примеры кода</span>
+<div class='post-labels'>
+    <span class='post-header-labels-icon mdi mdi-tag-outline'></span>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/groovy.html' rel='tag'>Groovy
+    </a>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/arhitektura_po.html' rel='tag'>Архитектура ПО
+    </a>
+    
+</div>
+</div>
+        </div>
+        <div class='post-content'><p>Захотелось немного архитектурно пошалить и поэкспериментировать с простеньким DSL (Domain-specific language) на русском.</p>
+<p>Насчет русского языка в программировании ходят разные противоречивые мнения, но именно для предметных языков полезность смещается в сторону нативного, поскольку во многих областях устоялись строгие и определенные термины, перевод которых будет создавать множество самых разных проблем.</p>
+<p>Меня интересует работа с данными и офисными документами, а здесь одного лишь синтаксиса недостаточно, в языке должны присутствовать сложные библиотеки для работы со всем этим.</p>
+<p>Конечно же, на ум сразу приходит хорошая адаптация Groovy для создания DSL-инструментов и конфигураций, что дает неплохой архитектурный опыт, позволяя за счет различных механизмов делегирования и метапрограммирования немного иначе взглянуть на классические принципы объектной парадигмы и паттерны в ней.</p>
+<p>Для работы с офисом можно использовать разные Java-библиотеки: <a href="https://poi.apache.org">Apache POI</a>, <a href="https://github.com/LibrePDF/OpenPDF">OpenPDF</a>, <a href="https://pdfbox.apache.org">Apache PDFBox</a>. Очень полезен проект <a href="https://github.com/jtablesaw/tablesaw">tablesaw</a> для работы с табличными данными, что может сильно упростить загрузку и разбор таблиц в .csv (есть еще и <a href="https://commons.apache.org/proper/commons-csv">Commons CSV</a>) и т.п. Такое большое количество качественных библиотек сильно облегчает работу и без них идея выглядит очень сомнительной - написать подобный библиотечный функционал крайне трудозатратно. Собственно, это еще одна причина выбора Groovy.</p>
+<p>Простенький редактор для DSL-языка был построен тоже на Groovy с Swing и <a href="https://www.formdev.com/flatlaf">FlatLaf</a>, для <a href="https://github.com/bobbylight/RSyntaxTextArea">RSyntaxTextArea</a> ограничился лишь автодополнением имен методов из разделов:</p>
+<p><img alt='russian dsl groovy editor' class='post-image' src='/assets/stab/img/posts/russian-dsl-on-groovy/groovy-dsl.png'></p>
+<p>Заметно, что дефолтный вывод tablesaw-таблицы через toString() работает иначе, чем в терминале и промахивается с выравниванием, но это уже частности перехвата вывода скрипта.</p>
+<p>Сначала вспомню основные механизмы Groovy, облегчающие работу с DSL-инструментами. Центральный элемент - это, конечно же, Closure, по поведению очень похожее на замыкание в других языках, но это все же объект groovy.lang.Closure и я буду именовать его также:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>def closureInstance = { println &quot;Hello, $it!&quot; }
+assert closureInstance instanceof groovy.lang.Closure
+closureInstance(&quot;world&quot;)
+//Hello, world!
+</code></pre>
+<p>it - implicit parameter, неявный параметр, аналогичное поведение можно было бы получить и определив его явно, например, как { name -&gt; println &quot;Hello, $name!&quot; }. Ключевая особенность у Closure - механизм делегирования, в самом простом случае свойства\методы Closure из DSL-скрипта отображаются тем или иным образом на свойства\методы делегата.</p>
+<p>В абстрактном классе Closure определены ссылки на:</p>
+<ul>
+<li>this (thisObject) - класс, в котором определено Closure.</li>
+<li>owner - как и this, но если определение будет вложенное и располагаться в другом Closure, то будет ссылаться на внешнее. this же в этом случае все равно будет указывать на окружающий класс.</li>
+<li>delegate - сначала он указывает на owner, но может быть изменен на другой объект, в котором в зависимости от настроек делегирования будет происходить поиск методов для вызова.</li>
+</ul>
+<p>Очередность поиска свойств\методов зависит от стратегий делегирования: вполне понятные по своим названиям Closure.OWNER_FIRST, Closure.DELEGATE_FIRST, Closure.OWNER_ONLY, Closure.DELEGATE_ONLY и Closure.TO_SELF, которое отключает поиск в owner\this, оставляя только объект самого Closure, что в сочетании с наследованием от groovy.lang.Closure должно покрыть те случаи, когда ни одна из других стратегий не подходит. Еще в Closure есть немного функциональщины, но это выходит за рамки данной статьи, да и &quot;функциональные&quot; возможности могут быть относительно условными в чисто объектном языке.</p>
+<p>Но само по себе наличие Closure может быть недостаточно, его дополняет Command chains - возможность не писать скобки для инструкций верхнего уровня. DSL фрагмент select column from mytable эквивалентен select(column).from(mytable). Легко заметить, что вызов seleсt должен возвращать какой-нибудь объект (как вариант, Fluent Interface), иметь делегат с методом from и прочие варианты. Есть еще способ реализации через Map, например:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>def select = {
+	print &quot;select $it &quot;
+	[from: {
+		print &quot;from $it&quot;
+	}]
+}
+def (column, table) = [&quot;mycolumn&quot;, &quot;mytable&quot;]
+select column from table //select mycolumn from mytable
+
+//т.к. ничего не передаем, то в it будет null, его и распечатает
+assert select() instanceof LinkedHashMap
+assert select().containsKey(&quot;from&quot;)
+assert select().from instanceof Closure
+</code></pre>
+<p>Данный вариант выглядит немного запутанным, кроме того, он не пройдет static type checking, поскольку метода from у LinkedHashMap фе-факто никакого и нет, но с т.з. динамических фич это выглядит неплохо, очень неплохо.</p>
+<p>Более продвинутый вариант - аннотация @DelegatesTo, которую позволяет проходить строгие проверки. Примеры можно найти в <a href="http://docs.groovy-lang.org/docs/latest/html/documentation/core-domain-specific-languages.html#TheDelegatesToannotation-DelegatesTo">документации</a>:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>def email(@DelegatesTo(strategy=Closure.DELEGATE_ONLY, value=EmailSpec) Closure cl) {
+	def email = new EmailSpec()
+	def code = cl.rehydrate(email, this, this)
+	code.resolveStrategy = Closure.DELEGATE_ONLY
+	code()
+}
+</code></pre>
+<p>Здесь метод rehydrate внутри клонирует Closure и устанавливает delegate, owner, thisObject соответственно. Можно пожелать вынести все настройки в родительский метод с сигнатурой, например, rehydrateClosure(Closure closure, Object instance), которому можно передать EmailSpec. Такой код будет работать в каких-то ранних версиях 3.0.X, а потом может выдавать ошибку в static type checking из-за несовместимости стратегий: DELEGATE_ONLY в методе выше и OWNER_FIRST (т.к. стратегия в родительском методе не указана, то используется по умолчанию) в родительском. Само по себе наличие таких ошибок намекает на явное прописывание стратегии делегирования, даже если используется стратегия по умолчанию, чтобы потом в случае чего поиском по коду все это можно было бы поменять.</p>
+<p>Итого, можно использовать либо фигурные скобки, вкладывая их друг в друга или же ограничиться цепочкой команд. Первое выглядит более интересным из-за поддержки сворачивания блоков кода в разных редакторах, да и структуру чего-либо проще передавать вложенными блоками. Допустим, что нужно определить DSL-шаблон документа, но как тогда обозначать абзацы... вариант</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>абзац &quot;Абзац 1&quot; абзац &quot;Абзац 2&quot;
+</code></pre>
+<p>выглядит неудобным, редактировать свойства шрифта, цвет, отступы и прочее тут проблематично.</p>
+<p>Выходит, что цепочка команд хорошо подходит для запросов (или же CRUD-операций), а вот описание структуры лучше работает с вложенными друг в друга блоками.</p>
+<p>С фигурными скобками всё это превращается в:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>docx {
+	абзац {
+		текст {
+			//жирный и подчеркнутый - свойства, а не методы
+			жирный
+			подчеркнутый
+			&quot;Абзац 1&quot;
+		}
+	}
+	абзац {
+		текст {
+			&quot;Абзац 2&quot;
+		}
+	}
+}
+</code></pre>
+<p>Важность круглых скобочек повышается и без них Groovy будет пытаться обратиться к свойству &quot;подчеркнутый&quot;, а не методу подчеркнутый(). Выглядит тоже не ахти, ибо у сложного документа начинается хаос из {{{{{{{}}}}}}}, но такой вариант явно более гибкий, позволяет сворачивать блоки и переносить их между участками кода. Но что будет, если убрать переносы и написать что-то такое:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>абзац {
+	текст {
+		жирный подчеркнутый &quot;Это таблица из стран&quot;
+	}
+}
+</code></pre>
+<p>Таки да, получается цепочка команд (если бы там были методы) и свойства &quot;Это таблица...&quot; конечно же нет, можно сделать как-то так:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>текст {
+	жирный() подчеркнутый()
+	&quot;Это таблица из стран&quot;
+}
+</code></pre>
+<p>Но первый вызов должен что-то возвращать, иначе подчеркнутый() попытается вызваться на null. Сразу вспоминаются аннотации на fluent api для возврата this, вроде groovy.transform.builder.Builder, но её стратегии больше подходят именно для билдеров - сеттеры, создания внутренних или внешних билдеров-хелперов. Да и если void-метод внезапно начинает что-то возвращать, то это чревато ошибками с шансом присвоить что-то не так и не туда, а в ином случае хоть ошибка вылетит и остановит этот произвол.</p>
+<p>Еще у скобок есть проблема в особенности раскладок и в русскоязычном варианте их нет, нужно постоянно переключать раскладку туда-сюда. Юзабилити может улучшить собственный редактор, в котором скобки и спецсимволы вставляются через Alt\Shift, но если таким редактором пользоваться периодически без привыкания к его &quot;особенностям&quot;, то в игру вступает мышечная память при слепой печати и раскладки все равно будут переключаться на автомате, ибо привычно. Технически, более подходящими выглядят круглые скобки (), но подменять синтаксис в DSL мне бы не хотелось, это уже невалидный Groovy-код, что сильно снижает гибкость и возможность запуска его без каких-либо дополнительных обработок.</p>
+<p>В самом простом случае работу DSL можно описать так:</p>
+<ul>
+<li>Написание скрипта в файле или редакторе. В нем из {} должны создаваться Closure и отображаться на методы\свойства в делегате.</li>
+<li>Интерпретация его каким-то способом, я использовал GroovyShell. Можно настроить загрузчик классов, биндинг с переменными, дефолтные импорты и т.п. Большая часть из этих настроек потребуется для разных частных случаев и возможностей самого DSL.</li>
+<li>Изменение объекту скрипта DelegatingScript свойства делегата.</li>
+<li>Перехват вывода, если запуск происходит в редакторе, можно сделать через groovy.console.ui.SystemOutputInterceptor.</li>
+<li>Запуск скрипта через run().</li>
+</ul>
+<p>Конечно же, выполнение скрипта в основном потоке подвесит редактор, поэтому шаги могут отличаться в зависимости от способа загрузки и выполнения скрипта, особенностей редактора и т.п.</p>
+<p>Интуиция подсказывает, что рутовый делегат для DSL-скрипта должен обладать минимальной ответственностью и не пытаться покрыть собой все разделы с математикой, офисом, таблицами и прочим. Его основные задачи - это контроль ошибок, перехват несуществующих свойств (propertyMissing) и управление всеми остальными разделами. На этот случай есть замечательная аннотация @Delegate, которой можно помечать делегаты с разными разделами. Таким образом, добавление и удаление раздела будет сводиться к правке только одного поля в классе. Доступ к списку этих делегатов можно получить рефлексивно, профильтровать по аннотации и устанавливать им рабочие директории, искать в них методы и т.п. Здесь масштабирование очень и очень хорошее.</p>
+<p>Вероятно, здесь могут быть конфликты между одинаковым именем методов в разных делегатах и очередностью срабатывания. Поскольку DSL штука сама по себе тяжелая для заучивания и понимания, то есть смысл использовать такую иерархическую структуру делегатов для построения дерева справочной документации. Насколько я знаю, удобного способа дотянуться до комментариев нет, поэтому примеры и документацию проще аннотировать. Кроме справки нужен и вменяемый механизм подсказок при ошибках. Например, если описывается структура ошибочного документа dosx {}, то в рутовом делегате сработает propertyMissing и можно проитерировать методы всех делегатов с поиском подходящих вариантов, выводя предложение корректного варианта 'docx' в тексте ошибки.</p>
+<p>Эти требования намекают на смешивание английского и русского, часть Groovy-кода проще написать на русском. Задача начинает сводиться к маскировке английских идентификаторов, хотя такая смесь и не очень хорошо выглядит, но способ вполне рабочий, разве что может быть конфликт с какими-нибудь осями\терминалами и появятся иероглифы из-за проблем кодировок. Теоретически, DSL можно сильно упростить, используя кастомные конструкции, но тогда это уже невалидный Groovy-код со всеми вытекающими, поэтому остается как-то выкручиваться.</p>
+<p>Во-первых, нужно определиться с <strong>def</strong>. С одной стороны, это можно рассмотреть как сокращение от <a href="https://ru.wikipedia.org/wiki/Определение_(логика)">дефиниция</a>, что вполне легально для использования по аналогии с той же математикой и все сильно упрощает. Но это все же эксперимент и в исследовательских целях предположим, что нужно от def избавиться. Здесь можно пойти разными путями, например, вообще его убрать и тогда &quot;переменная&quot; помещается в мапу биндингов, методы доступа к которой определены в groovy.lang.Script:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>этоСтрока = &quot;привет, мир&quot;
+//true
+печатать getBinding().hasVariable(&quot;этоСтрока&quot;)
+печатать getBinding()[&quot;этоСтрока&quot;]
+</code></pre>
+<p>Выглядит неплохо и тут напрашивается перехватить несуществующее свойство и проверить наличие его в биндинге, если есть - то это значение переменной, наверное. Из-за этого &quot;наверное&quot; могут быть сложности в отличие переменных от других биндингов, тем более, часть из них могут передаваться скрипту извне с настройками шелла, что может спровоцировать конфликт имен, хотя для инклюдинга такой вариант удобнее. Побочным эффектом будет изменение области видимости:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>{
+	деньСегодня = сегодня()
+}
+//сработает
+печатать деньСегодня
+</code></pre>
+<p>Если очистка мапы с биндингами отсутствует, то между вызовами скрипта могут сохраняться старые переменные. Также есть определенные вопросы к сборке мусора на протяжении работы самого скрипта, разве что пытаться делать коллекцию на слабых ссылках. Еще нужно шарить биндинги между всеми делегатами, которые могут быть вложенными друг в друга, как вариант, пытаться добраться до этих переменных вверх по цепочке this\owner. Есть некая вероятность, что такая логика подмены несуществующего свойства биндингом из другого делегата может привести к неприятным приключениям с какой-нибудь из стратегий делегирования, той же DELEGATE_ONLY. Как видно, недостатков тут хватает, выглядит все это проблемным, но и самым удобным вариантом.</p>
+<p>Привлекательно выглядит аннотация @это, как наиболее краткая форма описать все, что угодно, но используя при этом всего лишь три буквы. К ней можно привязать GroovyASTTransformationClass класс для AST-трансформации, где у VariableExpression.setClosureSharedVariable​ проставить true. Не могу сказать о всех недостатках такого решения, вероятно, могут быть коварные побочные эффекты. Получается что-то такое:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>@это деньСегодня = сегодня()
+печатать деньСегодня
+</code></pre>
+<p>Судя по AST-дереву там устанавливается тип java.lang.Object, блочная видимость вроде бы сохраняется, изменение значения тоже:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>{
+	@это деньСегодня = сегодня()
+}
+//не сработает, ошибка
+печатать деньСегодня
+
+@это будущееДва = 1
+будущееДва += 1
+//2
+печатать будущееДва
+</code></pre>
+<p>Недостаток - символа at (@) в русской раскладке обычно нет, с другой стороны, нет и того же $ для удобной интерполяции переменных в строках. Еще здесь возникает сразу несколько вопросов. Во-первых, без надоедливых скобочек() Groovy будет рассматривать &quot;сегодня&quot; как свойство, а не метод. Это легко исправить методом перехвата несуществующего свойства, например, через propertyMissing и попробовать вызвать вместо него нужный метод. Но тогда выходит, что метод и свойство ведут себя одинаково и между ними может быть конфликт. С другой стороны, такие скобки явно неудобны, наличие конфликтующего свойства можно проверить дополнительно и я остановился на варианте с перехватом. В итоге, если есть редирект со свойства на метод будет:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>@это деньСегодня = сегодня
+//или же можно сразу
+печатать сегодня
+</code></pre>
+<p>Второй вопрос, в какой форме глагола удобнее представлять действие, например, это может быть &quot;печать&quot;. С другой стороны, печать больше подходит для описания структуры, что-то вроде:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>печать {
+	принтер 1
+}
+</code></pre>
+<p>Но здесь происходит еще и смешение смыслов - печать на принтере и печать в терминале, но можно условно допустить, что печать происходит где-то, а печатающее устройство вывода может быть любым и здесь глагол 'печатать' как аналог print выглядит вполне легально. Нужно учитывать, что может быть несколько вариантов этого метода, как и print\println. Русский язык в качестве программного сам по себе многословен и 'печататьСпереносом' в CamelCase нотации выглядит плохо. Более интересен вариант 'печататьАбзац', хотя абзац может подразумевать и красную строку как отступ.</p>
+<p>Если вместо 'печатать' взять глагол 'сообщить' из 1С, то форма 'сообщитьАбзац' выглядит немного странно, но терпимо. С другой стороны, русскоязычные методы через print\println работают с PrintWriter, например, при надлежащей реализации можно вызывать их в описании структуры офисного документа, что немного уходит от смысла глагола 'сообщить'. Но опять-таки, смотря с какой стороны на это посмотреть, ведь смысловое содержание можно трактовать по-разному, например, как пересылка сообщения.</p>
+<p>Раз def &quot;заменяет&quot; аннотация, то для выполняемого скрипта требуются дефолтные импорты для неё, что можно сделать через org.codehaus.groovy.control.customizers.ImportCustomizer, который добавляется в org.codehaus.groovy.control.CompilerConfiguration.</p>
+<p>Еще один вариант - использовать метки. До метки можно дотянуться через CompilationCustomizer, переопределяя у визитора (ClassCodeVisitorSupport и т.п.) visitExpressionStatement (или же более общий метод visitStatement) и проверяя getStatementLabels, получается как-то так:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>это: деньСегодня = сегодня
+</code></pre>
+<p>Теоретически, можно попытаться убрать и двоеточие, использовав цепочку вызовов, пустой метод-заглушку или что-то через кастинг (если убрать двоеточие у метки, то будет GroovyCastException), получая 'это деньСегодня = 1', но разбор будет идти справа налево и добраться до VariableExpression тут может быть сложнее, начинаются уже какие-то костыли. Вариант с меткой выглядит наиболее привлекательным, но у него возникли определенные проблемы с областью видимости из блока Closure (в самом скрипте работает более-менее корректно) и AST-трансформация с at сработала более стабильно.</p>
+<p>Используя кастомайзеры можно решить и другую проблему - инклюдинг или же включение скриптов друг в друга. Для <a href="https://habr.com/ru/post/358594">задач конфигурации</a> скрипты просто перезаписывают свойства друг друг и никакой особой игры руками не требуется. Но если не используется запись переменных в мапу биндингов, то по смыслу инклюдинга нужен доступ к переменным (и не только), определенным во включаемом скрипте. В мапу с биндингами они не добавляются, в properties объекта скрипта их тоже нет. Если погуглить, то можно найти <a href="https://stackoverflow.com/questions/32244456/how-to-get-all-groovy-variables-with-the-last-values-using-reflection">решение</a>, однако PrimaryClassNodeOperation и т.п. все уже deprecated. Еще один вариант: у CompilerConfiguration есть метод addCompilationCustomizers, куда можно добавить свой кастомный от ClassCodeVisitorSupport и вызвать визитор. Для доступа к переменным все же лучше переопределять visitDeclarationExpression и там дотянуться до имени переменной и его значения.</p>
+<p>Наверное, самый простой способ - собрать эти переменные в коллекцию и позже поискать в ней несуществующее в скрипте свойство. Но такой подход не делает переменные глобальными для всех участков кода: если обращение к ним будет в другом Closure, которое определяется в скрипте, то нужно расшаривать коллекцию с переменными или же выкручиваться как-то еще, например, через делегирование. Конечно же, чтобы во включаемом скрипте работали все разделы, нужно установить делегат со всеми методами\свойствами как и у включающего скрипта.</p>
+<p>Еще неплохо было бы иметь дефолтную рабочую директорию, в которую по умолчанию складываются выводы разных команд, сохраняются документы и т.п. Для архитектуры выше это не представляет особых проблем и главный скрипт управляет списком делегатов, устанавливая им эту директорию, либо же обратным вызовом работает с ней. Раз есть состояние, то нужен и метод для распечатывания этой директории и прочей служебной информации. Кроме того, для редактора её можно вывести в тайтл окна, чтобы наверняка.</p>
+<p>Конечно же, любой DSL должен хорошо отлаживаться, а в Groovy есть замечательный assert. Один из вариантов его использования - это поместить выражение в строку и выполнить с assert в groovy.util.Eval, хотя это нельзя назвать нормальным:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>@это один = 1
+@это два = 2
+проверить &quot;$один &gt; $два&quot;
+//вывод:
+assert 1 &gt; 2
+		|
+		false
+</code></pre>
+<p>Можно заменить английские слова, добавить номер строки и т.п. но сама строка с условием тут выглядит явно неудобной и есть определенные проблемы от Eval, которая может выполнить все, что угодно и создать массу побочных эффектов и ошибок. Возможно, более лучшим вариантом будут AST-аннотации, но чтобы пометить аннотацией выражение нужен какой-нибудь более извращенный ElementType.TYPE_USE со скобочками, кгм...но тогда становится неудобной сама конструкция.</p>
+<p>Есть еще один вариант - через метки, но это все же не метод и логично &quot;проверить&quot; заменить на &quot;проверка&quot;:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>проверка: 1 &gt; 2
+</code></pre>
+<p>Это вносит в синтаксис определенную неконсистентность: здесь логично ожидать обычный вызов или аннотацию, а не метку, это все немного усложняет, что где и когда использовать. Еще появляется много частных случаев, например, &quot;$один &gt; $два&quot; это уже GStringExpression, 1 &gt; 2 это уже ConstantExpression (вернее два - левое и правое). Мне кажется, что это тот случай, когда assert проще использовать напрямую, не маскируя, а для выброса ошибок придумывать что-то другое, хотя и не факт.</p>
+<p>Определенный интерес вызывают базовые конструкции языка и здесь можно вдоволь поэкспериментировать с метапрограммированием. Интерес скорее более теоретический, все же чем больше функционал сближается с языком программирования, тем больше хаков потребуется для скрытия английского и подстраивания DSL под особенности Groovy, что выглядит как бодание с языком и ненужное усложнение. Но все же, например, интересно выглядят методы обхода итерируемых объектов с перенаправлением на each. Можно добавить подобные методы через метакласс (возможно, можно сделать еще и через указатель на метод &amp;):</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>Iterable.metaClass.обойти = { delegate.each(it) }
+
+[4, 6, 3].обойти { элемент -&gt;
+	//или же как печататьАбзац it
+	печататьАбзац элемент
+}
+</code></pre>
+<p>Но и тут закрадывается неконсистентность: если в вызове &quot;печатать что-то&quot; глагол стоит на первом месте, то логично ожидать этого и от обхода. Можно заменить обычным методом, который принимает итерируемую цель и Closure, тогда за счет цепочки команд получится так:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>обойти (0..2) { число -&gt;
+	печататьАбзац число
+}
+//однако
+обойти ([4, 6, 3]) { элемент -&gt;
+	печататьАбзац элемент
+}
+
+</code></pre>
+<p>Как видно, если во втором варианте определить список, то &quot;обойти&quot; будет воспринято как свойство и нужны дополнительные скобки, что такое себе. Можно создать замену, например, для if...else, где в самом простом случае достаточно двух Closure, которые вызываются в зависимости от булевого результата, цепочка команд получается такой:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>если(2 &gt; 3) { 
+	печатать &quot;больше&quot; 
+} {
+	печатать &quot;меньше&quot; 
+}
+//меньше
+</code></pre>
+<p>что эквивалентно если((2 &gt; 3),{ печатать &quot;больше&quot; },{ печатать &quot;меньше&quot; }), хотя если добавлять else if, метки то...иначе и т.п., то все может усложниться, да и само по себе такое добавление замен для всех конструкций выглядит очень сомнительной затеей.</p>
+<p>Смешивание Groovy-кода и DSL позволяет использовать какую-то часть языка напрямую, например, оператор умножения для строк перегружен и можно сделать что-то вроде печататьАбзац &quot;*&quot; * 10, что напечатает **********.</p>
+<p>Тесно связана со скриптами безопасность: под капотом полноценный язык программирования, где запросто можно заставить пользователя как-то запустить вредоносный код (или он сделает это специально) или же сделать какую-нибудь ошибку. Самый простой вариант перехвата вызовов методов через groovy.lang.Interceptor (или же через метапрограммирование) в сложных случаях могут подвести, разве что предупреждать о каких-то опасных вызовах в самом DSL, стараясь предотвратить пользовательские ошибки. Об особенностях SecureASTCustomizer можно посмотреть <a href="https://habr.com/ru/company/haulmont/blog/445114">здесь</a>, как и о разных вариантах реализации песочниц, но тут не могу сказать, изменилось ли что-то в самом груви с новыми версиями или же нет. Построение надежных песочниц выглядит задачей нетривиальной, с массой нюансов.</p>
+<p>Кроме того, ввод от пользователя может быть подвержен разного рода ошибкам, тем же опечаткам и в части арифметики, как и у Java, можно случайно получить молчаливое переполнение (например, если число будет скопировано и случайно вставлено несколько раз подряд), никакого исключения при этом не будет:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>println Integer.MAX_VALUE
+//2147483647
+
+def result = Integer.MAX_VALUE + 1
+println result.dump()
+//&lt;java.lang.Integer@80000000 value=-2147483648&gt;
+
+result = Integer.MAX_VALUE + 1.0
+println result.dump()
+//&lt;java.math.BigDecimal@12c6 intVal=null scale=1 precision=0 stringCache=null intCompact=21474836480&gt;
+
+println result as int
+//-2147483648
+
+println result as long
+//2147483648
+
+//здесь вылетит java.lang.ArithmeticException: integer overflow
+println Math.addExact(Integer.MAX_VALUE, 1)
+
+</code></pre>
+<p>Что касается переполнения при возведении в степень, то сработает автокаст:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>(10**100).dump()
+//java.math.BigInteger@edfefc9e signum=1 mag=[4681, -1390046013, 2095778599, -2067476981, -209007040, -1910433156, -1431158008, -1473343728, 0, 0, 0] bitCountPlusOne=0 bitLengthPlusOne=0 lowestSetBitPlusTwo=0 firstNonzeroIntNumPlusTwo=0&gt;
+</code></pre>
+<p>Теоретически, пользователя может удивить даже результат от специальных значений IEEE 754, что есть смысл тоже учитывать, ведь за счет использования чистого Groovy он может запросто может их получить. Хотя Groovy делить на нуль не позволяет даже числа с плавающей точкой и 1.0/0 выдаст не Infinity, а java.lang.ArithmeticException: Division by zero.</p>
+<p>Конечно же, злую шутку могут сыграть локалезависимые операции, например, парсинг числа с плавающей точкой или же его форматирование.</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>//3.14
+println &quot;3.14&quot; as Double
+//java.lang.NumberFormatException: For input string: &quot;3,14&quot;
+println &quot;3,14&quot; as Double
+</code></pre>
+<p>При очень редком стечении обстоятельств это может создать коварные баги, например, при парсинге массива из строки, в которой элементы разделены запятыми. Если пользователь вставит число &quot;3,14&quot;, то оно превратится в массив [3, 14], а не [3.14]. Если в расчетах будет участвовать первый элемент массива, то за счет небольшой дробной части эту ошибку можно долго не замечать.</p>
+<p>В целом, эксперимент можно признать очень интересным и частично успешным. Недостаток - производительность, особенно инициализация, в static type checking это очень долгий процесс. Уже запущенный редактор работает по скорости более-менее терпимо, если потребуется многократно запускать скрипты, то можно поднять сервер\службу и т.п.</p>
+<p>Русский язык очень сильно осложняет задачу и, несмотря на всяческие маскировки, малой кровью полностью от английского избавиться маловероятно. С одной стороны, разработка на другом языке скорее задача нестандартная, но она вскрывает потребность в гибкой настройке разных особенностей DSL и этой гибкости хотелось бы побольше.</p>
+<p>С другой стороны, какая-то смесь языков вполне терпима, все же основное - это специализированные термины. Если же пытаться локализовать все конструкции языка, то объем работ увеличивается и польза от такого DSL уже выглядит сомнительной - он переусложняется, постепенно превращаясь в язык программирования. Пользователь, не знакомый с программированием будет испытывать тем больше сложностей, чем больше DSL становится похож на программирование, а высокая сложность может резко снизить полезность всей затеи, что проще будет взять какой-нибудь язык программирования и обойтись без лишней возни с DSL.</p>
+</div>
+    </div>
+</article>
+<div class='navigation-pages btn-toolbar justify-content-center mb-2' role='navigation'>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/rss-aggregator-and-gtkd.html' role='button' rel="prev"> <span
+            class='navigation-pages-link-icon mdi mdi-chevron-left'></span> RSS-агрегатор и эксперименты с gtkd</a>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1' href='/index.html'
+       role='button' rel="first">
+        <span class='navigation-pages-link-icon mdi mdi-home'></span> Главная</a>
+
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/desktop-flutter-and-cli-application.html' role='button' rel="next">Интеграция десктопного Flutter в CLI-приложение <span
+            class='navigation-pages-link-icon mdi mdi-chevron-right'></span></a>
+    
+</div>
+        </div>
+        <div class='col-lg-3 sidebar-right'>
+            <div class='section' id='section-sidebar-right'>
+    <div class='card sidebar-container post-labels'>
+        <div class='card-header sidebar-container-header post-labels-header'>
+            <span class='post-labels-header-icon mdi mdi-tag-outline'></span>
+            Метки <span class='text-clarification'>(и кол-во статей)</span>
+        </div>
+        <div class='sidebar-container-content post-labels-content'>
+            <div class='list-group list-group-flush'>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dart.html'>Dart<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dlang.html'>Dlang<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/groovy.html'>Groovy<span class='badge' style='min-width:40px;'>5</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/javafx.html'>JavaFX<span class='badge' style='min-width:40px;'>6</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/arhitektura_po.html'>Архитектура ПО<span class='badge' style='min-width:40px;'>10</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/metodologija.html'>Методология<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/raznoe.html'>Разное<span class='badge' style='min-width:40px;'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/ekonomika.html'>Экономика<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/elektronika.html'>Электроника<span class='badge' style='min-width:40px;'>1</span></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class='card sidebar-container in-progress-articles'>
+       <div class='card-header sidebar-container-header in-progress-articles-header'>
+           <span class='mdi mdi-calendar-clock'></span>
+            В процессе написания
+       </div>
+       <div class='sidebar-container-content post-labels-content in-progress-articles-content'>
+               <ul class='list-group'>
+				   <li class='list-group-item align-items-center text-muted'>Нет статей</li>
+               </ul>
+       </div>
+    </div>
+    <div class='card mb-3 sidebar-container links-contacts'>
+        <div class='card-header sidebar-container-header links-contacts-header'>
+            <span class='mdi mdi-open-in-new'></span>
+            Девлоги текущих проектов
+        </div>
+        <div class="list-group sidebar-container-content">
+			<a class='link-contact list-group-item list-group-item-action' rel="me" href='https://www.youtube.com/@initkfs'>Youtube (готовится)</a>
+		</div>
+    </div>
+    <div class='page-up-wrapper'>
+        <button class='btn d-none d-lg-block' id='page-up-trigger' type='button'><span
+                class='mdi mdi-arrow-up'></span></button>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<footer class='page-footer'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='card'>
+    <div class='card-body'>
+        <p class="text-danger">Сайт в процессе тестирования.</p>
+        <small><span class='blog-info-footer'>Всего статей: 24. Блог - исследовательский, статьи отражают лишь субъективное мнение автора.</span> <span>&#169; <span id='copyright-date'></span>, Константин Фирсов.</span></small>
+        
+        <div class='blog-additional-links d-flex justify-content-center'>
+        <div class='blog-rss'><a class='blog-rss-item blog-icon-clickable'
+                                 href='/rss-all.xml'><span
+                class='mdi mdi-rss-box blog-icon-rss'></span></a></div>
+        </div>
+        <div class='text-danger' id='js-fail-block'>
+            <noscript>
+                <small>JavaScript отключен в браузере, функционал сайта ограничен.</small>
+            </noscript>
+        </div>
+    </div>
+</div>
+<script type='application/ld+json'>
+    {
+        "@context": "http://www.schema.org",
+        "@type": "person",
+        "name": "initkfs",
+        "jobTitle": "",
+        "url": "/index.html"
+    }
+</script>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class='mobile-up-wrapper text-center'>
+    <button class='btn d-lg-none' id='mobile-page-up-trigger' type='button'><span
+            class='mdi mdi-arrow-up'></span> Вверх
+    </button>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js'></script>
+
+<script crossorigin='anonymous' integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.full.min.js" integrity="sha512-wb3lqal2VtYhmlPAr232VP+Zus676CFAEYdywxIUSxG6F/X9WhN6SpREkWUdwBvMpd6gCKuKTGHhdum6m1wOvQ==" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+
+<script crossorigin='anonymous' integrity='sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+<script>
+var problemScripts = [];
+if (typeof jQuery === 'undefined') {
+    problemScripts.push("jquery");
+}
+
+   if (typeof Prism === 'undefined'){
+    problemScripts.push("prism.js");
+   }
+   
+if (typeof Popper === 'undefined') {
+    problemScripts.push("popper.js");
+}
+
+if (typeof timeago === 'undefined') {
+    problemScripts.push("timeago.js");
+}
+
+if (typeof window.bootstrap === 'undefined') {
+    problemScripts.push("bootstrap.js");
+}
+
+if (problemScripts.length > 0) {
+    var message = "Ошибка загрузки JavaScript: " +
+        problemScripts.join(",") +
+        "." +
+        " Возможные причины: блокировщик рекламы, проблемы с сетью, устаревший браузер. Может не работать дополнительный функционал.";
+
+    var failInfoBlock = document.createElement("small");
+    failInfoBlock.innerHTML = message;
+
+    var mainFailBlock = document.getElementById("js-fail-block");
+    if (!mainFailBlock) {
+        console.error(message);
+    } else {
+        mainFailBlock.appendChild(failInfoBlock);
+    }   
+}
+</script>
+<script src="/assets/dev/js/main.js"></script>
+</body>
+</html>
+
+
+
