@@ -1,0 +1,32 @@
+
+/* SITE */
+
+    Site Name:         Космическая станция Аналитики - DIY техноблог о сложных IT-проектах
+    Site URL:          https://initkfs.github.io
+    Last update (UTC): 2023/04/15
+    Language:          Russian
+    Created (UTC):     2019/09/21
+    Standards:         HTML5, CSS3
+    Components:        jQuery, Bootstrap, Material Design Icons, Prism.js, Kolobok smiles
+    Software:          Groovy static website generator, flexmark-java, com.rometools, org.nibor.autolink
+    Web Design:        initkfs
+
+/* AUTHOR */
+
+    Nickname:    initkfs
+
+/* THANKS */
+
+    Groovy:                http://groovy-lang.org
+    Rometools:             https://github.com/rometools/rome
+    Flexmark-java:         https://github.com/vsch/flexmark-java
+    Autolink-java:         https://github.com/robinst/autolink-java
+    Kolobok smiles:        http://www.kolobok.us
+    Material Design Icons: https://materialdesignicons.com
+    Prism.js:              https://prismjs.com
+    jQuery:                https://jquery.com
+    Bootstrap:             https://getbootstrap.com
+
+/* META */
+
+    Built with: Java, Groovy, HTML, CSS, JavaScript

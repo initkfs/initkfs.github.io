@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'>
+    <meta name="yandex-verification" content="7021eeb9c07b5c09">
+    <meta name="google-site-verification" content="PztbVe6Ru8ggM2n_tWUYwy0bEVHtJNvzIr-nsVCvBCA">
+    
+    
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/stab/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="/assets/stab/img/favicons/safari-pinned-tab.svg" color="#004245">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/stab/img/favicons/apple-touch-icon.png">
+    <meta name="msapplication-config" content="/assets/stab/img/favicons/browserconfig.xml">
+    <!-- end favicons -->
+    <!-- rss feeds -->
+    <link rel=alternate title="RSS лента" type=application/rss+xml href='/rss-all.xml'>
+    <!-- end rss feeds -->
+    <link type="text/plain" rel="author" href="/humans.txt">
+    <link crossorigin='anonymous' href='https://cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css'
+          integrity='sha384-Ls5zBitvvQ/wdeZDuTUevSY5Tb/she50BeMPrco2ok6xDC8modj6/JPwdL0gNxmP' rel='stylesheet'>
+    
+    <link crossorigin='anonymous' integrity='sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=='
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    
+    <link href="/assets/dev/css/main.css" rel='stylesheet'>
+    
+    <title>Реализация сайта (Groovy-генератор). Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</title>
+    <meta name="description" content="Описание устройства статического генератора сайта на Groovy">
+    <meta content='Реализация сайта (Groovy-генератор). Космическая станция Аналитики - DIY техноблог о сложных IT-проектах' property='og:title'>
+    
+    <meta name="keywords" content="сайт,groovy,статический генератор,шаблоны,html">
+    
+    <meta content='/index.html' property='og:url'>
+    <meta content='website' property='og:type'>
+    <meta content='ru_RU' property='og:locale'>
+</head>
+<body>
+<div class='container mb-3'>
+    <div class='row'>
+        <div class='col-lg-12'>
+           <div class='card w-100 site-header-container'>
+    <div class='row align-items-center'>
+        <div class="col-lg-9">
+            <div class='card-header site-header'>
+                <div class='card-title site-header-title mb-3'>
+                    <h5 class='site-header-title-text'>
+                        <a href='/index.html' class='blog-title-text-link'>Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</
+                    </h5>
+                </div>
+                <div class='card-subtitle site-header-subtitle mb-2'>
+                     <a href="/pages/about.html" class="badge mb-2 mb-sm-0">О станции и капитане</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            
+            <div class='site-map w-100 d-flex justify-content-center pe-lg-3'>
+                <a class='site-map-link btn w-100' href='/site-map.html' role='button'><span
+                        class='site-map-link-icon mdi mdi-sitemap'></span>
+                    <span class='text-clarification'>Карта сайта (все статьи)</span></a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-9 blog-posts'>
+            <article class='card post'>
+    <h5 class='card-header post-header fw-bold'>
+        Реализация сайта (Groovy-генератор)
+    </h5>
+    <div class='card-body post-body'>
+        <div class="card-title mb-3">
+            <div class="post-body-header">
+
+<div class='post-header-date'><span class='mdi mdi-calendar-clock'></span>
+    <span class="post-datetime-text" data-iso-time="2019-09-22">22 сентября 2019</span>
+</div>
+
+
+<span class='mdi mdi-code-braces'></span><span> Примеры кода</span>
+<div class='post-labels'>
+    <span class='post-header-labels-icon mdi mdi-tag-outline'></span>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/groovy.html' rel='tag'>Groovy
+    </a>
+    
+</div>
+</div>
+        </div>
+        <div class='post-content'><p>Для создания документации к нескольким проектам я пару раз использовал Hexo. С поставленной задачей он справился, но статическая генерация имеет неприятный момент: в случае незначительного обновления темы или алгоритма преобразования почти все страницы сайта будут сильно изменены, что чревато коварными ошибками. Достаточно затруднительно в условиях пет-проекта компенсировать это тестами или каким-либо валидатором. Чем больше материалов на сайте - тем больше проблем, поэтому неплохо бы написать генератор самому, чтобы контролировать его изменения с кодовой базой и не от кого не зависеть, в т.ч. от разработчиков плагинов на которые опирается множество сторонних генераторов. Такие плагины имеют очень нехорошую тенденцию отваливаться в самый неподходящий момент. Да и сама по себе задача разработки подобного генератора достаточно интересна.</p>
+<p>Для генератора я выбрал Groovy. Учитывая, что генератор подвержен коварным ошибкам, то тут может помочь особенность Groovy в наличии строгой проверки типов. Её включение делает недоступными многие динамические возможности, но если использовать такие дополнительные гарантии все же планируется, то удобнее включить её сразу, а где нужна динамика - для cli, метапрограммирования, dsl-билдеров xml и т.п. вынести и пометить как TypeCheckingMode.SKIP или другим подобным образом обойти проверку.</p>
+<p>Если это сделать наоборот, то после включения проверок есть шанс получить огромное количество ошибок в самых разных файлах, которые еще и будут зависеть от версии самого Groovy. Удобно, что включить проверку для всего приложения можно через запуск Groovy с кастомным файлом-конфигом (--configscript) с настроенным CompilerCustomizationBuilder. Получается такой динамический язык с встроенным статическим анализатором, что очень и очень удобно, ну разве что после исправления всех ошибок и кастов.</p>
+<p>Удобны также и assert-ы, которые хорошо дебажат ошибки, для подобного проекта генератора есть смысл агрессивно усыпать код этими проверками, хотя это может сделать приложение более хрупким в сравнении с использованием исключений.</p>
+<p>Конечно же, ориентация Groovy на <abbr title="Domain-specific language — язык, специфический для предметной области">DSL</abbr> тоже должна найти отражение в генераторе. Сразу приходит на мысль возможность реализовать её в конфиге сайта, получая возможность инклюдинга конфигов друг в друга, особенно это полезно для разных конфигураций окружения, наличия зеркала у сайта и т.п. Можно вспомнить статью <a href="https://habr.com/ru/post/358594">Использование возможностей Groovy DSL для конфигурации Java-приложения</a>. Файл конфига можно оформить и в виде простого &quot;ключ-значение&quot; (например, используя ConfigSlurper), но возможность иметь гибкое расширение на будущее за счет полноценного Groovy-кода очень сильно соблазняет, да и такая реализация полезна для других проектов.</p>
+<p>Смысл такой <abbr title="Domain-specific language — язык, специфический для предметной области">DSL</abbr>-конфигурации достаточно прост: настройки сайта сохраняются в файле, этот файл интерпретируется Groovy в виде кода и все методы или записи ключ-значения отображаются на какой-нибудь объект, который устанавливается как делегат. Соответственно, вызов include в файле конфига может быть отображен на метод у делегата или какой-нибудь другой объект.</p>
+<p>Раз уж речь зашла о конфигурации генератора, то еще отмечу, что CliBuilder у Groovy (их несколько, я подразумеваю groovy.cli.commons и не знаю насчет groovy.cli.picocli) имеет свойство при комбинации опций коварно ломаться при смешении формата ключей. Например: -Dgrape.root=foo --outDir bar, то ошибки может не быть, а директория назначения будет null. В случае длинного списка аргументов командной строки это легко упустить, отсюда нужно обязательно нашпиговать эту логику проверками.</p>
+<p>Небольшая примитивная систематизация структуры генератора:</p>
+<p><strong>Информационная составляющая:</strong></p>
+<ul>
+<li>Конфигурация сайта: описание, автор и т.п. Сюда же пока входит и конфигурация развертывания в т.ч. для локальной разработки и тестирования. Например, для локального запуска нужно заменить все url-адреса.</li>
+<li>Статья:
+<ul>
+<li>Информация о статье: дата и время создания, название, метки, ключевые слова, описание для метатегов, краткое описание для вывода на главной.</li>
+<li>Текст статьи.</li>
+<li>Ресурсы статьи - изображения и т.п.</li>
+</ul>
+</li>
+<li>Множество статей:
+<ul>
+<li>Систематизация статей.</li>
+<li>Информация об обновлениях.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Инфраструктурная составляющая:</strong></p>
+<ul>
+<li>Конфигурация генератора - расположение директории Markdown-контента, темы и т.п.</li>
+<li>Шаблоны сайта:
+<ul>
+<li>Общий шаблон, часто называемый layout. Контентная страница рендерится в переменную, которая выводится в общем шаблоне, повсеместно данная переменная называется content или что-то такое.</li>
+<li>Контентные шаблоны - для постов, тегов и т.п.</li>
+</ul>
+</li>
+<li>Вставки шаблонизации:
+<ul>
+<li>Включение (инклюдинг) файлов шаблонов друг в друга.</li>
+<li>Логика вывода в шаблоне.</li>
+<li>Вспомогательная логика (хелперы):
+<ul>
+<li>Информация о текущем адресе страницы.</li>
+<li>Определение типа страницы - главная, статья, страница тегов и т.п.</li>
+<li>Вывод адреса сайта - базовый URL и главная.</li>
+<li>Формирование url по имени и т.п.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Ресурсы для сайта: css, js, иконки и т.п.</li>
+<li>Ресурсы для окружения: Robots.txt, sitemap.xml и т.п.</li>
+</ul>
+<p>Конечно, данная классификация сильно упрощена и создана для наглядности, да и я немного нарушил структуру, сокращая уровни, иначе на мобильном эти иерархии выглядят жутко неудобно из-за отступов. Можно добавить самый разный функционал: интернационализация, кеши, информация обновления статей и т.п. по вкусу.</p>
+<p>Я покопался в github-репозиториях в поисках вдохновляющих проектов, но не нашел ничего подходящего, в топе с большим количеством звезд проекты, которые проблематично портировать на Groovy по разным причинам, так что без велосипедостроения тут не обойтись.</p>
+<p>Трансформацию текста статьи в html-код сайта можно выразить в структуре генератора через набор классов-конвертеров (или трансформеров), аналоги их часто можно встретить в языках в виде класса с параметризованным входом и выходом. Если мы коснемся мира Java, то в качестве примера можно вспомнить тот же интерфейс org.springframework.core.convert.converter.Converter, который имеет единственный метод T convert(S source). С другой стороны, его также можно рассмотреть как частный случай джавовского функционального интерфейса java.util.function.Function&lt;T,R&gt;.</p>
+<p>Какие этапы преобразования можно придумать для статического генератора, например:</p>
+<ul>
+<li>Директория со статьями в список директорий, каждая из которых содержит файлы статей.</li>
+<li>Список файлов в список объектов с информацией о главном файле статьи и с содержимым в виде строк как List<String> (или даже Collection), сведем это в список строк файла статьи.</li>
+<li>Список строк в объект с частями статьи - хидером статьи (список строк) и её телом (то же список строк).</li>
+<li>Части статьи в объект статьи с тайтлом, временем создания и правки, тегами и т.п. При этом такое преобразование требует еще двух:
+<ul>
+<li>Преобразования текста статьи в html, у меня используется Markdown</li>
+<li>Получения метаданных из html, например, какое количество картинок в посте, есть ли код и т.п. Получить эти данные из сырого текста проблематично из-за различных настроек или особенностей markdown-процессора.</li>
+</ul>
+</li>
+</ul>
+<p>Если использовать классическое внедрение зависимостей, то разные этапы преобразования вполне будут поддаваться замене. В схеме выше есть небольшой нюанс: кроме самого файла с текстом статьи к ней могут быть прилеплены и различные материалы, в частности - изображения. Поэтому я и стал отталкиваться именно от отдельных директорий, которые содержат файлы статей, а не от простого списка файлов а-ля post1.md, post2.md в одной директории. Тогда изображения можно также поместить в эту директорию статьи в виде субдиректории. Например, в самом простом случае как:<br/>hello-post-dir<br/>├── images<br/>│   ├── image1.png<br/>└── main.md</p>
+<p>Тогда менеджеру ресурсов при генерации нужно аккуратно скопировать изображения в директорию с сгенерированным сайтом, желательно не делая этого многократно. Отсюда также может быть проблема, что схема преобразований выше <strong>не учитывает</strong> эти ресурсы и получить к ним доступ из информации о самой статье на последних этапах цепочки преобразований проблематично. С другой стороны, это не завязывает генератор на структуру директории, разделяя ресурсы и статью, что выглядит более правильным, а изначального сохранения пути к директории статьи вполне достаточно для менеджера, т.е. это намекает на то, что на каждом последующем этапе выгодно сохранять результат предыдущего. Тогда в контроллере менеджер ресурсов может получить информацию от самых первых этапах преобразования и получить путь до директории статьи, с которого все начиналось.</p>
+<p>С другой стороны, частным случаем может быть генерация из другого источника, например, из базы данных. Если на каких-то этапах будет использован, например, более специфический легаси File (или Path из java.nio), то на фоне сохранения предыдущих результатов это может <strong>завязать все api генератора только на файловую систему</strong>, сделав генерацию из других источников очень проблемной. В примере выше менеджер ресурсов захочет получить список изображений для статьи, обратившись к пути директории и для серверной базы данных никакого File там быть не может. Есть смысл заранее посмотреть в сторону более универсальных ресурсов - URL и URI.</p>
+<p>Таким же случаем может быть смена выходного формата: не в html, а в тот же pdf. Если на промежуточных этапах будет завязка на html, то замена будет болезненной. С другой стороны, у html-сайта много специфических настроек, например, количество постов на главной странице, seo-метатеги и т.п. так что безболезненно реиспользовать выйдет разве что самые простые трансформеры.</p>
+<p>Могут быть и более сложные случаи, например, можно пожелать держать текст для статьи сразу в нескольких файлах, а кроме изображений может быть большое количество других ресурсов, которые удобно скопировать одной директорией сразу. В таком случае наличие изображений без отдельной поддиректории для ресурсов и .md-файла статьи как в примере выше явно не слишком хорошая затея. Для будущей расширяемости есть смысл ресурсы положить в одно директорию, а файлы статей - в другую. Хотя если информация о них не используется на промежуточных этапах, то это изменение вполне можно провести без особой боли.</p>
+<p>Учитывая возможность легко внести ошибку в генератор, можно подумать о дополнительных валидациях промежуточных результатов преобразований, например, корректности всех полей в объекте статье или даже проверке выходного html-кода. Если при парсинге даты\времени еще могут вылетать исключения, то в тайтл запросто может пробраться пустая строка или строка из одних пробелов, как и символов переноса и т.п., что отследить достаточно трудно.</p>
+<p>Groovy имеет встроенную поддержку самых разных шаблонов, что хорошо описано в доках <a href="http://docs.groovy-lang.org/docs/next/html/documentation/template-engines.html">Template engines</a>. Текст может быть неопределенно большим и я выбрал StreamingTemplateEngine. На самом деле, StreamingTemplateEngine и GStringTemplateEngine могут быть взаимозаменяемыми, но последний движок имеет свойство конфликтовать, например, с идентификатором JQuery - '$', который для него нужно экранировать (а вот для других - нет) и о чем легко забыть.</p>
+<p>А вот инклюдинг поддерживает только MarkupTemplateEngine, но я не хотел бы завязывать шаблоны на его <abbr title="Domain-specific language — язык, специфический для предметной области">DSL</abbr>, предпочитая чистый HTML, поэтому беглым взглядом стал искать возможности реализации. Сам класс движка написан не очень удобно: большая часть кода просто засунута в приватный статический класс и наследованием там трудно что-то сделать, разве что переписывать всю реализацию, но это такое себе. Второй вариант - использовать метапрограммирование, добавив метод include к скрипту, но он формируется приватными методами и наследуется от groovy.lang.Script, тоже такое себе. До Binding, который становится делегатом скрипта шаблона добраться тоже нельзя, остается простой вариант положить в него либо объект с таким методом, либо замыкание, которое вызвать через call.</p>
+<p>После ряда экспериментов у меня получилось что-то такое, биндинг нужен для передачи аргументов при итерации, например, по статьям, для включения простых шаблонов его может не быть:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>commonBinding.putIfAbsent(&quot;include&quot;, { String sourceFileName, Map&lt;String, Object&gt; binding = null -&gt;
+			assert sourceFileName != null &amp;&amp; !sourceFileName.isBlank()
+			//baseIncludePath - путь директории с темой, чтобы путь включаемого шаблона рассчитывался от директории темы и вставки можно было легко перемещать между шаблонами. Можно и без геттера как свойство absolutePath() 
+			File fileToInclude = Paths.get(baseIncludePath.getAbsolutePath(), sourceFileName).toFile()
+			//как нибудь его проверить
+			assert fileToInclude.isFile() &amp;&amp; fileToInclude.canRead()
+
+			//напомню, что есть перегрузка метода чтения с указанием кодировки (т.к. внутри там BufferedReader, то по идее должно работать и StandardCharsets, чтобы не хардкодить строку кодировки, но на всякий случай сделаю по мануалам). 
+			//Передаю список строк т.к. он не завязан на файловую систему и удобнее разбирать метаданные
+			List&lt;String&gt; contentForRender = fileToInclude.readLines(&quot;UTF-8&quot;)
+			//можно повыделываться и создать мапу иконографикой, вместо new, при этом там будет LinkedHashMap
+			Map&lt;String, Object&gt; newBinding = [:] &lt;&lt; commonBinding
+			if (binding != null) {
+				//пустой биндинг выглядит подозрительным
+				assert !binding.isEmpty()
+				newBinding &lt;&lt; binding
+			}
+
+			//делаем отдельную переменную для более удобной точки останова при дебаге с переносом return на новую строку, она тут скорее всего пригодится и вызываем какой-нибудь метод, которые будет все это рендерить
+			def result = render(newBinding, contentForRender, baseIncludePath)
+			return result
+		})
+</code></pre>
+<p>Конечно, такое количество логики внутри замыкания делает его крайне специфическим, в данном случае завязывая его на файловую систему. Эти мапы с биндигами можно передать в шаблон через groovy.text.Template#make(binding), возможно, для больших гарантий безопасности есть смысл ограничить из изменение в шаблонах.</p>
+<p>Напомню, на всякий случай, что апи File <a href="https://docs.oracle.com/javase/tutorial/essential/io/legacy.html">неформально легаси</a>, но в Groovy есть дефолтный импорт java.io.*, а вот java.nio нет, что может доставить определенные неудобства, поэтому я выбрал старый способ.</p>
+<p>Наиболее интересной ситуацией будет включение с итерацией по множеству, где на каждом шаге нужно передавать переменные:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>//Для обхода списка статей
+&lt;% pages.each { page -&gt;
+out &lt;&lt; include.call(&quot;page/_page_overview.html&quot;, [&quot;page&quot;: page])
+} %&gt;
+
+//В случае более простого шаблона, используем %= для непосредственного вывода, вместо записи в out, переменную, которая всегда определена в данных тегах по умолчанию и является groovy.lang.Writable
+&lt;%= include.call(&quot;header/_header.html&quot;) %&gt;
+
+</code></pre>
+<p>Не очень удобно, но работает, не имея глобальных побочных эффектов. Изначально я пытался соответствовать заветам многих генераторов и разделять биндинги: один для контентного шаблона, а второй для layout. В итоге началась путаница и неочевидные баги, я отказался от этой затеи, несуществующие переменные все равно дают ошибку.</p>
+<p>Что касается хелперных классов, то для вызова как функцию класс сделать вызываемым достаточно легко, создав в нем метод call. Но при попытке его вызова, как и в случае выше с инклюдингом движок будет рассматривать его как метод скрипта шаблона. Если сделать .dump() в коде шаблона, то можно увидеть его контекст: groovy.tmp.templates.StreamingTemplateScript#с_каким_то_номером, где в качестве делегата установлен groovy.lang.Binding, поэтому вызов url(&quot;about&quot;) он будет транслировать по дефолту в вызов StreamingTemplateScript#url</p>
+<p>Я попробовал несколько вариантов организации хелперов. Проще всего сделать для них менеджер в виде объект-агрегата, кроме того, это также предотвратит их разброс по шаблонам, можно всегда найти регекспом вызовы в случае чего. Можно использовать Expando или ExpandoMetaClass, динамически создавая в нем методы хелперов или сделать обычный класс, чтобы при наличии динамического создания методов и замыканий не воевать с TypeChecked проверками или делать их пропуск. Хотя и не хорошо называть класс-менеджер во множественном числе, но мне показалось удобным обращаться к нему как helpers.home(), helpers.url('name'), helpers.page('name')  и т.п. не придумал для него подходящего короткого имени. Как вариант, можно вызывать их по короткому текстовому алиасу, но это может быть подвержено различным ошибкам, но как вариант.</p>
+<p>Теоретически, при использовании генератора на других кейсах в него могут попасть небезопасные данные и тогда нужно следить за выводом в шаблонах, экранируя его и не допуская XSS-инъекции. Экранирование зависит от шаблона, по крайней мере MarkupTemplateEngine имеет конфиг с возможностью включения автоматического экранирования. StreamingTemplateEngine по дефолту пропускает иньекцию, о чем следует помнить.</p>
+<p>Если в биндинге шаблона отсутствует содержимое, к которому идет обращение напрямую, то будет исключение. Например, для формирования тайтла в шаблоне главной страницы нельзя обратиться к той же переменной\ключу tag, которая для данной страницы не существует, но наличествует в странице с тегами, храня их список. Можно подумать, что методы проверки и геттер располагается в самом классе скрипта и можно сделать в шаблоне как hasProperty(&quot;tag&quot;), но нет, hasProperty() и getProperty() не сработают. Проверка должна быть в делегате, которым установлен groovy.lang.Binding, а это вызовы hasVariable() и getVariable: hasVariable(&quot;tag&quot;), hasVariable(&quot;page&quot;) и т.п. Эту же методику можно использовать для расшаривания переменных между частями шаблона без создания специального хелпера, разве что есть опасность случайно перезаписать существующее.</p>
+<p>Текст преобразовывается из Markdown с помощью <a href="https://github.com/vsch/flexmark-java">com.vladsch.flexmark</a> и нескольких расширений, коих там очень много, разве что устроены они несколько запутанно. На первый взгляд кажется, что здесь узкое место и обязательно нужны кэши, но по наблюдениям узким местом становятся именно сами Groovy-шаблоны, требуя несколько секунд на двойной парсинг: шаблона и его контента, да и включение шаблонов друг в друга тоже уменьшают скорость генерации, так что кэширование страниц и страниц с тэгами явно не помешает, чтобы при отладке или написании новой статьи не терять лишнее время.</p>
+<p>Первые злобные баги у меня появились именно из-за работы расширений. Например, если после аббревиатуры (AbbreviationExtension) следовала ссылка (AutolinkExtension), то последняя просто прыгала на начало абзаца, достаточно любопытное поведение. Еще напомню, что зачеркнутый текст зависит от расширения StrikethroughExtension и не поддерживается по умолчанию, что может быть неочевидным.</p>
+<p>Конечно же, было бы неплохо иметь эмодзи, но расширение Emoji работает с <a href="https://github.com/WebpageFX/emoji-cheat-sheet.com">emoji-cheat-sheet.com</a>, лицензия которого очень сомнительна, по-сути, её там и нет. Я посмотрел на несколько аналогов и они меня не особо впечатлили, поэтому решил вспомнить золотой век ICQ\Jabber-клиентов и моей любимой Miranda IM, которую я пичкал плагинами и конечно же, смайликами. Да и вообще эпоха форумов и чатов у меня ассоциируется именно с колобками, почему бы и нет. Я решил использовать обычные <a href="http://www.kolobok.us">колобки</a>. Конечно, не так стильно, модно, молодежно, да и на мобильном отображение стандартных размеров не очень хорошее, но функцию передачи эмоций они выполняют. Единственное, что будучи анимацией они могут как-то криво отображаться в современных браузерах, но это уже мелочи. Пришлось на основе расширения Emoji сделать свое, которое меняет в тексте название смайлика на url. Что касается удобства их выбора, то я прошелся скриптом по директории с выводом в html-таблицу, пока так. <img alt='yes4' class='emoji' src='/assets/stab/img/emoji/yes4.gif'></p>
+<p>Таким же способом пришлось написать расширение для установки url картинок в статьях, хотя может оно там уже и было где-то. Ужасно неудобно постоянно вставлять в статью какой-то длинный адрес изображения, намного проще обращаться по его имени, генерируя путь автоматически.</p>
+<p>На этом этапе самописность генератора начинает себя оправдывать: мне понадобилось расширение для ссылок картинок к статьям, расширение для колобков, расширения для установки класса для библиотеки подсветки кода. Если бы генератор был сторонним, то мне нужно было бы тесно соприкасаться с его внутренностями и следить за их изменением. В случае динамического языка это чрезвычайно большая проблема.</p>
+<p>Дизайн я выбрал самый простой, фронтенд по минимуму, чтобы большую часть времени уделять самому генератору и экспериментам с ним. Возможно, позже поэкспериментирую с транспайлерами в JS, например, меня интересует в этом плане Dart, но там есть определенные риски, особенно с долговременной поддержкой готового кода.</p>
+<p>Что можно сказать в заключение. Работать на такой задаче с Groovy достаточно приятно, продуманные нюансы улучшают настроение. Например, наличие метода collate в списках, что удобно для пагинации, наличие пакета groovy.time, который позволяет несколькими строками сделать замер времени скрипта и т.п. Такие мелочи всегда приятны и подкупают заботой о конечном пользователе.</p>
+<p>Неприятны реализации шаблонов, эти классы полезно было бы иметь хотя бы минимально расширяемыми. К слову, пакетная видимость, финализация классов и внутренние статические классы тесно сопровождают всю Java-индустрию. Типична ситуация: начинается интеграция либы, а после длительной работы оказывается, что нужный функционал зашит во внутреннем классе или финализирован, но либа уже внедрилась в код: не туда и не сюда, в условиях модульности рефлексия уже не спасет положение как раньше. Это настолько сильно может нарушить и нарушает разработку, что я серьезно изменил свое мнение о классическом ООП и потокобезопасности и уже не отношусь так критично к языкам с упрощенными модификаторами доступа или вообще с их отсутствием.</p>
+<p>Немного мучает очень долгая инициализация скрипта. Есть также определенная проблема с изначально динамической природой Groovy, где большая часть функционала реализуется замыканием и обращением к несуществующим методам, что в условиях строгой проверки типов требует или переписывания кода (просто так вам не дадут обратиться к несуществующему методу), или пропуска проверки, что может привести к хорошо запрятанным багам, однако большая часть туториалов в сети и даже некоторые api завязаны на динамику. Это можно даже назвать придиркой для языка, который изначально ориентирован на <abbr title="Domain-specific language — язык, специфический для предметной области">DSL</abbr>, но всё же.</p>
+<p>Можно еще вспомнить не очень хорошую поддержку Groovy в IDE, даже в IntelliJ, в которой с настройками по умолчанию очень легко пропускать ошибки. Кроме того, могут быть баги с Grape, передачи параметров Groovy и т.п. что может привести к переносу части работы в системный шелл или терминал.</p>
+<p>Пока я доволен: этот пет-проект мне очень понравился и позже планирую несколько экспериментов с генератором, нужно попробовать разные его архитектуры и поэкспериментировать с возможностями, что может сказаться на работе сайта. Надеюсь, что эти проблемы не принесут слишком больших неудобств читателям, мне бы этого не хотелось. Посмотрим, что выйдет из этого эксперимента.</p>
+</div>
+    </div>
+</article>
+<div class='navigation-pages btn-toolbar justify-content-center mb-2' role='navigation'>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/about.html' role='button' rel="prev"> <span
+            class='navigation-pages-link-icon mdi mdi-chevron-left'></span> О станции и капитане</a>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1' href='/index.html'
+       role='button' rel="first">
+        <span class='navigation-pages-link-icon mdi mdi-home'></span> Главная</a>
+
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/javafx-problems-list.html' role='button' rel="next">Баги и нюансы JavaFX <span
+            class='navigation-pages-link-icon mdi mdi-chevron-right'></span></a>
+    
+</div>
+        </div>
+        <div class='col-lg-3 sidebar-right'>
+            <div class='section' id='section-sidebar-right'>
+    <div class='card sidebar-container post-labels'>
+        <div class='card-header sidebar-container-header post-labels-header'>
+            <span class='post-labels-header-icon mdi mdi-tag-outline'></span>
+            Метки <span class='text-clarification'>(и кол-во статей)</span>
+        </div>
+        <div class='sidebar-container-content post-labels-content'>
+            <div class='list-group list-group-flush'>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dart.html'>Dart<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dlang.html'>Dlang<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/groovy.html'>Groovy<span class='badge' style='min-width:40px;'>5</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/javafx.html'>JavaFX<span class='badge' style='min-width:40px;'>6</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/arhitektura_po.html'>Архитектура ПО<span class='badge' style='min-width:40px;'>10</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/metodologija.html'>Методология<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/raznoe.html'>Разное<span class='badge' style='min-width:40px;'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/ekonomika.html'>Экономика<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/elektronika.html'>Электроника<span class='badge' style='min-width:40px;'>1</span></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class='card sidebar-container in-progress-articles'>
+       <div class='card-header sidebar-container-header in-progress-articles-header'>
+           <span class='mdi mdi-calendar-clock'></span>
+            В процессе написания
+       </div>
+       <div class='sidebar-container-content post-labels-content in-progress-articles-content'>
+               <ul class='list-group'>
+				   <li class='list-group-item align-items-center text-muted'>Нет статей</li>
+               </ul>
+       </div>
+    </div>
+    <div class='card mb-3 sidebar-container links-contacts'>
+        <div class='card-header sidebar-container-header links-contacts-header'>
+            <span class='mdi mdi-open-in-new'></span>
+            Девлоги текущих проектов
+        </div>
+        <div class="list-group sidebar-container-content">
+			<a class='link-contact list-group-item list-group-item-action' rel="me" href='https://www.youtube.com/@initkfs'>Youtube (готовится)</a>
+		</div>
+    </div>
+    <div class='page-up-wrapper'>
+        <button class='btn d-none d-lg-block' id='page-up-trigger' type='button'><span
+                class='mdi mdi-arrow-up'></span></button>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<footer class='page-footer'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='card'>
+    <div class='card-body'>
+        <p class="text-danger">Сайт в процессе тестирования.</p>
+        <small><span class='blog-info-footer'>Всего статей: 24. Блог - исследовательский, статьи отражают лишь субъективное мнение автора.</span> <span>&#169; <span id='copyright-date'></span>, Константин Фирсов.</span></small>
+        
+        <div class='blog-additional-links d-flex justify-content-center'>
+        <div class='blog-rss'><a class='blog-rss-item blog-icon-clickable'
+                                 href='/rss-all.xml'><span
+                class='mdi mdi-rss-box blog-icon-rss'></span></a></div>
+        </div>
+        <div class='text-danger' id='js-fail-block'>
+            <noscript>
+                <small>JavaScript отключен в браузере, функционал сайта ограничен.</small>
+            </noscript>
+        </div>
+    </div>
+</div>
+<script type='application/ld+json'>
+    {
+        "@context": "http://www.schema.org",
+        "@type": "person",
+        "name": "initkfs",
+        "jobTitle": "",
+        "url": "/index.html"
+    }
+</script>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class='mobile-up-wrapper text-center'>
+    <button class='btn d-lg-none' id='mobile-page-up-trigger' type='button'><span
+            class='mdi mdi-arrow-up'></span> Вверх
+    </button>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js'></script>
+
+<script crossorigin='anonymous' integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.full.min.js" integrity="sha512-wb3lqal2VtYhmlPAr232VP+Zus676CFAEYdywxIUSxG6F/X9WhN6SpREkWUdwBvMpd6gCKuKTGHhdum6m1wOvQ==" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+
+<script crossorigin='anonymous' integrity='sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+<script>
+var problemScripts = [];
+if (typeof jQuery === 'undefined') {
+    problemScripts.push("jquery");
+}
+
+   if (typeof Prism === 'undefined'){
+    problemScripts.push("prism.js");
+   }
+   
+if (typeof Popper === 'undefined') {
+    problemScripts.push("popper.js");
+}
+
+if (typeof timeago === 'undefined') {
+    problemScripts.push("timeago.js");
+}
+
+if (typeof window.bootstrap === 'undefined') {
+    problemScripts.push("bootstrap.js");
+}
+
+if (problemScripts.length > 0) {
+    var message = "Ошибка загрузки JavaScript: " +
+        problemScripts.join(",") +
+        "." +
+        " Возможные причины: блокировщик рекламы, проблемы с сетью, устаревший браузер. Может не работать дополнительный функционал.";
+
+    var failInfoBlock = document.createElement("small");
+    failInfoBlock.innerHTML = message;
+
+    var mainFailBlock = document.getElementById("js-fail-block");
+    if (!mainFailBlock) {
+        console.error(message);
+    } else {
+        mainFailBlock.appendChild(failInfoBlock);
+    }   
+}
+</script>
+<script src="/assets/dev/js/main.js"></script>
+</body>
+</html>
+
+
+

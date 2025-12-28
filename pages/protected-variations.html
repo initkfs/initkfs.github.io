@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'>
+    <meta name="yandex-verification" content="7021eeb9c07b5c09">
+    <meta name="google-site-verification" content="PztbVe6Ru8ggM2n_tWUYwy0bEVHtJNvzIr-nsVCvBCA">
+    
+    
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/stab/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="/assets/stab/img/favicons/safari-pinned-tab.svg" color="#004245">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/stab/img/favicons/apple-touch-icon.png">
+    <meta name="msapplication-config" content="/assets/stab/img/favicons/browserconfig.xml">
+    <!-- end favicons -->
+    <!-- rss feeds -->
+    <link rel=alternate title="RSS лента" type=application/rss+xml href='/rss-all.xml'>
+    <!-- end rss feeds -->
+    <link type="text/plain" rel="author" href="/humans.txt">
+    <link crossorigin='anonymous' href='https://cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css'
+          integrity='sha384-Ls5zBitvvQ/wdeZDuTUevSY5Tb/she50BeMPrco2ok6xDC8modj6/JPwdL0gNxmP' rel='stylesheet'>
+    
+    <link crossorigin='anonymous' integrity='sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=='
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    
+    <link href="/assets/dev/css/main.css" rel='stylesheet'>
+    
+    <title>Вспомним о Protected Variations. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</title>
+    <meta name="description" content="Protected Variations и методы поиска потенциальных изменений">
+    <meta content='Вспомним о Protected Variations. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах' property='og:title'>
+    
+    <meta name="keywords" content="архитектура,ооп,grasp">
+    
+    <meta content='/index.html' property='og:url'>
+    <meta content='website' property='og:type'>
+    <meta content='ru_RU' property='og:locale'>
+</head>
+<body>
+<div class='container mb-3'>
+    <div class='row'>
+        <div class='col-lg-12'>
+           <div class='card w-100 site-header-container'>
+    <div class='row align-items-center'>
+        <div class="col-lg-9">
+            <div class='card-header site-header'>
+                <div class='card-title site-header-title mb-3'>
+                    <h5 class='site-header-title-text'>
+                        <a href='/index.html' class='blog-title-text-link'>Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</
+                    </h5>
+                </div>
+                <div class='card-subtitle site-header-subtitle mb-2'>
+                     <a href="/pages/about.html" class="badge mb-2 mb-sm-0">О станции и капитане</a>  <a href="/pages/site-implementation.html" class="badge">Сайт (Groovy-генератор)</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            
+            <div class='site-map w-100 d-flex justify-content-center pe-lg-3'>
+                <a class='site-map-link btn w-100' href='/site-map.html' role='button'><span
+                        class='site-map-link-icon mdi mdi-sitemap'></span>
+                    <span class='text-clarification'>Карта сайта (все статьи)</span></a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-9 blog-posts'>
+            <article class='card post'>
+    <h5 class='card-header post-header fw-bold'>
+        Вспомним о Protected Variations
+    </h5>
+    <div class='card-body post-body'>
+        <div class="card-title mb-3">
+            <div class="post-body-header">
+
+<div class='post-header-date'><span class='mdi mdi-calendar-clock'></span>
+    <span class="post-datetime-text" data-iso-time="2020-05-10">10 мая 2020</span>
+</div>
+
+
+
+<div class='post-labels'>
+    <span class='post-header-labels-icon mdi mdi-tag-outline'></span>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/arhitektura_po.html' rel='tag'>Архитектура ПО
+    </a>
+    
+</div>
+</div>
+        </div>
+        <div class='post-content'><p>Зайдя в тупик запутанных иерархий при очередном глобальном изменении требований, я решил вспомнить о принципах, которые призваны сократить болезненные переделки и обеспечить разработчику крепкий здоровый сон, убивая на корню всяческие переживания о будущих внезапных изменениях в коде, по крайней мере, теоретически.</p>
+<p>Один из самых известных - Protected Variations в паттернах GRASP. Существуют разные способы его толкования, но я больше сконцентрируюсь на самой природе внезапных переделок.</p>
+<p>Шаблон направлен на защиту кода от изменений и особенно актуален для точек вариации и эволюции. Количество инструментов и приемов его реализации достаточно обширно, в сети есть масса материала на эту тему. Я лишь ограничусь простым перечислением:</p>
+<ul>
+<li>Инкапсуляция данных.</li>
+<li>Интерфейсы.</li>
+<li>Полиморфизм.</li>
+<li>Перенаправление.</li>
+<li>Проектирование на основе данных - чтение значений, путей к файлам классов и т.п.</li>
+<li>Поиск служб.</li>
+<li>Интерпретаторы.</li>
+<li>Рефлексия.</li>
+<li>Унифицированный доступ к полям и свойствам (автогеттеры\сеттеры) класса.</li>
+<li>Принцип подстановки Лисков.</li>
+<li>Принцип открытости/закрытости.</li>
+<li>Don’t Talk to Strangers.</li>
+<li>Инжекция зависимостей.</li>
+<li>Избегание цепочек вызовов getA().getB().getC() и т.п.</li>
+</ul>
+<p>Конечно же, на практике все не так просто, как в теории. Конкретный метод защиты от изменений можно рассмотреть двояко: как предотвращающий возникновения их, например, инкапсуляция сильно ограничивает клиентский код, не позволяя ему построить насыщенный и сложный функционал, или же как облегчающий последующие изменения.</p>
+<p>Во-вторых, сама точка эволюции или вариации может располагаться в коде в случайном месте, поскольку код тесно связан с требованиями, которые, в свою очередь, связаны с условной моделью предметной области. На описание этой модели в виде техзадания влияет масса факторов: сложность или специфические особенности самой предметной области, наличие времени, инструменты моделирования, когнитивные искажения и прочее.</p>
+<p>Как результат - различные ошибки и упущения, влекущие за собой изменения функционала независимо от проработанности, полноты или других качеств исходного техзадания. Проработанность модели простирается от совершенно хаотичной до почти идеальной, что возможно лишь в большой развитой команде с достаточным количеством временных и финансовых ресурсов.</p>
+<p>В самом неприятном случае такая модель выстраивается &quot;по ходу дела&quot;, формируясь эволюционно, сопровождая весь процесс постоянным рефакторингом и удалением огромного количества неподходящего под требования кода. Этот последний случай наиболее тяжел для динамических языков, где требуется большое количества тестов, но т.к. модель еще не устоялась, то тестирование будет работать для уже мертвого кода, тратя временные и финансовые ресурсы впустую.</p>
+<p>Здесь стоит вспомнить условно универсальный принцип Парето, в соответствии с ним можно поделить приложение на более и менее проблемные участки. Но, обладая многими существенными недостатками, этот метод еще и ограничивается другим принципом &quot;самого слабого звена&quot; из системного анализа: система уязвима в самом слабом месте, а оно запросто может быть в наименее &quot;важном&quot; участке: критичные участки кода получают внимание и заботу, а в остальных начинают накапливаться ошибки, упущения или того хуже - уязвимости. Рано или поздно этот менее критичный участок становится критичным и благодаря ему система ломается с громким треском.</p>
+<p>Вероятно, эти сложности корнями уходят в фундаментальную проблему отсутствия подходящей методологии: так, обычно наблюдается определенный разрыв между абстрактными и субъективными методами - определение важности, критичности, приоритетности и строгими математическими, а они для описания более-менее сложной модели требуют много времени, ресурсов или специфичного софта.</p>
+<p>Из-за большого количества различных принимаемых решений в типичном случае нельзя взять математический метод, как и нельзя использовать субъективный - и тот и другой будет давать высокое расхождение с реальностью, а результат требует такой сильной корректировки, что сам по себе бесполезен. На помощь спешат интуиция и опыт, но за счет индивидуальности изменяемых во времени задач польза их резко уменьшается.</p>
+<p>Также этот разрыв пытаются уменьшить итеративные и экстремальные методики разработки, например, чем больше касание с конечным пользователем, тем меньше ошибок выявится на поздних этапах, однако наличие множества сегментов юзеров с разным опытом, часть из которых напрочь отказываются сотрудничать или делают это формально, может приуменьшить успех затеи.</p>
+<p>Как итог - полученная в результате анализа модель, как правило, очень сыра и насыщена ошибками, а значит прототип и первые несколько версий тоже проблемны, что наблюдается не только в IT-сфере, но и в любой другой. IT-здесь даже имеет некоторое преимущество, позволяя хотя и болезненно, но все же устранить проблему. На такой проблемной модели определить точки потенциальных изменений очень трудно и метод анализа самой предметной области  особо не поможет.</p>
+<p>Рассмотрим самый простой классический MVC веб-фреймворк самых первых поколений. Главный класс приложения проводит минимальную инициализацию: делает какую-то первичную работу по загрузке конфигов, обработке переменных окружения, настройке, формирует объект запроса и передает его роутингу, после чего вызывается контроллер. В нём используется какой-нибудь репозиторий или сервис, вытягиваются данные из бд и передаются во вью. В такой простой цепочке изменения могут быть в любом участке, однако обеспечив универсальное api на более-менее четко очерченных границах слоев и взаимодействий можно облегчить последующие изменения, например, смену HTML на JSON.</p>
+<p>Однако в приложении имеются и множество других задач, где тоже можно выявить потенциальные места для изменений. Наиболее простой способ - поэтапное разложение задачи на составные части, что сводится к такому же выделению слоев, как и в MVC-структуре. При этом ровно так же концептуальный слой не тождественен классу: контроллеры, модели и вью могут быть совершенно разными классами. Конечно же, задачи, выполняемые разными классами будут пересекаться и всячески сопротивляться анализу. Переход таких слоев можно защитить одним из методов в списке, перечисленных в самом начале статьи, специфика, конечно же, будет зависеть от самой задачи.</p>
+<p>Например, паттерн Объект тип (Type Object) нечасто можно встретить в каком-нибудь веб-приложении, но он может пригодиться в геймдеве для типоспецифичных классов и описания их на основе конфигурации из файлов.</p>
+<p>Как всегда, любой выбранных метод защиты от изменений будет вступать в конфликт с чем-то другим: к примеру, единственная ответственность классов будет приводить к большему их количеству, а это ведет к росту точек взаимодействий и потенциальных изменениям в них. Такое выделение слоев сильно зависит от самой особенностей самой задачи, что снижает его пользу, да и на первых этапах проектирования разработчик занят реализацией логики, переключение же на поиск изменений требует множества усилий и времени. Конечно же, такая декомпозиция имеет определенную степень и характер абстракции. На самом высоком уровне где нужна возможным &quot;заменить алгоритм&quot; можно прийти к паттернам Стратегия или Команда.</p>
+<p>Если в такой поэтапной цепочке требования к результату изменяются незначительно, то затрагиваются операции в конце цепочки, например, конвертирование между UTC и локальным временем, читаемым из настроек. Помещать привязку к настройкам в базовые алгоритмы достаточно странная затея. Если задача меняется значительно, то меняются уже базовые алгоритмы расчета. Можно предположить, что даже плохо защищенный от изменений код хорошо будет выполнять свои задачи, ведь он действует в рамках определяющей его предметной модели и если она не будет изменяться или спроектирована хорошо, то потребностей болезненных изменений может и не возникнуть. В конце концов, технология или фреймворк может устареть или умереть раньше этого.</p>
+<p>По аналогии с архитектурными схемами можно проследить и тенденцию размывания границ слоев или их усложнения. Так, сам MVC достаточно холиварен и различные способы и схемы его реализации порождают бесконечные споры: разделение ответственностей, введение наблюдателя и активные действия со стороны модели или вида, проброс их друг в друга в какой степени и т.п. Дальнейшая же эволюция самого MVC может принимать самые разные формы, в потоках данных которых иногда тяжело разобраться, а также обеспечить заменяемость слоев. С другой стороны, ограничения когнитивных способностей человека все же определяет некоторую границу, за пределами её усилия, направленные на понимание логики работы и внесение исправлений в хаотичные потоки данных, полностью уничтожают любые другие преимущества.</p>
+<p>Приложение на основе фреймворка выше работает, но требования к нему растут и принимается решение еще больше все расслоить, введя модули, управление зависимостями посредством IoC-контейнера, события, шаблонизатор и т.п. улучшения. Очевидно, что для замены любого слоя в этом бутерброде нужно приложить намного больше усилий, а логика расслоится и усложнится. Усложнение может быть настолько сильным, что использование фреймворка окажется очень рисковым занятием, поскольку с выходом каждой новой версии переделки будут очень болезненны, авторы же фреймворка могут руководствоваться чем угодно в своей политике разработки, они ничем никому не обязаны, к тому же сама команда меняется, как и рынок.</p>
+<p>Упрощение структуры несколько способствует предугадыванию изменений, а с ростом количества компонентов и сложности взаимодействий между ними начинает ему сопротивляться. Если умудриться насоединять несовместимые друг с другом классы и вложить, например, не мебель в комнату, а комнату в мебель, что позволяет любой мощный фреймворк, то даже возможность гибкой замены компонентов уже никак не помогут исправить проблему, к которой приведет завязывание части логики на такую нестыковку. С другой стороны, простота усложняет масштабирование и добавление нового функционала, что тоже является изменением.</p>
+<p>Если изменения можно проанализировать, разложив предметную задачу на цепочку абстрактных операций\слоев\модулей, то ближайшим аналогом здесь будет скорее процессный или даже сетевой анализ с визуализацией на графах, хотя можно вспомнить и о структурных (и не только) UML-диаграммах. Сложный анализ на этапе кодинга обычно недоступен, поэтому рабочей будет разве что самая простая диаграмма, например, диаграмма компонентов даже без всяких там интерфейсов со скобочками\шариками, хотя последние как раз таки и должны помогать поиску точек изменений. Возможно, здесь могут пригодиться и <a href="https://ru.wikipedia.org/wiki/CRC-карта">CRC-карты</a>.</p>
+<p>Можно ли сразу спроектировать хорошо, если использовать диаграммы и анализ изменений? Маловероятно за счет расхождения диаграмм с кодом и отсутствия качественных и доступных инструментов. Можно попытаться использовать генерацию диаграмм пакетов, предполагая, что крупные слои или части приложения привязываются к иерархии пакетов. Тогда в новом окне перед глазами будет структура системы, части которой могут потребовать замены...  Звучит хорошо, но такие диаграммы не рассматривают изменений в самих пакетах и не охватывают нескольких частных случаев. Интуитивно, чем крупнее слой, тем большее желание обеспечить гибкость его замены, поэтому основная масса переделок как раз таки придется на менее очевидные случаи в самих пакетах.</p>
+<p>Кроме изменений, вызываемых особенностями предметной области есть несколько частных случаев. Вспомним старое доброе дублирование кода. Где-то в далеком-далеком контроллере формируется текстовый отчет, а позже он внезапно начинает требоваться в другом месте для отладки самого кода или в целях тестирования, что никак не связано с предметной областью.</p>
+<p>С одной стороны, если для каждой задачи создавать соответствующий сервис, то такой проблемы никогда не возникнет, с другой стороны, в случае насыщенного логикой приложения сервис вводит еще один дополнительный слой абстракции, что будет притормаживать любые переделки, поскольку он служит барьером к классам, которые в нем запрятаны.</p>
+<p>Если они используются напрямую в контроллере, то любые быстрые переделки многократно упрощаются, особенно сквозная логика - конфиг, логирование, i18n и т.п., все зависимости нужно было бы передавать сервису. Упростить это можно или уменьшив\изменив функционал класса, например, заменив логирование на исключения, передачу прочитанных значений из конфига, использовать контейнер зависимостей и т.п., но это все равно приведет к определенному снижению гибкости. Кроме того, выделять абстракции можно вообще до бесконечности, получая новую проблему количества этих абстракций.</p>
+<p>Еще одним примером может быть адаптация классов к многопоточности. Как известно, лучше это делать сразу. Но та же иммутабельность достаточно плохо применима к любым более-менее сложным классам, которые могут потребовать донастройки или изменения поведения, что потребует синхронизации или использования потокобезопасных структур. Туда же и производительность.</p>
+<p>Какие беглые выводы можно сделать:</p>
+<ul>
+<li>На последующие изменения сильно влияет проработанность модели приложения.</li>
+<li>В некоторых случаях выстроить модель невозможно, изменения все равно будут. Единственный способ - итеративно улучшать код. Логично, что успех в этом зависит от языка программирования с инструментами.</li>
+<li>На предугадывание изменений влияет структура приложения, особенности и сложность взаимодействия его частей.</li>
+<li>В самом простом случае для анализа изменений можно использовать концептуальное расслоение, как это сделано в любой известной схеме разделения данных. Классический пример - MVC.</li>
+<li>В более неочевидной ситуации могут выручить диаграммы, но это потребует усилий и времени, результат же может оказаться даже хуже.</li>
+<li>Разные частные случаи и особенности языка, платформы, фреймворка и другие факторы требуют учета и внесения соответствующих поправок.</li>
+</ul>
+<p>Таким образом, изменения кода состоятся в любом случае, где-то очень болезненные, а где-то нет. Такие постоянные переделки требуют особых подходов в динамических языках, где в отсутствие компилятора (разве что статический анализатор может помочь, хотя он может пропускать ошибки в том же контейнере зависимостей) любые изменения порождают регрессионные баги. Тесты же, как и упоминалось в начале статьи, на начальных этапах покрывают код, будущее существование которого под большим вопросом. Тогда ничего не остается, как пожертвовать каким-либо другим качеством архитектуры.</p>
+</div>
+    </div>
+</article>
+<div class='navigation-pages btn-toolbar justify-content-center mb-2' role='navigation'>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/analogy-in-program-architect.html' role='button' rel="prev"> <span
+            class='navigation-pages-link-icon mdi mdi-chevron-left'></span> Метод аналогии в архитектуре программ</a>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1' href='/index.html'
+       role='button' rel="first">
+        <span class='navigation-pages-link-icon mdi mdi-home'></span> Главная</a>
+
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/dependency-injection-problems.html' role='button' rel="next">Проблемы внедрения зависимостей <span
+            class='navigation-pages-link-icon mdi mdi-chevron-right'></span></a>
+    
+</div>
+        </div>
+        <div class='col-lg-3 sidebar-right'>
+            <div class='section' id='section-sidebar-right'>
+    <div class='card sidebar-container post-labels'>
+        <div class='card-header sidebar-container-header post-labels-header'>
+            <span class='post-labels-header-icon mdi mdi-tag-outline'></span>
+            Метки <span class='text-clarification'>(и кол-во статей)</span>
+        </div>
+        <div class='sidebar-container-content post-labels-content'>
+            <div class='list-group list-group-flush'>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dart.html'>Dart<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dlang.html'>Dlang<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/groovy.html'>Groovy<span class='badge' style='min-width:40px;'>5</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/javafx.html'>JavaFX<span class='badge' style='min-width:40px;'>6</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/arhitektura_po.html'>Архитектура ПО<span class='badge' style='min-width:40px;'>10</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/metodologija.html'>Методология<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/raznoe.html'>Разное<span class='badge' style='min-width:40px;'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/ekonomika.html'>Экономика<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/elektronika.html'>Электроника<span class='badge' style='min-width:40px;'>1</span></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class='card sidebar-container in-progress-articles'>
+       <div class='card-header sidebar-container-header in-progress-articles-header'>
+           <span class='mdi mdi-calendar-clock'></span>
+            В процессе написания
+       </div>
+       <div class='sidebar-container-content post-labels-content in-progress-articles-content'>
+               <ul class='list-group'>
+				   <li class='list-group-item align-items-center text-muted'>Нет статей</li>
+               </ul>
+       </div>
+    </div>
+    <div class='card mb-3 sidebar-container links-contacts'>
+        <div class='card-header sidebar-container-header links-contacts-header'>
+            <span class='mdi mdi-open-in-new'></span>
+            Девлоги текущих проектов
+        </div>
+        <div class="list-group sidebar-container-content">
+			<a class='link-contact list-group-item list-group-item-action' rel="me" href='https://www.youtube.com/@initkfs'>Youtube (готовится)</a>
+		</div>
+    </div>
+    <div class='page-up-wrapper'>
+        <button class='btn d-none d-lg-block' id='page-up-trigger' type='button'><span
+                class='mdi mdi-arrow-up'></span></button>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<footer class='page-footer'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='card'>
+    <div class='card-body'>
+        <p class="text-danger">Сайт в процессе тестирования.</p>
+        <small><span class='blog-info-footer'>Всего статей: 24. Блог - исследовательский, статьи отражают лишь субъективное мнение автора.</span> <span>&#169; <span id='copyright-date'></span>, Константин Фирсов.</span></small>
+        
+        <div class='blog-additional-links d-flex justify-content-center'>
+        <div class='blog-rss'><a class='blog-rss-item blog-icon-clickable'
+                                 href='/rss-all.xml'><span
+                class='mdi mdi-rss-box blog-icon-rss'></span></a></div>
+        </div>
+        <div class='text-danger' id='js-fail-block'>
+            <noscript>
+                <small>JavaScript отключен в браузере, функционал сайта ограничен.</small>
+            </noscript>
+        </div>
+    </div>
+</div>
+<script type='application/ld+json'>
+    {
+        "@context": "http://www.schema.org",
+        "@type": "person",
+        "name": "initkfs",
+        "jobTitle": "",
+        "url": "/index.html"
+    }
+</script>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class='mobile-up-wrapper text-center'>
+    <button class='btn d-lg-none' id='mobile-page-up-trigger' type='button'><span
+            class='mdi mdi-arrow-up'></span> Вверх
+    </button>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js'></script>
+
+<script crossorigin='anonymous' integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.full.min.js" integrity="sha512-wb3lqal2VtYhmlPAr232VP+Zus676CFAEYdywxIUSxG6F/X9WhN6SpREkWUdwBvMpd6gCKuKTGHhdum6m1wOvQ==" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+
+<script crossorigin='anonymous' integrity='sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+<script>
+var problemScripts = [];
+if (typeof jQuery === 'undefined') {
+    problemScripts.push("jquery");
+}
+
+   if (typeof Prism === 'undefined'){
+    problemScripts.push("prism.js");
+   }
+   
+if (typeof Popper === 'undefined') {
+    problemScripts.push("popper.js");
+}
+
+if (typeof timeago === 'undefined') {
+    problemScripts.push("timeago.js");
+}
+
+if (typeof window.bootstrap === 'undefined') {
+    problemScripts.push("bootstrap.js");
+}
+
+if (problemScripts.length > 0) {
+    var message = "Ошибка загрузки JavaScript: " +
+        problemScripts.join(",") +
+        "." +
+        " Возможные причины: блокировщик рекламы, проблемы с сетью, устаревший браузер. Может не работать дополнительный функционал.";
+
+    var failInfoBlock = document.createElement("small");
+    failInfoBlock.innerHTML = message;
+
+    var mainFailBlock = document.getElementById("js-fail-block");
+    if (!mainFailBlock) {
+        console.error(message);
+    } else {
+        mainFailBlock.appendChild(failInfoBlock);
+    }   
+}
+</script>
+<script src="/assets/dev/js/main.js"></script>
+</body>
+</html>
+
+
+

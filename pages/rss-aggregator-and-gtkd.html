@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'>
+    <meta name="yandex-verification" content="7021eeb9c07b5c09">
+    <meta name="google-site-verification" content="PztbVe6Ru8ggM2n_tWUYwy0bEVHtJNvzIr-nsVCvBCA">
+    
+    
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/stab/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="/assets/stab/img/favicons/safari-pinned-tab.svg" color="#004245">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/stab/img/favicons/apple-touch-icon.png">
+    <meta name="msapplication-config" content="/assets/stab/img/favicons/browserconfig.xml">
+    <!-- end favicons -->
+    <!-- rss feeds -->
+    <link rel=alternate title="RSS лента" type=application/rss+xml href='/rss-all.xml'>
+    <!-- end rss feeds -->
+    <link type="text/plain" rel="author" href="/humans.txt">
+    <link crossorigin='anonymous' href='https://cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css'
+          integrity='sha384-Ls5zBitvvQ/wdeZDuTUevSY5Tb/she50BeMPrco2ok6xDC8modj6/JPwdL0gNxmP' rel='stylesheet'>
+    
+    <link crossorigin='anonymous' integrity='sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=='
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    
+    <link href="/assets/dev/css/main.css" rel='stylesheet'>
+    
+    <title>RSS-агрегатор и эксперименты с gtkd. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</title>
+    <meta name="description" content="Эксперименты с gtkd">
+    <meta content='RSS-агрегатор и эксперименты с gtkd. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах' property='og:title'>
+    
+    <meta name="keywords" content="rss,dlang,gtkd">
+    
+    <meta content='/index.html' property='og:url'>
+    <meta content='website' property='og:type'>
+    <meta content='ru_RU' property='og:locale'>
+</head>
+<body>
+<div class='container mb-3'>
+    <div class='row'>
+        <div class='col-lg-12'>
+           <div class='card w-100 site-header-container'>
+    <div class='row align-items-center'>
+        <div class="col-lg-9">
+            <div class='card-header site-header'>
+                <div class='card-title site-header-title mb-3'>
+                    <h5 class='site-header-title-text'>
+                        <a href='/index.html' class='blog-title-text-link'>Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</
+                    </h5>
+                </div>
+                <div class='card-subtitle site-header-subtitle mb-2'>
+                     <a href="/pages/about.html" class="badge mb-2 mb-sm-0">О станции и капитане</a>  <a href="/pages/site-implementation.html" class="badge">Сайт (Groovy-генератор)</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            
+            <div class='site-map w-100 d-flex justify-content-center pe-lg-3'>
+                <a class='site-map-link btn w-100' href='/site-map.html' role='button'><span
+                        class='site-map-link-icon mdi mdi-sitemap'></span>
+                    <span class='text-clarification'>Карта сайта (все статьи)</span></a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-9 blog-posts'>
+            <article class='card post'>
+    <h5 class='card-header post-header fw-bold'>
+        RSS-агрегатор и эксперименты с gtkd
+    </h5>
+    <div class='card-body post-body'>
+        <div class="card-title mb-3">
+            <div class="post-body-header">
+
+<div class='post-header-date'><span class='mdi mdi-calendar-clock'></span>
+    <span class="post-datetime-text" data-iso-time="2021-06-22">22 июня 2021</span>
+</div>
+
+
+
+<div class='post-labels'>
+    <span class='post-header-labels-icon mdi mdi-tag-outline'></span>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/dlang.html' rel='tag'>Dlang
+    </a>
+    
+</div>
+</div>
+        </div>
+        <div class='post-content'><p>Пришло время поэкспериментировать с более сложным и комплексным пет-проектом на D, желательно еще и полезным. Проблемы с дебаггером, постоянно отваливающийся плагин в vscode делает проект намного более интересным, сильно усложняя поиск багов и отладку. Но частично это можно компенсировать разными приёмами: иерархической архитектурой, которая позволяет комментированием участков кода быстро отсеивать связь бага с разными частями приложения, простейшим std.stdio, агрессивным логированием и средствами языка, например, контрактами (release mode отключает часть проверок, но их можно включить выборочно).</p>
+<p>Сам по себе D очень мощный язык, а за счет поддержки объектной парадигмы позволяет организовать нужную архитектуру и относительно легко портировать код с него, так и на него, а это потеря лишь части времени в случае провала проекта. Ну а поскольку меня интересует синхронизация архитектуры и кодовых баз между разными объектными языками, то выбора особого и нет, ибо из системных языков этим требованиям соответствует только лишь Dlang.</p>
+<p>Как всегда, статья (как и все в этом блоге) носит лишь исследовательско-экспериментальный характер, не более, а значит может содержать ошибки, упущения или же субъективизм. В первую очередь меня интересует работа программы под Linux, работу под Windows я не рассматриваю и некоторые вещи могут (и будут) различаться в зависимости от операционной системы. Но пару заметок о кроссплатформенности все же оставлю.</p>
+<p>После перебора всех интересующих меня задач победителем оказался десктопный RSS-агрегатор: здесь нужен трей и потенциальная интеграция в систему, высокая производительность, нет специфической предметной логики, в библиотеки которой можно упереться.</p>
+<p>В дикой природе существует огромное количество rss-агрегаторов на всякий вкус и цвет, посмотрев аналоги и почитав багтрекеры, я решил сместить акцент с просмотра и категоризации новостей на контроль ошибок и процессы парсинга.</p>
+<p>Теоретически, прототип можно было бы написать на чём-то более высокоуровневом, например, на JavaFX. Но здесь планку требований к производительности и функционалу задают <a href="https://quiterss.org">QuiteRSS</a>, <a href="https://lzone.de/liferea">Liferea</a> и аналоги, а у них эти показатели очень высоки. Получить агрегатор, который без браузера потребляет в несколько раз больше памяти чем у ближайших аналогов мне не позволяет самолюбие. Часть проблем из-за привязки программы к jvm можно решить, как и более тесно интегрировать приложение в систему, но &quot;конкуренты&quot; всё равно выглядят более удобными.</p>
+<p>Отсюда неплохим кандидатом становится Flutter, учитывая ещё и возможность работы под мобайл. Однако gtkd с автоинжекцией контролов в поля через метапрограммирование ближе по архитектуре к классическим тулкитам, управление состояниями контролов автоматическое, что сильно упрощает и ускоряет разработку. Мутабельность контролов позволяет отделить код от структуры вью и активно использовать GUI-конструктор Glade. Здесь мне нужна очень высокая скорость работы пользователя с интерфейсом, классические контролы в gtk выглядят более подходящими и удобными. Ну и за счёт большой универсальности в Flutter-тулчейне увеличивается количество точек отказа и конфликтов инструментов друг с другом, чем в простых системных биндингах\байндингах. В случае последних, даже если они не заработают, то легко и просто сделать свои или вносить изменения в готовые.</p>
+<p>Основной риск, конечно же, будет в расширении функционала программы. Если потребуется подключение сторонних сервисов или специфические библиотеки, то тут могут быть проблемы, ибо прикладные языки выигрывают в этом. С другой стороны, если расширения пойдёт к интеграции в систему, то системный язык не нуждается в большом количестве библиотек за счёт упрощения биндингов и подключения уже существующих.</p>
+<p>Несмотря на относительно простой формат лент, есть много частных случаев, мне встречались: пустые даты публикации, появление новостей задним числом, неправильные кодировки, неэкранированные спецсимволы, разметка и тэги в текстовом блоке, отсутствие обязательных тэгов и замена их опциональными.</p>
+<p>Выходит, что при большом количестве новостей за ними нужен дополнительный контроль, как за самим процессом обновления, так и за каждой конкретным источником. И тут мне хотелось бы видеть контроль ошибок, перенаправление лога программы в интерфейс и больший контроль за самими лентами: последние даты обновлений, возможность сброса даты и загрузки всех новостей в канале и т.п. Как показала практика, периодические ошибки по таймауту и отсутствие ответа от сервера для некоторых лент можно считать нормой, в статус баре программы хотелось бы видеть проблемные ленты, их количество и список.</p>
+<p>Технически, rss-ленты могут иметь индивидуальные периоды обновлений, но я решил потестировать один глобальный таймер, им проще управлять, следить за обновлениями и отложить запуск при необходимости. Кроме того, агрессивная транзакционность SQLite (которую можно отключить, конечно же) может неплохо поднагрузить диск и сброс таймера может быть тут полезен, как и в случае неработоспособности сети и для прочих форс-мажорных случаев. С другой стороны, таймер может не успевать за слишком большой частотой обновления некоторых источников, особенно если в самой ленте старые новости хранятся очень мало и тогда какие-то из них могут потеряться. Ну и добавление в будущем индивидуальных периодов не особенно конфликтует с идеей глобального таймера, как наиболее затратной и долгой операции проверки всех лент сразу.</p>
+<p>Наблюдения за QuiteRSS выявили некоторый риск порчи базы данных из-за большого количества обращений к бд при обновлении лент, поэтому я решил пойти иным путём: сначала получить все ленты, а потом все разом помещать их в бд.</p>
+<p>Метками, категориями я не пользуюсь, как и встроенным в агрегаторы браузером: основной браузер более безопасен, обвешан плагинами и превратить новость в закладку мне удобнее именно там, хотя браузер легко добавить через тот же webkit2gtk. Импорт и экспорт лент можно сделать через формат <a href="https://ru.wikipedia.org/wiki/OPML">OPML</a> или аналогичный.</p>
+<p>Усталость от повсеместного распространения бесцветных material-интерфейсов даёт о себе знать (старею) и захотелось ламповых и цветных кнопочек и контролов, в них были использованы gtk-эмодзи. Прототип получился таким:</p>
+<p><img alt='rss agregator' class='post-image' src='/assets/stab/img/posts/rss-aggregator-and-gtkd/rss.png'></p>
+<p>Не слишком хорошая идея начинать пункты меню с одинаковых букв (<em>И</em>сточники, <em>И</em>нструменты), что усложняет навигацию сочетаниями клавиш, но пункты меню пока не стабилизировались. Поскольку я не использовал css, то кое-где можно наблюдать двойные границы.</p>
+<p>Что касается Windows, то LDC может сделать кросс-компиляцию на Linux-машине и exe-файл можно даже потестить под Wine. Для запуска под Windows (как и в Wine) нужны библиотеки gtk, которые можно получить несколькими способами: с официального сайта gtk через msys, с сайта самого gtkd или же сторонним инсталлятором, например, от <a href="https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer">tschoonj</a> с гитхаба.</p>
+<p>На первый взгляд, самый простой способ - это сайт gtkd. При установке он копирует в Program Files директорию Gtk-Runtime, добавляя её в PATH. В bin и будут основные библиотеки (кроме плагинов загрузки форматов изображений, которые в lib). Соответственно, эти директории можно поместить и в директорию с программой, сделав её относительно портабельной и выставлять переменные среды через скрипт запуска. Но под Wine возникает распространенная ошибка неверного формата изображений со стороны Pixbuf, плагины лоадеров на месте, на GDK_PIXBUF_MODULEDIR и GDK_PIXBUF_MODULE_FILE нет никакой реакции. Это ошибка исчезает где-то между 3.24.0 и 3.24.10 версиями инсталлятора от tschoonj.</p>
+<p>Также в инсталляторе gtkd не все библиотеки. Если подключить gtkd как зависимость и не посмотреть на разделение на субпакеты, то к проекту подключается не только ядро тулкита gtk-d:gtkd, но и gtk-d:gstreamer, gtk-d:vte, gtk-d:peas и прочие. В gtkd инсталляторе есть libpeas*.dll, но потребуется libgirepository, которой там нет. Определенные проблемы могут быть с vte, эти библиотеки нужно доставать через msys, cygwin или еще как-то и далеко не факт, что это все сразу заработает. Т.е. инсталляторы между собой сильно различаются.</p>
+<p>Без установки gtk-окружения в систему нужно выставить переменные среды, чтобы gtk начал подцеплять дефолтные ресурсы. Например, в текстовом поле Entry есть иконка, без XDG_DATA_DIRS на Gtk-Runtime\share там её не будет, не будет локализации меню и т.п. Так оно, теоретически, работает более-менее портабельно под Windows. Но все равно отличия будут, например, симпатичные цветные эмодзи будут заменены на черно-белые. Пишут, что это баг со стороны Cairo, возможно, его уже починили, а может быть и проблема с отсутствующими шрифтами вроде Noto Color Emoji.</p>
+<p>Архитектурно, в программе за каждый сложный участок окна программы отвечает свой отдельный контроллер, который обменивается с остальными через делегаты-коллбэки, отдельные контроллеры на трей и на таймер обновления новостей. Управляет всем главный контроллер, без которого проблематично сделать lazy-загрузку программы без окна или же вообще убрать из неё gtk. Последнее может потребоваться для превращения программы из десктопной в серверную или же разделение на части клиент-сервер. Для некоторых новостных источников длительный пропуск обновлений может приводить к потере новостей и серверный вариант тут удобнее, с другой стороны, таких источников может быть не слишком много и усложнение себя не оправдает.</p>
+<p>У этой иерархии контроллеров есть как и плюсы, так и минусы, скорее самый большой минус - усложнение взаимодействия между контроллерами и потенциальное размазывание логики: реализовать все на коллбэках-делегатах в общем случае очень сложно и бессмысленно, часть логики в любом случае будет в контроллерах, часть - в большом количестве делегирующих вызовов того же главного контроллера и между ними может начинаться путаница и конкуренция за ответственность. Но в условиях без полноценной IDE проблематично постепенно расслаивать контроллеры, а рано или поздно контроллер окна станет монструозным и неудобным в обращении, так что я сразу выбрал его разделение на части.</p>
+<p>Описание интерфейса в xml через Glade. Здесь можно сблизить архитектуру с xml-тулкитами, автоматически заполняя поля и даже эмулировать вложенные контроллеры, связывая контроллер с xml файлом и загружая его содержимое в родительский виджет. Для обхода полей потребуется метапрограммирование, что возможно через allMembers\derivedMembers, поместив вызов через трейт в миксин. Без миксина приватных полей там может не быть.</p>
+<p>Аналогичное метапрограммирование с помощью mixin template можно использовать для всяких полезных вспомогательных аннотаций, например, для генерации метода toString и прочих.</p>
+<p>Сразу бросается в глаза возможное место изменений - наличие сайтов\сервисов, которые RSS напрямую не поддерживают. Кроме того, некоторые из них могут специально отключать поддержку новостной ленты для исключения парсинга через неё, стимуляции захода на сайт или каких-то своих целей. И это потенциальная точка расширения: если завязать код программы только лишь на rss, то при добавлении новых источников будут определенные проблемы, особенно на фоне отсутствия нормального рефакторинга. Отсюда есть смысл выбирать более универсальные понятия, например, &quot;новостной источник&quot;, а не rss-канал. Хотя, на мой взгляд, такими ресурсами проще пожертвовать и найти замену, чем связываться с апи сервисов\соцсетей.</p>
+<p>В самом D есть несколько поправок на архитект, которые нужно учитывать. При обращении к null и отключенной генерации дампа памяти будет молчаливый сегфолт. Судя по всему, такой подход был <a href="https://forum.dlang.org/thread/j4pndc$2pe7$1@digitalmars.com#post-mailman.2865.1315994937.14074.digitalmars-d-learn:40puremagic.com">осознанным</a>. После серии экспериментов более-менее сносно начал работать перехват сегфолта через хандлер на SIGSEGV и core.sys.linux.execinfo, сниппет был найден в <a href="https://github.com/dlang/druntime/blob/88d1fa455db22cec41f4d2b9818bdcacd474a603/src/core/runtime.d#L555">репозитории DRuntime</a>, опять-таки это не слишком кроссплатформенное решение. Немного позже в druntime был обнаружен модуль etc.linux.memoryerror с функцией registerMemoryErrorHandler. Есть, конечно же, std.typecons.Nullable, но за всем не уследишь. С другой стороны, в D нельзя получить проблемы с null на тех же строках, хотя это и может затирать баги, но программу не положит.</p>
+<p>Здесь есть небольшой частный случай: я динамически загружал .so библиотеку, чтобы не линоваться с ней и позволить программе работать с отсутствующей либой, пытаясь этим немного повысить отказоустойчивость. Загрузка была через SharedLibLoader в <a href="https://github.com/DerelictOrg/DerelictUtil">DerelictUtil</a> (на всякий случай напомню, что оно там уже легаси и повсеместно заменяется на <a href="https://github.com/BindBC">BindBC</a>), тоже самое можно получить через dlopen напрямую. И для хандлера выше, если ошибка произойдет после загрузки либы, то стектрейс может потеряться, уйдя в библиотеку.</p>
+<p>Еще одна проблема - это переопределение параметризованных шаблонных методов в потомках, шаблонные методы не виртуальны и с ними могут быть проблемы. В общем случае, большая часть кода мапперов, конфига и прочего строится на этом и нужно выкручиваться как-то через std.variant или же делать сужающие касты, что такое себе занятие.</p>
+<p>Сам D, как системный язык, не полностью объектный, конечно же, что влияет и на библиотеки: есть повышенный шанс, что рандомно взятая библиотека будет скорее всего на структурах и если в процессе интеграции на поздних этапах возникнет проблема, то будет очень больно её менять или пытаться настраивать. Поэтому для логики работы с бд я решил подстраховаться и пойти более трудным путем через встроенные D-биндинги etc.c.sqlite3 без сторонней либы, ибо работу с бд хотя и можно частично изолировать от остального кода, но какие-то там переделки или замены будут очень и очень болезненны. Маппер, конечно же, пришлось писать самому тоже.</p>
+<p>Для борьбы с проблемами кодировок в D есть несколько вариантов перекодирования: через <a href="https://dlang.org/library/std/encoding/transcode.html">std.encoding.transcode</a> или же в arsd есть <a href="https://code.dlang.org/packages/arsd-official:characterencodings">characterencodings</a>. В std.encoding есть и другие полезные функции, например, sanitize, которая может предотвратить попадание в парсер невалидных символов. В экспериментах оказалось затратна по памяти (хотя не факт, что она виновата), но это очень хорошая подстраховка.</p>
+<p>Для парсинга дат в RSS есть из коробки parseRFC822DateTime в std.datetime.systime, у Atom формат RFC 3339, производный от ISO 8601 и, теоретически, должны сносно работать методы для парсинга последнего, тот же fromISOExtString. Для самого парсинга я не использовал сторонних библиотек, с ними возникли определенные проблемы. С другой стороны, хотя форматы лент между собой и различаются (RSS, Atom), но по структуре достаточно просты. Но такие библиотеки вроде как есть и еще субпакет <a href="https://code.dlang.org/packages/arsd-official:rss">rss</a> в arsd.</p>
+<p>Можно обработать xml ленты вручную, но std.xml считается устаревшим. Если последовать советам и использовать dxml, то не следует забывать проверку типа узла через EntityType перед получением из узла какой-либо информации, атрибутов, текста или же дочерних узлов. В некоторых случаях будут ошибки, а также парсер склонен молчаливо зависать, например, при получении текста из нетекстового узла со сложной иерархией вложенных дочерних узлов, так что нужно внимательно проверять нестандартные случаи, а иначе парсинг получается очень хрупким. В старых версиях dxml есть <a href="https://github.com/jmdavis/dxml/issues/4">конфликт</a> имен dxml.util.normalize с std.uni.normalize, гугл может запросто подсунуть старый вариант документации и при наличии импорта std.uni может быть конфуз: компилятор пропустит код, но normalize будет работать совсем не та, которая теперь decodeXML.</p>
+<p>К самому gtkd\gtk-апи есть определенные вопросы. Например, интуитивно можно ожидать, что сигнал из TreeView на изменение выделения строк в TreeSelection.addOnChanged будет работать только в случае изменения выделения. Но не тут-то было: &quot;Please note that this signal is mostly a hint. It may only be emitted once when a range of rows are selected, and it may occasionally be emitted when nothing has happened.&quot;. В апи TreeModelIF.addOnRowInserted: &quot;Note that the row may still be empty at this point, since it is a common pattern to first insert an empty row, and then fill it with the desired values.&quot;. Это, конечно же, очень познавательно просветиться насчет хороших паттернов, но выглядит крайне странно, приводя к огромному количеству костылей и хаков. Еще что-то может просто не работать или сегфолтить, просто так или же из-за какого-нибудь установленного свойства и об этом нужно догадаться или же найти самому.</p>
+<p>Есть небольшой нюанс в сортировке новостей. Многие агрегаторы позволяют вручную сортировать дерево RSS-лент в любом порядке. Это можно реализовать через отдельный столбец с индексом в бд, но программа должна делать переиндексацию в случае добавления новостей, как и удаление отдельной новости или же директории с ними, поддерживая корректность индекса сортировки. Это несколько осложняет работу с БД напрямую, в обход интерфейса программы, поэтому я решил попробовать сортировку по имени, как некий средний вариант, которым можно управлять. В TreeStore сортировка по столбцу отключает перетаскивание строк мышкой, но её можно включать и выключать в процессе перетаскивания. Но при сортировке по столбцу имени лент появляются частные случаи: перетаскивание уже сортированных детей в узле дерева, что по логике вещей не должно допускаться и активация перетаскивания не должна происходить, смена родителя, где после завершения события перетаскивания происходит автоматическая сортировка и узел может сместиться, прыгая на другую строку и занимая свое место среди остальных. Но при этом сортировка управляется целиком самим контролом, освобождая программу от лишней работы.</p>
+<p>Огромной проблемой, как ни странно, оказался трей. GtkStatusIcon помечен устаревшим и из более поздних версий gtk просто выкинут на мороз без предложения какой-либо альтернативы, все же уведомления и трей выполняют разные задачи и одно другим полноценно не заменяется. Наиболее простой вариант - вызвать через extern библиотеку libappindicator, но она крайне упрощена и многих вещей не поддерживает или делает всё <a href="https://bugs.launchpad.net/ubuntu/+source/libappindicator/+bug/1910521">не то и не так</a>. Еще спамит Gdk-CRITICAL и открывает контекстное меню в трее как по ПКМ, так и по ЛКМ, не делая особенных различий. После 100500 экспериментов это частично удалось обойти костылями: вытащить Window как родителя меню трея, управлять его прозрачностью и сразу скрывать после появления, чтобы по левой кнопке открывалась программа, а по правой - само меню. Конечно же, нужно подавлять другие слушатели, чтобы не было конфликтов между ними, в общем - костыли жуткие, почему трей настолько многострадальный... это тот еще вопрос.</p>
+<p>Более правильным решением скорее всего будет <a href="https://github.com/linuxmint/xapp">xapp</a>, но в разных дистрибутивах могут быть устаревшие версии, которые не поддерживают XAppStatusIcon или же он куда-то засунут, пока решил остановится на libappindicator. Но помимо трея, xapp имеет разные удобные функции, например, xapp_set_window_progress, куда можно передавать значения прогресса задачи (например, обновления rss-лент) от 1 до 100, что будет отображаться полоской прогресса в заголовке окна, <a href="https://winaero.com/cinnamon-getting-progress-bar-taskbar">по крайней мере в Cinnamon</a>, что достаточно удобно.</p>
+<p>В модуле gio есть апи для работы с D-Bus, что позволяет перехватывать события, например, от NetworkManager (подобный подход <a href="https://habr.com/ru/post/223135">описан на хабре</a>) и переводить программу в оффлайн-режим, чтобы не получать множественные ошибки обновления лент из-за отсутствия сети.</p>
+<p>Что касается встроенного браузера, то биндинги к WebKitGTK есть, но мне не хотелось бы видеть браузер в читалке новостей, все-таки за обновлениями безопасности основных системных браузеров я слежу, а как там обновляются библиотеки с WebKit отследить уже проблематичнее. Но так как в новостях встречается разметка, то есть еще один путь - удалять теги. Есть несколько библиотек, но более-менее поддерживаемый <a href="https://code.dlang.org/packages/arsd-official:htmltotext">htmltotext</a> из arsd оставляет ссылки, пытается перевести некоторые тэги в markdown и особых настроек не имеет. Более чистый результат получился из Go-библиотеки <a href="https://github.com/microcosm-cc/bluemonday">bluemonday</a>, простенькую обертку для нее с cgo можно вызвать через extern из D. Эта связка с Go выглядит особенно полезной, но пока ничего не могу сказать об утечках памяти в попытке подружить два языка с GC. В любом случае, браузер можно легко добавить.</p>
+<p>Также изначально подумывал о Lua-плагинах, например, на них можно реализовать &quot;фильтр&quot; (на самом деле хоть этот функционал и называется фильтром в некоторых агрегаторах, но он ничего не фильтрует, а выполняет операции над новостью в зависимости от условий), который помечает новости важными или нет. Но его можно сделать и без плагинов, ибо с ними программа получается слишком системозависимой, возможно, позже я найду им более удобное применение. Lua можно интегрировать через <a href="https://github.com/BindBC/bindbc-lua">bindbc-lua</a> или аналогичные библиотеки.</p>
+<p>В целом, gtkd мне понравился, если не считать некоторых неудобств со стороны самого gtk, но эксперимент можно признать успешным. В сравнении с нативным gtk может повышаться шанс утечек из-за неправильного использования апи и добавления ещё одного слоя абстракции.</p>
+<p>С другой стороны, написать программу можно на чём угодно, основные проблемы будут с последующим сопровождением, особенно когда часть нюансов работы кода забывается. Ну а так как D приближает архитектуру к классическим тулкитам, то это сильно облегчает как разработку, навроде быстрой навигации и изучения объектного api, так и последующее сопровождение и быстрый поиск и фикс багов. В условиях одиночной разработки и пет-проекта это выглядит наиболее критичными требованиями. Как говорится, каждой задаче - свой инструмент.</p>
+</div>
+    </div>
+</article>
+<div class='navigation-pages btn-toolbar justify-content-center mb-2' role='navigation'>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/contract-based-programming-in-groovy.html' role='button' rel="prev"> <span
+            class='navigation-pages-link-icon mdi mdi-chevron-left'></span> Контрактное программирование в Groovy 4</a>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1' href='/index.html'
+       role='button' rel="first">
+        <span class='navigation-pages-link-icon mdi mdi-home'></span> Главная</a>
+
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/russian-dsl-on-groovy.html' role='button' rel="next">DSL на русском языке в Groovy <span
+            class='navigation-pages-link-icon mdi mdi-chevron-right'></span></a>
+    
+</div>
+        </div>
+        <div class='col-lg-3 sidebar-right'>
+            <div class='section' id='section-sidebar-right'>
+    <div class='card sidebar-container post-labels'>
+        <div class='card-header sidebar-container-header post-labels-header'>
+            <span class='post-labels-header-icon mdi mdi-tag-outline'></span>
+            Метки <span class='text-clarification'>(и кол-во статей)</span>
+        </div>
+        <div class='sidebar-container-content post-labels-content'>
+            <div class='list-group list-group-flush'>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dart.html'>Dart<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dlang.html'>Dlang<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/groovy.html'>Groovy<span class='badge' style='min-width:40px;'>5</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/javafx.html'>JavaFX<span class='badge' style='min-width:40px;'>6</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/arhitektura_po.html'>Архитектура ПО<span class='badge' style='min-width:40px;'>10</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/metodologija.html'>Методология<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/raznoe.html'>Разное<span class='badge' style='min-width:40px;'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/ekonomika.html'>Экономика<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/elektronika.html'>Электроника<span class='badge' style='min-width:40px;'>1</span></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class='card sidebar-container in-progress-articles'>
+       <div class='card-header sidebar-container-header in-progress-articles-header'>
+           <span class='mdi mdi-calendar-clock'></span>
+            В процессе написания
+       </div>
+       <div class='sidebar-container-content post-labels-content in-progress-articles-content'>
+               <ul class='list-group'>
+				   <li class='list-group-item align-items-center text-muted'>Нет статей</li>
+               </ul>
+       </div>
+    </div>
+    <div class='card mb-3 sidebar-container links-contacts'>
+        <div class='card-header sidebar-container-header links-contacts-header'>
+            <span class='mdi mdi-open-in-new'></span>
+            Девлоги текущих проектов
+        </div>
+        <div class="list-group sidebar-container-content">
+			<a class='link-contact list-group-item list-group-item-action' rel="me" href='https://www.youtube.com/@initkfs'>Youtube (готовится)</a>
+		</div>
+    </div>
+    <div class='page-up-wrapper'>
+        <button class='btn d-none d-lg-block' id='page-up-trigger' type='button'><span
+                class='mdi mdi-arrow-up'></span></button>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<footer class='page-footer'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='card'>
+    <div class='card-body'>
+        <p class="text-danger">Сайт в процессе тестирования.</p>
+        <small><span class='blog-info-footer'>Всего статей: 24. Блог - исследовательский, статьи отражают лишь субъективное мнение автора.</span> <span>&#169; <span id='copyright-date'></span>, Константин Фирсов.</span></small>
+        
+        <div class='blog-additional-links d-flex justify-content-center'>
+        <div class='blog-rss'><a class='blog-rss-item blog-icon-clickable'
+                                 href='/rss-all.xml'><span
+                class='mdi mdi-rss-box blog-icon-rss'></span></a></div>
+        </div>
+        <div class='text-danger' id='js-fail-block'>
+            <noscript>
+                <small>JavaScript отключен в браузере, функционал сайта ограничен.</small>
+            </noscript>
+        </div>
+    </div>
+</div>
+<script type='application/ld+json'>
+    {
+        "@context": "http://www.schema.org",
+        "@type": "person",
+        "name": "initkfs",
+        "jobTitle": "",
+        "url": "/index.html"
+    }
+</script>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class='mobile-up-wrapper text-center'>
+    <button class='btn d-lg-none' id='mobile-page-up-trigger' type='button'><span
+            class='mdi mdi-arrow-up'></span> Вверх
+    </button>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js'></script>
+
+<script crossorigin='anonymous' integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.full.min.js" integrity="sha512-wb3lqal2VtYhmlPAr232VP+Zus676CFAEYdywxIUSxG6F/X9WhN6SpREkWUdwBvMpd6gCKuKTGHhdum6m1wOvQ==" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+
+<script crossorigin='anonymous' integrity='sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+<script>
+var problemScripts = [];
+if (typeof jQuery === 'undefined') {
+    problemScripts.push("jquery");
+}
+
+   if (typeof Prism === 'undefined'){
+    problemScripts.push("prism.js");
+   }
+   
+if (typeof Popper === 'undefined') {
+    problemScripts.push("popper.js");
+}
+
+if (typeof timeago === 'undefined') {
+    problemScripts.push("timeago.js");
+}
+
+if (typeof window.bootstrap === 'undefined') {
+    problemScripts.push("bootstrap.js");
+}
+
+if (problemScripts.length > 0) {
+    var message = "Ошибка загрузки JavaScript: " +
+        problemScripts.join(",") +
+        "." +
+        " Возможные причины: блокировщик рекламы, проблемы с сетью, устаревший браузер. Может не работать дополнительный функционал.";
+
+    var failInfoBlock = document.createElement("small");
+    failInfoBlock.innerHTML = message;
+
+    var mainFailBlock = document.getElementById("js-fail-block");
+    if (!mainFailBlock) {
+        console.error(message);
+    } else {
+        mainFailBlock.appendChild(failInfoBlock);
+    }   
+}
+</script>
+<script src="/assets/dev/js/main.js"></script>
+</body>
+</html>
+
+
+

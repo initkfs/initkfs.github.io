@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</title>
+    <link>https://initkfs.github.io</link>
+    <description>Авторский исследовательский блог о программировании, it-технологиях и всяком-разном.</description>
+    <language>ru</language>
+    <copyright>Copyright 2025</copyright>
+    <pubDate>Sat, 15 Apr 2023 13:00:00 GMT</pubDate>
+    <dc:date>2023-04-15T13:00:00Z</dc:date>
+    <dc:language>ru</dc:language>
+    <dc:rights>Copyright 2025</dc:rights>
+    <item>
+      <title>Влияние психологии на архитектуру программ</title>
+      <link>https://initkfs.github.io/pages/psychology-in-software-architect.html</link>
+      <description>Поиск причин превращения хорошей архитектуры в плохую: эмерджентность, технические противоречия, сложность, компенсация энтропии. Когнитивные искажения в принятии решений. Влияние возрастной, дифференциальной психологии, различных психических явлений - ощущений, восприятия, внимания, представления, воображения, мышления, памяти разработчика. Психологические и социальные эффекты в группах.</description>
+      <category>Архитектура ПО</category>
+      <pubDate>Sat, 15 Apr 2023 13:00:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/psychology-in-software-architect.html</guid>
+      <dc:date>2023-04-15T13:00:00Z</dc:date>
+    </item>
+    <item>
+      <title>Первое знакомство с ESP32</title>
+      <link>https://initkfs.github.io/pages/experiments-with-esp32.html</link>
+      <description>Интерес к электронике, проблемы её сочетания с другими IT-навыками, выбор электронных платформ по уровням абстракций. Охранная сигнализация на ESP32: концепт, требования, датчики. HAZOP-анализ отказов блока питания и датчиков. ETA-анализ рисков в работе ESP-платы. Сложности выбора IoT-платы для будущих экспериментов.</description>
+      <category>Электроника</category>
+      <pubDate>Mon, 09 Jan 2023 11:00:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/experiments-with-esp32.html</guid>
+      <dc:date>2023-01-09T11:00:00Z</dc:date>
+    </item>
+    <item>
+      <title>Увлекательная геоинформатика с GeoTools</title>
+      <link>https://initkfs.github.io/pages/java-geoinformatics-with-geotools.html</link>
+      <description>Java библиотека GeoTools, использование с JavaFX. Модель пространственного объекта, его свойства, координаты. Векторная координатная сетка, Open Street Map карты, поддержка разных форматов. Гео-поиск статей с Википедии, маркеры на карте, расчёт расстояний и площади, интеграция Groovy для ECQL-фильтра. 3D глобус.</description>
+      <category>JavaFX</category>
+      <pubDate>Wed, 20 Jul 2022 14:50:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/java-geoinformatics-with-geotools.html</guid>
+      <dc:date>2022-07-20T14:50:00Z</dc:date>
+    </item>
+    <item>
+      <title>Эксперимент с GStreamer и GtkD</title>
+      <link>https://initkfs.github.io/pages/music-player-with-gstreamer-and-gtkd.html</link>
+      <description>Библиотека GStreamer, риски использования, проект аудиоплеера, поиск концепта по принципу Парето, SIPOC. Взаимодействие интерфейса и музыки, упрощение дизайна готовой темой Dracula, конкуренция режимов файлового менеджера и плейлиста. Плагины визуализации, спектрограмм, уровней громкости, эквалайзера. Получение информации о тэгах, поддержка MPRIS, воспроизведение видео.</description>
+      <category>Dlang</category>
+      <pubDate>Sun, 08 May 2022 22:00:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/music-player-with-gstreamer-and-gtkd.html</guid>
+      <dc:date>2022-05-08T22:00:00Z</dc:date>
+    </item>
+    <item>
+      <title>Текстовый редактор на основе GtkSourceView</title>
+      <link>https://initkfs.github.io/pages/text-editor-with-gtksourceview.html</link>
+      <description>Библиотека GtkSourceView и её возможности, GtkD-биндинги. Выбор конкурентов, обоснование системного языка и оценка рисков проекта по FURPS, нефункциональные и функциональные требования. Место редактора в конкурентной нише, общий концепт программы и вывод функционала по вариантам использования, список возможностей по приоритету MoSCoW, некоторые нюансы реализации.</description>
+      <category>Dlang</category>
+      <pubDate>Sun, 17 Apr 2022 19:15:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/text-editor-with-gtksourceview.html</guid>
+      <dc:date>2022-04-17T19:15:00Z</dc:date>
+    </item>
+    <item>
+      <title>Эксперимент с Dart №2, но вместо Flutter - GTK</title>
+      <link>https://initkfs.github.io/pages/experiment-dart-and-gtk.html</link>
+      <description>GTK как замена Flutter в десктопном Linux-приложении, недостатки и преимущества решения. Библиотеки ffi для создания биндингов, минимум необходимого api, проблематика обработки событий и интеграции GTK в event-loop Dart-а, D-Bus для отслеживания сети.</description>
+      <category>Dart</category>
+      <pubDate>Sun, 10 Apr 2022 20:15:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/experiment-dart-and-gtk.html</guid>
+      <dc:date>2022-04-10T20:15:00Z</dc:date>
+    </item>
+    <item>
+      <title>Маркетинговый анализ JavaFX проекта</title>
+      <link>https://initkfs.github.io/pages/javafx-marketing-analysis.html</link>
+      <description>SWOT-анализ JavaFX тулкита, сильные и слабые стороны в контексте FURPS: функционал, юзабилити, надежность, производительность, поддержка. Комбинирование с PEST-анализом для оценки внешних возможностей и угроз. Более полезный Анализ пяти сил Портера, разбор различных конкурентов и конкурентных стратегий.</description>
+      <category>JavaFX</category>
+      <category>Экономика</category>
+      <pubDate>Mon, 18 Oct 2021 18:20:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/javafx-marketing-analysis.html</guid>
+      <dc:date>2021-10-18T18:20:00Z</dc:date>
+    </item>
+    <item>
+      <title>Интеграция десктопного Flutter в CLI-приложение</title>
+      <link>https://initkfs.github.io/pages/desktop-flutter-and-cli-application.html</link>
+      <description>Сложности выбора стека для мобильной разработки, эксперимент с Flutter и парсером картинок для Reddit под Linux. Архитектурные поправки для Dart: асинхронность, исключения, null safety. Особенности Flutter: рефлексия, десктоп, производительность, DSL-вью и аналогия с Groovy SwingBuilder. Обмен событиями между cli-контроллером и Flutter через два канала, нюансы интеграции в иерархию классов.</description>
+      <category>Dart</category>
+      <category>Архитектура ПО</category>
+      <pubDate>Thu, 09 Sep 2021 19:00:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/desktop-flutter-and-cli-application.html</guid>
+      <dc:date>2021-09-09T19:00:00Z</dc:date>
+    </item>
+    <item>
+      <title>DSL на русском языке в Groovy</title>
+      <link>https://initkfs.github.io/pages/russian-dsl-on-groovy.html</link>
+      <description>Выбор Groovy и библиотек для Domain specific language (DSL) на русском. Особенности Closure, стратегии делегирования, command chain, иерархия делегатов с аннотацией @Delegate. Русскоязычная альтернатива def через Binding, AST-трансформации и метки. Разница между методами и свойствами, включение скриптов друг в друга, поиск аналога assert. Локализация через метапрограммирование.</description>
+      <category>Groovy</category>
+      <category>Архитектура ПО</category>
+      <pubDate>Wed, 30 Jun 2021 17:20:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/russian-dsl-on-groovy.html</guid>
+      <dc:date>2021-06-30T17:20:00Z</dc:date>
+    </item>
+    <item>
+      <title>RSS-агрегатор и эксперименты с gtkd</title>
+      <link>https://initkfs.github.io/pages/rss-aggregator-and-gtkd.html</link>
+      <description>Выбор тулкита для пет-проекта десктопного RSS-агрегатора, особенности gtkd, запуск под Windows и Wine. Архитектура приложения, поправки на возможные изменения. Особенности D, влияющие на архитектуру. Библиотеки и полезности для работы с RSS-лентами. Проблемы gtkd и gtk-трея.</description>
+      <category>Dlang</category>
+      <pubDate>Tue, 22 Jun 2021 15:20:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/rss-aggregator-and-gtkd.html</guid>
+      <dc:date>2021-06-22T15:20:00Z</dc:date>
+    </item>
+    <item>
+      <title>Контрактное программирование в Groovy 4</title>
+      <link>https://initkfs.github.io/pages/contract-based-programming-in-groovy.html</link>
+      <description>Появление GContracts в Groovy 4. Пример использования контрактов, влияние на AST-трансформации, особенности устройства. Попытка усилить и ослабить условия, обойти через особенности языка и рефлексию. Более подробное их определение, пересечение накладываемых ограничений с утверждениями, интерфейсами-типами и абстрактными классами. Возможные преимущества и недостатки, конкуренция с валидацией, возможные места для применения.</description>
+      <category>Архитектура ПО</category>
+      <category>Groovy</category>
+      <pubDate>Sat, 26 Dec 2020 20:30:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/contract-based-programming-in-groovy.html</guid>
+      <dc:date>2020-12-26T20:30:00Z</dc:date>
+    </item>
+    <item>
+      <title>Проблемы внедрения зависимостей</title>
+      <link>https://initkfs.github.io/pages/dependency-injection-problems.html</link>
+      <description>Разные подходы к определению зависимостей. Количественный и качественный их анализ. Прямое создание объекта в коде, его проблемы. Недостатки IoC-контейнера. Паттерны внедрения зависимостей, влияние их объект. Object Mother и необходимость подстраиваться под ситуацию.</description>
+      <category>Архитектура ПО</category>
+      <pubDate>Sun, 31 May 2020 20:00:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/dependency-injection-problems.html</guid>
+      <dc:date>2020-05-31T20:00:00Z</dc:date>
+    </item>
+    <item>
+      <title>Вспомним о Protected Variations</title>
+      <link>https://initkfs.github.io/pages/protected-variations.html</link>
+      <description>Шаблон Protected Variations в GRASP, проблематика изменений, сложность определения их локализации и связь с проработкой предметной модели. Выявление изменений через декомпозицию задачи на концептуальные слои по аналогии с известными архитектурными схемами на примере MVC.</description>
+      <category>Архитектура ПО</category>
+      <pubDate>Sun, 10 May 2020 19:00:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/protected-variations.html</guid>
+      <dc:date>2020-05-10T19:00:00Z</dc:date>
+    </item>
+    <item>
+      <title>Метод аналогии в архитектуре программ</title>
+      <link>https://initkfs.github.io/pages/analogy-in-program-architect.html</link>
+      <description>Проблематика архитектуры. Аналогия, её виды и принципы. Биологическая аналогия, структурная схема классов приложения, исследование популяции классов. Требования как аналогия факторов среды, действие факторов, адаптация, основные законы - лимитирующий фактор Либиха, Шелфорда, Митчерлиха.</description>
+      <category>Методология</category>
+      <category>Архитектура ПО</category>
+      <pubDate>Mon, 06 Apr 2020 18:05:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/analogy-in-program-architect.html</guid>
+      <dc:date>2020-04-06T18:05:00Z</dc:date>
+    </item>
+    <item>
+      <title>Особенности выделения интерфейсов</title>
+      <link>https://initkfs.github.io/pages/interface-separation.html</link>
+      <description>Основные отличия интерфейсов от наследования, анализ отношений совместимых и несовместимых понятий: подчинение, пересечение, соподчинение. Недостатки интерфейсов, разные подходы к ним в литературе. Поиск целей для интерфейса.</description>
+      <category>Архитектура ПО</category>
+      <pubDate>Sun, 01 Mar 2020 20:00:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/interface-separation.html</guid>
+      <dc:date>2020-03-01T20:00:00Z</dc:date>
+    </item>
+    <item>
+      <title>Самый простой маппер для базы данных знаков зодиака</title>
+      <link>https://initkfs.github.io/pages/simple-database-mapper.html</link>
+      <description>Простая база данных знаков зодиака, объединение Groovy и JavaFX, отображение множеств, виды маппинга. Маппинг, основанный на ассоциации. Классы-универсалы для работы с запросами и соединением, валидация, класс маппинга для отображения типов и отношений, менеджер сущностей, примитивная кодогенерация.</description>
+      <category>Архитектура ПО</category>
+      <category>Groovy</category>
+      <category>JavaFX</category>
+      <pubDate>Sun, 16 Feb 2020 19:00:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/simple-database-mapper.html</guid>
+      <dc:date>2020-02-16T19:00:00Z</dc:date>
+    </item>
+    <item>
+      <title>Влияние трейтов на архитектуру</title>
+      <link>https://initkfs.github.io/pages/traits-and-architect.html</link>
+      <description>Моделирование захвата трейтом иерархии классов. Использование трейтов для функционала, не связанного с предметной областью, цепочки ответственности, SAM-трейты, наследование от набора компонентов во фреймворке. КотоПёс и его реализация на трейтах и без.</description>
+      <category>Архитектура ПО</category>
+      <category>Groovy</category>
+      <pubDate>Fri, 24 Jan 2020 22:00:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/traits-and-architect.html</guid>
+      <dc:date>2020-01-24T22:00:00Z</dc:date>
+    </item>
+    <item>
+      <title>JavaFX - полезные советы, ссылки, ресурсы</title>
+      <link>https://initkfs.github.io/pages/javafx-useful-tips.html</link>
+      <description>Некоторые русскоязычные ресурсы о тулките, полезные ссылки, упоминание инструментов. Заметки об архитектуре JavaFX-приложения: проектирование управления зависимостями, работа с FXML, улучшение контролов, шина сообщений, стейт-машина и прочие советы.</description>
+      <category>JavaFX</category>
+      <pubDate>Sun, 29 Dec 2019 17:15:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/javafx-useful-tips.html</guid>
+      <dc:date>2019-12-29T17:15:00Z</dc:date>
+    </item>
+    <item>
+      <title>Программирование и маркетинг</title>
+      <link>https://initkfs.github.io/pages/marketing-for-developer.html</link>
+      <description>Предупреждение об исследовательском характере статьи. Информационный эксперт и GRASP. Приоритет универсального эксперта. Экономика как эксперт, список маркетинговых действий в контексте IT, нестабильность и сменяемость технологий, польза экономики для планирования и предотвращения рисков личного стека. Возможные ошибки.</description>
+      <category>Экономика</category>
+      <pubDate>Sun, 06 Oct 2019 04:15:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/marketing-for-developer.html</guid>
+      <dc:date>2019-10-06T04:15:00Z</dc:date>
+    </item>
+    <item>
+      <title>Индукция Бэкона-Милля или поиск причины бага методом тыка</title>
+      <link>https://initkfs.github.io/pages/bacon-mill-method.html</link>
+      <description>Индукция, её виды. Методы научной индукции и выявления причинно-следственных связей: метод единственного сходства, единственного различия, объединенный, сопутствующих изменений, остатков. Примеры использования в случае потери регистров в ассемблере NASM на Linux x64. Условно-категорический силлогизм и его модусы. Заметка о контрактном программировании. Недостатки методологии и возможность ошибок.</description>
+      <category>Методология</category>
+      <pubDate>Sat, 05 Oct 2019 17:00:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/bacon-mill-method.html</guid>
+      <dc:date>2019-10-05T17:00:00Z</dc:date>
+    </item>
+    <item>
+      <title>JavaFX мёртв или жив? Анализ рынка</title>
+      <link>https://initkfs.github.io/pages/javafx-dead-or-alive.html</link>
+      <description>Замечания о сути определения "смерти". Проверка активности развития JavaFX. Анализ рынка десктопа, влияние на популярность инструментов, платформозависимые и кроссплатформенные фреймворки, многофакторность  и сложность выбора. Тренды рынка десктопа, анализ распространения JavaFX и рынка тулкита. Личный кейс автора блога. Польза заблуждений.</description>
+      <category>JavaFX</category>
+      <category>Экономика</category>
+      <pubDate>Sun, 29 Sep 2019 15:15:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/javafx-dead-or-alive.html</guid>
+      <dc:date>2019-09-29T15:15:00Z</dc:date>
+    </item>
+    <item>
+      <title>Баги и нюансы JavaFX</title>
+      <link>https://initkfs.github.io/pages/javafx-problems-list.html</link>
+      <description>Проблемы и нюансы JavaFX, с которыми часто встречался и которые посчитал наиболее неприятными. Тонкости с общим функционалом, окнами и Stage, контроллерами, контролами, графикой: отсутствующие возможности, баги, неочевидное поведение и прочие затруднения. Оформлено списком.</description>
+      <category>JavaFX</category>
+      <pubDate>Sun, 22 Sep 2019 13:00:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/javafx-problems-list.html</guid>
+      <dc:date>2019-09-22T13:00:00Z</dc:date>
+    </item>
+    <item>
+      <title>Реализация сайта (Groovy-генератор)</title>
+      <link>https://initkfs.github.io/pages/site-implementation.html</link>
+      <description>Выбор Groovy как языка для статического генератора. Структура генератора: информационная и инфраструктурная составляющие, краткий их обзор. Шаблоны, инклюдинг, логика вывода, вспомогательные функции в шаблонах. Заключение, напоминание об экспериментальном характере генератора и влияния его изменений на блог.</description>
+      <category>Groovy</category>
+      <pubDate>Sun, 22 Sep 2019 07:00:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/site-implementation.html</guid>
+      <dc:date>2019-09-22T07:00:00Z</dc:date>
+    </item>
+    <item>
+      <title>О станции и капитане</title>
+      <link>https://initkfs.github.io/pages/about.html</link>
+      <description>Цели блога для саморазвития и возможная его польза: влияние на самообучение, мотивацию, эволюцию навыков. Инфраструктура техноблога. Эволюция и особенности IT-стека автора.</description>
+      <category>Разное</category>
+      <pubDate>Sat, 21 Sep 2019 17:15:00 GMT</pubDate>
+      <guid>https://initkfs.github.io/pages/about.html</guid>
+      <dc:date>2019-09-21T17:15:00Z</dc:date>
+    </item>
+  </channel>
+</rss>

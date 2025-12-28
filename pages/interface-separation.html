@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'>
+    <meta name="yandex-verification" content="7021eeb9c07b5c09">
+    <meta name="google-site-verification" content="PztbVe6Ru8ggM2n_tWUYwy0bEVHtJNvzIr-nsVCvBCA">
+    
+    
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/stab/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="/assets/stab/img/favicons/safari-pinned-tab.svg" color="#004245">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/stab/img/favicons/apple-touch-icon.png">
+    <meta name="msapplication-config" content="/assets/stab/img/favicons/browserconfig.xml">
+    <!-- end favicons -->
+    <!-- rss feeds -->
+    <link rel=alternate title="RSS лента" type=application/rss+xml href='/rss-all.xml'>
+    <!-- end rss feeds -->
+    <link type="text/plain" rel="author" href="/humans.txt">
+    <link crossorigin='anonymous' href='https://cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css'
+          integrity='sha384-Ls5zBitvvQ/wdeZDuTUevSY5Tb/she50BeMPrco2ok6xDC8modj6/JPwdL0gNxmP' rel='stylesheet'>
+    
+    <link crossorigin='anonymous' integrity='sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=='
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    
+    <link href="/assets/dev/css/main.css" rel='stylesheet'>
+    
+    <title>Особенности выделения интерфейсов. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</title>
+    <meta name="description" content="Анализ выделения интерфейсов с помощью отношений понятий в формальной логике">
+    <meta content='Особенности выделения интерфейсов. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах' property='og:title'>
+    
+    <meta name="keywords" content="архитектура,интерфейс,ооп">
+    
+    <meta content='/index.html' property='og:url'>
+    <meta content='website' property='og:type'>
+    <meta content='ru_RU' property='og:locale'>
+</head>
+<body>
+<div class='container mb-3'>
+    <div class='row'>
+        <div class='col-lg-12'>
+           <div class='card w-100 site-header-container'>
+    <div class='row align-items-center'>
+        <div class="col-lg-9">
+            <div class='card-header site-header'>
+                <div class='card-title site-header-title mb-3'>
+                    <h5 class='site-header-title-text'>
+                        <a href='/index.html' class='blog-title-text-link'>Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</
+                    </h5>
+                </div>
+                <div class='card-subtitle site-header-subtitle mb-2'>
+                     <a href="/pages/about.html" class="badge mb-2 mb-sm-0">О станции и капитане</a>  <a href="/pages/site-implementation.html" class="badge">Сайт (Groovy-генератор)</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            
+            <div class='site-map w-100 d-flex justify-content-center pe-lg-3'>
+                <a class='site-map-link btn w-100' href='/site-map.html' role='button'><span
+                        class='site-map-link-icon mdi mdi-sitemap'></span>
+                    <span class='text-clarification'>Карта сайта (все статьи)</span></a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-9 blog-posts'>
+            <article class='card post'>
+    <h5 class='card-header post-header fw-bold'>
+        Особенности выделения интерфейсов
+    </h5>
+    <div class='card-body post-body'>
+        <div class="card-title mb-3">
+            <div class="post-body-header">
+
+<div class='post-header-date'><span class='mdi mdi-calendar-clock'></span>
+    <span class="post-datetime-text" data-iso-time="2020-03-01">1 марта 2020</span>
+</div>
+
+
+<span class='mdi mdi-code-braces'></span><span> Примеры кода</span>
+<div class='post-labels'>
+    <span class='post-header-labels-icon mdi mdi-tag-outline'></span>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/arhitektura_po.html' rel='tag'>Архитектура ПО
+    </a>
+    
+</div>
+</div>
+        </div>
+        <div class='post-content'><p>После опытов с <a href="/pages/traits-and-architect.html">трейтами</a> мне захотелось вспомнить об основных способах выделения интерфейсов из-за их частого конфликта с абстрактными классами. Я не буду ворошить иерархии геометрических фигур, концентрируясь лишь на анализе проектной модели.</p>
+<p>Обычно под классическим интерфейсом подразумевают разделение описания функциональности от её реализации. Для наследования основной семантикой будет отношение &quot;является&quot;, когда как для интерфейса - &quot;реализует какой-то контракт&quot;.</p>
+<p>Интерфейс, как и наследование, может использоваться в полиморфизме, поэтому обычной практикой бывает замена по обстоятельствам их одно на другое с получением относительно равнозначного результата. Преимущество в меньшем количестве классов в иерархии при интерфейсном способе моделирования обычно сходит на нет из-за необходимости постоянного сбрасывания дублирующего кода в какой-либо класс и интерфейс начинает плавно перетекать в наследование.</p>
+<p>Проанализируем различие наследования и интерфейса с помощью инструментов формальной логики. Отношение &quot;является&quot; может определять родо-видовое подчинение - отношение двух совместимых понятий, полный объем одного из которых составляет часть объема другого в случае отсутствия множественного наследования. Под совместимостью здесь понимается частичное или полное совпадение объемов - совокупности предметов, охватываемых понятием.</p>
+<p>Вспомним, что <a href="https://ru.wikipedia.org/wiki/Полиморфизм_(информатика)">полиморфизм</a> — способность функции обрабатывать данные разных типов, при этом характер отношений между такими типами не конкретизируется.</p>
+<p>Кроме подчинения существуют и другие виды отношений, которые невозможно смоделировать наследованием. Можно рассмотреть отношения между интерфейсом и реализующим его типом, а также отношения между разными типами, реализующими интерфейс.</p>
+<p>Пересечение - отношение различных по содержанию совместимых понятий, объемы которых имеют общее подмножество элементов. Если часть прямоугольников реализует Exportable, то между Exportable и Rectangle улавливается отношение пересечения, поскольку часть прямоугольников могут экспортироваться в какой-либо формат через реализацию интерфейса, но Exportable реализуют и другие классы.</p>
+<p>С другой стороны, отношение между членами интерфейса, например, между экспортируемым прямоугольниками и каким-нибудь экспортируемым отчетом можно рассмотреть как соподчинение - они подчинены интерфейсу Exportable, но между собой несовместимы из-за отсутствия общих элементов в объемах: отчет не прямоугольник, а прямоугольник не отчет. Данные отношения нельзя описать наследованием и если бы полиморфизм опирался бы только на наследование, то был бы конфуз. Наверное, частным случаем соподчинения можно рассмотреть тестирование, для которого интерфейсы чрезвычайно удобны.</p>
+<p>Отношение соподчинения может продемонстрировать и неочевидную зависимость: если A и B реализуют интерфейс C, то A зависит от B, как и B зависит от A через зависимость от интерфейса.</p>
+<p>Если на устоявшемся коде окажется, что экспортируемый отчет при экспорте требует дополнительных данных, то в случае  изменения интерфейса произойдет изменение экспорта и всего остального, в т.ч. прямоугольников.</p>
+<p>Конечно же, маловероятно, что кто-то пойдет на поломку интерфейса и будет попытка выкрутиться через ассоциацию, но тем не менее. Тоже самое работает и для пересечения, вводя некий предел полиморфизма, поскольку чем более универсален функционал, тем больше рисков он должен нести на своих плечах, подстраиваясь под постоянно изменяющиеся требования, все как в реальности.</p>
+<p>Из анализа отношений можно вывести основной недостаток интерфейса: в отношениях соподчинения и пересечения интерфейс распространяет свое влияние на множество самых разных типов и любое изменение может быть очень болезненным.</p>
+<p>Классический труд по проектированию в .NET &quot;Инфраструктура программных проектов&quot; (Цвалина, Абрамс) содержит похожий пример этой проблемы уменьшения гибкости и вообще рекомендует использовать определения абстрактных классов вместо интерфейсов (раздел &quot;Выбор между классом и интерфейсом&quot;), используя последние лишь в некоторых случаях: для эмуляции множественного наследования или в целях полиморфизма. В Effective Java (Блох), наоборот, интерфейс предпочитается абстрактному классу, хотя опять же есть упоминание о болезненности изменений публичного интерфейса.</p>
+<p>По сугубо личным наблюдениям, недостаток раздутой иерархии заменяется на когнитивную сложность со множеством интерфейсов. При изучении класса оказывается, что он реализует интерфейсы A, B, C, D, E... до бесконечности, которые нужно дополнительно изучать, понимание логики его работы становится задачей нетривиальной.</p>
+<p>Для отношения подчинения выделение интерфейса может вообще закончиться его удалением. Во-первых, если IDE не поддерживает рефакторинг методов из класса в интерфейс, то при любом изменении класса нужно править и его интерфейс. Во-вторых, если интерфейс разрастается, то его реализация напрямую часто становится невозможной и заменяется наследованием от ближайшего члена или использованием ассоциации с проксированием методов.</p>
+<p>При разработке достаточно проблематично выявить отношения между понятиями. Определение объема и содержания - задача сложная в малознакомой предметной области и сопряжена с многочисленными граблями и ошибками, часто используются более упрощенный поиск целей для интерфейса. Так, на предмет универсальности рассматриваются:</p>
+<ul>
+<li>Ассоциации.</li>
+<li>Сообщения.</li>
+<li>Операции\методы.</li>
+<li>Роли классов и сами классы.</li>
+<li>Соединения слоев приложения или boundary-классы, располагающиеся на границах систем.</li>
+</ul>
+<p>Если вспомнить совет из архитектурного мануала, то универсальность тут скорее нужно рассматривать как полиморфизм, который повлечет за собой неприятности в случае изменений. Вероятно, правило с трейтами и их служебной логикой вполне можно притянуть и к интерфейсам: чем дальше контракт интерфейса располагается от бизнес-логики конкретных классов, тем безопаснее его реализация, хотя это не точно.</p>
+<p>Принимая риск проблем в случаях изменений, сразу вспоминается модульность Мейера, где можно встретить правило минимума интерфейсов (Few Interfaces). Если провести аналогию концептуального интерфейса с контрактным, то его можно рассмотреть, например, как попытку предотвратить массивные изменения в системе и соблюдения принципа модульной непрерывности. Или даже модульной понятности, поскольку унификация интерфейсом обычно приводит к очень сжатым или малоинформативным методам, не отражающим все побочные эффекты.</p>
+<p>С другой стороны, минимум это уже количественная характеристика, а тут в игру вступает один из принципов SOLID - The Interface Segregation Principle, для прямой реализации которого может практиковаться создание большого количества мелких интерфейсов.</p>
+<p>Он тесно связан с GRASP: уменьшение ненужных зависимостей понижает связь с другими модулями, а также позволяет создать высокую специализацию, не занимаясь ничем лишним. С другой стороны, SOLID оставляет за кадром решение проблем из-за возможной смены наследования на другое отношение, а также когнитивные проблемы, например, ограничения &quot;оперативной&quot; памяти человека или сложности восприятия запутанных иерархий с многочисленными реализациями интерфейсов. Кроме того, в случае реализации из разных пакетов или мук выбора из большого разнообразия интерфейсов могут появиться другие проблемы.</p>
+<p>Думается, что выделение интерфейсов наиболее критично для библиотеки, где наличие абстрактного класса ограничивает наследование, с другой стороны, большое количество интерфейсов может понизить её гибкость. Логично, что риски с интерфейсами выше для предметной области, трудно поддающейся анализу, например графический интерфейс, отношения между элементами которого часто бывают спорными если подходить с разных сторон, оценивая поведение и отображение по-разному.</p>
+<p>Любопытно, насколько теряется польза интерфейсов в случае наличия в языке трейтов. В спорах о предпочтении трейта или интерфейса обычно упоминается более контрактный характер последнего, но, как упоминалось выше, описание интерфейсом контракта тоже можно поставить под вопрос. Трейт вполне может выглядеть как интерфейс, не имея никаких реализаций. По аналогии может быть и NVI-трейт, который будет стараться дополнительно разделить контракт и реализацию. Да и функционал трейта становится очень похожим на обычный класс.</p>
+<p>Предположим, что в языке отсутствуют трейты, интерфейсы и допускается множественное наследование. Отношения между понятиями все так же можно описать и при одиночном наследовании рождается подчинение с родо-видовой структурой, а контракты теперь описывают абстрактные классы. В таком случае, проблемы множественного наследования исходят от опасностей некорректной замены подчинения на пересечение\соподчинение и отличаются от проблем с интерфейсами наличием реализации (если она есть, конечно же).</p>
+<p>С учетом того, что повсеместно в интерфейсах начали появляться дефолтные методы, появились на свет трейты, а также возможности добавления реализации в каждом классе банальным дублированием кода или переносом его в классы-утилитки, то ограничение одиночного наследования уже не выглядит удачной идеей вне технических ограничений или особенностей устройства компилятора.</p>
+<p>Есть еще очень интересный нюанс в месте реализации интерфейсного метода, что зависит уже от конкретного языка. Некоторые языки позволяют поместить интерфейсный метод не только в сам класс, но и в базовый. В Groovy это все может запутываться динамическими возможностями и автореализацией интерфейсов, но будет что-то вроде:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>interface Writable {
+	void write()
+}
+
+abstract class Writer {
+	void write() {
+		println &quot;hello world&quot;
+	}
+}
+
+class SimpleWriter extends Writer implements Writable {}
+
+Writable writer = new SimpleWriter()
+//hello world
+writer.write()
+</code></pre>
+<p>Как всегда, такое поведение имеет свои преимущества и недостатки. С одной стороны, это может сильно облегчить работу со сторонним кодом и библиотеками, когда иерархии там независимы друг от друга и требуется их связать интерфейсом. С другой стороны, появляется шанс случайной реализации интерфейса существующим где-то вверху иерархии базовым классом, что может привести к достаточно коварным багам.</p>
+<p>Если же интерфейс будет иметь дефолтный метод, то тогда все в порядке - будет вызываться он:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>interface Writable {
+	default void write(){
+		println &quot;hello&quot;
+	}
+}
+
+abstract class Writer {
+	void write() {
+		println &quot;world&quot;
+	}
+}
+
+class SimpleWriter extends Writer implements Writable {}
+
+Writable writer = new SimpleWriter()
+//hello
+writer.write()
+</code></pre>
+<p>Таким образом, для себя сделаю несколько выводов:</p>
+<ul>
+<li>Мнения об использовании интерфейсов несколько расходятся.</li>
+<li>Публичный интерфейс для пересечения или соподчинения может доставить проблем в случае изменений, предсказать которые трудно.</li>
+<li>Только для отношения подчинения интерфейс может быть избыточным. С другой стороны, если при эволюции кода отношение может измениться на другое, то отсутствие интерфейса также может доставить проблем.</li>
+<li>Для интерфейсов, вероятно, может выполняться подход для трейтов - чем менее логика пересекается с бизнес-логикой и уходит от подчинения, тем риски меньше.</li>
+</ul>
+<p>Если вспомнить проблему с самыми простыми классами на самом нижнем уровне приложения - логируемый компонент, конфигурируемый компонент и т.п. где ограничение одиночного наследования ведет к дублированию кода, то кроме явно служебных целей вроде интерфейсов Cloneable, Comparable и т.п., отношение пересечения можно расширить до инфраструктурной сквозной логики приложения, не связанной с предметной областью, хотя это достаточно смелое обобщение.</p>
+<p>Например, в случае лингвистического приложения или приложения-логгера пакеты интернационализации или логирования могут пересекаться с предметной областью. С другой стороны, эта сквозная логика может относиться лишь к интерфейсу самого приложения... кгм... На это может влиять также односложный характер компонентов, их всех объединяет то, что над ними нельзя выделить надкласс.</p>
+<p>Интерфейсы не так просты, как кажется на первый взгляд и требуют аккуратности в обращении. Подходы по их выделению не отличаются универсальностью, а значит вероятность архитектурной ошибки очень высока. Считать ли их костылем на фоне фундаментальной ошибки в дизайне языка или очередным инструментом объектной парадигмы - вопрос очень холиварный, а вывод будет субъективным. Так или иначе, но буду поаккуратнее с ними... на всякий случай.</p>
+</div>
+    </div>
+</article>
+<div class='navigation-pages btn-toolbar justify-content-center mb-2' role='navigation'>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/simple-database-mapper.html' role='button' rel="prev"> <span
+            class='navigation-pages-link-icon mdi mdi-chevron-left'></span> Самый простой маппер для базы данных знаков зодиака</a>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1' href='/index.html'
+       role='button' rel="first">
+        <span class='navigation-pages-link-icon mdi mdi-home'></span> Главная</a>
+
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/analogy-in-program-architect.html' role='button' rel="next">Метод аналогии в архитектуре программ <span
+            class='navigation-pages-link-icon mdi mdi-chevron-right'></span></a>
+    
+</div>
+        </div>
+        <div class='col-lg-3 sidebar-right'>
+            <div class='section' id='section-sidebar-right'>
+    <div class='card sidebar-container post-labels'>
+        <div class='card-header sidebar-container-header post-labels-header'>
+            <span class='post-labels-header-icon mdi mdi-tag-outline'></span>
+            Метки <span class='text-clarification'>(и кол-во статей)</span>
+        </div>
+        <div class='sidebar-container-content post-labels-content'>
+            <div class='list-group list-group-flush'>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dart.html'>Dart<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dlang.html'>Dlang<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/groovy.html'>Groovy<span class='badge' style='min-width:40px;'>5</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/javafx.html'>JavaFX<span class='badge' style='min-width:40px;'>6</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/arhitektura_po.html'>Архитектура ПО<span class='badge' style='min-width:40px;'>10</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/metodologija.html'>Методология<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/raznoe.html'>Разное<span class='badge' style='min-width:40px;'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/ekonomika.html'>Экономика<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/elektronika.html'>Электроника<span class='badge' style='min-width:40px;'>1</span></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class='card sidebar-container in-progress-articles'>
+       <div class='card-header sidebar-container-header in-progress-articles-header'>
+           <span class='mdi mdi-calendar-clock'></span>
+            В процессе написания
+       </div>
+       <div class='sidebar-container-content post-labels-content in-progress-articles-content'>
+               <ul class='list-group'>
+				   <li class='list-group-item align-items-center text-muted'>Нет статей</li>
+               </ul>
+       </div>
+    </div>
+    <div class='card mb-3 sidebar-container links-contacts'>
+        <div class='card-header sidebar-container-header links-contacts-header'>
+            <span class='mdi mdi-open-in-new'></span>
+            Девлоги текущих проектов
+        </div>
+        <div class="list-group sidebar-container-content">
+			<a class='link-contact list-group-item list-group-item-action' rel="me" href='https://www.youtube.com/@initkfs'>Youtube (готовится)</a>
+		</div>
+    </div>
+    <div class='page-up-wrapper'>
+        <button class='btn d-none d-lg-block' id='page-up-trigger' type='button'><span
+                class='mdi mdi-arrow-up'></span></button>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<footer class='page-footer'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='card'>
+    <div class='card-body'>
+        <p class="text-danger">Сайт в процессе тестирования.</p>
+        <small><span class='blog-info-footer'>Всего статей: 24. Блог - исследовательский, статьи отражают лишь субъективное мнение автора.</span> <span>&#169; <span id='copyright-date'></span>, Константин Фирсов.</span></small>
+        
+        <div class='blog-additional-links d-flex justify-content-center'>
+        <div class='blog-rss'><a class='blog-rss-item blog-icon-clickable'
+                                 href='/rss-all.xml'><span
+                class='mdi mdi-rss-box blog-icon-rss'></span></a></div>
+        </div>
+        <div class='text-danger' id='js-fail-block'>
+            <noscript>
+                <small>JavaScript отключен в браузере, функционал сайта ограничен.</small>
+            </noscript>
+        </div>
+    </div>
+</div>
+<script type='application/ld+json'>
+    {
+        "@context": "http://www.schema.org",
+        "@type": "person",
+        "name": "initkfs",
+        "jobTitle": "",
+        "url": "/index.html"
+    }
+</script>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class='mobile-up-wrapper text-center'>
+    <button class='btn d-lg-none' id='mobile-page-up-trigger' type='button'><span
+            class='mdi mdi-arrow-up'></span> Вверх
+    </button>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js'></script>
+
+<script crossorigin='anonymous' integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.full.min.js" integrity="sha512-wb3lqal2VtYhmlPAr232VP+Zus676CFAEYdywxIUSxG6F/X9WhN6SpREkWUdwBvMpd6gCKuKTGHhdum6m1wOvQ==" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+
+<script crossorigin='anonymous' integrity='sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+<script>
+var problemScripts = [];
+if (typeof jQuery === 'undefined') {
+    problemScripts.push("jquery");
+}
+
+   if (typeof Prism === 'undefined'){
+    problemScripts.push("prism.js");
+   }
+   
+if (typeof Popper === 'undefined') {
+    problemScripts.push("popper.js");
+}
+
+if (typeof timeago === 'undefined') {
+    problemScripts.push("timeago.js");
+}
+
+if (typeof window.bootstrap === 'undefined') {
+    problemScripts.push("bootstrap.js");
+}
+
+if (problemScripts.length > 0) {
+    var message = "Ошибка загрузки JavaScript: " +
+        problemScripts.join(",") +
+        "." +
+        " Возможные причины: блокировщик рекламы, проблемы с сетью, устаревший браузер. Может не работать дополнительный функционал.";
+
+    var failInfoBlock = document.createElement("small");
+    failInfoBlock.innerHTML = message;
+
+    var mainFailBlock = document.getElementById("js-fail-block");
+    if (!mainFailBlock) {
+        console.error(message);
+    } else {
+        mainFailBlock.appendChild(failInfoBlock);
+    }   
+}
+</script>
+<script src="/assets/dev/js/main.js"></script>
+</body>
+</html>
+
+
+

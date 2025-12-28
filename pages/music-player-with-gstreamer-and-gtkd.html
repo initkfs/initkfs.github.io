@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'>
+    <meta name="yandex-verification" content="7021eeb9c07b5c09">
+    <meta name="google-site-verification" content="PztbVe6Ru8ggM2n_tWUYwy0bEVHtJNvzIr-nsVCvBCA">
+    
+    
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/stab/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="/assets/stab/img/favicons/safari-pinned-tab.svg" color="#004245">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/stab/img/favicons/apple-touch-icon.png">
+    <meta name="msapplication-config" content="/assets/stab/img/favicons/browserconfig.xml">
+    <!-- end favicons -->
+    <!-- rss feeds -->
+    <link rel=alternate title="RSS лента" type=application/rss+xml href='/rss-all.xml'>
+    <!-- end rss feeds -->
+    <link type="text/plain" rel="author" href="/humans.txt">
+    <link crossorigin='anonymous' href='https://cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css'
+          integrity='sha384-Ls5zBitvvQ/wdeZDuTUevSY5Tb/she50BeMPrco2ok6xDC8modj6/JPwdL0gNxmP' rel='stylesheet'>
+    
+    <link crossorigin='anonymous' integrity='sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=='
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    
+    <link href="/assets/dev/css/main.css" rel='stylesheet'>
+    
+    <title>Эксперимент с GStreamer и GtkD. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</title>
+    <meta name="description" content="Эксперимент с gtkd и GStreamer">
+    <meta content='Эксперимент с GStreamer и GtkD. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах' property='og:title'>
+    
+    <meta name="keywords" content="music,mediaplayer,dlang,gtkd,gtk,gstreamer">
+    
+    <meta content='/index.html' property='og:url'>
+    <meta content='website' property='og:type'>
+    <meta content='ru_RU' property='og:locale'>
+</head>
+<body>
+<div class='container mb-3'>
+    <div class='row'>
+        <div class='col-lg-12'>
+           <div class='card w-100 site-header-container'>
+    <div class='row align-items-center'>
+        <div class="col-lg-9">
+            <div class='card-header site-header'>
+                <div class='card-title site-header-title mb-3'>
+                    <h5 class='site-header-title-text'>
+                        <a href='/index.html' class='blog-title-text-link'>Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</
+                    </h5>
+                </div>
+                <div class='card-subtitle site-header-subtitle mb-2'>
+                     <a href="/pages/about.html" class="badge mb-2 mb-sm-0">О станции и капитане</a>  <a href="/pages/site-implementation.html" class="badge">Сайт (Groovy-генератор)</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            
+            <div class='site-map w-100 d-flex justify-content-center pe-lg-3'>
+                <a class='site-map-link btn w-100' href='/site-map.html' role='button'><span
+                        class='site-map-link-icon mdi mdi-sitemap'></span>
+                    <span class='text-clarification'>Карта сайта (все статьи)</span></a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-9 blog-posts'>
+            <article class='card post'>
+    <h5 class='card-header post-header fw-bold'>
+        Эксперимент с GStreamer и GtkD
+    </h5>
+    <div class='card-body post-body'>
+        <div class="card-title mb-3">
+            <div class="post-body-header">
+
+<div class='post-header-date'><span class='mdi mdi-calendar-clock'></span>
+    <span class="post-datetime-text" data-iso-time="2022-05-09">9 мая 2022</span>
+</div>
+
+
+
+<div class='post-labels'>
+    <span class='post-header-labels-icon mdi mdi-tag-outline'></span>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/dlang.html' rel='tag'>Dlang
+    </a>
+    
+</div>
+</div>
+        </div>
+        <div class='post-content'><p>Следующим интересным мне субпакетом в биндингах GtkD оказался <a href="https://code.dlang.org/packages/gtk-d:gstreamer">gtk-d:gstreamer</a>, реализующий удобные объектные обёртки для мультимедийного фреймворка <a href="https://ru.wikipedia.org/wiki/GStreamer">GStreamer</a>.</p>
+<p>Фреймворк достаточно <a href="https://gstreamer.freedesktop.org/apps">популярен</a>, используется повсеместно для самых разных мультимедийных приложений, что делает знакомство с ним полезным, а в некоторых случаях даже обязательным. Тулкит JavaFX, встречающийся на страницах этого блога, его также <a href="https://docs.oracle.com/javafx/2/overview/jfxpub-overview.htm">использует</a> для мультимедиа. Ранее я уже сталкивался с его пайплайнами, однако без удобных объектных биндингов это знакомство нельзя было назвать приятным.</p>
+<p>Из всех разнообразных мультимедийных проектов наиболее простой и экономной по времени затеей выглядит аудиоплеер: относительная простота устройства и логики, отсутствие критичного функционала, большое количество существующих аналогов, делает его наилучшим вариантом для эксперимента. С другой стороны, тут появляется и основной риск из-за работы с файлами из внешнего мира и сетью - уязвимости в т.ч. 0-day.</p>
+<p>Всплывают они периодически, можно вспомнить, например, прошлогодний парад <a href="https://gstreamer.freedesktop.org/security/sa-2021-0001.html">CVE-2021-3522</a>, <a href="https://gstreamer.freedesktop.org/security/sa-2021-0003.html">CVE-2021-3498</a>, <a href="https://gstreamer.freedesktop.org/security/sa-2021-0002.html">CVE-2021-3497</a>, <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-3185">CVE-2021-3185</a> и <a href="https://gstreamer.freedesktop.org/security">прочие</a>. Из-за системного стека уязвимости там будут и есть, их вскрытие лишь вопрос времени, что следует учитывать при любом потенциальном взаимодействии с вредоносным кодом. С другой стороны, дополнительные средства защиты самой операционной системы, относительная популярность фреймворка и сложность эксплуатации некоторых уязвимостей уменьшают какую-то часть рисков, что делает эксперимент вполне допустимым.</p>
+<p>В качестве альтернативы подробной оценке разных функциональных и нефункциональных требований, как это было в <a href="/pages/text-editor-with-gtksourceview.html">статье о текстовом редакторе</a>, можно пойти и другим путём, используя более общий, но и более фундаментальный закон - <a href="https://ru.wikipedia.org/wiki/Закон_Парето">принцип Парето</a>.</p>
+<p>В трактовке Википедии он звучит как &quot;20% усилий дают 80% результата, а остальные 80% усилий - лишь 20% результата&quot;. Изначально я не придавал ему большого значения, ориентируясь на более специализированные аналитические инструменты, однако отложенные проблемы и архитектурные ошибки быстро привели к пониманию важности и фундаментальности этого закона. Вероятно, в нём могут быть определённые пересечения с <a href="https://ru.wikipedia.org/wiki/Бритва_Оккама">бритвой Оккама</a> и стремлением к редукционизму.</p>
+<p>Можно попытаться поискать эти 20% определяющего функционала для плеера, которые бы сделали его более-менее полезной программой, решая 80% задач, когда как остальные огромные списки возможностей плееров, начиная от загрузки текстов песен и заканчивая редактированием самих медиафайлов могут использоваться в общем случае редко, быть заменены специализированными программами (которые часто делают свою работу лучше) или же вообще не пригодиться никогда. Так и может выйти, что 80% функционала обеспечит решение лишь 20% редких и малоиспользуемых задач.</p>
+<p>Например, несмотря на огромный стаж в прослушивании самых разных музыкальных жанров и высокую музыкальную привередливость, я не припоминаю активного использования какого-либо сложного функционала проигрывателей, ограничиваясь самым минимумом. Разве что однажды в поисках экзотики переделал советские наушники под разъём TRS и вот там потребовалась сильная коррекция баланса, однако на уровне всей системы, а не приложения.</p>
+<p>Для выявления функционала можно сделать декомпозицию модели плеера. Ну ум приходит процессный подход, хорошо подходящим аналогом выглядит SIPOC, с небольшими поправками на музыкальный контекст, конечно же. В самом простом своём варианте его можно представить как:</p>
+<ul>
+<li>Supplier (поставщики) - хранилище музыкальных композиций.</li>
+<li>Input (входы) - файл или адрес, в более общем смысле какой-то URI (вернее, даже URL, учитывая необходимость указания местонахождения ресурса).</li>
+<li>Process (процессы) - обработка мультимедиа-данных.</li>
+<li>Output (выходы) - восприятие музыки сенсорной системой, в простом случае - слух и зрение.</li>
+<li>Customer (заказчики) - слушатель, его субъективные особенности, предпочтения и прочие отличия.</li>
+</ul>
+<p>Вся конструкция представляется цепочкой: S-&gt;I-&gt;P-&gt;O-&gt;C, которая, вероятно, из-за наличия входа и выхода будет иметь какие-то пересечения с концепцией обратной связи в теории управления и усилителях: сигнал с выхода подаётся в начало цепочки, регулируя настройки музыки, громкость, смену композиций и т.п. Это сходство по аналогии может намекать на основную функцию: максимальное усиление (или даже улучшение) влияния музыки на сенсорные системы, в общем случае - впечатления, эта функция видится наиболее важной.</p>
+<p>Поставщиков можно рассмотреть двойственно: с одной стороны, можно подразумевать тех, кто создаёт, распространяет и хранит музыку. Тогда на вход может поступать и самая разная информация, например, дополнительный сведения об исполнителях, их биографии, текстах песен и прочее, намекая на интеграцию со сторонними api, как и встраивание браузера. Этот функционал выглядит дополнительным, но здесь могут быть точки эволюции и расширения, которые для системного языка даются тяжелее. С другой стороны, это можно рассматривать уже как другой параллельный процесс, со своими входами и выходами, ибо возможно удалить его без ущерба для основного функционала плеера.</p>
+<p>Отсюда для основного функционала понятие &quot;хранилища&quot; в контексте поставщика выглядит более привлекательно и может быть как локальным (файловая система или же внешний накопитель, сеть), так и внешним - сторонние сервисы, облака и т.п. источники, а значит его можно подвести под единый интерфейс, что пересекается с паттерном Repository и его аналогами.</p>
+<p>Насколько в это понятие вписывается, например, интернет-радио? Хранилище само по себе может подразумевать определённые запросы и манипуляции: получение списка, итерации по файлам, когда как онлайн-сервисы или аналоги могут выдавать только поток. Но URL, описывающий местонахождение потока тоже нужно где-то хранить, их может быть несколько (плейлист) или же список может формироваться через сетевые службы, которые скорее и будут хранилищем в данном случае. Но это ограничение live-потока повлияет на api хранилища: получение предыдущего, следующего файлов и т.п. затруднены и выглядит специализированными версиями классов где-то в иерархии пониже.</p>
+<p>Заказчиков также можно рассматривать как слушателя или их множество, что намекает на функционал трансляции видео, протоколы <a href="https://ru.wikipedia.org/wiki/DAAP">DAAP</a> или аналоги для расшаривания медиафайлов, хотя опять-таки функционал выглядит дополнительным, а учитывая риски уязвимостей потребует много времени на качественную и безопасную реализацию. А также можно передать музыку другому коду или приложениям, но случай выглядит более узкоспециализированным, всё-таки на человека влияет не только сама музыка, но и визуализация с интерфейсом, хотя не исключаю, что есть (или появятся) алгоритмы ИИ, которые тоже можно рассматривать как слушателя. Наибольший интерес здесь в интеграции с системой и различными интерфейсами типа <a href="https://ru.wikipedia.org/wiki/MPRIS">MPRIS</a>, в случае которых выходом выглядят события плеера, намекая на простое добавление и удаление слушателей для них.</p>
+<p>Что касается процессов, то пайплайны GStreamer очень хорошо укладываются в модель цепочки выше, а значит там тоже есть входы (sink) и выходы (source). Вполне возможно подключить что-то другое, например, микрофон, генератор сигналов или свою реализацию, как и не ограничиваться только звуком или визуализацией на выходе. Но опять-таки поддержка разных форматов файлов, обработка звука, эффекты и т.п. выглядят сильно ситуативными функциями и будут изменяться в зависимости от начала (форматы музыки, распространение и т.д для поставщиков) и конца (личные предпочтения, привычки, особенности для слушателя) всей цепочки, когда как основной интерес - это усиление воздействия музыки.</p>
+<p>Однако в части формирования впечатлений начинаются разнообразные влияния дифференциальной психологии: из-за сильного различия людей по разным психологическим характеристикам любые оценки становятся очень субъективными, а сами <a href="https://ru.wikipedia.org/wiki/Психология_музыкальных_предпочтений">музыкальные предпочтения</a> сложны и тесно связаны с личностью и внешней средой, формируя отдельное направление <a href="https://ru.wikipedia.org/wiki/Музыкальная_психология">музыкальной психологии</a>.</p>
+<p>При беглом поиске идей в литературе наиболее полезной скорее оказалась книжка Петрушин - Музыкальная психология. В разделе о взаимодействии ощущений был приведён пример сенсибилизации - повышение чувствительности одного анализатора в процессе его взаимодействия с другим: добавление к слуховому восприятию зрительного может приводить к усилению впечатления от музыки, что намекает на взаимосвязь интерфейса и музыки.</p>
+<p>В самом простом случае такое взаимодействие интерфейса и музыки реализуется в существующих плеерах разного рода визуализациями в т.ч. спектрограммы на основе преобразований Фурье. Однако установить нужное количество этих визуализаций уже тяжелее, насколько много их должно быть? Учитывая, что в значительной части плееров их не очень много, а приложение должно быть отличным от конкурентов, то это намёк на увеличение всеми любимых т.н. &quot;свистелок-перделок&quot;. Но где-то здесь появляется и верхний предел отвлекающих элементов, после превышения которого они могут начать вредить. Из-за субъективного восприятия музыки установить это можно скорее лишь экспериментально, а часть элементов можно скрывать через настройки или убрать потом насовсем.</p>
+<p>Итого, формируется основная идея и концепт - интерфейс должен быть способен оживлять композицию, стимулировать воображение на основе перцептивных образов из графических элементов. Однако это намекает на повышенные требования к дизайну и оформлению, что сложно (и бессмысленно) выполнить в условиях эксперимента.</p>
+<p>Можно попробовать сэкономить время уже готовыми gtk-темами, например, взяв тему <a href="https://github.com/dracula/gtk">Dracula</a> и запуская плеер с переменной среды GTK_THEME. Сложнее с иконками, которые зависят от системных, но их не так много, можно и потерпеть. Другая проблема - в предыдущих экспериментах мне не удалось поработать с биндингами к векторной библиотеке <a href="https://ru.wikipedia.org/wiki/Cairo">Cairo</a>, но в этом случае дизайн получается неконсистентным, а полная отрисовка всего интерфейса займёт много времени. Отсюда выводится компромиссное решение - отрисовка лишь нескольких ключевых элементов интерфейса, например, информационного дисплея, что позволит как поэкспериментировать с биндингами под векторную библиотеку, так и частично сохранить общий стиль интерфейса, хотя опять-таки восприятие его скорее субъективно.</p>
+<p>Минимальный функционал для такой работы со звуком: запуск, пауза, громкость, временное перемещение и т.п., так и работы с файлами - это файловый менеджер, плейлисты и список избранного для сохранения названий треков радиостанций, что определяет функциональные требования простым копированием из аналогов.</p>
+<p>Основная проблема в таком интерфейсе - это функциональная схожесть файлового менеджера и плейлиста. Файловый менеджер скорее является частным случаем плейлиста, а значит вполне возможно использовать кнопки следующего и предыдущего трека для навигации по дереву файлов. Однако это вводит режимы проигрывателя, как минимум:</p>
+<ul>
+<li>Режим файлового менеджера.</li>
+<li>Режим плейлиста.</li>
+</ul>
+<p>Кнопки старта, следующего, предыдущего треков будут применяться то к одному, то к другому, рождая между ними конкуренцию: что будет, если приостановить трек в плейлисте, а потом двойным кликом запустить трек в файловом менеджере? Самое простое - это автоматически переключить режим на файловый менеджер, а значит режимы должны быть чётко обозначены. Пока я остановился на отдельной ToggleButton, как и добавлении\удалении css-класса с цветной границей для подсвечивания активного виджета, хотя выделение элементов только цветом нельзя назвать хорошим вариантом для доступности (accessibility).</p>
+<p>Прототип получился каким-то таким:</p>
+<p><img alt='GStreamer and Gtkd audioplayer' class='post-image' src='/assets/stab/img/posts/music-player-with-gstreamer-and-gtkd/gstreamer-gtkd-mediaplayer.png'></p>
+<p>Есть определённые проблемы с отступами и прочим, но они выглядят допустимыми в обмен на сэкономленное время. Сам Goom красив, очень красив:</p>
+<p><img alt='GStreamer and Gtkd audioplayer' class='post-image' src='/assets/stab/img/posts/music-player-with-gstreamer-and-gtkd/mediaplayer-play.gif'></p>
+<p>Поверхностно пробегусь по основным моментам реализации.</p>
+<p>У GStreamer хорошая документация со множеством примеров, несколько <a href="https://habr.com/ru/post/178813/">вводных статей</a> можно найти на хабре. Построить пайплайн своей мечты можно разными путями, например, через более универсальный <a href="https://gstreamer.freedesktop.org/documentation/playback/playbin.html">playbin</a>, который сам по себе пайплайн, однако хотелось бы вспомнить разные элементы и их взаимодействие друг с другом, так что построение пайплайна вручную более интересно.</p>
+<p>Само выстраивание пайплайна достаточно тривиально, основной нюанс скорее в <a href="https://gstreamer.freedesktop.org/documentation/tutorials/basic/multithreading-and-pad-availability.html">распараллеливании данных</a> для разных целей через <a href="https://gstreamer.freedesktop.org/documentation/coreelements/tee.html">tee</a> и <a href="https://gstreamer.freedesktop.org/documentation/coreelements/queue.html">очереди</a>.</p>
+<p>Для главной визуализации хорошо подходит <a href="https://gstreamer.freedesktop.org/documentation/goom/index.html">goom</a>, способный к достаточно красочным и замысловатым узорам.</p>
+<p>Для более простых визуализаций и спектрограммы также <a href="https://gstreamer.freedesktop.org/documentation/audiovisualizers">есть соответствующие плагины audiovisualizers</a> (Bad plugins). Для спектрограммы я остановился на <a href="https://gstreamer.freedesktop.org/documentation/audiovisualizers/spectrascope.html">spectrascope</a>. Наиболее понравившийся мне эффект получился в комбинации его с <a href="https://gstreamer.freedesktop.org/documentation/coloreffects/coloreffects.html">coloreffects</a> с пресетом &quot;heat&quot; и <a href="https://gstreamer.freedesktop.org/documentation/videofilter/videobalance.html#videobalance-page">videobalance</a> для более тонкой подстройки цветов под тему интерфейса.</p>
+<p>Однако интерес был и в собственной спектрограмме, в реализации которой помог плагин <a href="https://gstreamer.freedesktop.org/documentation/spectrum/index.html">spectrum</a>, обеспечив массивом значений, на основе которых через Cairo можно отрисовать график.</p>
+<p>Также я потестировал плагин <a href="https://gstreamer.freedesktop.org/documentation/level/index.html">level</a>, результат которого рисуется по бокам в двух уровнях Gtk.LevelBar: пиковое значение во внешнем и усреднённое значение (RMS) - во внутреннем. При таком построении и склонности пиковых значений постоянно задираться вверх, композиция получается закрытой, окружённой границами со всех сторон. Здесь же пришло в голову более бюджетное решение положить два Gtk.LevelBar горизонтально, заполнить на фулл и изменять им прозрачность наиболее слабо изменяемым значением уровня: не так рябит в глазах, но и есть какая-то динамика на верхней и нижней границе плеера.</p>
+<p>Было бы неплохо подстраивать реакцию интерфейса под жанр музыки или какие-то её характеристики, для чего нужна классификация жанров. В природе есть <a href="https://github.com/topics/music-genre-classification">различные проекты</a>, но интеграция, как и реализация такого функционала выглядит скорее занятием для стартапов, чем для простого плеера. Какую-то информацию о жанре можно пытаться получить из тэгов, но это не слишком универсальный подход, к тому же автоматическое изменение цвета индикаторов, дисплея или других элементов выглядит хотя и привлекательным, но противоречивым решением: есть шанс, что меняться оно будет там где не нужно и когда не нужно, зато не срабатывая когда нужно, классика.</p>
+<p>Для построения эквалайзера также есть <a href="https://gstreamer.freedesktop.org/documentation/equalizer/index.html">плагины</a>. Я использовал 10-канальный эквалайзер через <a href="https://gstreamer.freedesktop.org/documentation/equalizer/equalizer-10bands.html">equalizer-10bands</a>. Нельзя сказать, что мне он очень был нужен, но посмотрев на VLC, один пресет показался полезным - для наушников.</p>
+<p>Для вывода изображения был использован самый простой путь - <a href="https://gstreamer.freedesktop.org/documentation/gtk/gtksink.html">gtksink</a>, однако это требует доустановки пакета в систему (gst-plugin-gtk), при его отсутствии фабрика ElementFactory вернёт null. Соответственно, визуализации нужно отображать в отдельном окне, а также изменять размер видео, что можно сделать через <a href="https://gstreamer.freedesktop.org/documentation/videoconvertscale/videoscale.html#videoscale-page">videoscale</a>. Поскольку он работает с Caps и нужна динамическая перестройка размеров видео при изменении окна и gtk-контейнеров, то можно использовать <a href="https://gstreamer.freedesktop.org/documentation/coreelements/capsfilter.html">capsfilter</a>, который позволяет настраивать себя свойством GObject.</p>
+<p>Для информационного дисплея был нарисован примитивный экранчик и наложен эффект стекла через линейный градиент. Текст можно выводить в cairo.Context напрямую, но Unicode-символы проще вывести через <a href="https://ru.wikipedia.org/wiki/Pango">Pango</a>, в модуле pango.PgCairo есть методы для вывода текста в Cairo-контексте.</p>
+<p>Информацию о треке можно получить через <a href="https://gstreamer.freedesktop.org/documentation/plugin-development/advanced/tagging.html">теги</a>, слушая шину сообщений и события GstMessageType.TAG, что особенно необходимо для онлайн-радио и смены названий проигрываемых треков. Однако иногда парсинг тэгов может не срабатывать, многие проигрыватели берут в этом случае имя трека из файлового пути, не обрезая расширение, я также взял этот способ. В части радиостанций должен быть какой-то функционал сохранения названий или самой композиции. Самый простой вариант - это сохранение названий в обычный текстовый файл.</p>
+<p>С другой стороны, при перетаскивании файла в окно программы и добавления в плейлист нужно получить информацию как минимум о длительности. Это можно сделать через <a href="https://gstreamer.freedesktop.org/documentation/pbutils/gstdiscoverer.html">GstDiscoverer</a>, но поскольку он убран в gstpbutils, то нужно <a href="https://stackoverflow.com/questions/54490082/ubuntu-16-install-gstreamer-but-gstreamer-plugins-base-1-0-pc-file-is-not-found">немножко больше телодвижений</a>, да и биндингов к этому апи в GtkD нет, хотя оно достаточно простое, особенно в синхронном варианте.</p>
+<p>Большинство проигрывателей поддерживает управление громкостью через стандарт <a href="https://ru.wikipedia.org/wiki/ReplayGain">ReplayGain</a> и в GStreamer также есть плагины, например, <a href="https://gstreamer.freedesktop.org/documentation/replaygain/rgvolume.html?gi-language=c#rgvolume">rgvolume</a>. Но отзывы об этом стандарте противоречивы, я не припомню его использования и не занимался добавлением.</p>
+<p>А вот интеграцию в рабочий стол через <a href="https://specifications.freedesktop.org/mpris-spec/latest/">MPRIS D-Bus Interface Specification</a> добавить вполне можно, пример её работы можно увидеть, например, <a href="https://www.makeuseof.com/tag/make-linux-music-experience-seamless-tools/">тут</a>. Апи для работы с D-Bus есть в модуле gio, сложности могут возникнуть с построением типов шины через glib.Variant на основе сигнатур. Например, в словаре {sv} строковый тип ключа достаточно интуитивно и легко определить как new Variant(&quot;key&quot;), а вот на &quot;v&quot; можно подумать как о сыром типе, однако это действительно new Variant(new Variant(&quot;value&quot;)).</p>
+<p>XML-cпецификацию интерфейсов можно найти в <a href="https://gitlab.freedesktop.org/mpris/mpris-spec/">репозиториях MPRIS</a> и загрузить в gio.DBusNodeInfo, из которого теперь можно получить DBusInterfaceInfo, нужный для регистрации коллбэков в gio.DBusConnection.registerObject и registerObjectWithClosures, шина начнёт вызывать эти функции. В обратную сторону чуть сложнее через сигнал PropertiesChanged: хотя можно подсмотреть, как это <a href="https://github.com/GNOME/rhythmbox/blob/56a31de234440f2813228a5bceac174758a5677e/plugins/mpris/rb-mpris-plugin.c#L131">делают другие плееры</a>, но из-за небольшого различия в биндингах лучше всё-таки записать общение с шиной другого проигрывателя через тот же dbus-monitor и тщательно сверить с ним, например, у меня проскакивали лишние вложенные Variant в сравнении с VLC, из-за чего название трэка в плагине трея не менялось, но и ошибок никаких не было. Вообще, с этой шиной пришлось немного повозиться, мягко говоря.</p>
+<p>Несложно заметить, что пайплайн для аудио очень близок по своей структуре к таковому для видео, тем более, что визуализация уже содержит в себе нужную логику, отсутствие поддержки видео выглядит обидным упущением. Самый простой вариант - перелинковать и перенаправить видео по ветке визуализации при переключении файлов в состоянии READY (пишут, что с паузой тоже работает), а потом вернуть всё на место снова. При таком подходе усложняется переключение между аудио\видео, ибо информацию нужно брать из самого файла (или адреса). В случае же динамической перестройки в состоянии PLAYING потребуются блокировки элементов и <a href="https://gstreamer.freedesktop.org/documentation/application-development/advanced/pipeline-manipulation.html">прочие сложности</a>, что скорее и будет основным недостатком концепции цепочек, а значит и всей библиотеки. Но в любом случае перед линковкой на мультиплексор в addOnPadAdded есть смысл проверить Caps у Pad, чтобы случайно не пустить видео или аудио по неподходящему для них пути.</p>
+<p>В моём случае нужно отлинковать визуализацию и направить видео по её пути, превращая таким образом плеер в телевизор:</p>
+<p><img alt='GStreamer and Gtkd play video' class='post-image' src='/assets/stab/img/posts/music-player-with-gstreamer-and-gtkd/dplayer-video-play.gif'></p>
+<p>Такой небольшой размер видео интереса не представляет, но поскольку кнопка для отображения визуализации в отдельном окне уже есть, то можно использовать её и для просмотра видео.</p>
+<p>В целом, эксперимент можно признать удачным, хотя, конечно же, были определённые сложности соотнести С-api с биндингами, например, получение данных и структур из gstreamer.Message, но нужное сочетание можно вытыкать и простым перебором. Был ещё момент с неаккуратным вызовом unref при портировании сишного кода, что вело к коварным рандомным ошибкам, но <a href="https://gstreamer.freedesktop.org/documentation/tutorials/basic/debugging-tools.html">диагностических сообщений</a> вполне достаточно для их отлова. С другой стороны, любые проблемы компенсируются для меня удобством, скоростью и самодокументируемостью объектного апи и самого D, так что сам эксперимент понравился, а полученный опыт выглядит оправдывающим потраченное на это всё время.</p>
+</div>
+    </div>
+</article>
+<div class='navigation-pages btn-toolbar justify-content-center mb-2' role='navigation'>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/text-editor-with-gtksourceview.html' role='button' rel="prev"> <span
+            class='navigation-pages-link-icon mdi mdi-chevron-left'></span> Текстовый редактор на основе GtkSourceView</a>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1' href='/index.html'
+       role='button' rel="first">
+        <span class='navigation-pages-link-icon mdi mdi-home'></span> Главная</a>
+
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/java-geoinformatics-with-geotools.html' role='button' rel="next">Увлекательная геоинформатика с GeoTools <span
+            class='navigation-pages-link-icon mdi mdi-chevron-right'></span></a>
+    
+</div>
+        </div>
+        <div class='col-lg-3 sidebar-right'>
+            <div class='section' id='section-sidebar-right'>
+    <div class='card sidebar-container post-labels'>
+        <div class='card-header sidebar-container-header post-labels-header'>
+            <span class='post-labels-header-icon mdi mdi-tag-outline'></span>
+            Метки <span class='text-clarification'>(и кол-во статей)</span>
+        </div>
+        <div class='sidebar-container-content post-labels-content'>
+            <div class='list-group list-group-flush'>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dart.html'>Dart<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dlang.html'>Dlang<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/groovy.html'>Groovy<span class='badge' style='min-width:40px;'>5</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/javafx.html'>JavaFX<span class='badge' style='min-width:40px;'>6</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/arhitektura_po.html'>Архитектура ПО<span class='badge' style='min-width:40px;'>10</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/metodologija.html'>Методология<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/raznoe.html'>Разное<span class='badge' style='min-width:40px;'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/ekonomika.html'>Экономика<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/elektronika.html'>Электроника<span class='badge' style='min-width:40px;'>1</span></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class='card sidebar-container in-progress-articles'>
+       <div class='card-header sidebar-container-header in-progress-articles-header'>
+           <span class='mdi mdi-calendar-clock'></span>
+            В процессе написания
+       </div>
+       <div class='sidebar-container-content post-labels-content in-progress-articles-content'>
+               <ul class='list-group'>
+				   <li class='list-group-item align-items-center text-muted'>Нет статей</li>
+               </ul>
+       </div>
+    </div>
+    <div class='card mb-3 sidebar-container links-contacts'>
+        <div class='card-header sidebar-container-header links-contacts-header'>
+            <span class='mdi mdi-open-in-new'></span>
+            Девлоги текущих проектов
+        </div>
+        <div class="list-group sidebar-container-content">
+			<a class='link-contact list-group-item list-group-item-action' rel="me" href='https://www.youtube.com/@initkfs'>Youtube (готовится)</a>
+		</div>
+    </div>
+    <div class='page-up-wrapper'>
+        <button class='btn d-none d-lg-block' id='page-up-trigger' type='button'><span
+                class='mdi mdi-arrow-up'></span></button>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<footer class='page-footer'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='card'>
+    <div class='card-body'>
+        <p class="text-danger">Сайт в процессе тестирования.</p>
+        <small><span class='blog-info-footer'>Всего статей: 24. Блог - исследовательский, статьи отражают лишь субъективное мнение автора.</span> <span>&#169; <span id='copyright-date'></span>, Константин Фирсов.</span></small>
+        
+        <div class='blog-additional-links d-flex justify-content-center'>
+        <div class='blog-rss'><a class='blog-rss-item blog-icon-clickable'
+                                 href='/rss-all.xml'><span
+                class='mdi mdi-rss-box blog-icon-rss'></span></a></div>
+        </div>
+        <div class='text-danger' id='js-fail-block'>
+            <noscript>
+                <small>JavaScript отключен в браузере, функционал сайта ограничен.</small>
+            </noscript>
+        </div>
+    </div>
+</div>
+<script type='application/ld+json'>
+    {
+        "@context": "http://www.schema.org",
+        "@type": "person",
+        "name": "initkfs",
+        "jobTitle": "",
+        "url": "/index.html"
+    }
+</script>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class='mobile-up-wrapper text-center'>
+    <button class='btn d-lg-none' id='mobile-page-up-trigger' type='button'><span
+            class='mdi mdi-arrow-up'></span> Вверх
+    </button>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js'></script>
+
+<script crossorigin='anonymous' integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.full.min.js" integrity="sha512-wb3lqal2VtYhmlPAr232VP+Zus676CFAEYdywxIUSxG6F/X9WhN6SpREkWUdwBvMpd6gCKuKTGHhdum6m1wOvQ==" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+
+<script crossorigin='anonymous' integrity='sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+<script>
+var problemScripts = [];
+if (typeof jQuery === 'undefined') {
+    problemScripts.push("jquery");
+}
+
+   if (typeof Prism === 'undefined'){
+    problemScripts.push("prism.js");
+   }
+   
+if (typeof Popper === 'undefined') {
+    problemScripts.push("popper.js");
+}
+
+if (typeof timeago === 'undefined') {
+    problemScripts.push("timeago.js");
+}
+
+if (typeof window.bootstrap === 'undefined') {
+    problemScripts.push("bootstrap.js");
+}
+
+if (problemScripts.length > 0) {
+    var message = "Ошибка загрузки JavaScript: " +
+        problemScripts.join(",") +
+        "." +
+        " Возможные причины: блокировщик рекламы, проблемы с сетью, устаревший браузер. Может не работать дополнительный функционал.";
+
+    var failInfoBlock = document.createElement("small");
+    failInfoBlock.innerHTML = message;
+
+    var mainFailBlock = document.getElementById("js-fail-block");
+    if (!mainFailBlock) {
+        console.error(message);
+    } else {
+        mainFailBlock.appendChild(failInfoBlock);
+    }   
+}
+</script>
+<script src="/assets/dev/js/main.js"></script>
+</body>
+</html>
+
+
+

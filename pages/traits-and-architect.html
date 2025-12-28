@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset='utf-8'>
+    <meta name="yandex-verification" content="7021eeb9c07b5c09">
+    <meta name="google-site-verification" content="PztbVe6Ru8ggM2n_tWUYwy0bEVHtJNvzIr-nsVCvBCA">
+    
+    
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/stab/img/favicons/favicon.ico">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/stab/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="mask-icon" href="/assets/stab/img/favicons/safari-pinned-tab.svg" color="#004245">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/stab/img/favicons/apple-touch-icon.png">
+    <meta name="msapplication-config" content="/assets/stab/img/favicons/browserconfig.xml">
+    <!-- end favicons -->
+    <!-- rss feeds -->
+    <link rel=alternate title="RSS лента" type=application/rss+xml href='/rss-all.xml'>
+    <!-- end rss feeds -->
+    <link type="text/plain" rel="author" href="/humans.txt">
+    <link crossorigin='anonymous' href='https://cdn.materialdesignicons.com/3.5.95/css/materialdesignicons.min.css'
+          integrity='sha384-Ls5zBitvvQ/wdeZDuTUevSY5Tb/she50BeMPrco2ok6xDC8modj6/JPwdL0gNxmP' rel='stylesheet'>
+    
+    <link crossorigin='anonymous' integrity='sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=='
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    
+    <link href="/assets/dev/css/main.css" rel='stylesheet'>
+    
+    <title>Влияние трейтов на архитектуру. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</title>
+    <meta name="description" content="Анализ влияния трейтов на архитектуру и подводные камни их применения">
+    <meta content='Влияние трейтов на архитектуру. Космическая станция Аналитики - DIY техноблог о сложных IT-проектах' property='og:title'>
+    
+    <meta name="keywords" content="архитектура,миксин,трейт,groovy">
+    
+    <meta content='/index.html' property='og:url'>
+    <meta content='website' property='og:type'>
+    <meta content='ru_RU' property='og:locale'>
+</head>
+<body>
+<div class='container mb-3'>
+    <div class='row'>
+        <div class='col-lg-12'>
+           <div class='card w-100 site-header-container'>
+    <div class='row align-items-center'>
+        <div class="col-lg-9">
+            <div class='card-header site-header'>
+                <div class='card-title site-header-title mb-3'>
+                    <h5 class='site-header-title-text'>
+                        <a href='/index.html' class='blog-title-text-link'>Космическая станция Аналитики - DIY техноблог о сложных IT-проектах</
+                    </h5>
+                </div>
+                <div class='card-subtitle site-header-subtitle mb-2'>
+                     <a href="/pages/about.html" class="badge mb-2 mb-sm-0">О станции и капитане</a>  <a href="/pages/site-implementation.html" class="badge">Сайт (Groovy-генератор)</a> 
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            
+            <div class='site-map w-100 d-flex justify-content-center pe-lg-3'>
+                <a class='site-map-link btn w-100' href='/site-map.html' role='button'><span
+                        class='site-map-link-icon mdi mdi-sitemap'></span>
+                    <span class='text-clarification'>Карта сайта (все статьи)</span></a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-9 blog-posts'>
+            <article class='card post'>
+    <h5 class='card-header post-header fw-bold'>
+        Влияние трейтов на архитектуру
+    </h5>
+    <div class='card-body post-body'>
+        <div class="card-title mb-3">
+            <div class="post-body-header">
+
+<div class='post-header-date'><span class='mdi mdi-calendar-clock'></span>
+    <span class="post-datetime-text" data-iso-time="2020-01-25">25 января 2020</span>
+</div>
+
+
+<span class='mdi mdi-code-braces'></span><span> Примеры кода</span>
+<div class='post-labels'>
+    <span class='post-header-labels-icon mdi mdi-tag-outline'></span>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/arhitektura_po.html' rel='tag'>Архитектура ПО
+    </a>
+    
+    <a class='post-label-item badge font-weight-normal'
+       href='/tags/groovy.html' rel='tag'>Groovy
+    </a>
+    
+</div>
+</div>
+        </div>
+        <div class='post-content'><p>Я пристально отслеживаю развитие Dart, видя в нем не только удобный инструмент, но и возможность улучшения навыков за счет современного объектного языка, впитавшего в себя наработки предыдущих поколений. Вполне логично, что меня заинтересовал недавний пост на хабре <a href="https://habr.com/ru/post/484206">Использование примесей (mixins) в Dart</a>, где автор поднял очень интересный вопрос о существенных и несущественных признаках, обусловливающих наследование. Я почти не пользуюсь трейтами и решил провести для себя дополнительное расследование их влияния на архитектуру, а также повторить основные способы применения.</p>
+<p>Для статьи буду использовать Groovy, который я часто использую для экспериментов и где примеси реализуются трейтами (хотя была аннотация Mixin для этой цели, которая устарела и deprecated). Создадим похожую иерархию, с небольшими изменениями: без draw и Shape для упрощения.</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>import groovy.transform.*
+
+@ToString(includeNames=true)
+class Rectangle {
+
+	final int width
+	final int height
+
+	Rectangle(int width, int height) {
+		this.width = width
+		this.height = height
+	}
+}
+
+def rectangle = new Rectangle(200, 100)
+println rectangle
+//Rectangle(width:200, height:100)
+</code></pre>
+<p>Конечно же, такое название очень условно и мало связано с прямоугольником в геометрии, который является четырехугольником, у которого все углы прямые, а данный класс не содержит никакой информации об углах. Также я не использую различные продвинутые аннотации-трансформации вроде @Canonical, как и различные проверки. Например, width == height может превратить его в условный квадрат, а отрицательные значения выглядят подозрительно, но это будет засорять листинги. Groovy автоматически генерирует сеттеры и геттеры когда поле не содержит модификатора доступа (public, protected, private), рассматривая такое поле как property, также я не буду делать проверки на null. Так как присутствует финализация, то заработает только геттер.</p>
+<p>Теперь представим, что стоит задача различать размер прямоугольников, например, для каких-то специальных операций вроде расчета площади. В случае очень большого прямоугольника будет переполнение:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>def largeRectangle = new Rectangle(Integer.MAX_VALUE, Integer.MAX_VALUE)
+def squareValue = largeRectangle.width * largeRectangle.height
+println squareValue
+// 1
+
+Math.multiplyExact(largeRectangle.width, largeRectangle.height)
+//Caught: java.lang.ArithmeticException: integer overflow
+</code></pre>
+<p>Достаточно надуманно, но это первое, что пришло в голову. Можно попытаться переложить определение размера на кого-то другого:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>class RectangleSizeChecker implements Predicate&lt;Rectangle&gt; {
+	final int largeWidth
+	final int largeHeight
+
+	RectangleSizeChecker(int largeWidth, int largeHeight) {
+		this.largeWidth = largeWidth
+		this.largeHeight = largeHeight
+	}
+
+	@Override
+	boolean test(Rectangle rectangle) {
+		return rectangle.width &gt;= largeWidth &amp;&amp; rectangle.height &gt;= largeHeight
+	}
+}
+</code></pre>
+<p>При таком раскладе создание больших прямоугольников усложнится, в общем случае требуя билдера или фабрики, которая принимает такие же значения, что и потребуются в проверяющем размеры сторон классе, рождая между ними определенную синхронизацию, да и эти значения также нужно где-то хранить. Это выглядит достаточно гибко, но связанные с определением размера классы нужно тоже как-то собирать, хранить и использовать, что будет влиять и на другие классы, усложняя их структуру. В случае же большого количества разных размеров и наличия других взаимосвязанных свойств могут быть такие сильные проблемы, что на свет появится более упрощенный вариант:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>class LargeRectangle extends Rectangle {
+
+	LargeRectangle() {
+		super(Integer.MAX_VALUE, Integer.MAX_VALUE)
+	}
+}
+</code></pre>
+<p>Создание прямоугольников резко упрощается ценой усложнения тестирования, разброса значений по классам фигур разных размеров, усложнения последующей настройки размеров разных фигур если это потребуется в будущем, необходимости instanceof для ранжирования их по размеру в полиморфном методе для Rectangle, что иногда считают антипаттерном: такие проверки разбрасываются по коду, склонны к длинным веткам if\switch и т.п. Также маловероятно, что выйдет обойтись пустым конструктором за счет существования прямоугольников в диапазоне от большого значения до максимального значения типа (или верхнего значения). Если ограничением будет первое, то если largeWidth &lt; Integer.MAX_VALUE, то будут прямоугольники где largeWidth &lt;= width &lt;= Integer.MAX_VALUE, что опять таки упрется в проблемы и способ с фабрикой уже не становится таким плохим. Можно, конечно, проверять значения в конструкторе и выбрасывать IllegalArgumentException.</p>
+<p>Остановимся на этом варианте как более простом для примера и определим отношение между прямоугольниками LargeRectangle и Rectangle. Объемы этих понятий частично совпадают - это совместимые понятия. Между совместимыми понятиями бывает тождество, пересечение и подчинение. Большие прямоугольники в нашей модели все являются прямоугольниками, нет ни одного большого прямоугольника, который бы являлся чем-то другим, что говорит об отношении подчинения.</p>
+<p>Определим трейт цвета, хотя при наличии постфикса Trait в имени отражается реализация (например, при смене на интерфейс или абстрактный класс будет неприятность), но так проще ориентироваться по тексту и я оставлю его для этих целей. В контексте Groovy появляется возможность использовать свойства с автоматическими геттерами и сеттерами, для начала попробуем их:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>trait PaintableTrait {
+	String color
+}
+
+@ToString(includeSuper=true)
+class LargeRectangle extends Rectangle implements PaintableTrait {
+
+	LargeRectangle() {
+		super(Integer.MAX_VALUE, Integer.MAX_VALUE)
+		//несмотря на this, при определении сеттера в трейте он будет вызываться
+		this.color = &quot;black&quot;
+	}
+}
+
+def largeRectangle = new LargeRectangle()
+println largeRectangle
+//LargeRectangle(black, Rectangle(width:2147483647, height:2147483647))
+</code></pre>
+<p>Здесь получилось добавление изменяемого свойства в неизменяемый класс, допустим, что так и было задумано. Большой прямоугольник все равно является прямоугольником, но в нем появилось особенное свойство и он теперь является не только прямоугольником, но и PaintableTrait. Если рассмотреть отношение последнего с Rectangle, то оно похоже на еще один вид совместимых понятий - пересечение. Таким образом, отношение между понятиями может измениться с подчинения на пересечение.</p>
+<p>В месте пересечения PaintableTrait может проникнуть в код работы с прямоугольниками. Предположим, что сначала два, потом три, а потом все виды прямоугольников нужно покрасить, но при этом работа с цветом и PaintableTrait распространилась по приложению. Предметная область раскрывается в процессе написания софта и понятия постоянно изменяются. Если бы LargeRectangle специализировался и имел цвет на своем поле или наследовался от раскрашиваемого прямоугольника, то все методы принимали бы только какой-то вид прямоугольника (LargeRectangle или его родителя) и это поле с цветом можно было бы поднять вверх тривиальным рефакторингом, но методы завязаны на PaintableTrait и чтобы их не разрушать можно попробовать поднять вверх сам имплемент и сделать как:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>class Rectangle implements PaintableTrait {
+
+}
+</code></pre>
+<p>Получается достаточно любопытная ситуация - трейт коварно <a href="https://ru.wikipedia.org/wiki/Embrace,_Extend,_and_Extinguish">&quot;захватил&quot;</a> иерархию и теперь все прямоугольники очень сильно от него зависят. Но переместить из Rectangle в PaintableTrait другие поля невозможно - трейт не является каким-либо прямоугольником\фигурой или чем-то похожим вообще. С одной стороны, это можно рассмотреть как Interface Segregation Principle - вполне логично, что где-то вверху находится что-то с цветом. С другой стороны, трейт никак не связан с понятием прямоугольник, ибо его введение как раз таки и обусловлено было малозначительным функционалом. Теперь же оказывается, что этот функционал перекинулся на всю иерархию, да и добавил изменяемое поле, такая себе была идея.</p>
+<p>Можно ли как-то скрыть цвет. В Groovy трейт не может иметь конструкторы или protected методы, а если поле и методы доступа сделать private, то прямоугольник их не увидит, ситуация достаточно проблемная. В случае, если прямоугольники имеют какие-либо особенности цвета, например, подразумевая 2D фигуру имеем две стороны: frontColor и backColor, допустим, что PaintableTrait реализовывал дефолтный цвет - frontColor, но теперь нельзя изменить PaintableTrait поскольку есть множество самых разных объектов на него завязанных, в ином же случае можно было бы рефакторить метод, который относится только лишь в иерархии прямоугольников.</p>
+<p>По грубой аналогии с трейтом что-то подобное может произойти и с интерфейсом. Если интерфейс находится в другой предметной области, скорее всего в другом пакете, то он ухудшает реиспользование, заставляя при переносе в другое приложение тянуть за прямоугольниками еще и разные другие пакеты. При этом прямоугольники никак не могут влиять на интерфейс из-за наличия и других объектов под ним. Из такой аналогии можно почерпнуть идею использования трейтов: существует много вспомогательных интерфейсов - Comparable, Serializable и т.п. логика которых может относиться к любому объекту. Если взять эту идею, то трейт можно использовать для функционала, не связанного (или малосвязанного) с предметной областью, хотя служебные интерфейсы все же отличаются - они встроены в основную библиотеку языка и не требуют (ну... или пока не требуют) тянуть пакеты за собой при переезде кода в другое приложение.</p>
+<p>Например, Groovy вводит отладочный метод dump(), однако разбрасывать его вызов по приложению не хочется с оглядкой на будущие потребности. Или же вывод имени класса, что-то вроде такого, хотя бы оба этих метода можно подвести под единый контракт, пример не особо удачный, но все же:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>trait ServiceableDebugInfo {
+	//не слишком хорошая идея называть их как геттеры, ну да ладно
+	String getDebugInfo(){
+		return this.dump()
+	}
+}
+
+trait ServiceableClassInfo {
+	String getClassInfo(){
+		return &quot;${this.class}&quot;
+	}
+}
+
+@ToString(includeSuper=true)
+class LargeRectangle extends Rectangle implements ServiceableDebugInfo, ServiceableClassInfo {
+	LargeRectangle() {
+		super(Integer.MAX_VALUE, Integer.MAX_VALUE)
+	}
+}
+def largeRectangle = new LargeRectangle()
+println largeRectangle.getDebugInfo()
+println largeRectangle.getClassInfo()
+// &lt;LargeRectangle@78a287ed width=2147483647 height=2147483647&gt;
+// class LargeRectangle
+</code></pre>
+<p>Предметная область особо ничего не знает о способе устройства класса, пакетной организации и формате имени.<br/>Да, Groovy позволяет реализовать трейт в рантайме, но в результате будет декоратор, что может дать некоторые побочные эффекты:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>def debugLargeRectangle = new LargeRectangle() as ServiceableDebugInfo
+println debugLargeRectangle.getDebugInfo()
+//&lt;LargeRectangle1_groovyProxy@3f2ef586 $closures$delegate$map=[:] $delegate=LargeRectangle(black, Rectangle(width:2147483647, height:2147483647))&gt;
+
+//или вариант для множества трейтов
+def debugLargeRectangle = new LargeRectangle().withTraits ServiceableDebugInfo, ServiceableClassInfo
+println debugLargeRectangle.getDebugInfo()
+println debugLargeRectangle.getClassInfo()
+//&lt;LargeRectangle1_groovyProxy@4e517165 $closures$delegate$map=[:] $delegate=LargeRectangle(black, Rectangle(width:2147483647, height:2147483647))&gt;
+//class LargeRectangle1_groovyProxy
+</code></pre>
+<p>Чисто теоретически, такой функционал присутствует у всех классов, однако в приложении нельзя все классы наследовать от одного компонента. Можно попробовать использовать метапрограммирование, раз уж методы универсальны и подходят к любому объекту:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>@ToString(includeSuper = true)
+class LargeRectangle extends Rectangle {
+	LargeRectangle() {
+		super(Integer.MAX_VALUE, Integer.MAX_VALUE)
+	}
+}
+
+Object.metaClass.getDebugInfo = {
+	//где вызываем дамп у делегата
+	return delegate.dump()
+}
+
+def largeRectangle = new LargeRectangle()
+println largeRectangle.getDebugInfo()
+//&lt;LargeRectangle@163d04ff width=2147483647 height=2147483647&gt;
+</code></pre>
+<p>Однако тут тоже есть недостатки: при увеличении количества методов будут явные проблемы в т.ч. и с навигацией по ним, несмотря на возможность использовать выдуманные префиксы по группам методов для подсветки в IDE. Если включить режим строгой проверки типов, который тоже является одной из фич Groovy, то нужно будет как-то доказывать компилятору, что метод там есть или частично отключать проверку, так просто код проверку не пройдет. При использовании в скриптах со всей динамикой замыканий и т.п. эта проблема может и не возникнуть, большая часть кода и так не пройдет строгие проверки.</p>
+<p>С другой стороны, если мы вводим понятие предметной области и обслуживающей\служебной, то обязательно будет логика на их стыке или та, принадлежность которой трудно сходу оценить. Например, преобразования объектов в JSON. Предметная область мало что знает об этом формате, с другой стороны, наличие в прямоугольнике координат или размеров может потребовать специального формата, заточенного под геометрию, который обнаружится намного позже, но к этому времени весь код будет завязан на json, на такие грабли легко наступить. Скорее всего решающим фактором будет относимость функционала к внутреннему устройству приложения, фреймворка или языка. JSON - формат, который используется независимо, в разных приложениях и в разных условиях.</p>
+<p>Еще одна достаточно частая ситуация - в приложении уже сформированы компоненты, отлажена их сборка и вдруг библиотека требует наследования от класса, что полностью блокирует любое другое наследование. Трейт или миксин может быть спасением в этом случае, он и так является рутовым компонентом. Например, частая проблема - разброс в логгерах, когда в приложении используется один логгер, а в библиотеке - другой. За счет повсеместной финализации классов написание декораторов\адаптеров с агрегацией логгера может стать задачей нетривиальной, нужно вручную пробрасывать огромное количество методов. Можно попробовать использовать трейт:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>trait LoggableComponent {
+}
+
+//злая библиотека
+class Application {
+}
+
+class MyApplication extends Application implements LoggableComponent {
+//не нужно дублировать сложную работу с логгером, которая может потребоваться позже
+}
+</code></pre>
+<p>Хотя при таком раскладе в случае проблем в сторонней библиотеке информация с её собственного логгера может быть утеряна из-за использования логгера в трейте, который отделён от библиотечного логирования. Кроме того, в игру вступают особенности реализации трейтов в конкретном языке. Например, ситуация выше запросто может сделать компоненты приложения изменяемыми.</p>
+<p>Если не учитывать такие особенности, то иногда встречается такой случай: на самом нижнем уровне фреймворка есть множество миниатюрных компонентов с одним полем, например, Logger, I18n, Config. Могут быть различные варианты:  Logger и I18n, I18n и Config и т.п. При этом удобно иметь компонент с самыми минимальными зависимостями, поскольку в ином случае что-то наверняка не будет использоваться, вися мертвой зависимостью. В случае ограничений наследования нужно дублировать код:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>class LoggableComponent {
+	Logger logger
+}
+
+class ConfigurableComponent {
+	Config config
+}
+
+//В случае ограничения наследования получаем
+class ApplicationComponent extends LoggableComponent {
+	Config config
+} 
+
+//или же...
+class ApplicationComponent extends ConfigurableComponent {
+	Logger logger
+}
+</code></pre>
+<p>Наличие трейтов в рутовой иерархии скорее всего тоже может приводить к побочным эффектам в разных языках, например, влиять на рефлексию или сериализацию за счет их различия с обычными классами. Они могут иметь различные особенности, негативно влияющие на внедрение зависимостей, отсутствие сеттеров и т.п. Такой риск может быть более высокой ценой, чем дублирование кода. Например, документации прямо говорит о возможных проблемах Groovy-трейтов с AST-трансформациями, аннотации которых в рутовых компонентах могут потребоваться. Достаточно рисковая затея...</p>
+<p>С помощью трейтов легко реализовать цепочку ответственности, когда вызов super делегирует вызов к следующему трейту в цепочке или прерывает цепочку вообще отсутствием вызова. К сожалению, я не смог выдумать достаточно понятного примера, не относящегося к прямоугольникам, поэтому я все же адаптирую примеры из сети и грубо смешаю их с предметной областью, а также использую специальный класс Expando для целей создания класса, который просто реализует трейты, больше он не несет никакого смысла, являясь заглушкой. Также можно было бы создать и пустой класс без логики, но мне не нравятся висящие скобочки:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>interface RectangleTransformer {
+	void transform(Rectangle rectangle)
+}
+
+trait MoveLeftTransformer implements RectangleTransformer {
+	void transform(Rectangle rectangle) {
+		println &quot;Moved to the left!&quot;
+		super.transform(rectangle)
+	}
+}
+
+trait MoveRightTransformer implements RectangleTransformer {
+	void transform(Rectangle rectangle) {
+		println &quot;Moved to the right!&quot;
+		super.transform(rectangle)
+	}
+}
+
+trait FakeTransformer implements RectangleTransformer {
+	void transform(Rectangle rectangle) {
+		println &quot;Not transformed&quot;
+	}
+}
+
+Rectangle rectangle = new Rectangle(100, 100)
+
+//выполнение цепочки идет справа налево
+def rightToLeftTransformer = new Expando().withTraits FakeTransformer, MoveLeftTransformer, MoveRightTransformer
+rightToLeftTransformer.transform(rectangle)
+//Moved to the right!
+//Moved to the left!
+//Not transformed
+
+//меняем порядок трейтов
+def leftToRightTransformer = new Expando().withTraits FakeTransformer, MoveRightTransformer, MoveLeftTransformer
+leftToRightTransformer.transform(rectangle)
+//Moved to the left!
+//Moved to the right!
+//Not transformed
+</code></pre>
+<p>В данном примере трейты вмешиваются в предметную область прямоугольников и, несмотря на интересную затею, в такой цепочке есть грабли, на которые чрезвычайно легко наступить - <strong>трейт, который вызывается последним не должен вызывать super</strong>, а иначе код рухнет в рантайме: груви будет искать метод в самом классе, которые имплементит интерфейсы (в данном случае в Expando), а там его нет. Если же его там определить, то он перезапишет все методы трейтов. С другой стороны, хотя реализовать подобное можно и без трейтов, но, например, без IDE в скрипте где весь код нужно впихнуть в один файл для облегчения его запуска способ выше может быть явно удобнее.</p>
+<p>Для полноты картины добавлю пример изощренного трейта с единственным абстрактным методом - Single Abstract Method (SAM):</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>trait PaintableTrait {
+	void draw(){
+		println &quot;Color: $color&quot;
+	}
+	abstract String getColor()
+}
+
+@ToString(includeSuper=true)
+abstract class LargeRectangle extends Rectangle implements PaintableTrait {
+	LargeRectangle() {
+		super(Integer.MAX_VALUE, Integer.MAX_VALUE)
+	}
+}
+
+LargeRectangle largeRectangle = { &quot;black&quot; }
+println largeRectangle
+largeRectangle.draw()
+//LargeRectangle(black, Rectangle(width:2147483647, height:2147483647))
+//Color: black
+</code></pre>
+<p>Однако магия... какого-то поля цвета нигде не видно. Свойство цвета недоступно для изменения, сеттер цвета у большого прямоугольника не сработает. За счет более простого способа конструирования объекта может быть полезным в скриптах. С другой стороны, в некоторых случаях поведение может быть не столь интуитивным (напомню, что it - это именованная по соглашению переменная, которая ссылается на первый параметр в замыкании):</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>List&lt;LargeRectangle&gt; rectangleList = [{'black'} as LargeRectangle, {'white'}]
+rectangleList.each { println it }
+// LargeRectangle(black, Rectangle(width:2147483647, height:2147483647))
+// Main$_run_closure2@4fad94
+</code></pre>
+<p>Хотя IDE немного удивится, но такое сработает:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>LargeRectangle r1, r2, r3
+(r1, r2, r3) = [{'white'}, {'black'}, {'red'}]
+[r1, r2, r3].each {println it}
+
+//LargeRectangle(white, Rectangle(width:2147483647, height:2147483647))
+//LargeRectangle(black, Rectangle(width:2147483647, height:2147483647))
+//LargeRectangle(red, Rectangle(width:2147483647, height:2147483647))
+</code></pre>
+<p>Напоследок рассмотрим задачу по наследованию от собаки и кота, ближайшей аналогией которого является герой известного мультфильма - КотоПес. Этот пример достаточно распространен. Учитываем, что к моменту появления КотоПса в приложении весь код пропитался методами, завязанными на Cat или Dog. Возьму пример из сети, не изменяя его:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>abstract class Animal {
+	abstract String voice();
+}
+
+class Cat extends Animal {
+	String voice() {
+		return &quot;Meow&quot;;
+	}
+}
+
+class Dog extends Animal {
+	String voice() {
+	return &quot;Woof!&quot;;
+	}
+}
+</code></pre>
+<p>На первый взгляд достаточно логично, что КотоПес может наследоваться от собаки и от кота одновременно. С другой стороны, логика вводит еще одну категорию понятий - пустые. Пустое понятие — понятие, объём которого не содержит ни одного объекта, к этой же категории относится и, например, русалка, которая должна, по идее, наследоваться от рыбы и человека. Но есть определенная разница между встречающимися в реальности котом и собакой и КотоПсом. Если объемы понятий не совпадают и не содержат пересекающихся элементов, то они несовместимы друг с другом.</p>
+<p>Учитывая, что КотоПес появился позже, в приложении уже появилось много методов:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>void voiceCat(Cat cat){
+	println cat.voice()
+}
+
+void voiceDog(Dog dog){
+	println dog.voice()
+}
+</code></pre>
+<p>Здесь можно вспомнить о полиморфизме, но в имени метода ясно указано, что его интересует только кот и никто другой, наверное, для каких-то целей. Может нужно мяукнуть, чтобы кот мяукнул тоже, а для собаки нужна команда или автор по каким-то причинам решил не отражать побочные эффекты в имени метода, например, предсказывая будущее их изменение. Все же классы создаются для специализации и сделать единый контракт для них проблемно. Раз такие методы есть, то скорее всего разработчик не захотел идти на каст или дополнительные проверки, чтобы не создавать дополнительных мест для рантаймовых ошибок. Наиболее простой вариант - ассоциация, но т.к. проблематично сделать кота и пса приватными, то:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>class CatDog {
+	final Cat cat
+	final Dog dog
+
+	CatDog(Cat cat, Dog dog) {
+		this.cat = cat
+		this.dog = dog
+	}
+}
+</code></pre>
+<p>С одной стороны, не особо логично, что код принимает КотоПса по частям, с другой - метод интересует ровно та часть, которая ведет себя как кот. Однако проблема в том, что КотоПес является инопланетянином, который способен разговаривать и управлять космическим кораблем. В случае же подобной затеи:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>def catDog = new CatDog(new Cat(), new Dog())
+voiceCat(catDog.cat)
+//&quot;Meow&quot;
+</code></pre>
+<p>Инопланетянин скажет &quot;Meow&quot;, что достаточно глупо: строение КотоПса и кота с собакой сильно различаются - общая нервная система и т.п. Изменим:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>class AlienCat extends Cat {
+	String voice() {
+		return &quot;I'm a cat&quot;
+	}
+}
+
+class AlienDog extends Dog {
+	String voice() {
+		return &quot;I'm a dog&quot;
+	}
+}
+def catDog = new CatDog(new AlienCat(), new AlienDog())
+voiceCat(catDog.cat)
+//I'm a cat
+</code></pre>
+<p>Это больше походит на правду. Хотя внушает опасение тот факт, что метод изначально ориентировался только на контракт обычного кота, а получил инопланетное существо, которое умеет говорить... кгм, хотя это и работает. Допустим, есть и такой универсальный метод:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>void voiceAnimal(Animal animal){
+	println animal.voice()
+}
+</code></pre>
+<p>Здесь есть уже несколько вариантов... мы можем выбрать кого-то одного - либо пса либо кота и передать его в метод. С другой стороны, кто будет говорить может захотеть решить сам КотоПес, а это требует наследования его от Animal, например, они могут чередоваться, попытаться говорить параллельно или что-нибудь скажет только кот:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>class CatDog extends Animal {
+	final Cat cat
+	final Dog dog
+
+	CatDog(Cat cat, Dog dog) {
+		this.cat = cat
+		this.dog = dog
+	}
+
+	@Override
+	String voice() {
+		return cat.voice()
+	}
+}
+</code></pre>
+<p>Насколько это корректно... хороший вопрос, учитывая, что КотоПес - пустое понятие. Если принять, что кот и пес - живые существа, то Animal будет скорее непустым понятием, а значит между CatDog и Animal не может быть подчинения. Если потребуется управлять космическим кораблем, то также будут проблемы и напрашивается еще один класс:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>abstract class AlienAnimal extends Animal {
+	
+}
+</code></pre>
+<p>от которого и был рожден КотоПес. Теперь можно добавить управление кораблем и сложное мышление. Все выглядит вполне логично, но мы ничего не знаем об устройстве инопланетян, их происхождении и про КотоПса мы знаем только то, что он похож на кота и пса в отдельных признаках, поэтому скорее всего AlienAnimal тоже будет пустым понятием и должно наследоваться от какого-нибудь Alien, которое тоже пустое (разве что уфологи это оспорят). Однако в коде вышло использовать метод voiceCat для части КотоПса. Вероятно, такое поведение условно и даже выделение интерфейса не уберет эту условность:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>interface SpeakingEntity {
+	abstract String voice()
+}
+</code></pre>
+<p>который реализуют AlienAnimal (или Alien) вверху иерархии и Animal. Получается, что в примерах выше в методе есть попытка использовать несуществующее существо как существующее, а это явно нарушение логики, что можно заподозрить даже на уровне метода - кот просто мяукает, а КотоПес умеет разговаривать. Насколько это опасно... хороший вопрос, учитывая, что код в любом случае не может достоверно отразить реальность и целиком построен на условностях. Вероятно, это может осложнить перенос кода в приложение, которое моделирует более реальный мир, без пустых понятий, например, ветклинику. Можно выдрать код, работающий с котом и псом и удалить КотоПса, однако если инопланетная логика способна распространиться по приложению, то это, по идее, превратит кота и пса тоже в пустые понятия, что приведет к проблемам при моделировании реальных животных, постепенно насыщая код условностями и модель начнет очень сильно расходиться с реальностью. С другой стороны, обычно расхождение и так настолько велико, что такие условности уже мало на что повлияют.</p>
+<p>В любом случае все это ведет к сильному усложнению иерархий и постоянному рефакторингу, поскольку все особенности КотоПса сразу выявить очень трудно. Может быть КотоПес и существует и является результатом эксперимента с практически неизменной физиологией. Можно условно допустить, что в данном приложении КотоПес всего лишь кот и пес. Допустим, что это так, тогда используем трейты:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>abstract class Animal {
+	abstract String voice()
+}
+
+trait Cat  {
+	String voice() {
+		return &quot;Meow&quot;
+	}
+}
+
+trait Dog {
+	String voice() {
+	return &quot;Woof!&quot;
+	}
+}
+
+//Добавил ограничение для примера, иной тип не может использовать трейт
+@SelfType(CatDog)
+trait AlienCat extends Cat {
+	String voice() {
+		return &quot;I'm a cat&quot;
+	}
+}
+
+@SelfType(CatDog)
+trait AlienDog extends Dog {
+	String voice() {
+		return &quot;I'm a dog&quot;
+	}
+}
+
+class CatDog extends Animal implements AlienCat, AlienDog {
+}
+
+void voiceCat(Cat cat){
+	println cat.voice()
+}
+
+void voiceAnimal(Animal animal){
+	println animal.voice()
+}
+
+def catDog = new CatDog()
+voiceCat(catDog)
+voiceAnimal(catDog)
+//I'm a dog
+//I'm a dog
+</code></pre>
+<p>Упс, похоже методы конфликтуют и сработал только последний трейт, а КотоПес сошел с ума. С одной стороны, кот в какой-то степени и пес, с другой стороны, трейты грубо добавляют поведение и сам КотоПес уже на знает как себя вести. Спасти ситуацию может появление разума, однако откуда ему знать кто должен говорить. В Groovy можно выкрутиться так:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>class CatDog extends Animal implements AlienCat, AlienDog {
+	@Override
+	String voice(){
+		return AlienCat.super.voice()
+	}
+}
+</code></pre>
+<p>Вызов методов и обращение к свойствам через геттеры и сеттеры будут работать, хотя выходит какая-то дичь. Зная недостатки статики попробуем смоделировать животное-агрегат:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>class CatDog extends Animal {
+
+	private List&lt;Animal&gt; animals = []
+
+	CatDog(Cat cat, Dog dog) {
+		animals &lt;&lt; cat
+		animals &lt;&lt; dog
+	}
+
+	@Override
+	String voice() {
+		return animals.collect {it.voice()}.join(System.lineSeparator())
+	}
+}
+//I'm a cat
+//I'm a dog
+</code></pre>
+<p>Вроде работает, хотя и нужно решить вопрос со сторонними методами для кота или пса. Теперь на трейтах:</p>
+<pre class='line-numbers'><code class='prettyprint language-groovy'>class CatDog extends Animal implements AlienCat, AlienDog {
+	@Override
+	String voice() {
+		//[AlienCat, AlienDog].each не работает
+		return [AlienCat.super.voice(), AlienDog.super.voice()].join(System.lineSeparator())
+	}
+}
+//I'm a cat
+//I'm a dog
+</code></pre>
+<p>Видно, что проблематично оперировать трейтом как объектом и в случае большого количества животных нужно это все указывать вручную. Конечно, на уровне языка могут быть хаки, но они все равно не решают проблемы: нет объектов, которыми можно было бы управлять.</p>
+<p>Краткие выводы, которые у меня получились:</p>
+<ul>
+<li>Трейт - это все же не класс, а если трейт хотя бы незначительно отличается от класса, то он может быть опасен неожиданными отложенными проблемами, например, как у меня получилось с груви-свойствами.</li>
+<li>Из-за таких отличий в Groovy они не заменяют множественное наследование, скорее всего поэтому в документации об этом и умалчивается.</li>
+<li>Если трейт имеет состояние и добавляется к потомку, то трейт может проникнуть в предметную область каких-либо классов, а используясь в классах предметной области может неожиданно вступить в конфликт с постоянно появляющимися новыми требованиями. Например, изначально цвет рассматривался для вывода на экран, но в пакете прямоугольников появился класс-менеджер, который в т.ч. знает о цвете больших прямоугольников... ну и похожие случаи.</li>
+<li>При таком отношении пересечения возможно распространение пересекающегося функционала на всю иерархию.</li>
+<li>Из-за такой вероятности перемещения вверх при знакомстве с языком есть смысл изучить способность класса, который имплементит трейт изменять (в общем случае - ограничивать) контракт трейта, особенно обращая внимание на наличие конструктора, финализацию и возможность ограничения доступа.</li>
+<li>Побочным эффектом, как и в случае с интерфейсом может стать зависимость от другого пакета\модуля\пространства имен, что понизит реиспользование кода. В примере выше PaintableTrait вряд ли будет располагаться в пакете прямоугольников.</li>
+</ul>
+<p>К этому можно добавить классические проблемы - конфликт наследования, когда использоваться будет только последний трейт, побочные эффекты и перезапись методов и т.п.</p>
+<p>С другой стороны, можно попытаться понизить риски:</p>
+<ul>
+<li>Использовать трейты для того функционала, который не связан с предметной областью вообще. Хотя это достаточно субъективно и легко допустить ошибку. Но тут все равно может быть проблема с наличием состояний и добавлением мутабельности если поля будут открытыми.</li>
+<li>Трейты как костыли в крайнем случае из-за особенностей библиотек или в случае архитектурной ошибки, которую трудно исправить. Например, при очень сильном расслоении кода теми же дженериками есть некоторый шанс получить класс с несочетаемой комбинацией. Код эволюционирует постепенно, а эволюция склонна идти и по тупиковой ветви тоже.</li>
+<li>Трейты в коде со специальными требованиями: например, скрипты требуют правки в боевых условиях, при отсутствии IDE, часто в терминале, где текстовый редактор может вообще отключить подсветку кода. Нужно сильное сокращение кода и упрощения, конечно же, ценой чего-то другого. Например, цепочка трейтов может сильно облегчить код.</li>
+</ul>
+<p>Иерархии можно крутить по-разному и даже в случае каких-то ошибок приложение все равно может умереть быстрее, чем эти проблемы вскроются. Так или иначе, но с помощью трейтов можно легко сделать не только удобное решение, но и абсолютно в них запутаться или получить неочевидные конфликты поведения. С другой стороны, иногда они жизненно необходимы, но о полной совместимости с классами говорить не приходится, а раз так, что внедрение их в важные иерархии может привести к проблемам, если не очень повезет. Пожалуй, буду продолжать к ним относиться с осторожностью.</p>
+</div>
+    </div>
+</article>
+<div class='navigation-pages btn-toolbar justify-content-center mb-2' role='navigation'>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/javafx-useful-tips.html' role='button' rel="prev"> <span
+            class='navigation-pages-link-icon mdi mdi-chevron-left'></span> JavaFX - полезные советы, ссылки, ресурсы</a>
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1' href='/index.html'
+       role='button' rel="first">
+        <span class='navigation-pages-link-icon mdi mdi-home'></span> Главная</a>
+
+    
+    <a class='navigation-pages-link btn mb-2 mx-0 mx-sm-1'
+       href='/pages/simple-database-mapper.html' role='button' rel="next">Самый простой маппер для базы данных знаков зодиака <span
+            class='navigation-pages-link-icon mdi mdi-chevron-right'></span></a>
+    
+</div>
+        </div>
+        <div class='col-lg-3 sidebar-right'>
+            <div class='section' id='section-sidebar-right'>
+    <div class='card sidebar-container post-labels'>
+        <div class='card-header sidebar-container-header post-labels-header'>
+            <span class='post-labels-header-icon mdi mdi-tag-outline'></span>
+            Метки <span class='text-clarification'>(и кол-во статей)</span>
+        </div>
+        <div class='sidebar-container-content post-labels-content'>
+            <div class='list-group list-group-flush'>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dart.html'>Dart<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/dlang.html'>Dlang<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/groovy.html'>Groovy<span class='badge' style='min-width:40px;'>5</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/javafx.html'>JavaFX<span class='badge' style='min-width:40px;'>6</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/arhitektura_po.html'>Архитектура ПО<span class='badge' style='min-width:40px;'>10</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/metodologija.html'>Методология<span class='badge' style='min-width:40px;'>2</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/raznoe.html'>Разное<span class='badge' style='min-width:40px;'>1</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/ekonomika.html'>Экономика<span class='badge' style='min-width:40px;'>3</span></a>
+                
+                <a class='list-group-item list-group-item-action d-flex justify-content-between align-items-center ' href='/tags/elektronika.html'>Электроника<span class='badge' style='min-width:40px;'>1</span></a>
+                
+            </div>
+        </div>
+    </div>
+    <div class='card sidebar-container in-progress-articles'>
+       <div class='card-header sidebar-container-header in-progress-articles-header'>
+           <span class='mdi mdi-calendar-clock'></span>
+            В процессе написания
+       </div>
+       <div class='sidebar-container-content post-labels-content in-progress-articles-content'>
+               <ul class='list-group'>
+				   <li class='list-group-item align-items-center text-muted'>Нет статей</li>
+               </ul>
+       </div>
+    </div>
+    <div class='card mb-3 sidebar-container links-contacts'>
+        <div class='card-header sidebar-container-header links-contacts-header'>
+            <span class='mdi mdi-open-in-new'></span>
+            Девлоги текущих проектов
+        </div>
+        <div class="list-group sidebar-container-content">
+			<a class='link-contact list-group-item list-group-item-action' rel="me" href='https://www.youtube.com/@initkfs'>Youtube (готовится)</a>
+		</div>
+    </div>
+    <div class='page-up-wrapper'>
+        <button class='btn d-none d-lg-block' id='page-up-trigger' type='button'><span
+                class='mdi mdi-arrow-up'></span></button>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<footer class='page-footer'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='card'>
+    <div class='card-body'>
+        <p class="text-danger">Сайт в процессе тестирования.</p>
+        <small><span class='blog-info-footer'>Всего статей: 24. Блог - исследовательский, статьи отражают лишь субъективное мнение автора.</span> <span>&#169; <span id='copyright-date'></span>, Константин Фирсов.</span></small>
+        
+        <div class='blog-additional-links d-flex justify-content-center'>
+        <div class='blog-rss'><a class='blog-rss-item blog-icon-clickable'
+                                 href='/rss-all.xml'><span
+                class='mdi mdi-rss-box blog-icon-rss'></span></a></div>
+        </div>
+        <div class='text-danger' id='js-fail-block'>
+            <noscript>
+                <small>JavaScript отключен в браузере, функционал сайта ограничен.</small>
+            </noscript>
+        </div>
+    </div>
+</div>
+<script type='application/ld+json'>
+    {
+        "@context": "http://www.schema.org",
+        "@type": "person",
+        "name": "initkfs",
+        "jobTitle": "",
+        "url": "/index.html"
+    }
+</script>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class='mobile-up-wrapper text-center'>
+    <button class='btn d-lg-none' id='mobile-page-up-trigger' type='button'><span
+            class='mdi mdi-arrow-up'></span> Вверх
+    </button>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" 
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js'></script>
+
+<script crossorigin='anonymous' integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+        src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.full.min.js" integrity="sha512-wb3lqal2VtYhmlPAr232VP+Zus676CFAEYdywxIUSxG6F/X9WhN6SpREkWUdwBvMpd6gCKuKTGHhdum6m1wOvQ==" crossorigin="anonymous"></script>
+
+<script crossorigin='anonymous' integrity='sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+
+<script crossorigin='anonymous' integrity='sha512-SkmBfuA2hqjzEVpmnMt/LINrjop3GKWqsuLSSB3e7iBmYK7JuWw4ldmmxwD9mdm2IRTTi0OxSAfEGvgEi0i2Kw=='
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js" ></script>
+
+<script>
+var problemScripts = [];
+if (typeof jQuery === 'undefined') {
+    problemScripts.push("jquery");
+}
+
+   if (typeof Prism === 'undefined'){
+    problemScripts.push("prism.js");
+   }
+   
+if (typeof Popper === 'undefined') {
+    problemScripts.push("popper.js");
+}
+
+if (typeof timeago === 'undefined') {
+    problemScripts.push("timeago.js");
+}
+
+if (typeof window.bootstrap === 'undefined') {
+    problemScripts.push("bootstrap.js");
+}
+
+if (problemScripts.length > 0) {
+    var message = "Ошибка загрузки JavaScript: " +
+        problemScripts.join(",") +
+        "." +
+        " Возможные причины: блокировщик рекламы, проблемы с сетью, устаревший браузер. Может не работать дополнительный функционал.";
+
+    var failInfoBlock = document.createElement("small");
+    failInfoBlock.innerHTML = message;
+
+    var mainFailBlock = document.getElementById("js-fail-block");
+    if (!mainFailBlock) {
+        console.error(message);
+    } else {
+        mainFailBlock.appendChild(failInfoBlock);
+    }   
+}
+</script>
+<script src="/assets/dev/js/main.js"></script>
+</body>
+</html>
+
+
+
